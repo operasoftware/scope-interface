@@ -1,0 +1,245 @@
+<!doctype html>
+<title>Scope.1.0</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>Scope<span class="service-version">1.0</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#Connect">Connect</a></li>
+
+<li><a href="#Disable">Disable</a></li>
+
+<li><a href="#Disconnect">Disconnect</a></li>
+
+<li><a href="#Enable">Enable</a></li>
+
+<li><a href="#HostInfo">HostInfo</a></li>
+
+<li><a href="#Info">Info</a></li>
+
+<li><a href="#MessageInfo">MessageInfo</a></li>
+
+<li><a href="#Quit">Quit</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+<li><a href="#OnConnectionLost">OnConnectionLost</a></li>
+
+<li><a href="#OnError">OnError</a></li>
+
+<li><a href="#OnQuit">OnQuit</a></li>
+
+<li><a href="#OnServices">OnServices</a></li>
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>This is a special service which is always present and always enabled. </p>
+  <p>This service replaces the special commands used in STP/0 (started with an asterix). The only command that is fully compatible with STP/0 is "*services" (OnServices) which is actually sent as STP/0 only, any other special command sent to scope will be ignored. The system takes care of mapping it to the correct format when sending and receiving them. However the payload of these messages is no longer the same: they must now be sent using UMS. This means using either JSON or XML when sending over STP/0. </p></div><h2 id="Connect"><a href="#Connect">Connect</a></h2>
+<pre class="code-line" id="Connect.ClientInfo"><a href="#Connect.ClientInfo"><span class="keyword">command</span> <span class="command-name">Connect</span>(<span class="message-name">ClientInfo</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="Connect.ClientInfo.format"><a href="#Connect.ClientInfo.format"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">format</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Connect.Default"><a href="#Connect.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Connect.key"><a href="#Connect.key"><span class="proto-key">= 3;</span></a></pre><h2 id="Disable"><a href="#Disable">Disable</a></h2>
+<pre class="code-line" id="Disable.ServiceSelection"><a href="#Disable.ServiceSelection"><span class="keyword">command</span> <span class="command-name">Disable</span>(<span class="message-name">ServiceSelection</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="Disable.ServiceSelection.name"><a href="#Disable.ServiceSelection.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Disable.ServiceResult"><a href="#Disable.ServiceResult"><span class="keyword">returns</span> (<span class="message-name">ServiceResult</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="Disable.ServiceResult.name"><a href="#Disable.ServiceResult.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Disable.key"><a href="#Disable.key"><span class="proto-key">= 6;</span></a></pre><h2 id="Disconnect"><a href="#Disconnect">Disconnect</a></h2>
+<pre class="code-line" id="Disconnect.Default"><a href="#Disconnect.Default"><span class="keyword">command</span> <span class="command-name">Disconnect</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Disconnect.Default"><a href="#Disconnect.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Disconnect.key"><a href="#Disconnect.key"><span class="proto-key">= 4;</span></a></pre><h2 id="Enable"><a href="#Enable">Enable</a></h2>
+<pre class="code-line" id="Enable.ServiceSelection"><a href="#Enable.ServiceSelection"><span class="keyword">command</span> <span class="command-name">Enable</span>(<span class="message-name">ServiceSelection</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="Enable.ServiceSelection.name"><a href="#Enable.ServiceSelection.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Enable.ServiceResult"><a href="#Enable.ServiceResult"><span class="keyword">returns</span> (<span class="message-name">ServiceResult</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="Enable.ServiceResult.name"><a href="#Enable.ServiceResult.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Enable.key"><a href="#Enable.key"><span class="proto-key">= 5;</span></a></pre><h2 id="HostInfo"><a href="#HostInfo">HostInfo</a></h2>
+<pre class="code-line" id="HostInfo.Default"><a href="#HostInfo.Default"><span class="keyword">command</span> <span class="command-name">HostInfo</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="HostInfo.HostInfo"><a href="#HostInfo.HostInfo"><span class="keyword">returns</span> (<span class="message-name">HostInfo</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="HostInfo.HostInfo.stpVersion"><a href="#HostInfo.HostInfo.stpVersion"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">stpVersion</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="HostInfo.HostInfo.coreVersion"><a href="#HostInfo.HostInfo.coreVersion"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">coreVersion</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="HostInfo.HostInfo.platform"><a href="#HostInfo.HostInfo.platform"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">platform</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="HostInfo.HostInfo.operatingSystem"><a href="#HostInfo.HostInfo.operatingSystem"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">operatingSystem</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="HostInfo.HostInfo.userAgent"><a href="#HostInfo.HostInfo.userAgent"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">userAgent</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="HostInfo.HostInfo.serviceList"><a href="#HostInfo.HostInfo.serviceList"><span class="qualifier">repeated</span> <span class="">Service</span> <span class="field-name">serviceList</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="HostInfo.HostInfo.Service.name"><a href="#HostInfo.HostInfo.Service.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="HostInfo.HostInfo.Service.version"><a href="#HostInfo.HostInfo.Service.version"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">version</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This field contains the major and minor version number of the service. The first number is the major version, the second is the minor, and any additional numbers/strings are not of relevance but can be shown to the end-user if wanted. </p>
+  <p>The major version determines major changes (ie. compatibility breaks), while the minor version determines incremental changes (ie. backwards compatible). The client must check these two numbers to ensure it is able to communicate properly with the service. If the major version is different from the versions the client is compatible with, or the minor version is less than the required version, it must disconnect. </p>
+  <p>Let us say a client supports version 1.6 and up and also version 2.0 and up. It would do:: </p>if major == 1 and minor >= 6 or major == 2: print "We support service version %d.%d" % (major, minor) else: print "We do not support service version %d.%d" % (major, minor) </div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="HostInfo.key"><a href="#HostInfo.key"><span class="proto-key">= 10;</span></a></pre><h2 id="Info"><a href="#Info">Info</a></h2>
+<pre class="code-line" id="Info.ServiceSelection"><a href="#Info.ServiceSelection"><span class="keyword">command</span> <span class="command-name">Info</span>(<span class="message-name">ServiceSelection</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="Info.ServiceSelection.name"><a href="#Info.ServiceSelection.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Info.ServiceInfo"><a href="#Info.ServiceInfo"><span class="keyword">returns</span> (<span class="message-name">ServiceInfo</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="Info.ServiceInfo.commandList"><a href="#Info.ServiceInfo.commandList"><span class="qualifier">repeated</span> <span class="">CommandInfo</span> <span class="field-name">commandList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="Info.ServiceInfo.CommandInfo.name"><a href="#Info.ServiceInfo.CommandInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="Info.ServiceInfo.CommandInfo.number"><a href="#Info.ServiceInfo.CommandInfo.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="Info.ServiceInfo.CommandInfo.messageID"><a href="#Info.ServiceInfo.CommandInfo.messageID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">messageID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="Info.ServiceInfo.CommandInfo.responseID"><a href="#Info.ServiceInfo.CommandInfo.responseID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">responseID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="Info.ServiceInfo.eventList"><a href="#Info.ServiceInfo.eventList"><span class="qualifier">repeated</span> <span class="">EventInfo</span> <span class="field-name">eventList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="Info.ServiceInfo.EventInfo.name"><a href="#Info.ServiceInfo.EventInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="Info.ServiceInfo.EventInfo.number"><a href="#Info.ServiceInfo.EventInfo.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="Info.ServiceInfo.EventInfo.messageID"><a href="#Info.ServiceInfo.EventInfo.messageID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">messageID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Info.key"><a href="#Info.key"><span class="proto-key">= 7;</span></a></pre><h2 id="MessageInfo"><a href="#MessageInfo">MessageInfo</a></h2>
+<pre class="code-line" id="MessageInfo.MessageSelection"><a href="#MessageInfo.MessageSelection"><span class="keyword">command</span> <span class="command-name">MessageInfo</span>(<span class="message-name">MessageSelection</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="MessageInfo.MessageSelection.serviceName"><a href="#MessageInfo.MessageSelection.serviceName"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">serviceName</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Name of service to fetch messages from. Message ids are unique per service. </p></div></li>
+<li class="field">
+<pre class="code-line" id="MessageInfo.MessageSelection.idList"><a href="#MessageInfo.MessageSelection.idList"><span class="qualifier">repeated</span> <span class="number">uint32</span> <span class="field-name">idList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Contains ids of message which should be fetched. </p></div></li>
+<li class="field">
+<pre class="code-line" id="MessageInfo.MessageSelection.includeRelated"><a href="#MessageInfo.MessageSelection.includeRelated"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">includeRelated</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Set to true to automatically include messages which are referenced (fields of type Message). This makes it easy to fetch the entire message chain for a given message. </p></div></li>
+<li class="field">
+<pre class="code-line" id="MessageInfo.MessageSelection.includeAll"><a href="#MessageInfo.MessageSelection.includeAll"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">includeAll</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Set to true if all message in the service should be included. Overrides includeRelated and idList. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="MessageInfo.MessageInfoList"><a href="#MessageInfo.MessageInfoList"><span class="keyword">returns</span> (<span class="message-name">MessageInfoList</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="MessageInfo.MessageInfoList.messageList"><a href="#MessageInfo.MessageInfoList.messageList"><span class="qualifier">repeated</span> <span class="">MessageInfo</span> <span class="field-name">messageList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.id"><a href="#MessageInfo.MessageInfoList.MessageInfo.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.name"><a href="#MessageInfo.MessageInfoList.MessageInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.fieldList"><a href="#MessageInfo.MessageInfoList.MessageInfo.fieldList"><span class="qualifier">repeated</span> <span class="">FieldInfo</span> <span class="field-name">fieldList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.name"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.type"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.type"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The protocol buffer type for this field. The types are: </p>
+  <p>== ============================ 1  Double 2  Float 3  Int32 4  Uint32 5  Sint32 6  Fixed32 7  Sfixed32 8  Bool 9  String 10 Bytes 11 Message 12 Int64 (not supported yet) 13 Uint64 (not supported yet) 14 Sint64 (not supported yet) 15 Fixed64 (not supported yet) 16 Sfixed64 (not supported yet) == ============================ </p></div></li>
+<li class="field">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.number"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The unique protocol buffer number for this field. </p></div></li>
+<li class="field">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.quantifier"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.quantifier"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">quantifier</span><span class="proto-key"> = 4</span> [default = 0]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Specifies whether the fields is required, optional or repeated: </p>
+  <p>= ======== 0 Required 1 Optional 2 Repeated = ======== </p></div></li>
+<li class="field">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.messageID"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.messageID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">messageID</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>ID of message this field references, only set for Message fields </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.parentID"><a href="#MessageInfo.MessageInfoList.MessageInfo.parentID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">parentID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="MessageInfo.key"><a href="#MessageInfo.key"><span class="proto-key">= 11;</span></a></pre><h2 id="Quit"><a href="#Quit">Quit</a></h2>
+<pre class="code-line" id="Quit.Default"><a href="#Quit.Default"><span class="keyword">command</span> <span class="command-name">Quit</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Quit.Default"><a href="#Quit.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Quit.key"><a href="#Quit.key"><span class="proto-key">= 8;</span></a></pre><h2 id="OnConnectionLost"><a href="#OnConnectionLost">OnConnectionLost</a></h2>
+<pre class="code-line" id="OnConnectionLost.Default"><a href="#OnConnectionLost.Default"><span class="keyword">event</span> <span class="command-name">OnConnectionLost</span><span class="keyword"> returns </span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnConnectionLost.key"><a href="#OnConnectionLost.key"><span class="proto-key">= 2;</span></a></pre><h2 id="OnError"><a href="#OnError">OnError</a></h2>
+<pre class="code-line" id="OnError.ErrorInfo"><a href="#OnError.ErrorInfo"><span class="keyword">event</span> <span class="command-name">OnError</span><span class="keyword"> returns </span>(<span class="message-name">ErrorInfo</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnError.ErrorInfo.description"><a href="#OnError.ErrorInfo.description"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">description</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnError.key"><a href="#OnError.key"><span class="proto-key">= 9;</span></a></pre><h2 id="OnQuit"><a href="#OnQuit">OnQuit</a></h2>
+<pre class="code-line" id="OnQuit.Default"><a href="#OnQuit.Default"><span class="keyword">event</span> <span class="command-name">OnQuit</span><span class="keyword"> returns </span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnQuit.key"><a href="#OnQuit.key"><span class="proto-key">= 1;</span></a></pre><h2 id="OnServices"><a href="#OnServices">OnServices</a></h2>
+<pre class="code-line" id="OnServices.ServiceList"><a href="#OnServices.ServiceList"><span class="keyword">event</span> <span class="command-name">OnServices</span><span class="keyword"> returns </span>(<span class="message-name">ServiceList</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnServices.ServiceList.serviceList"><a href="#OnServices.ServiceList.serviceList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">serviceList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnServices.key"><a href="#OnServices.key"><span class="proto-key">= 0;</span></a></pre></div>

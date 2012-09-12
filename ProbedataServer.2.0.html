@@ -1,0 +1,34 @@
+<!doctype html>
+<title>ProbedataServer.2.0</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>ProbedataServer<span class="service-version">2.0</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#AllData">AllData</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>The probedata server provides interactive online access to the data structures in the probetools infrastructure, if that is enabled. This allows online and offline profiling tools to be written. </p>
+  <p>Ideas for these tools include task-manager like profiling, where the tool shows where the application has spent the last <span class="domain-specific">n</span> seconds, cumulative profiling, and an interactive interface to control probetools (e.g., to clear its profiling data before an experiment). </p>
+  <p>There will be other commands soon, as this is just preliminary work. These may be commands like <span class="domain-specific">profiling-data</span> (to obtain just time profile), <span class="domain-specific">profiling-snapshot</span> (to obtain time profile differences since last snapshot), and <span class="domain-specific">memory-snapshot</span> (to obtain a representation of the heap). </p></div><h2 id="AllData"><a href="#AllData">AllData</a></h2>
+<pre class="code-line" id="AllData.Default"><a href="#AllData.Default"><span class="keyword">command</span> <span class="command-name">AllData</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="AllData.ProbeData"><a href="#AllData.ProbeData"><span class="keyword">returns</span> (<span class="message-name">ProbeData</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="AllData.ProbeData.data"><a href="#AllData.ProbeData.data"><span class="qualifier">required</span> <span class="string">bytes</span> <span class="field-name">data</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The response to the <span class="domain-specific">AllData</span> command is a single data element containing encoded binary data. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="AllData.key"><a href="#AllData.key"><span class="proto-key">= 1;</span></a></pre></div>

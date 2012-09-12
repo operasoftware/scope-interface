@@ -1,0 +1,172 @@
+<!doctype html>
+<title>WindowManager.2.0</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>WindowManager<span class="service-version">2.0</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#GetActiveWindow">GetActiveWindow</a></li>
+
+<li><a href="#ListWindows">ListWindows</a></li>
+
+<li><a href="#ModifyFilter">ModifyFilter</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+<li><a href="#OnWindowActivated">OnWindowActivated</a></li>
+
+<li><a href="#OnWindowClosed">OnWindowClosed</a></li>
+
+<li><a href="#OnWindowLoaded">OnWindowLoaded</a></li>
+
+<li><a href="#OnWindowUpdated">OnWindowUpdated</a></li>
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>We want to be able to work with windows on a higher level than before. One important goal is to opt-in on the messages you get instead of being flooded. </p>
+  <h2>Discussion </h2>
+  <p>This protocol will prevent a lot of flooding from the other services, but it will on the other hand flood a bit itself. There is no way to stop it from sending <span class="domain-specific">OnWindowActivated</span> messages for example. </p>
+  <p>When Opera Dragonfly is used to debug on the desktop, it probably doesn't want to use this service at all, but just have the filters automatically set to include the active window. We might cater for this later. The way to do it with the current protocol would be to retrieve the active window and put that in the include filter manually. However the active window might have changed by the time Opera Dragonfly gets to do that. Additionally, we would like Opera Dragonfly to start with a certain DOM node selected. I see no other way than adding some C++ hooks to do this when debugging locally. </p></div><h2 id="GetActiveWindow"><a href="#GetActiveWindow">GetActiveWindow</a></h2>
+<pre class="code-line" id="GetActiveWindow.Default"><a href="#GetActiveWindow.Default"><span class="keyword">command</span> <span class="command-name">GetActiveWindow</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetActiveWindow.WindowID"><a href="#GetActiveWindow.WindowID"><span class="keyword">returns</span> (<span class="message-name">WindowID</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetActiveWindow.WindowID.windowID"><a href="#GetActiveWindow.WindowID.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetActiveWindow.key"><a href="#GetActiveWindow.key"><span class="proto-key">= 1;</span></a></pre><h2 id="ListWindows"><a href="#ListWindows">ListWindows</a></h2>
+<pre class="code-line" id="ListWindows.Default"><a href="#ListWindows.Default"><span class="keyword">command</span> <span class="command-name">ListWindows</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ListWindows.WindowList"><a href="#ListWindows.WindowList"><span class="keyword">returns</span> (<span class="message-name">WindowList</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ListWindows.WindowList.windowList"><a href="#ListWindows.WindowList.windowList"><span class="qualifier">repeated</span> <span class="">WindowInfo</span> <span class="field-name">windowList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ListWindows.WindowList.WindowInfo.windowID"><a href="#ListWindows.WindowList.WindowInfo.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListWindows.WindowList.WindowInfo.title"><a href="#ListWindows.WindowList.WindowInfo.title"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">title</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListWindows.WindowList.WindowInfo.windowType"><a href="#ListWindows.WindowList.WindowInfo.windowType"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">windowType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>TODO: Some of these are obsolete, like "ad". Figure out which ones should really be present. </p>
+  <p>Type is one of: </p>
+  <ul>
+    <li>"normal" </li>
+    <li>"download" </li>
+    <li>"cache" </li>
+    <li>"plugins" </li>
+    <li>"history" </li>
+    <li>"help" </li>
+    <li>"mail_view" </li>
+    <li>"mail_compose" </li>
+    <li>"newsfeed_view" </li>
+    <li>"ad" </li>
+    <li>"im_view" </li>
+    <li>"p2p_view" </li>
+    <li>"brand_view" </li>
+    <li>"print_selection" </li>
+    <li>"js_console" </li>
+    <li>"gadget" </li>
+    <li>"controller" </li>
+    <li>"info" </li>
+    <li>"dialog" </li>
+    <li>"thumbnail" </li>
+  </ul></div></li>
+<li class="field">
+<pre class="code-line" id="ListWindows.WindowList.WindowInfo.openerID"><a href="#ListWindows.WindowList.WindowInfo.openerID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">openerID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The <span class="domain-specific">window-id</span> of the window who opened the window in question, or 0 if it was not opened by another window. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ListWindows.key"><a href="#ListWindows.key"><span class="proto-key">= 2;</span></a></pre><h2 id="ModifyFilter"><a href="#ModifyFilter">ModifyFilter</a></h2>
+<pre class="code-line" id="ModifyFilter.WindowFilter"><a href="#ModifyFilter.WindowFilter"><span class="keyword">command</span> <span class="command-name">ModifyFilter</span>(<span class="message-name">WindowFilter</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ModifyFilter.WindowFilter.clearFilter"><a href="#ModifyFilter.WindowFilter.clearFilter"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">clearFilter</span><span class="proto-key"> = 1</span> [default = false]<span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ModifyFilter.WindowFilter.includeIDList"><a href="#ModifyFilter.WindowFilter.includeIDList"><span class="qualifier">repeated</span> <span class="number">uint32</span> <span class="field-name">includeIDList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ModifyFilter.WindowFilter.includePatternList"><a href="#ModifyFilter.WindowFilter.includePatternList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">includePatternList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The string can currently only have one value: <span class="domain-specific">"*"</span>, meaing all window-ids. The filter automatically includes windows that are opened from windows in the INCLUDE filter. </p></div></li>
+<li class="field">
+<pre class="code-line" id="ModifyFilter.WindowFilter.excludeIDList"><a href="#ModifyFilter.WindowFilter.excludeIDList"><span class="qualifier">repeated</span> <span class="number">uint32</span> <span class="field-name">excludeIDList</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ModifyFilter.WindowFilter.excludePatternList"><a href="#ModifyFilter.WindowFilter.excludePatternList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">excludePatternList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ModifyFilter.Default"><a href="#ModifyFilter.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ModifyFilter.key"><a href="#ModifyFilter.key"><span class="proto-key">= 3;</span></a></pre><h2 id="OnWindowActivated"><a href="#OnWindowActivated">OnWindowActivated</a></h2>
+<pre class="code-line" id="OnWindowActivated.WindowID"><a href="#OnWindowActivated.WindowID"><span class="keyword">event</span> <span class="command-name">OnWindowActivated</span><span class="keyword"> returns </span>(<span class="message-name">WindowID</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnWindowActivated.WindowID.windowID"><a href="#OnWindowActivated.WindowID.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnWindowActivated.key"><a href="#OnWindowActivated.key"><span class="proto-key">= 6;</span></a></pre><h2 id="OnWindowClosed"><a href="#OnWindowClosed">OnWindowClosed</a></h2>
+<pre class="code-line" id="OnWindowClosed.WindowID"><a href="#OnWindowClosed.WindowID"><span class="keyword">event</span> <span class="command-name">OnWindowClosed</span><span class="keyword"> returns </span>(<span class="message-name">WindowID</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnWindowClosed.WindowID.windowID"><a href="#OnWindowClosed.WindowID.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnWindowClosed.key"><a href="#OnWindowClosed.key"><span class="proto-key">= 5;</span></a></pre><h2 id="OnWindowLoaded"><a href="#OnWindowLoaded">OnWindowLoaded</a></h2>
+<pre class="code-line" id="OnWindowLoaded.WindowID"><a href="#OnWindowLoaded.WindowID"><span class="keyword">event</span> <span class="command-name">OnWindowLoaded</span><span class="keyword"> returns </span>(<span class="message-name">WindowID</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnWindowLoaded.WindowID.windowID"><a href="#OnWindowLoaded.WindowID.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnWindowLoaded.key"><a href="#OnWindowLoaded.key"><span class="proto-key">= 7;</span></a></pre><h2 id="OnWindowUpdated"><a href="#OnWindowUpdated">OnWindowUpdated</a></h2>
+<pre class="code-line" id="OnWindowUpdated.WindowInfo"><a href="#OnWindowUpdated.WindowInfo"><span class="keyword">event</span> <span class="command-name">OnWindowUpdated</span><span class="keyword"> returns </span>(<span class="message-name">WindowInfo</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnWindowUpdated.WindowInfo.windowID"><a href="#OnWindowUpdated.WindowInfo.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnWindowUpdated.WindowInfo.title"><a href="#OnWindowUpdated.WindowInfo.title"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">title</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnWindowUpdated.WindowInfo.windowType"><a href="#OnWindowUpdated.WindowInfo.windowType"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">windowType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>TODO: Some of these are obsolete, like "ad". Figure out which ones should really be present. </p>
+  <p>Type is one of: </p>
+  <ul>
+    <li>"normal" </li>
+    <li>"download" </li>
+    <li>"cache" </li>
+    <li>"plugins" </li>
+    <li>"history" </li>
+    <li>"help" </li>
+    <li>"mail_view" </li>
+    <li>"mail_compose" </li>
+    <li>"newsfeed_view" </li>
+    <li>"ad" </li>
+    <li>"im_view" </li>
+    <li>"p2p_view" </li>
+    <li>"brand_view" </li>
+    <li>"print_selection" </li>
+    <li>"js_console" </li>
+    <li>"gadget" </li>
+    <li>"controller" </li>
+    <li>"info" </li>
+    <li>"dialog" </li>
+    <li>"thumbnail" </li>
+  </ul></div></li>
+<li class="field">
+<pre class="code-line" id="OnWindowUpdated.WindowInfo.openerID"><a href="#OnWindowUpdated.WindowInfo.openerID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">openerID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The <span class="domain-specific">window-id</span> of the window who opened the window in question, or 0 if it was not opened by another window. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnWindowUpdated.key"><a href="#OnWindowUpdated.key"><span class="proto-key">= 4;</span></a></pre></div>

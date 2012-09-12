@@ -1,0 +1,73 @@
+<!doctype html>
+<title>UrlPlayer.2.0</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>UrlPlayer<span class="service-version">2.0</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#CreateWindows">CreateWindows</a></li>
+
+<li><a href="#LoadUrl">LoadUrl</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+<li><a href="#OnConnectionFailed">OnConnectionFailed</a></li>
+
+<li><a href="#OnUrlLoaded">OnUrlLoaded</a></li>
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>The URL player is a stress testing tool: is used to remotely command Opera to open new windows and load documents into those windows. </p></div><h2 id="CreateWindows"><a href="#CreateWindows">CreateWindows</a></h2>
+<pre class="code-line" id="CreateWindows.WindowCount"><a href="#CreateWindows.WindowCount"><span class="keyword">command</span> <span class="command-name">CreateWindows</span>(<span class="message-name">WindowCount</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateWindows.WindowCount.windowCount"><a href="#CreateWindows.WindowCount.windowCount"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowCount</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Signifies the number of windows to open. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="CreateWindows.WindowCount"><a href="#CreateWindows.WindowCount"><span class="keyword">returns</span> (<span class="message-name">WindowCount</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateWindows.WindowCount.windowCount"><a href="#CreateWindows.WindowCount.windowCount"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowCount</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Signifies the number of windows to open. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="CreateWindows.key"><a href="#CreateWindows.key"><span class="proto-key">= 1;</span></a></pre><h2 id="LoadUrl"><a href="#LoadUrl">LoadUrl</a></h2>
+<pre class="code-line" id="LoadUrl.Request"><a href="#LoadUrl.Request"><span class="keyword">command</span> <span class="command-name">LoadUrl</span>(<span class="message-name">Request</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="LoadUrl.Request.windowNumber"><a href="#LoadUrl.Request.windowNumber"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowNumber</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Signifies the zero-based ordinal of the window into which we want to load <span class="domain-specific">url</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="LoadUrl.Request.url"><a href="#LoadUrl.Request.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="LoadUrl.Window"><a href="#LoadUrl.Window"><span class="keyword">returns</span> (<span class="message-name">Window</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="LoadUrl.Window.windowID"><a href="#LoadUrl.Window.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The window number that was the target of the LoadUrl command. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="LoadUrl.key"><a href="#LoadUrl.key"><span class="proto-key">= 2;</span></a></pre><h2 id="OnConnectionFailed"><a href="#OnConnectionFailed">OnConnectionFailed</a></h2>
+<pre class="code-line" id="OnConnectionFailed.Window"><a href="#OnConnectionFailed.Window"><span class="keyword">event</span> <span class="command-name">OnConnectionFailed</span><span class="keyword"> returns </span>(<span class="message-name">Window</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnConnectionFailed.Window.windowID"><a href="#OnConnectionFailed.Window.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The window number that was the target of the LoadUrl command. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnConnectionFailed.key"><a href="#OnConnectionFailed.key"><span class="proto-key">= 4;</span></a></pre><h2 id="OnUrlLoaded"><a href="#OnUrlLoaded">OnUrlLoaded</a></h2>
+<pre class="code-line" id="OnUrlLoaded.Window"><a href="#OnUrlLoaded.Window"><span class="keyword">event</span> <span class="command-name">OnUrlLoaded</span><span class="keyword"> returns </span>(<span class="message-name">Window</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnUrlLoaded.Window.windowID"><a href="#OnUrlLoaded.Window.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The window number that was the target of the LoadUrl command. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnUrlLoaded.key"><a href="#OnUrlLoaded.key"><span class="proto-key">= 3;</span></a></pre></div>

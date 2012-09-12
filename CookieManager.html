@@ -1,0 +1,138 @@
+<!doctype html>
+<title>CookieManager.1.1.1</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>CookieManager<span class="service-version">1.1.1</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#AddCookie">AddCookie</a></li>
+
+<li><a href="#GetCookie">GetCookie</a></li>
+
+<li><a href="#GetCookieSettings">GetCookieSettings</a></li>
+
+<li><a href="#RemoveAllCookies">RemoveAllCookies</a></li>
+
+<li><a href="#RemoveCookie">RemoveCookie</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>This service can enumerate and remove cookies for a certain domain. </p>
+  <p>It can currently not add cookies, but this can be achieved through ECMAScript (document.cookie). </p>
+  <p>Changelog: 1.0 - First release 1.0.1 - Fixed a bug in RemoveCookie where it would remove all cookies,         not just in the specified domain. 1.1 - Added AddCookie 1.1.1 - Fixed a bug in GetCookie where the filtering failed. </p></div><h2 id="AddCookie"><a href="#AddCookie">AddCookie</a></h2>
+<pre class="code-line" id="AddCookie.AddCookieArg"><a href="#AddCookie.AddCookieArg"><span class="keyword">command</span> <span class="command-name">AddCookie</span>(<span class="message-name">AddCookieArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="AddCookie.AddCookieArg.domain"><a href="#AddCookie.AddCookieArg.domain"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">domain</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Domain name of cookie </p></div></li>
+<li class="field">
+<pre class="code-line" id="AddCookie.AddCookieArg.name"><a href="#AddCookie.AddCookieArg.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Name of cookie </p></div></li>
+<li class="field">
+<pre class="code-line" id="AddCookie.AddCookieArg.path"><a href="#AddCookie.AddCookieArg.path"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">path</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Path of cookie, defaults to / </p></div></li>
+<li class="field">
+<pre class="code-line" id="AddCookie.AddCookieArg.value"><a href="#AddCookie.AddCookieArg.value"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Cookie value </p></div></li>
+<li class="field">
+<pre class="code-line" id="AddCookie.AddCookieArg.expires"><a href="#AddCookie.AddCookieArg.expires"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">expires</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Expiry time set via seconds since epoch </p></div></li>
+<li class="field">
+<pre class="code-line" id="AddCookie.AddCookieArg.isSecure"><a href="#AddCookie.AddCookieArg.isSecure"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">isSecure</span><span class="proto-key"> = 6</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If true cookie is only accessible via secure connections </p></div></li>
+<li class="field">
+<pre class="code-line" id="AddCookie.AddCookieArg.isHTTPOnly"><a href="#AddCookie.AddCookieArg.isHTTPOnly"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">isHTTPOnly</span><span class="proto-key"> = 7</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If true the cookie is only accessible via HTTP </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="AddCookie.Default"><a href="#AddCookie.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="AddCookie.key"><a href="#AddCookie.key"><span class="proto-key">= 5;</span></a></pre><h2 id="GetCookie"><a href="#GetCookie">GetCookie</a></h2>
+<pre class="code-line" id="GetCookie.GetCookieArg"><a href="#GetCookie.GetCookieArg"><span class="keyword">command</span> <span class="command-name">GetCookie</span>(<span class="message-name">GetCookieArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetCookie.GetCookieArg.domain"><a href="#GetCookie.GetCookieArg.domain"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">domain</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetCookie.GetCookieArg.path"><a href="#GetCookie.GetCookieArg.path"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">path</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetCookie.CookieList"><a href="#GetCookie.CookieList"><span class="keyword">returns</span> (<span class="message-name">CookieList</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetCookie.CookieList.cookieList"><a href="#GetCookie.CookieList.cookieList"><span class="qualifier">repeated</span> <span class="">Cookie</span> <span class="field-name">cookieList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetCookie.CookieList.Cookie.domain"><a href="#GetCookie.CookieList.Cookie.domain"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">domain</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetCookie.CookieList.Cookie.path"><a href="#GetCookie.CookieList.Cookie.path"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">path</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetCookie.CookieList.Cookie.name"><a href="#GetCookie.CookieList.Cookie.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetCookie.CookieList.Cookie.value"><a href="#GetCookie.CookieList.Cookie.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetCookie.CookieList.Cookie.expires"><a href="#GetCookie.CookieList.Cookie.expires"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">expires</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Expiry time for cookie specified in seconds from epoch (Unix timestamp). A value of 0 means the cookie is expired when the session ends (browser closes). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetCookie.CookieList.Cookie.isSecure"><a href="#GetCookie.CookieList.Cookie.isSecure"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isSecure</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If true the cookie will only be transferred on secure connections (HTTPS). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetCookie.CookieList.Cookie.isHTTPOnly"><a href="#GetCookie.CookieList.Cookie.isHTTPOnly"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isHTTPOnly</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If true the cookie is only accessible via HTTP. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetCookie.key"><a href="#GetCookie.key"><span class="proto-key">= 1;</span></a></pre><h2 id="GetCookieSettings"><a href="#GetCookieSettings">GetCookieSettings</a></h2>
+<pre class="code-line" id="GetCookieSettings.Default"><a href="#GetCookieSettings.Default"><span class="keyword">command</span> <span class="command-name">GetCookieSettings</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetCookieSettings.CookieSettings"><a href="#GetCookieSettings.CookieSettings"><span class="keyword">returns</span> (<span class="message-name">CookieSettings</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetCookieSettings.CookieSettings.maxCookies"><a href="#GetCookieSettings.CookieSettings.maxCookies"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">maxCookies</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The maximum number of cookies the host can store in total. If there is no room for new cookies the host will remove the least recently used cookies to get enough space. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetCookieSettings.CookieSettings.maxCookiesPerDomain"><a href="#GetCookieSettings.CookieSettings.maxCookiesPerDomain"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">maxCookiesPerDomain</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The maximum number of cookies allowed in one domain. If there is no room for new cookies the host will remove the least recently used cookies in the domain to get enough space. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetCookieSettings.CookieSettings.maxCookieLength"><a href="#GetCookieSettings.CookieSettings.maxCookieLength"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">maxCookieLength</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The maxium byte length of a single cookie, if the cookie exceeds this length it will be discarded. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetCookieSettings.key"><a href="#GetCookieSettings.key"><span class="proto-key">= 4;</span></a></pre><h2 id="RemoveAllCookies"><a href="#RemoveAllCookies">RemoveAllCookies</a></h2>
+<pre class="code-line" id="RemoveAllCookies.Default"><a href="#RemoveAllCookies.Default"><span class="keyword">command</span> <span class="command-name">RemoveAllCookies</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="RemoveAllCookies.Default"><a href="#RemoveAllCookies.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="RemoveAllCookies.key"><a href="#RemoveAllCookies.key"><span class="proto-key">= 3;</span></a></pre><h2 id="RemoveCookie"><a href="#RemoveCookie">RemoveCookie</a></h2>
+<pre class="code-line" id="RemoveCookie.RemoveCookieArg"><a href="#RemoveCookie.RemoveCookieArg"><span class="keyword">command</span> <span class="command-name">RemoveCookie</span>(<span class="message-name">RemoveCookieArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="RemoveCookie.RemoveCookieArg.domain"><a href="#RemoveCookie.RemoveCookieArg.domain"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">domain</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="RemoveCookie.RemoveCookieArg.path"><a href="#RemoveCookie.RemoveCookieArg.path"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">path</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="RemoveCookie.RemoveCookieArg.name"><a href="#RemoveCookie.RemoveCookieArg.name"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="RemoveCookie.Default"><a href="#RemoveCookie.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="RemoveCookie.key"><a href="#RemoveCookie.key"><span class="proto-key">= 2;</span></a></pre></div>

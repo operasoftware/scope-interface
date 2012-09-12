@@ -1,0 +1,54 @@
+<!doctype html>
+<title>EcmascriptLogger.2.0</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>EcmascriptLogger<span class="service-version">2.0</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#Configure">Configure</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+<li><a href="#OnNewScript">OnNewScript</a></li>
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>The <span class="domain-specific">ecmascript-logger</span> is a noninteractive tool used to log all the source code executed by Opera's ECMAScript engine. </p>
+  <p>Requirements </p>
+  <p>req.log-source: Log script source </p>
+  <p>[Status: strawman requirement; author: lth] </p>
+  <p>All scripts compiled by the engine should be captured and displayed. </p>
+  <p>A logged script has three parts: type, url, and text. </p>
+  <p>(req.reformatting) Make Opera reformat the source code before logging </p>
+  <p>[Status: strawman requirement; author: lth] </p>
+  <p>The tool should allow the user to control whether Opera reformats the source code before sending it, provided the script logger is the only tool trying to control that behavior. </p></div><h2 id="Configure"><a href="#Configure">Configure</a></h2>
+<pre class="code-line" id="Configure.Config"><a href="#Configure.Config"><span class="keyword">command</span> <span class="command-name">Configure</span>(<span class="message-name">Config</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="Configure.Config.reformat"><a href="#Configure.Config.reformat"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">reformat</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Configure.Default"><a href="#Configure.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="Configure.key"><a href="#Configure.key"><span class="proto-key">= 1;</span></a></pre><h2 id="OnNewScript"><a href="#OnNewScript">OnNewScript</a></h2>
+<pre class="code-line" id="OnNewScript.ScriptInfo"><a href="#OnNewScript.ScriptInfo"><span class="keyword">event</span> <span class="command-name">OnNewScript</span><span class="keyword"> returns </span>(<span class="message-name">ScriptInfo</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnNewScript.ScriptInfo.context"><a href="#OnNewScript.ScriptInfo.context"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">context</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Type of script ("inline", "linked", etc; may be "none") </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnNewScript.ScriptInfo.url"><a href="#OnNewScript.ScriptInfo.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The string <span class="domain-specific">"none"</span> or the URL at which the script originated </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnNewScript.ScriptInfo.source"><a href="#OnNewScript.ScriptInfo.source"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">source</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The source code </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnNewScript.key"><a href="#OnNewScript.key"><span class="proto-key">= 2;</span></a></pre></div>

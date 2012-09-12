@@ -1,0 +1,58 @@
+<!doctype html>
+<title>HttpLogger.2.0</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>HttpLogger<span class="service-version">2.0</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+<li><a href="#OnRequest">OnRequest</a></li>
+
+<li><a href="#OnResponse">OnResponse</a></li>
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>The <span class="domain-specific">http-logger</span> is a noninteractive tool used to log interactions between Opera and the web servers it accesses. </p></div><h2 id="OnRequest"><a href="#OnRequest">OnRequest</a></h2>
+<pre class="code-line" id="OnRequest.Header"><a href="#OnRequest.Header"><span class="keyword">event</span> <span class="command-name">OnRequest</span><span class="keyword"> returns </span>(<span class="message-name">Header</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequest.Header.requestID"><a href="#OnRequest.Header.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>An identifier for the request; it is not necessarily unique across time, as it is just the memory address of the request object. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequest.Header.windowID"><a href="#OnRequest.Header.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The window ID is shared across scope. Notably, it's the same as in the ecmascript debugger. INTERNAL: The value is from Window::id </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequest.Header.time"><a href="#OnRequest.Header.time"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Timestamp of the message, in milliseconds since `1970-01-01 00:00 UTC` (be sure not to rely on the time being correct - this is client time, and may be wildly different than the host time) </p>
+  <p>Note: Float encoded as string </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequest.Header.header"><a href="#OnRequest.Header.header"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">header</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Header of the request/response, i.e. the <span class="domain-specific">HTTP</span> data up until the first occurence of <span class="domain-specific">CR+LF+CR+LF</span>, inclusive. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnRequest.key"><a href="#OnRequest.key"><span class="proto-key">= 1;</span></a></pre><h2 id="OnResponse"><a href="#OnResponse">OnResponse</a></h2>
+<pre class="code-line" id="OnResponse.Header"><a href="#OnResponse.Header"><span class="keyword">event</span> <span class="command-name">OnResponse</span><span class="keyword"> returns </span>(<span class="message-name">Header</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnResponse.Header.requestID"><a href="#OnResponse.Header.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>An identifier for the request; it is not necessarily unique across time, as it is just the memory address of the request object. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponse.Header.windowID"><a href="#OnResponse.Header.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The window ID is shared across scope. Notably, it's the same as in the ecmascript debugger. INTERNAL: The value is from Window::id </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponse.Header.time"><a href="#OnResponse.Header.time"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Timestamp of the message, in milliseconds since `1970-01-01 00:00 UTC` (be sure not to rely on the time being correct - this is client time, and may be wildly different than the host time) </p>
+  <p>Note: Float encoded as string </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponse.Header.header"><a href="#OnResponse.Header.header"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">header</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Header of the request/response, i.e. the <span class="domain-specific">HTTP</span> data up until the first occurence of <span class="domain-specific">CR+LF+CR+LF</span>, inclusive. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnResponse.key"><a href="#OnResponse.key"><span class="proto-key">= 2;</span></a></pre></div>

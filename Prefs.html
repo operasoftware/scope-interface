@@ -1,0 +1,121 @@
+<!doctype html>
+<title>Prefs.1.0</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>Prefs<span class="service-version">1.0</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#GetPref">GetPref</a></li>
+
+<li><a href="#ListPrefs">ListPrefs</a></li>
+
+<li><a href="#SetPref">SetPref</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>This service allows you to read, enumerate and write Opera's user prefs. Please note that when you set a pref, it is stored on disk, and its value will persist to the subsequent launches of the same profile. </p></div><h2 id="GetPref"><a href="#GetPref">GetPref</a></h2>
+<pre class="code-line" id="GetPref.GetPrefArg"><a href="#GetPref.GetPrefArg"><span class="keyword">command</span> <span class="command-name">GetPref</span>(<span class="message-name">GetPrefArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetPref.GetPrefArg.section"><a href="#GetPref.GetPrefArg.section"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">section</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetPref.GetPrefArg.key"><a href="#GetPref.GetPrefArg.key"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">key</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetPref.GetPrefArg.mode"><a href="#GetPref.GetPrefArg.mode"><span class="qualifier">optional</span> <span class="">Mode</span> <span class="field-name">mode</span><span class="proto-key"> = 3</span> [default = 1]<span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetPref.GetPrefArg.CURRENT"><a href="#GetPref.GetPrefArg.CURRENT"><span class="enum-name">CURRENT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Get the current value of the pref. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetPref.GetPrefArg.DEFAULT"><a href="#GetPref.GetPrefArg.DEFAULT"><span class="enum-name">DEFAULT</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Get the default value of the pref (not necessarily the used value). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetPref.PrefValue"><a href="#GetPref.PrefValue"><span class="keyword">returns</span> (<span class="message-name">PrefValue</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetPref.PrefValue.value"><a href="#GetPref.PrefValue.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetPref.key"><a href="#GetPref.key"><span class="proto-key">= 1;</span></a></pre><h2 id="ListPrefs"><a href="#ListPrefs">ListPrefs</a></h2>
+<pre class="code-line" id="ListPrefs.ListPrefsArg"><a href="#ListPrefs.ListPrefsArg"><span class="keyword">command</span> <span class="command-name">ListPrefs</span>(<span class="message-name">ListPrefsArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ListPrefs.ListPrefsArg.sort"><a href="#ListPrefs.ListPrefsArg.sort"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">sort</span><span class="proto-key"> = 1</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Whether to sort the preferences alphabetically or not. </p></div></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.ListPrefsArg.section"><a href="#ListPrefs.ListPrefsArg.section"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">section</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>List the keys in the specified section only. If not present, all keys in all sections will be listed. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ListPrefs.PrefList"><a href="#ListPrefs.PrefList"><span class="keyword">returns</span> (<span class="message-name">PrefList</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.prefList"><a href="#ListPrefs.PrefList.prefList"><span class="qualifier">repeated</span> <span class="">Pref</span> <span class="field-name">prefList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.type"><a href="#ListPrefs.PrefList.Pref.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.STRING"><a href="#ListPrefs.PrefList.Pref.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.INTEGER"><a href="#ListPrefs.PrefList.Pref.INTEGER"><span class="enum-name">INTEGER</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.BOOLEAN"><a href="#ListPrefs.PrefList.Pref.BOOLEAN"><span class="enum-name">BOOLEAN</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.FILE"><a href="#ListPrefs.PrefList.Pref.FILE"><span class="enum-name">FILE</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.REQUIRED_FILE"><a href="#ListPrefs.PrefList.Pref.REQUIRED_FILE"><span class="enum-name">REQUIRED_FILE</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.DIRECTORY"><a href="#ListPrefs.PrefList.Pref.DIRECTORY"><span class="enum-name">DIRECTORY</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.COLOR"><a href="#ListPrefs.PrefList.Pref.COLOR"><span class="enum-name">COLOR</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.section"><a href="#ListPrefs.PrefList.Pref.section"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">section</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Preferences are divided into groups called <em>sections</em>. This field indicates which section this preference is a member of. </p>
+  <p>Example: *Developer Tools* </p></div></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.key"><a href="#ListPrefs.PrefList.Pref.key"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">key</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This is the key, or <em>name</em> of the preference. </p>
+  <p>Example: *Developer Tools URL* </p></div></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.value"><a href="#ListPrefs.PrefList.Pref.value"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The value of the preference. For instance, for the preference *Developer Tools URL* in the *Developer Tools* section, the default value is <a href="https://dragonfly.opera.com/app/.">https://dragonfly.opera.com/app/.</a> </p></div></li>
+<li class="field">
+<pre class="code-line" id="ListPrefs.PrefList.Pref.enabled"><a href="#ListPrefs.PrefList.Pref.enabled"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">enabled</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Whether setting is overriden by global ini. If this value is missing, it means global ini is not supported. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ListPrefs.key"><a href="#ListPrefs.key"><span class="proto-key">= 2;</span></a></pre><h2 id="SetPref"><a href="#SetPref">SetPref</a></h2>
+<pre class="code-line" id="SetPref.SetPrefArg"><a href="#SetPref.SetPrefArg"><span class="keyword">command</span> <span class="command-name">SetPref</span>(<span class="message-name">SetPrefArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetPref.SetPrefArg.section"><a href="#SetPref.SetPrefArg.section"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">section</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="SetPref.SetPrefArg.key"><a href="#SetPref.SetPrefArg.key"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">key</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="SetPref.SetPrefArg.value"><a href="#SetPref.SetPrefArg.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="SetPref.Default"><a href="#SetPref.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="SetPref.key"><a href="#SetPref.key"><span class="proto-key">= 3;</span></a></pre></div>

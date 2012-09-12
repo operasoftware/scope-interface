@@ -1,0 +1,257 @@
+<!doctype html>
+<title>DocumentManager.1.1</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>DocumentManager<span class="service-version">1.1</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#GetHighlights">GetHighlights</a></li>
+
+<li><a href="#GetPageText">GetPageText</a></li>
+
+<li><a href="#ListDocuments">ListDocuments</a></li>
+
+<li><a href="#LoadDocument">LoadDocument</a></li>
+
+<li><a href="#ReloadDocument">ReloadDocument</a></li>
+
+<li><a href="#SearchText">SearchText</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+<li><a href="#OnAboutToLoadDocument">OnAboutToLoadDocument</a></li>
+
+<li><a href="#OnDocumentLoaded">OnDocumentLoaded</a></li>
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p><b>DocumentManager</b> provides a way to monitor, and interact with individual documents/frames in a document tree (whether they have an ECMASCript environment or not). </p>
+  <p>Example functionality includes loading URLs in a certain frame, and enumerating all the documents in a certain Window. </p>
+  <h2>ID fields </h2>
+  <ul>
+    <li>Frame IDs represent the entity that contains the document. When a new URL is loaded in a frame, the document ID will change, but the frame ID will not. This makes it possible to monitor the document history for individual frames. (Please note that the document ID will not change when a frame is <em>re</em>loaded). </li>
+    <li>Document ID represent the actual document. This is recreated when a new URL is loaded in its parent frame. </li>
+  </ul>
+  <h2>External ID fields </h2>
+  <p>Some IDs used in this service originate (and can be used with) other services. </p>
+  <ul>
+    <li>Window IDs are the same in all services, and can be used interchangeably everywhere. See <em>WindowManager</em> for window-centric commands and events. </li>
+    <li>Resource IDs in this service are compatible with resource ID fields found in <em>ResourceManager</em>. </li>
+  </ul></div><h2 id="GetHighlights"><a href="#GetHighlights">GetHighlights</a></h2>
+<pre class="code-line" id="GetHighlights.GetHighlightsArg"><a href="#GetHighlights.GetHighlightsArg"><span class="keyword">command</span> <span class="command-name">GetHighlights</span>(<span class="message-name">GetHighlightsArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetHighlights.GetHighlightsArg.windowID"><a href="#GetHighlights.GetHighlightsArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Get highlights in this window. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetHighlights.GetHighlightsArg.frameID"><a href="#GetHighlights.GetHighlightsArg.frameID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If set, search only in the specified frame. The frame must be part of the document tree of the previously specified window. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetHighlights.HighlightList"><a href="#GetHighlights.HighlightList"><span class="keyword">returns</span> (<span class="message-name">HighlightList</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetHighlights.HighlightList.highlightList"><a href="#GetHighlights.HighlightList.highlightList"><span class="qualifier">repeated</span> <span class="">Highlight</span> <span class="field-name">highlightList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>When searching for text in a page, we often get multiple hits. This is a list of all the current hits. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetHighlights.HighlightList.Highlight.frameID"><a href="#GetHighlights.HighlightList.Highlight.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Which frame this highlight is in. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetHighlights.HighlightList.Highlight.node"><a href="#GetHighlights.HighlightList.Highlight.node"><span class="qualifier">optional</span> <span class="">Node</span> <span class="field-name">node</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The first common ancestor that contains the entire highlight. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetHighlights.HighlightList.Highlight.Node.tag"><a href="#GetHighlights.HighlightList.Highlight.Node.tag"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">tag</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>E.g. "a", "div". </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetHighlights.HighlightList.Highlight.Node.id"><a href="#GetHighlights.HighlightList.Highlight.Node.id"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">id</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Present if there is an ID attribute set. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetHighlights.key"><a href="#GetHighlights.key"><span class="proto-key">= 7;</span></a></pre><h2 id="GetPageText"><a href="#GetPageText">GetPageText</a></h2>
+<pre class="code-line" id="GetPageText.GetPageTextArg"><a href="#GetPageText.GetPageTextArg"><span class="keyword">command</span> <span class="command-name">GetPageText</span>(<span class="message-name">GetPageTextArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetPageText.GetPageTextArg.windowID"><a href="#GetPageText.GetPageTextArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Get the text in this window. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetPageText.GetPageTextArg.frameID"><a href="#GetPageText.GetPageTextArg.frameID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If set, get the text only for the specified frame. The frame must be part of the document tree of the previously specified window. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetPageText.PageText"><a href="#GetPageText.PageText"><span class="keyword">returns</span> (<span class="message-name">PageText</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetPageText.PageText.documentTextList"><a href="#GetPageText.PageText.documentTextList"><span class="qualifier">repeated</span> <span class="">DocumentText</span> <span class="field-name">documentTextList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetPageText.PageText.DocumentText.frameID"><a href="#GetPageText.PageText.DocumentText.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Which frame this document sits in. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetPageText.PageText.DocumentText.documentID"><a href="#GetPageText.PageText.DocumentText.documentID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">documentID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The document that contains this text. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetPageText.PageText.DocumentText.text"><a href="#GetPageText.PageText.DocumentText.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The (plain) text of the document. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetPageText.key"><a href="#GetPageText.key"><span class="proto-key">= 8;</span></a></pre><h2 id="ListDocuments"><a href="#ListDocuments">ListDocuments</a></h2>
+<pre class="code-line" id="ListDocuments.ListDocumentsArg"><a href="#ListDocuments.ListDocumentsArg"><span class="keyword">command</span> <span class="command-name">ListDocuments</span>(<span class="message-name">ListDocumentsArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ListDocuments.ListDocumentsArg.windowID"><a href="#ListDocuments.ListDocumentsArg.windowID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ListDocuments.DocumentList"><a href="#ListDocuments.DocumentList"><span class="keyword">returns</span> (<span class="message-name">DocumentList</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ListDocuments.DocumentList.documentList"><a href="#ListDocuments.DocumentList.documentList"><span class="qualifier">repeated</span> <span class="">Document</span> <span class="field-name">documentList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ListDocuments.DocumentList.Document.windowID"><a href="#ListDocuments.DocumentList.Document.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListDocuments.DocumentList.Document.frameID"><a href="#ListDocuments.DocumentList.Document.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListDocuments.DocumentList.Document.documentID"><a href="#ListDocuments.DocumentList.Document.documentID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">documentID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="ListDocuments.DocumentList.Document.parentFrameID"><a href="#ListDocuments.DocumentList.Document.parentFrameID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">parentFrameID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The parent frame, present only if the frame is not the top level frame. </p></div></li>
+<li class="field">
+<pre class="code-line" id="ListDocuments.DocumentList.Document.parentDocumentID"><a href="#ListDocuments.DocumentList.Document.parentDocumentID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">parentDocumentID</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Present unless this document is the top-level document in the Window. </p></div></li>
+<li class="field">
+<pre class="code-line" id="ListDocuments.DocumentList.Document.url"><a href="#ListDocuments.DocumentList.Document.url"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The current URL of the document. </p></div></li>
+<li class="field">
+<pre class="code-line" id="ListDocuments.DocumentList.Document.resourceID"><a href="#ListDocuments.DocumentList.Document.resourceID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The resource used to generate this document. </p></div></li>
+<li class="field">
+<pre class="code-line" id="ListDocuments.DocumentList.Document.frameElementName"><a href="#ListDocuments.DocumentList.Document.frameElementName"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">frameElementName</span><span class="proto-key"> = 8</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The value of the name attribute of the HTMLFrameElement. If the frame does not have a name, or this document is not associated with a HTMLFrameElement, this will field will not be present. </p></div></li>
+<li class="field">
+<pre class="code-line" id="ListDocuments.DocumentList.Document.frameElementID"><a href="#ListDocuments.DocumentList.Document.frameElementID"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">frameElementID</span><span class="proto-key"> = 9</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The value of the id attribute of the HTMLFrameElement. If the frame does not have an id, or this document is not associated with a HTMLFrameElement, this will field will not be present. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ListDocuments.key"><a href="#ListDocuments.key"><span class="proto-key">= 1;</span></a></pre><h2 id="LoadDocument"><a href="#LoadDocument">LoadDocument</a></h2>
+<pre class="code-line" id="LoadDocument.LoadDocumentArg"><a href="#LoadDocument.LoadDocumentArg"><span class="keyword">command</span> <span class="command-name">LoadDocument</span>(<span class="message-name">LoadDocumentArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="LoadDocument.LoadDocumentArg.windowID"><a href="#LoadDocument.LoadDocumentArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The window containing the frame. </p></div></li>
+<li class="field">
+<pre class="code-line" id="LoadDocument.LoadDocumentArg.frameID"><a href="#LoadDocument.LoadDocumentArg.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="LoadDocument.LoadDocumentArg.url"><a href="#LoadDocument.LoadDocumentArg.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="LoadDocument.Default"><a href="#LoadDocument.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="LoadDocument.key"><a href="#LoadDocument.key"><span class="proto-key">= 2;</span></a></pre><h2 id="ReloadDocument"><a href="#ReloadDocument">ReloadDocument</a></h2>
+<pre class="code-line" id="ReloadDocument.ReloadDocumentArg"><a href="#ReloadDocument.ReloadDocumentArg"><span class="keyword">command</span> <span class="command-name">ReloadDocument</span>(<span class="message-name">ReloadDocumentArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ReloadDocument.ReloadDocumentArg.windowID"><a href="#ReloadDocument.ReloadDocumentArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The window containing the frame. </p></div></li>
+<li class="field">
+<pre class="code-line" id="ReloadDocument.ReloadDocumentArg.frameID"><a href="#ReloadDocument.ReloadDocumentArg.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ReloadDocument.Default"><a href="#ReloadDocument.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ReloadDocument.key"><a href="#ReloadDocument.key"><span class="proto-key">= 3;</span></a></pre><h2 id="SearchText"><a href="#SearchText">SearchText</a></h2>
+<pre class="code-line" id="SearchText.SearchTextArg"><a href="#SearchText.SearchTextArg"><span class="keyword">command</span> <span class="command-name">SearchText</span>(<span class="message-name">SearchTextArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SearchText.SearchTextArg.windowID"><a href="#SearchText.SearchTextArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Search in this window. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SearchText.SearchTextArg.text"><a href="#SearchText.SearchTextArg.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The text string to search for. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SearchText.SearchTextArg.frameID"><a href="#SearchText.SearchTextArg.frameID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If set, search only in the specified frame. The frame must be part of the document tree of the previously specified window. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="SearchText.HighlightList"><a href="#SearchText.HighlightList"><span class="keyword">returns</span> (<span class="message-name">HighlightList</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SearchText.HighlightList.highlightList"><a href="#SearchText.HighlightList.highlightList"><span class="qualifier">repeated</span> <span class="">Highlight</span> <span class="field-name">highlightList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>When searching for text in a page, we often get multiple hits. This is a list of all the current hits. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SearchText.HighlightList.Highlight.frameID"><a href="#SearchText.HighlightList.Highlight.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Which frame this highlight is in. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SearchText.HighlightList.Highlight.node"><a href="#SearchText.HighlightList.Highlight.node"><span class="qualifier">optional</span> <span class="">Node</span> <span class="field-name">node</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The first common ancestor that contains the entire highlight. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SearchText.HighlightList.Highlight.Node.tag"><a href="#SearchText.HighlightList.Highlight.Node.tag"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">tag</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>E.g. "a", "div". </p></div></li>
+<li class="field">
+<pre class="code-line" id="SearchText.HighlightList.Highlight.Node.id"><a href="#SearchText.HighlightList.Highlight.Node.id"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">id</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Present if there is an ID attribute set. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="SearchText.key"><a href="#SearchText.key"><span class="proto-key">= 6;</span></a></pre><h2 id="OnAboutToLoadDocument"><a href="#OnAboutToLoadDocument">OnAboutToLoadDocument</a></h2>
+<pre class="code-line" id="OnAboutToLoadDocument.AboutToLoadDocument"><a href="#OnAboutToLoadDocument.AboutToLoadDocument"><span class="keyword">event</span> <span class="command-name">OnAboutToLoadDocument</span><span class="keyword"> returns </span>(<span class="message-name">AboutToLoadDocument</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnAboutToLoadDocument.AboutToLoadDocument.windowID"><a href="#OnAboutToLoadDocument.AboutToLoadDocument.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnAboutToLoadDocument.AboutToLoadDocument.frameID"><a href="#OnAboutToLoadDocument.AboutToLoadDocument.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnAboutToLoadDocument.AboutToLoadDocument.resourceID"><a href="#OnAboutToLoadDocument.AboutToLoadDocument.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The resource that is about to get loaded. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnAboutToLoadDocument.AboutToLoadDocument.time"><a href="#OnAboutToLoadDocument.AboutToLoadDocument.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix Epoch. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnAboutToLoadDocument.AboutToLoadDocument.parentDocumentID"><a href="#OnAboutToLoadDocument.AboutToLoadDocument.parentDocumentID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">parentDocumentID</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The parent document, present only if the frame is not the top level frame. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnAboutToLoadDocument.AboutToLoadDocument.parentFrameID"><a href="#OnAboutToLoadDocument.AboutToLoadDocument.parentFrameID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">parentFrameID</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The parent frame, present only if the frame is not the top level frame. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnAboutToLoadDocument.key"><a href="#OnAboutToLoadDocument.key"><span class="proto-key">= 4;</span></a></pre><h2 id="OnDocumentLoaded"><a href="#OnDocumentLoaded">OnDocumentLoaded</a></h2>
+<pre class="code-line" id="OnDocumentLoaded.DocumentLoaded"><a href="#OnDocumentLoaded.DocumentLoaded"><span class="keyword">event</span> <span class="command-name">OnDocumentLoaded</span><span class="keyword"> returns </span>(<span class="message-name">DocumentLoaded</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnDocumentLoaded.DocumentLoaded.windowID"><a href="#OnDocumentLoaded.DocumentLoaded.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnDocumentLoaded.DocumentLoaded.frameID"><a href="#OnDocumentLoaded.DocumentLoaded.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnDocumentLoaded.DocumentLoaded.documentID"><a href="#OnDocumentLoaded.DocumentLoaded.documentID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">documentID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnDocumentLoaded.key"><a href="#OnDocumentLoaded.key"><span class="proto-key">= 5;</span></a></pre></div>

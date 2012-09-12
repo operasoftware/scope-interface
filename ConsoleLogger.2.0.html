@@ -1,0 +1,69 @@
+<!doctype html>
+<title>ConsoleLogger.2.0</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>ConsoleLogger<span class="service-version">2.0</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+<li><a href="#OnConsoleMessage">OnConsoleMessage</a></li>
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>The <span class="domain-specific">console-logger</span> is a noninteractive tool used to log messages sent to Opera's console. </p>
+  <p>All messages sent to the Opera console from the various modules in Opera are captured and displayed. </p></div><h2 id="OnConsoleMessage"><a href="#OnConsoleMessage">OnConsoleMessage</a></h2>
+<pre class="code-line" id="OnConsoleMessage.ConsoleMessage"><a href="#OnConsoleMessage.ConsoleMessage"><span class="keyword">event</span> <span class="command-name">OnConsoleMessage</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleMessage</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnConsoleMessage.ConsoleMessage.windowID"><a href="#OnConsoleMessage.ConsoleMessage.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The window ID is shared across scope. Notably, it's the same as in the ecmascript debugger. INTERNAL: The value is from Window::id </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnConsoleMessage.ConsoleMessage.time"><a href="#OnConsoleMessage.ConsoleMessage.time"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">time</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The number of seconds since 1970-01-01T00:00:00Z. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnConsoleMessage.ConsoleMessage.description"><a href="#OnConsoleMessage.ConsoleMessage.description"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">description</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Description of the error. Sometimes this message only makes sense when displayed in a monospace font. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnConsoleMessage.ConsoleMessage.uri"><a href="#OnConsoleMessage.ConsoleMessage.uri"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">uri</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The URL of the entity (document, script, style file, etc) that caused the message to be generated. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnConsoleMessage.ConsoleMessage.context"><a href="#OnConsoleMessage.ConsoleMessage.context"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">context</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The context in which the message was generated; it is intended for human consumption and provides additional information about the context for the message. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnConsoleMessage.ConsoleMessage.source"><a href="#OnConsoleMessage.ConsoleMessage.source"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">source</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The component in Opera that generated the message One of: </p>
+  <ul>
+    <li>"ecmascript" </li>
+    <li>"java" </li>
+    <li>"m2" </li>
+    <li>"network" </li>
+    <li>"xml" </li>
+    <li>"html" </li>
+    <li>"css" </li>
+    <li>"xslt" </li>
+    <li>"svg" </li>
+    <li>"bittorrent" </li>
+    <li>"voice" </li>
+    <li>"widget" </li>
+    <li>"selftest" </li>
+  </ul></div></li>
+<li class="field">
+<pre class="code-line" id="OnConsoleMessage.ConsoleMessage.severity"><a href="#OnConsoleMessage.ConsoleMessage.severity"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">severity</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>One of: </p>
+  <ul>
+    <li>"debug" </li>
+    <li>"verbose" </li>
+    <li>"information" </li>
+    <li>"error" </li>
+    <li>"critical" </li>
+  </ul></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnConsoleMessage.key"><a href="#OnConsoleMessage.key"><span class="proto-key">= 1;</span></a></pre></div>

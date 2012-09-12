@@ -1,0 +1,525 @@
+<!doctype html>
+<title>Profiler.1.1</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>Profiler<span class="service-version">1.1</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#GetEvents">GetEvents</a></li>
+
+<li><a href="#ReleaseSession">ReleaseSession</a></li>
+
+<li><a href="#StartProfiler">StartProfiler</a></li>
+
+<li><a href="#StopProfiler">StopProfiler</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>This service provides a way to measure the time spent by various <span class="domain-specific">Events</span> in a certain window. This information can be used to pinpoint performance problems in a web page or web application. </p>
+  <p>The profiler is started and stopped manually by the client, and <span class="domain-specific">Events</span> are recorded for the specified window in that interval. Each such start/stop pair will produce a <span class="domain-specific">Session</span>, which is explained in the section that follows. </p>
+  <p><span class="domain-specific">Events</span> that take place during profiling can currently not be sent in real-time, and are available only after the fact when profiling is stopped. This may be supported in a later version of the profiler, though. </p>
+  <p>While not required, it is highly recommended to disable other resource intensive services while profiling, especially: </p>
+  <ul>
+    <li>EcmascriptDebugger </li>
+    <li>ResourceManager </li>
+  </ul>
+  <h2>Session </h2>
+  <p>Each profiling session produces a <span class="domain-specific">Session</span>. A <span class="domain-specific">Session</span> contains one <span class="domain-specific">Timeline</span> for each frame that existed (at some point in time) during profiling. </p>
+  <p>A <em>frame</em> is a container for <em>documents</em>. A frame can contain multiple documents over time, but does not contain more than one document at once. </p>
+  <p>The documents that are loaded in frames during profiling, are also covered in the report. If multiple documents are loaded in the same frame during profiling, they will share the same <span class="domain-specific">Timeline</span>. </p>
+  <p>Once a <span class="domain-specific">Session</span> is created, it will continue to exist until explicitly removed with <span class="domain-specific">ReleaseSession</span>, or until the service is disabled. </p>
+  <h2>Timelines </h2>
+  <p>A timeline is a collection of <span class="domain-specific">Events</span>, ordered according to the start of the <span class="domain-specific">Interval</span> of each <span class="domain-specific">Event</span>. The <span class="domain-specific">Events</span> in the <span class="domain-specific">Timeline</span> are organized in a tree, with the <span class="domain-specific">Timeline</span> itself as the root <span class="domain-specific">Event</span>. Each <span class="domain-specific">Event</span> can have any number of children. </p>
+  <p>A child <span class="domain-specific">Event</span> represents an <span class="domain-specific">Event</span> which is directly triggered by another <span class="domain-specific">Event</span>. The parent <span class="domain-specific">Event</span> must be on the call stack when this happens for the parent-child relationship to be established. There will be no parent-child relationship between <span class="domain-specific">Events</span> triggered asynchrounsly by another <span class="domain-specific">Event</span>, such as a script triggering a CSS reload at a 'later time'. (This relationship, however, will be obvious to the user if the <span class="domain-specific">Events</span> are presented on a <span class="domain-specific">Timeline</span>). </p>
+  <h2>Events </h2>
+  <p>An <span class="domain-specific">Event</span> measures how long a certain operation took in Core. Examples of <span class="domain-specific">Events</span> are: </p>
+  <ul>
+    <li>Selector matching for a certain selector. </li>
+    <li>Imagine decoding for a certain image. </li>
+    <li>ECMAScript execution for a certain thread. </li>
+  </ul>
+  <h2>Time Information </h2>
+  <p>All time fields in this service are specified in milliseconds, and time is counted since profiling began (i.e. profiling began at '0' millliseconds). </p></div><h2 id="GetEvents"><a href="#GetEvents">GetEvents</a></h2>
+<pre class="code-line" id="GetEvents.GetEventsArg"><a href="#GetEvents.GetEventsArg"><span class="keyword">command</span> <span class="command-name">GetEvents</span>(<span class="message-name">GetEventsArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.sessionID"><a href="#GetEvents.GetEventsArg.sessionID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">sessionID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>ID of the <span class="domain-specific">Session</span> to get <span class="domain-specific">Events</span> from. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.timelineID"><a href="#GetEvents.GetEventsArg.timelineID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">timelineID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>ID of the <span class="domain-specific">Timeline</span> to get <span class="domain-specific">Events</span> from. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.mode"><a href="#GetEvents.GetEventsArg.mode"><span class="qualifier">optional</span> <span class="">Mode</span> <span class="field-name">mode</span><span class="proto-key"> = 3</span> [default = ALL]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>How <span class="domain-specific">Events</span> should be processed before they are returned. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.ALL"><a href="#GetEvents.GetEventsArg.ALL"><span class="enum-name">ALL</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Return each <span class="domain-specific">Event</span> unprocessed. </p>
+  <p>When using this mode, each <span class="domain-specific">Event</span> in the <span class="domain-specific">Timeline</span> may contain type specific data, which provides additional information about the <span class="domain-specific">Event</span>, such as the <span class="domain-specific">Area</span> that was painted for <span class="domain-specific">PAINT</span> <span class="domain-specific">Events</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.REDUCE_UNIQUE_TYPES"><a href="#GetEvents.GetEventsArg.REDUCE_UNIQUE_TYPES"><span class="enum-name">REDUCE_UNIQUE_TYPES</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Reduce all <span class="domain-specific">Events</span> of the same type into the same <em>virtual</em> <span class="domain-specific">Event</span>. Timing information and number of hits will then be summarized into that single <span class="domain-specific">Event</span> (for each type). </p>
+  <p>This makes it possible to provide a summary which says how much time was spent in total on a certain activity, e.g. CSS selector matching. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.REDUCE_UNIQUE_EVENTS"><a href="#GetEvents.GetEventsArg.REDUCE_UNIQUE_EVENTS"><span class="enum-name">REDUCE_UNIQUE_EVENTS</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Reduce all equal <span class="domain-specific">Events</span> into the same <em>virtual</em> <span class="domain-specific">Event</span>. Timing information and number of hits will then be summarized into a single <em>virtual</em> <span class="domain-specific">Event</span>. </p>
+  <p>An <span class="domain-specific">Event</span> is equal to another <span class="domain-specific">Event</span> if they both have the same type, and both have the same type-specific data. For instance, two CSS selector matching <span class="domain-specific">Events</span> are equal if they have the same selector text. </p>
+  <p>This makes it possible to pinpoint specific performance problems in the profiling session. For instance, an overview of total time spent matching a single CSS selector can be provided. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.REDUCE_ALL"><a href="#GetEvents.GetEventsArg.REDUCE_ALL"><span class="enum-name">REDUCE_ALL</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Reduce all <span class="domain-specific">Events</span> (regardless of their types and content) into the same <em>virtual</em> <span class="domain-specific">Event</span>. This creates a summary of the total time recording across all <span class="domain-specific">Event</span> types. The returned <span class="domain-specific">Event</span> will have type 'GENERIC', and contain no type-specific data. </p>
+  <p>When using this mode, another <span class="domain-specific">Event</span> <em>may</em> be returned which represents the total execution time for the OS process in the profiling <span class="domain-specific">Interval</span>. The execution time includes time spent in user mode and kernel mode for the current process, and does not include child processes. The <span class="domain-specific">Event</span> is only present if the build supports this feature. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.eventID"><a href="#GetEvents.GetEventsArg.eventID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">eventID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If present, this <span class="domain-specific">Event</span> will be used as the root for the iteration instead of the <span class="domain-specific">Timeline</span> itself. The <span class="domain-specific">Event</span> specified here will not be included in the response. (The highest level <span class="domain-specific">Events</span> in the response will be the specified <span class="domain-specific">Event</span>'s immediate children). </p>
+  <p>This can be used with a non-default <span class="domain-specific">Mode</span> to produce subtree summaries. </p>
+  <p>This, combined with the <span class="domain-specific">maxDepth</span> option is useful for UIs where the <span class="domain-specific">Timeline</span> is manually expanded by the user. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.maxDepth"><a href="#GetEvents.GetEventsArg.maxDepth"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">maxDepth</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If present, return only <span class="domain-specific">Events</span> down to the specified level. The smallest allowed vaule is '1', which represents the root <span class="domain-specific">Event</span>'s immediate children. (A value of '0' represents the root <span class="domain-specific">Event</span> itself, which is either the timeline, or the <span class="domain-specific">Event</span> specified by <span class="domain-specific">eventID</span>). A value of 2 represents the root <span class="domain-specific">Event</span>'s grandchildren, and so forth. </p>
+  <p>A value of '1' will be useful for creating a UI where the user manually expands an <span class="domain-specific">Event</span> he or she is interested in. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.eventTypeList"><a href="#GetEvents.GetEventsArg.eventTypeList"><span class="qualifier">repeated</span> <span class="">EventType</span> <span class="field-name">eventTypeList</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If non-empty, include only the specified types in the result. An empty list means all <span class="domain-specific">Event</span> types will be included. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.GENERIC"><a href="#GetEvents.GetEventsArg.GENERIC"><span class="enum-name">GENERIC</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Unknown type. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.PROCESS"><a href="#GetEvents.GetEventsArg.PROCESS"><span class="enum-name">PROCESS</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Special <span class="domain-specific">Event</span> type, which represents the total time spent in the process. This <span class="domain-specific">Event</span> <em>may</em> appear in a response to <span class="domain-specific">GetEvents</span> command in <span class="domain-specific">REDUCE_ALL</span> mode. Not all builds support this <span class="domain-specific">Event</span>, and it will only be present if supported. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.DOCUMENT_PARSING"><a href="#GetEvents.GetEventsArg.DOCUMENT_PARSING"><span class="enum-name">DOCUMENT_PARSING</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when the main document (such as HTML, XHTML, etc) is parsed. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.CSS_PARSING"><a href="#GetEvents.GetEventsArg.CSS_PARSING"><span class="enum-name">CSS_PARSING</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when stylesheets are parsed. This <span class="domain-specific">Event</span> carries information about the URL of the stylesheet. If the stylesheet was inline, the parent document is used for the URL. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.SCRIPT_COMPILATION"><a href="#GetEvents.GetEventsArg.SCRIPT_COMPILATION"><span class="enum-name">SCRIPT_COMPILATION</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when a script is compiled. This <span class="domain-specific">Event</span> carries the URL of the script. If the script is inline, the parent document is used for the URL. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.SCRIPT_THREAD_EVALUATION"><a href="#GetEvents.GetEventsArg.SCRIPT_THREAD_EVALUATION"><span class="enum-name">SCRIPT_THREAD_EVALUATION</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when a script thread is being evaluated (run). <span class="domain-specific">Events</span> of this type carry information about the type of the thread (inline, eval, and so forth). If the thread is an event handler, the name of the event is also provided. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.REFLOW"><a href="#GetEvents.GetEventsArg.REFLOW"><span class="enum-name">REFLOW</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when a reflow is triggered. A reflow is triggered when something is changed on the document, which <em>may</em> require a recalculation of style and layout. </p>
+  <p>A <span class="domain-specific">REFLOW</span> <span class="domain-specific">Event</span> does not mean that the whole page will be recalculated; it is more like a <em>request</em> to check whether something needs to updated. The <span class="domain-specific">REFLOW</span> is typically a parent of a <span class="domain-specific">STYLE_RECALCULATION</span>, and then <span class="domain-specific">LAYOUT</span>, like this: </p>
+  <ul>
+    <li><span class="domain-specific">REFLOW</span> 
+      <ul>
+        <li><span class="domain-specific">STYLE_RECALCULATION</span> 
+          <ul>
+            <li><span class="domain-specific">CSS_SELECTOR_MATCHING</span> (#foo) </li>
+            <li><span class="domain-specific">CSS_SELECTOR_MATCHING</span> (.bar) </li>
+            <li>... </li>
+            <li><span class="domain-specific">CSS_SELECTOR_MATCHING</span> (#bar .fooz) </li>
+          </ul>
+        </li>
+        <li><span class="domain-specific">LAYOUT</span> </li>
+      </ul>
+    </li>
+  </ul>
+  <p>Most the time will be spent in <span class="domain-specific">STYLE_RECALCULATION</span> and <span class="domain-specific">LAYOUT</span>. The <span class="domain-specific">REFLOW</span> itself is not expensive. </p>
+  <p>A <span class="domain-specific">REFLOW</span> may also have no children at all, if no changes were to layout were necessary. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.STYLE_RECALCULATION"><a href="#GetEvents.GetEventsArg.STYLE_RECALCULATION"><span class="enum-name">STYLE_RECALCULATION</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when a CSS needs to be recalculated for a set of elements in the document. This <span class="domain-specific">Event</span> usually contains many <span class="domain-specific">CSS_SELECTOR_MATCHING</span> <span class="domain-specific">Events</span>. </p>
+  <p>See <span class="domain-specific">REFLOW</span> for more information about how this <span class="domain-specific">Event</span> relates to <span class="domain-specific">REFLOW</span>, <span class="domain-specific">CSS_SELECTOR_MATCHING</span> and <span class="domain-specific">LAYOUT</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.CSS_SELECTOR_MATCHING"><a href="#GetEvents.GetEventsArg.CSS_SELECTOR_MATCHING"><span class="enum-name">CSS_SELECTOR_MATCHING</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when we try to match a specific selector. <span class="domain-specific">Events</span> of this type carry information about which selector we tried to match. </p>
+  <p>See <span class="domain-specific">REFLOW</span> for more information about how this <span class="domain-specific">Event</span> relates to <span class="domain-specific">REFLOW</span>, <span class="domain-specific">STYLE_RECALCULATION</span> and <span class="domain-specific">LAYOUT</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.LAYOUT"><a href="#GetEvents.GetEventsArg.LAYOUT"><span class="enum-name">LAYOUT</span><span class="proto-key"> = </span><span class="enum-key">10</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when the layout tree is created or changed. Changes to the layout tree are done based on the caclulated style of elements, so <span class="domain-specific">LAYOUT</span> will usually occur after a <span class="domain-specific">STYLE_RECALCULATION</span>. </p>
+  <p>See <span class="domain-specific">REFLOW</span> for more information about how these <span class="domain-specific">Events</span> usually relate to each other. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.PAINT"><a href="#GetEvents.GetEventsArg.PAINT"><span class="enum-name">PAINT</span><span class="proto-key"> = </span><span class="enum-key">11</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when we draw the document (or parts of the document). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.interval"><a href="#GetEvents.GetEventsArg.interval"><span class="qualifier">optional</span> <span class="">Interval</span> <span class="field-name">interval</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If present, include only <span class="domain-specific">Events</span> whose <span class="domain-specific">Interval</span> overlaps this <span class="domain-specific">Interval</span>. If the option is not present, the entire <span class="domain-specific">Timeline</span> may be included (subject to restrictions set by other options). </p>
+  <p>This option can be combined with any <span class="domain-specific">Mode</span>, to produce a summary of parts of the <span class="domain-specific">Timeline</span>. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.Interval.start"><a href="#GetEvents.GetEventsArg.Interval.start"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">start</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The start of the <span class="domain-specific">Interval</span>. If not present, this is an left-open <span class="domain-specific">Interval</span> ([-inf, N]). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.GetEventsArg.Interval.end"><a href="#GetEvents.GetEventsArg.Interval.end"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">end</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The end of the <span class="domain-specific">Interval</span>. If not present, this is an right-open <span class="domain-specific">Interval</span> ([N, +inf]). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetEvents.Events"><a href="#GetEvents.Events"><span class="keyword">returns</span> (<span class="message-name">Events</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.interval"><a href="#GetEvents.Events.interval"><span class="qualifier">optional</span> <span class="">Interval</span> <span class="field-name">interval</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Represents the smallest <span class="domain-specific">Interval</span> which is large enough to cover all the <span class="domain-specific">Intervals</span> of each individual <span class="domain-specific">Event</span> in the list. </p>
+  <p>Is not set if <span class="domain-specific">eventList</span> is empty. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Interval.start"><a href="#GetEvents.Events.Interval.start"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">start</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The start of the <span class="domain-specific">Interval</span>. If not present, this is an left-open <span class="domain-specific">Interval</span> ([-inf, N]). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Interval.end"><a href="#GetEvents.Events.Interval.end"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">end</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The end of the <span class="domain-specific">Interval</span>. If not present, this is an right-open <span class="domain-specific">Interval</span> ([N, +inf]). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.eventList"><a href="#GetEvents.Events.eventList"><span class="qualifier">repeated</span> <span class="">Event</span> <span class="field-name">eventList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>List of <span class="domain-specific">Events</span>. The <span class="domain-specific">Events</span> are ordered according to the start time of their <span class="domain-specific">Intervals</span> (increasing order). </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.type"><a href="#GetEvents.Events.Event.type"><span class="qualifier">required</span> <span class="">EventType</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The type of <span class="domain-specific">Event</span>. Some <span class="domain-specific">Events</span> carry additional information relevant to their type. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.GENERIC"><a href="#GetEvents.Events.Event.GENERIC"><span class="enum-name">GENERIC</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Unknown type. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.PROCESS"><a href="#GetEvents.Events.Event.PROCESS"><span class="enum-name">PROCESS</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Special <span class="domain-specific">Event</span> type, which represents the total time spent in the process. This <span class="domain-specific">Event</span> <em>may</em> appear in a response to <span class="domain-specific">GetEvents</span> command in <span class="domain-specific">REDUCE_ALL</span> mode. Not all builds support this <span class="domain-specific">Event</span>, and it will only be present if supported. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.DOCUMENT_PARSING"><a href="#GetEvents.Events.Event.DOCUMENT_PARSING"><span class="enum-name">DOCUMENT_PARSING</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when the main document (such as HTML, XHTML, etc) is parsed. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.CSS_PARSING"><a href="#GetEvents.Events.Event.CSS_PARSING"><span class="enum-name">CSS_PARSING</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when stylesheets are parsed. This <span class="domain-specific">Event</span> carries information about the URL of the stylesheet. If the stylesheet was inline, the parent document is used for the URL. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.SCRIPT_COMPILATION"><a href="#GetEvents.Events.Event.SCRIPT_COMPILATION"><span class="enum-name">SCRIPT_COMPILATION</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when a script is compiled. This <span class="domain-specific">Event</span> carries the URL of the script. If the script is inline, the parent document is used for the URL. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.SCRIPT_THREAD_EVALUATION"><a href="#GetEvents.Events.Event.SCRIPT_THREAD_EVALUATION"><span class="enum-name">SCRIPT_THREAD_EVALUATION</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when a script thread is being evaluated (run). <span class="domain-specific">Events</span> of this type carry information about the type of the thread (inline, eval, and so forth). If the thread is an event handler, the name of the event is also provided. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.REFLOW"><a href="#GetEvents.Events.Event.REFLOW"><span class="enum-name">REFLOW</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when a reflow is triggered. A reflow is triggered when something is changed on the document, which <em>may</em> require a recalculation of style and layout. </p>
+  <p>A <span class="domain-specific">REFLOW</span> <span class="domain-specific">Event</span> does not mean that the whole page will be recalculated; it is more like a <em>request</em> to check whether something needs to updated. The <span class="domain-specific">REFLOW</span> is typically a parent of a <span class="domain-specific">STYLE_RECALCULATION</span>, and then <span class="domain-specific">LAYOUT</span>, like this: </p>
+  <ul>
+    <li><span class="domain-specific">REFLOW</span> 
+      <ul>
+        <li><span class="domain-specific">STYLE_RECALCULATION</span> 
+          <ul>
+            <li><span class="domain-specific">CSS_SELECTOR_MATCHING</span> (#foo) </li>
+            <li><span class="domain-specific">CSS_SELECTOR_MATCHING</span> (.bar) </li>
+            <li>... </li>
+            <li><span class="domain-specific">CSS_SELECTOR_MATCHING</span> (#bar .fooz) </li>
+          </ul>
+        </li>
+        <li><span class="domain-specific">LAYOUT</span> </li>
+      </ul>
+    </li>
+  </ul>
+  <p>Most the time will be spent in <span class="domain-specific">STYLE_RECALCULATION</span> and <span class="domain-specific">LAYOUT</span>. The <span class="domain-specific">REFLOW</span> itself is not expensive. </p>
+  <p>A <span class="domain-specific">REFLOW</span> may also have no children at all, if no changes were to layout were necessary. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.STYLE_RECALCULATION"><a href="#GetEvents.Events.Event.STYLE_RECALCULATION"><span class="enum-name">STYLE_RECALCULATION</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when a CSS needs to be recalculated for a set of elements in the document. This <span class="domain-specific">Event</span> usually contains many <span class="domain-specific">CSS_SELECTOR_MATCHING</span> <span class="domain-specific">Events</span>. </p>
+  <p>See <span class="domain-specific">REFLOW</span> for more information about how this <span class="domain-specific">Event</span> relates to <span class="domain-specific">REFLOW</span>, <span class="domain-specific">CSS_SELECTOR_MATCHING</span> and <span class="domain-specific">LAYOUT</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.CSS_SELECTOR_MATCHING"><a href="#GetEvents.Events.Event.CSS_SELECTOR_MATCHING"><span class="enum-name">CSS_SELECTOR_MATCHING</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when we try to match a specific selector. <span class="domain-specific">Events</span> of this type carry information about which selector we tried to match. </p>
+  <p>See <span class="domain-specific">REFLOW</span> for more information about how this <span class="domain-specific">Event</span> relates to <span class="domain-specific">REFLOW</span>, <span class="domain-specific">STYLE_RECALCULATION</span> and <span class="domain-specific">LAYOUT</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.LAYOUT"><a href="#GetEvents.Events.Event.LAYOUT"><span class="enum-name">LAYOUT</span><span class="proto-key"> = </span><span class="enum-key">10</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when the layout tree is created or changed. Changes to the layout tree are done based on the caclulated style of elements, so <span class="domain-specific">LAYOUT</span> will usually occur after a <span class="domain-specific">STYLE_RECALCULATION</span>. </p>
+  <p>See <span class="domain-specific">REFLOW</span> for more information about how these <span class="domain-specific">Events</span> usually relate to each other. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.PAINT"><a href="#GetEvents.Events.Event.PAINT"><span class="enum-name">PAINT</span><span class="proto-key"> = </span><span class="enum-key">11</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Occurs when we draw the document (or parts of the document). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.time"><a href="#GetEvents.Events.Event.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The time spent on this task. (Self-time). This time takes place at some (unknown) point in the <span class="domain-specific">Interval</span>. </p>
+  <p>Does not include <span class="domain-specific">overhead</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.overhead"><a href="#GetEvents.Events.Event.overhead"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">overhead</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Profiling overhead. This is the time spent doing things which would normally not happen if we had not been profiling, e.g. storing the selector text for CSS selector <span class="domain-specific">Events</span>. </p>
+  <p>The overhead takes place at some (unknown) point in the <span class="domain-specific">Interval</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.hits"><a href="#GetEvents.Events.Event.hits"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">hits</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Number of hits on this <span class="domain-specific">Event</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.interval"><a href="#GetEvents.Events.Event.interval"><span class="qualifier">optional</span> <span class="">Interval</span> <span class="field-name">interval</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The <span class="domain-specific">Interval</span> in which the <span class="domain-specific">Event</span> took place. An <span class="domain-specific">Event</span> may consume time across multiple time slices (e.g. thread evaluation) without requiring <em>all</em> the time in that <span class="domain-specific">Interval</span>. </p>
+  <p>The <span class="domain-specific">time</span> field contains the time actually spent working on the <span class="domain-specific">Event</span>. There is no exact start and end time for <span class="domain-specific">Events</span> which are spread across time slices, because the self-time spent is fragmented across the <span class="domain-specific">Interval</span>. </p>
+  <p>We can therefore only know that the <span class="domain-specific">time</span> spent on this <span class="domain-specific">Event</span> happened some time in this <span class="domain-specific">Interval</span>, but not exactly where. (It would be possible to expose each fragment of execution, of course, but the amount of data required to represent this would be to large to handle). </p>
+  <p>The start of the <span class="domain-specific">Interval</span> represents the first time we started working on this <span class="domain-specific">Event</span>. The end of the <span class="domain-specific">Interval</span> represents the last time we were done working on this <span class="domain-specific">Event</span>. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.Interval.start"><a href="#GetEvents.Events.Event.Interval.start"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">start</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The start of the <span class="domain-specific">Interval</span>. If not present, this is an left-open <span class="domain-specific">Interval</span> ([-inf, N]). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.Interval.end"><a href="#GetEvents.Events.Event.Interval.end"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">end</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The end of the <span class="domain-specific">Interval</span>. If not present, this is an right-open <span class="domain-specific">Interval</span> ([N, +inf]). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.eventID"><a href="#GetEvents.Events.Event.eventID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">eventID</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The non-zero ID of this <span class="domain-specific">Event</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.parentEventID"><a href="#GetEvents.Events.Event.parentEventID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">parentEventID</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The parent <span class="domain-specific">Event</span> ID, or not set if this is a top-level <span class="domain-specific">Event</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.childCount"><a href="#GetEvents.Events.Event.childCount"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">childCount</span><span class="proto-key"> = 8</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The number of immediate children (not grandchildren) for this <span class="domain-specific">Event</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.aggregatedTime"><a href="#GetEvents.Events.Event.aggregatedTime"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">aggregatedTime</span><span class="proto-key"> = 9</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Aggregated <span class="domain-specific">time</span> for all children, including <span class="domain-specific">time</span> for this <span class="domain-specific">Event</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.aggregatedOverhead"><a href="#GetEvents.Events.Event.aggregatedOverhead"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">aggregatedOverhead</span><span class="proto-key"> = 10</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Aggregated <span class="domain-specific">overhead</span> for all children, including <span class="domain-specific">overhead</span> for this <span class="domain-specific">Event</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.cssSelectorMatching"><a href="#GetEvents.Events.Event.cssSelectorMatching"><span class="qualifier">optional</span> <span class="">CssSelectorMatchingEvent</span> <span class="field-name">cssSelectorMatching</span><span class="proto-key"> = 11</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Additional information for <span class="domain-specific">CSS_SELECTOR_MATCHING</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.CssSelectorMatchingEvent.selector"><a href="#GetEvents.Events.Event.CssSelectorMatchingEvent.selector"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">selector</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The selector text, e.g. "#foo .bar". </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.scriptThreadEvaluation"><a href="#GetEvents.Events.Event.scriptThreadEvaluation"><span class="qualifier">optional</span> <span class="">ScriptThreadEvaluationEvent</span> <span class="field-name">scriptThreadEvaluation</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Additional information for <span class="domain-specific">SCRIPT_THREAD_EVALUATION</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.scriptThreadType"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.scriptThreadType"><span class="qualifier">required</span> <span class="">ScriptThreadType</span> <span class="field-name">scriptThreadType</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>What kind of thread the <span class="domain-specific">Event</span> represents. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.UNKNOWN"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.COMMON"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.COMMON"><span class="enum-name">COMMON</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>A common thread, such as the main thread. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.TIMEOUT"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.TIMEOUT"><span class="enum-name">TIMEOUT</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>A timeout or interval thread, i.e. 'window.setTimeout'/'setInterval'. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.EVENT"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.EVENT"><span class="enum-name">EVENT</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>An event handler thread. <span class="domain-specific">ScriptThreadEvaluationEvents</span> of this type also contain the name of the event that fired. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.INLINE_SCRIPT"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.INLINE_SCRIPT"><span class="enum-name">INLINE_SCRIPT</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>A thread which executes inline scripts during loading. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.JAVASCRIPT_URL"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.JAVASCRIPT_URL"><span class="enum-name">JAVASCRIPT_URL</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>A thread which executes a script using the javascript:-URI scheme. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.HISTORY_NAVIGATION"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.HISTORY_NAVIGATION"><span class="enum-name">HISTORY_NAVIGATION</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>A thread executed when navigating in history (e.g. hash change). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.JAVA_EVAL"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.JAVA_EVAL"><span class="enum-name">JAVA_EVAL</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>An eval triggered from Java (LiveConnect). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.DEBUGGER_EVAL"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.DEBUGGER_EVAL"><span class="enum-name">DEBUGGER_EVAL</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>An eval triggered by the debugger. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.eventName"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.eventName"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">eventName</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If <span class="domain-specific">scriptThreadType</span> is <span class="domain-specific">EVENT</span>, this field will contain the event name, e.g. 'load'. </p>
+  <p>In all other cases, this field is not set. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.documentParsing"><a href="#GetEvents.Events.Event.documentParsing"><span class="qualifier">optional</span> <span class="">DocumentParsingEvent</span> <span class="field-name">documentParsing</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Additional information for <span class="domain-specific">DOCUMENT_PARSING</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.DocumentParsingEvent.url"><a href="#GetEvents.Events.Event.DocumentParsingEvent.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The URL of the document that was parsed. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.cssParsing"><a href="#GetEvents.Events.Event.cssParsing"><span class="qualifier">optional</span> <span class="">CssParsingEvent</span> <span class="field-name">cssParsing</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Additional information for <span class="domain-specific">CSS_PARSING</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.CssParsingEvent.url"><a href="#GetEvents.Events.Event.CssParsingEvent.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The URL of the stylesheet that was parsed. If the stylesheet is inlined in another document, that document is used as the URL. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.scriptCompilation"><a href="#GetEvents.Events.Event.scriptCompilation"><span class="qualifier">optional</span> <span class="">ScriptCompilationEvent</span> <span class="field-name">scriptCompilation</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Additional information for <span class="domain-specific">SCRIPT_COMPILATION</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.scriptType"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.scriptType"><span class="qualifier">required</span> <span class="">ScriptType</span> <span class="field-name">scriptType</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Describes the origin of the script. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.UNKNOWN"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script is of unknown type. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.LINKED"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.LINKED"><span class="enum-name">LINKED</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script is in an external file, and the document links to it. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.INLINE"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.INLINE"><span class="enum-name">INLINE</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script is inlined in the document, not via document.write(). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.GENERATED"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.GENERATED"><span class="enum-name">GENERATED</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script is inlined in the documented via document.write(). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.EVAL"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.EVAL"><span class="enum-name">EVAL</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script comes from a call to <span class="domain-specific">eval</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.TIMEOUT"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.TIMEOUT"><span class="enum-name">TIMEOUT</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script comes from a call to <span class="domain-specific">setTimeout</span> or <span class="domain-specific">setInterval</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.URI"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.URI"><span class="enum-name">URI</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script comes from usage of the <span class="domain-specific">javascript:</span> URI handler. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.EVENT_HANDLER"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.EVENT_HANDLER"><span class="enum-name">EVENT_HANDLER</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script is attached as an event handler attribute in the markup. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.USERJS"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.USERJS"><span class="enum-name">USERJS</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script is injected into the page by the User Javascript feature. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.BROWSERJS"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.BROWSERJS"><span class="enum-name">BROWSERJS</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script is injected into the page by the Browser Javascript feature. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.EXTENSIONJS"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.EXTENSIONJS"><span class="enum-name">EXTENSIONJS</span><span class="proto-key"> = </span><span class="enum-key">10</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The script is injected into the page by an extension. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.DEBUGGER"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.DEBUGGER"><span class="enum-name">DEBUGGER</span><span class="proto-key"> = </span><span class="enum-key">11</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Scripts compiled by <span class="domain-specific">EcmascriptDebugger</span>. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.url"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.url"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The URL of the stylesheet that was parsed. If the stylesheet is inlined in another document, that document is used as the URL. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.paint"><a href="#GetEvents.Events.Event.paint"><span class="qualifier">optional</span> <span class="">PaintEvent</span> <span class="field-name">paint</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Additional information for <span class="domain-specific">PAINT</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.area"><a href="#GetEvents.Events.Event.PaintEvent.area"><span class="qualifier">optional</span> <span class="">Area</span> <span class="field-name">area</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The <span class="domain-specific">Area</span> that was painted, in document coordinates relative the upper left corner of the view. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.x"><a href="#GetEvents.Events.Event.PaintEvent.Area.x"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">x</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.y"><a href="#GetEvents.Events.Event.PaintEvent.Area.y"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">y</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.w"><a href="#GetEvents.Events.Event.PaintEvent.Area.w"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">w</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.h"><a href="#GetEvents.Events.Event.PaintEvent.Area.h"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">h</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.ox"><a href="#GetEvents.Events.Event.PaintEvent.Area.ox"><span class="qualifier">optional</span> <span class="number">int32</span> <span class="field-name">ox</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The scroll offsets of the view in which area is defined. </p>
+  <p><span class="since-version">Added in version 1.1</span></p></div></li>
+<li class="field">
+<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.oy"><a href="#GetEvents.Events.Event.PaintEvent.Area.oy"><span class="qualifier">optional</span> <span class="number">int32</span> <span class="field-name">oy</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetEvents.key"><a href="#GetEvents.key"><span class="proto-key">= 3;</span></a></pre><h2 id="ReleaseSession"><a href="#ReleaseSession">ReleaseSession</a></h2>
+<pre class="code-line" id="ReleaseSession.ReleaseSessionArg"><a href="#ReleaseSession.ReleaseSessionArg"><span class="keyword">command</span> <span class="command-name">ReleaseSession</span>(<span class="message-name">ReleaseSessionArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="ReleaseSession.ReleaseSessionArg.sessionID"><a href="#ReleaseSession.ReleaseSessionArg.sessionID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">sessionID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Which <span class="domain-specific">Session</span> to release. If omitted, <em>all</em> <span class="domain-specific">Sessions</span> are released, except the in-progress <span class="domain-specific">Session</span>, if any. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ReleaseSession.Default"><a href="#ReleaseSession.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ReleaseSession.key"><a href="#ReleaseSession.key"><span class="proto-key">= 4;</span></a></pre><h2 id="StartProfiler"><a href="#StartProfiler">StartProfiler</a></h2>
+<pre class="code-line" id="StartProfiler.StartProfilerArg"><a href="#StartProfiler.StartProfilerArg"><span class="keyword">command</span> <span class="command-name">StartProfiler</span>(<span class="message-name">StartProfilerArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="StartProfiler.StartProfilerArg.startMode"><a href="#StartProfiler.StartProfilerArg.startMode"><span class="qualifier">required</span> <span class="">StartMode</span> <span class="field-name">startMode</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Describes when profiling shall begin. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="StartProfiler.StartProfilerArg.IMMEDIATE"><a href="#StartProfiler.StartProfilerArg.IMMEDIATE"><span class="enum-name">IMMEDIATE</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Start profiling immediately. </p></div></li>
+<li class="field">
+<pre class="code-line" id="StartProfiler.StartProfilerArg.URL"><a href="#StartProfiler.StartProfilerArg.URL"><span class="enum-name">URL</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Start profiling as soon as a URL is about to be opened in the desired window. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="StartProfiler.StartProfilerArg.windowID"><a href="#StartProfiler.StartProfilerArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Monitor activity in this window. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="StartProfiler.SessionID"><a href="#StartProfiler.SessionID"><span class="keyword">returns</span> (<span class="message-name">SessionID</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="StartProfiler.SessionID.sessionID"><a href="#StartProfiler.SessionID.sessionID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">sessionID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The ID of the <span class="domain-specific">Session</span>. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="StartProfiler.key"><a href="#StartProfiler.key"><span class="proto-key">= 1;</span></a></pre><h2 id="StopProfiler"><a href="#StopProfiler">StopProfiler</a></h2>
+<pre class="code-line" id="StopProfiler.StopProfilerArg"><a href="#StopProfiler.StopProfilerArg"><span class="keyword">command</span> <span class="command-name">StopProfiler</span>(<span class="message-name">StopProfilerArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="StopProfiler.StopProfilerArg.sessionID"><a href="#StopProfiler.StopProfilerArg.sessionID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">sessionID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The <span class="domain-specific">Session</span> to stop. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="StopProfiler.Session"><a href="#StopProfiler.Session"><span class="keyword">returns</span> (<span class="message-name">Session</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="StopProfiler.Session.sessionID"><a href="#StopProfiler.Session.sessionID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">sessionID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Non-zero ID for the <span class="domain-specific">Session</span>. This must be used when accessing <span class="domain-specific">Events</span> from a <span class="domain-specific">Timeline</span> within the <span class="domain-specific">Session</span>, and when releasing the <span class="domain-specific">Session</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="StopProfiler.Session.windowID"><a href="#StopProfiler.Session.windowID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The ID of the window associated with a <span class="domain-specific">Session</span>. </p>
+  <p>This field may not be present if the <span class="domain-specific">Session</span> is not associated with a window. (Currently not applicable, but field is made optional for future compatibility). </p></div></li>
+<li class="field">
+<pre class="code-line" id="StopProfiler.Session.timelineList"><a href="#StopProfiler.Session.timelineList"><span class="qualifier">repeated</span> <span class="">Timeline</span> <span class="field-name">timelineList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p><span class="domain-specific">Timelines</span> contained within the <span class="domain-specific">Session</span>. This will typically contain one <span class="domain-specific">Timeline</span> for each frame that existed in the window at some point during profiling. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="StopProfiler.Session.Timeline.timelineID"><a href="#StopProfiler.Session.Timeline.timelineID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">timelineID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Non-zero ID for the <span class="domain-specific">Timeline</span>. This must be used when accessing <span class="domain-specific">Events</span> from the <span class="domain-specific">Timeline</span>. </p></div></li>
+<li class="field">
+<pre class="code-line" id="StopProfiler.Session.Timeline.frameID"><a href="#StopProfiler.Session.Timeline.frameID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If the <span class="domain-specific">Timeline</span> is associated with a frame, the ID of the frame will be stored here. If the frame was removed during profiling, it will not be possible to access additional information about the frame from 'DocumentManager'. </p>
+  <p>Also, this field may not be present if the <span class="domain-specific">Timeline</span> is not associated with a frame. (Currently not applicable, but field is made optional for future compatibility). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="StopProfiler.key"><a href="#StopProfiler.key"><span class="proto-key">= 2;</span></a></pre></div>

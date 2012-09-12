@@ -1,0 +1,45 @@
+<!doctype html>
+<title>Selftest.1.0</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>Selftest<span class="service-version">1.0</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#RunModules">RunModules</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+<li><a href="#OnSelftestFinished">OnSelftestFinished</a></li>
+
+<li><a href="#OnSelftestOutput">OnSelftestOutput</a></li>
+
+</ul>
+</div>
+<div class="main-view">
+<h2 id="RunModules"><a href="#RunModules">RunModules</a></h2>
+<pre class="code-line" id="RunModules.RunModulesArg"><a href="#RunModules.RunModulesArg"><span class="keyword">command</span> <span class="command-name">RunModules</span>(<span class="message-name">RunModulesArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="RunModules.RunModulesArg.moduleList"><a href="#RunModules.RunModulesArg.moduleList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">moduleList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="RunModules.Default"><a href="#RunModules.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="RunModules.key"><a href="#RunModules.key"><span class="proto-key">= 1;</span></a></pre><h2 id="OnSelftestFinished"><a href="#OnSelftestFinished">OnSelftestFinished</a></h2>
+<pre class="code-line" id="OnSelftestFinished.Default"><a href="#OnSelftestFinished.Default"><span class="keyword">event</span> <span class="command-name">OnSelftestFinished</span><span class="keyword"> returns </span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnSelftestFinished.key"><a href="#OnSelftestFinished.key"><span class="proto-key">= 3;</span></a></pre><h2 id="OnSelftestOutput"><a href="#OnSelftestOutput">OnSelftestOutput</a></h2>
+<pre class="code-line" id="OnSelftestOutput.SelftestOutput"><a href="#OnSelftestOutput.SelftestOutput"><span class="keyword">event</span> <span class="command-name">OnSelftestOutput</span><span class="keyword"> returns </span>(<span class="message-name">SelftestOutput</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnSelftestOutput.SelftestOutput.output"><a href="#OnSelftestOutput.SelftestOutput.output"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">output</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnSelftestOutput.key"><a href="#OnSelftestOutput.key"><span class="proto-key">= 2;</span></a></pre></div>

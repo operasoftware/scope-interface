@@ -1,0 +1,1085 @@
+<!doctype html>
+<title>ResourceManager.1.3</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>ResourceManager<span class="service-version">1.3</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#AddHeaderOverrides">AddHeaderOverrides</a></li>
+
+<li><a href="#ClearCache">ClearCache</a></li>
+
+<li><a href="#ClearHeaderOverrides">ClearHeaderOverrides</a></li>
+
+<li><a href="#CreateRequest">CreateRequest</a></li>
+
+<li><a href="#GetResource">GetResource</a></li>
+
+<li><a href="#GetResourceID">GetResourceID</a></li>
+
+<li><a href="#RemoveHeaderOverrides">RemoveHeaderOverrides</a></li>
+
+<li><a href="#SetReloadPolicy">SetReloadPolicy</a></li>
+
+<li><a href="#SetRequestMode">SetRequestMode</a></li>
+
+<li><a href="#SetResponseMode">SetResponseMode</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+<li><a href="#OnRequest">OnRequest</a></li>
+
+<li><a href="#OnRequestFinished">OnRequestFinished</a></li>
+
+<li><a href="#OnRequestHeader">OnRequestHeader</a></li>
+
+<li><a href="#OnRequestRetry">OnRequestRetry</a></li>
+
+<li><a href="#OnResponse">OnResponse</a></li>
+
+<li><a href="#OnResponseFinished">OnResponseFinished</a></li>
+
+<li><a href="#OnResponseHeader">OnResponseHeader</a></li>
+
+<li><a href="#OnUrlFinished">OnUrlFinished</a></li>
+
+<li><a href="#OnUrlLoad">OnUrlLoad</a></li>
+
+<li><a href="#OnUrlRedirect">OnUrlRedirect</a></li>
+
+<li><a href="#OnUrlUnload">OnUrlUnload</a></li>
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p><b>ResourceManager</b> is a tool for monitoring, modifying, and creating network activity. </p>
+  <h2>ID fields </h2>
+  <ul>
+    <li>Resource IDs: a <em>resource</em> is essentially what a URL points to. For each unique URL, there is at least one unique resource ID. Resources are kept alive as long as something is using them. Note that ResourceManager does not retain resources; Opera may free resources if they are not used anywhere. An OnUrlUnload event will be sent in this case. </li>
+    <li>Request IDs: represents HTTP requests. The purpose of these IDs is to make it possible to match related request/response events together. </li>
+  </ul>
+  <h2>External ID fields </h2>
+  <ul>
+    <li>Window IDs are the same in all services, and can be used interchangeably everywhere. See <em>WindowManager</em> for window-centric commands and events. </li>
+    <li>Frame IDs are described in <em>DocumentManager</em>. </li>
+    <li>Document IDs are also described in <em>DocumentManager</em>. </li>
+  </ul>
+  <h2>Changelog </h2>
+  <table>
+    <tr>
+      <td><strong>1.0:</strong></td>
+      <td> Initial release. </td>
+    </tr>
+    <tr>
+      <td><strong>1.1:</strong></td>
+      <td> Added <span class="domain-specific">GetResourceID</span>. </td>
+    </tr>
+    <tr>
+      <td><strong>1.2:</strong></td>
+      <td> Added <span class="domain-specific">LoadOrigin</span>. </td>
+    </tr>
+    <tr>
+      <td><strong>1.3:</strong></td>
+      <td> Added <span class="domain-specific">RequestRetry.requestID</span>. </td>
+    </tr>
+  </table></div><h2 id="AddHeaderOverrides"><a href="#AddHeaderOverrides">AddHeaderOverrides</a></h2>
+<pre class="code-line" id="AddHeaderOverrides.AddHeaderOverridesArg"><a href="#AddHeaderOverrides.AddHeaderOverridesArg"><span class="keyword">command</span> <span class="command-name">AddHeaderOverrides</span>(<span class="message-name">AddHeaderOverridesArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="AddHeaderOverrides.AddHeaderOverridesArg.headerList"><a href="#AddHeaderOverrides.AddHeaderOverridesArg.headerList"><span class="qualifier">repeated</span> <span class="">Header</span> <span class="field-name">headerList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>A list of headers to override. If the 'value' field of any Header is missing, that header will be removed from the request (if present). </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="AddHeaderOverrides.AddHeaderOverridesArg.Header.name"><a href="#AddHeaderOverrides.AddHeaderOverridesArg.Header.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The name of the HTTP header, for instance "Accept-Charset". </p></div></li>
+<li class="field">
+<pre class="code-line" id="AddHeaderOverrides.AddHeaderOverridesArg.Header.value"><a href="#AddHeaderOverrides.AddHeaderOverridesArg.Header.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The value of the HTTP header, for instance "utf-8" when using Accept-Charset, or "text/html; charset=utf8" for Content-Type. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="AddHeaderOverrides.Default"><a href="#AddHeaderOverrides.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="AddHeaderOverrides.key"><a href="#AddHeaderOverrides.key"><span class="proto-key">= 5;</span></a></pre><h2 id="ClearCache"><a href="#ClearCache">ClearCache</a></h2>
+<pre class="code-line" id="ClearCache.Default"><a href="#ClearCache.Default"><span class="keyword">command</span> <span class="command-name">ClearCache</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ClearCache.Default"><a href="#ClearCache.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ClearCache.key"><a href="#ClearCache.key"><span class="proto-key">= 9;</span></a></pre><h2 id="ClearHeaderOverrides"><a href="#ClearHeaderOverrides">ClearHeaderOverrides</a></h2>
+<pre class="code-line" id="ClearHeaderOverrides.Default"><a href="#ClearHeaderOverrides.Default"><span class="keyword">command</span> <span class="command-name">ClearHeaderOverrides</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ClearHeaderOverrides.Default"><a href="#ClearHeaderOverrides.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="ClearHeaderOverrides.key"><a href="#ClearHeaderOverrides.key"><span class="proto-key">= 7;</span></a></pre><h2 id="CreateRequest"><a href="#CreateRequest">CreateRequest</a></h2>
+<pre class="code-line" id="CreateRequest.CreateRequestArg"><a href="#CreateRequest.CreateRequestArg"><span class="keyword">command</span> <span class="command-name">CreateRequest</span>(<span class="message-name">CreateRequestArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.windowID"><a href="#CreateRequest.CreateRequestArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The Window to perform the request in. (The events triggered by this command will appear to come from this Window). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.url"><a href="#CreateRequest.CreateRequestArg.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The URL to request. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.method"><a href="#CreateRequest.CreateRequestArg.method"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">method</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The HTTP method, e.g. "GET", "POST". </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.headerList"><a href="#CreateRequest.CreateRequestArg.headerList"><span class="qualifier">repeated</span> <span class="">Header</span> <span class="field-name">headerList</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Set HTTP headers for this request. When HeaderPolicy NORMAL is chosen, Opera will set reasonable default headers. With HeaderPolicy NORMAL, the following headers can not be set by the caller: </p>
+  <ul>
+    <li>Accept-Charset </li>
+    <li>Accept-Encoding </li>
+    <li>Cache-Control </li>
+    <li>Connection </li>
+    <li>Cookie </li>
+    <li>Cookie2 </li>
+    <li>Date </li>
+    <li>Expect </li>
+    <li>Host </li>
+    <li>If-Range </li>
+    <li>Pragma </li>
+    <li>Range </li>
+    <li>TE </li>
+    <li>Trailer </li>
+    <li>Upgrade </li>
+    <li>User-Agent </li>
+    <li>Via </li>
+  </ul>
+  <p>Use either HeaderPolicy OVERWRITE, or REPLACE to set these headers. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.Header.name"><a href="#CreateRequest.CreateRequestArg.Header.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The name of the HTTP header, for instance "Accept-Charset". </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.Header.value"><a href="#CreateRequest.CreateRequestArg.Header.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The value of the HTTP header, for instance "utf-8" when using Accept-Charset, or "text/html; charset=utf8" for Content-Type. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.payload"><a href="#CreateRequest.CreateRequestArg.payload"><span class="qualifier">optional</span> <span class="">Payload</span> <span class="field-name">payload</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.Payload.mimeType"><a href="#CreateRequest.CreateRequestArg.Payload.mimeType"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">mimeType</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The mime type of this payload. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.Payload.byteData"><a href="#CreateRequest.CreateRequestArg.Payload.byteData"><span class="qualifier">optional</span> <span class="string">bytes</span> <span class="field-name">byteData</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The bytes to use as the payload. If this field is set, the stringData can not also be set. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.Payload.stringData"><a href="#CreateRequest.CreateRequestArg.Payload.stringData"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">stringData</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The string to use as the payload. This is an alternative to using bytes directly. If this field is set, byteData can not also be set. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.headerPolicy"><a href="#CreateRequest.CreateRequestArg.headerPolicy"><span class="qualifier">optional</span> <span class="">HeaderPolicy</span> <span class="field-name">headerPolicy</span><span class="proto-key"> = 6</span> [default = 1]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Controls how custom headers are handled. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.NORMAL"><a href="#CreateRequest.CreateRequestArg.NORMAL"><span class="enum-name">NORMAL</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Let's Opera choose request headers depending on how the resource is fetched. Custom headers will be set but only if allowed. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.OVERWRITE"><a href="#CreateRequest.CreateRequestArg.OVERWRITE"><span class="enum-name">OVERWRITE</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Similar to NORMAL but any header in headerList will overwrite those chosen by Opera. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.REPLACE"><a href="#CreateRequest.CreateRequestArg.REPLACE"><span class="enum-name">REPLACE</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Replaces all headers with the custom ones. Care must be taken as illegal requests can easily be created with this. It is primarly used for re-running a previous request with the same or slighly altered headers. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.reloadPolicy"><a href="#CreateRequest.CreateRequestArg.reloadPolicy"><span class="qualifier">optional</span> <span class="">ReloadPolicy</span> <span class="field-name">reloadPolicy</span><span class="proto-key"> = 7</span> [default = 1]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Override the global reload policy for this resource. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.DEFAULT"><a href="#CreateRequest.CreateRequestArg.DEFAULT"><span class="enum-name">DEFAULT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Do not interfere with caching policy. This means there might be no OnRequest-events from a certain URL-load if the resource is cached. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.NO_CACHE"><a href="#CreateRequest.CreateRequestArg.NO_CACHE"><span class="enum-name">NO_CACHE</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Load resources in full from the server, even if the resource is unchanged and could be fetched from cache. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.requestContentMode"><a href="#CreateRequest.CreateRequestArg.requestContentMode"><span class="qualifier">optional</span> <span class="">ContentMode</span> <span class="field-name">requestContentMode</span><span class="proto-key"> = 8</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Override the global request content mode for this resource. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.transport"><a href="#CreateRequest.CreateRequestArg.ContentMode.transport"><span class="qualifier">optional</span> <span class="">Transport</span> <span class="field-name">transport</span><span class="proto-key"> = 1</span> [default = 4]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Indicates how to send the payload. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.STRING"><a href="#CreateRequest.CreateRequestArg.ContentMode.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a string. </p>
+  <p>Selecting this transport mode  will automatically enable decoding, and the string will automatically converted to the correct character encoding. </p>
+  <p>If this transport mode is used an unsuitable content type, the payload will not be sent (without errors). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.BYTES"><a href="#CreateRequest.CreateRequestArg.ContentMode.BYTES"><span class="enum-name">BYTES</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as bytes. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.DATA_URI"><a href="#CreateRequest.CreateRequestArg.ContentMode.DATA_URI"><span class="enum-name">DATA_URI</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a base64-encoded data URI in the string field. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.OFF"><a href="#CreateRequest.CreateRequestArg.ContentMode.OFF"><span class="enum-name">OFF</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Do not send the payload at all. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.decode"><a href="#CreateRequest.CreateRequestArg.ContentMode.decode"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">decode</span><span class="proto-key"> = 2</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Decode the data (for instance, decompress it, decrypt it, etc). This is unrelated to character encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.sizeLimit"><a href="#CreateRequest.CreateRequestArg.ContentMode.sizeLimit"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">sizeLimit</span><span class="proto-key"> = 3</span> [default = 1000000]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Even if other conditions are met, do not send the payload if it exceeds the specified amout (in bytes). </p>
+  <p>By default, only payloads under one megabyte are sent. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.responseContentMode"><a href="#CreateRequest.CreateRequestArg.responseContentMode"><span class="qualifier">optional</span> <span class="">ContentMode</span> <span class="field-name">responseContentMode</span><span class="proto-key"> = 9</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Override the global response content mode for this resource. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.transport"><a href="#CreateRequest.CreateRequestArg.ContentMode.transport"><span class="qualifier">optional</span> <span class="">Transport</span> <span class="field-name">transport</span><span class="proto-key"> = 1</span> [default = 4]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Indicates how to send the payload. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.STRING"><a href="#CreateRequest.CreateRequestArg.ContentMode.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a string. </p>
+  <p>Selecting this transport mode  will automatically enable decoding, and the string will automatically converted to the correct character encoding. </p>
+  <p>If this transport mode is used an unsuitable content type, the payload will not be sent (without errors). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.BYTES"><a href="#CreateRequest.CreateRequestArg.ContentMode.BYTES"><span class="enum-name">BYTES</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as bytes. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.DATA_URI"><a href="#CreateRequest.CreateRequestArg.ContentMode.DATA_URI"><span class="enum-name">DATA_URI</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a base64-encoded data URI in the string field. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.OFF"><a href="#CreateRequest.CreateRequestArg.ContentMode.OFF"><span class="enum-name">OFF</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Do not send the payload at all. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.decode"><a href="#CreateRequest.CreateRequestArg.ContentMode.decode"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">decode</span><span class="proto-key"> = 2</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Decode the data (for instance, decompress it, decrypt it, etc). This is unrelated to character encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateRequest.CreateRequestArg.ContentMode.sizeLimit"><a href="#CreateRequest.CreateRequestArg.ContentMode.sizeLimit"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">sizeLimit</span><span class="proto-key"> = 3</span> [default = 1000000]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Even if other conditions are met, do not send the payload if it exceeds the specified amout (in bytes). </p>
+  <p>By default, only payloads under one megabyte are sent. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="CreateRequest.ResourceID"><a href="#CreateRequest.ResourceID"><span class="keyword">returns</span> (<span class="message-name">ResourceID</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateRequest.ResourceID.resourceID"><a href="#CreateRequest.ResourceID.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="CreateRequest.key"><a href="#CreateRequest.key"><span class="proto-key">= 8;</span></a></pre><h2 id="GetResource"><a href="#GetResource">GetResource</a></h2>
+<pre class="code-line" id="GetResource.GetResourceArg"><a href="#GetResource.GetResourceArg"><span class="keyword">command</span> <span class="command-name">GetResource</span>(<span class="message-name">GetResourceArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetResource.GetResourceArg.resourceID"><a href="#GetResource.GetResourceArg.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetResource.GetResourceArg.contentMode"><a href="#GetResource.GetResourceArg.contentMode"><span class="qualifier">optional</span> <span class="">ContentMode</span> <span class="field-name">contentMode</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Use this ContentMode instead of the one configured with SetResponseModeArg (if any). </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetResource.GetResourceArg.ContentMode.transport"><a href="#GetResource.GetResourceArg.ContentMode.transport"><span class="qualifier">optional</span> <span class="">Transport</span> <span class="field-name">transport</span><span class="proto-key"> = 1</span> [default = 4]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Indicates how to send the payload. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetResource.GetResourceArg.ContentMode.STRING"><a href="#GetResource.GetResourceArg.ContentMode.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a string. </p>
+  <p>Selecting this transport mode  will automatically enable decoding, and the string will automatically converted to the correct character encoding. </p>
+  <p>If this transport mode is used an unsuitable content type, the payload will not be sent (without errors). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.GetResourceArg.ContentMode.BYTES"><a href="#GetResource.GetResourceArg.ContentMode.BYTES"><span class="enum-name">BYTES</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as bytes. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.GetResourceArg.ContentMode.DATA_URI"><a href="#GetResource.GetResourceArg.ContentMode.DATA_URI"><span class="enum-name">DATA_URI</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a base64-encoded data URI in the string field. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.GetResourceArg.ContentMode.OFF"><a href="#GetResource.GetResourceArg.ContentMode.OFF"><span class="enum-name">OFF</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Do not send the payload at all. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.GetResourceArg.ContentMode.decode"><a href="#GetResource.GetResourceArg.ContentMode.decode"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">decode</span><span class="proto-key"> = 2</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Decode the data (for instance, decompress it, decrypt it, etc). This is unrelated to character encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.GetResourceArg.ContentMode.sizeLimit"><a href="#GetResource.GetResourceArg.ContentMode.sizeLimit"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">sizeLimit</span><span class="proto-key"> = 3</span> [default = 1000000]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Even if other conditions are met, do not send the payload if it exceeds the specified amout (in bytes). </p>
+  <p>By default, only payloads under one megabyte are sent. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetResource.ResourceData"><a href="#GetResource.ResourceData"><span class="keyword">returns</span> (<span class="message-name">ResourceData</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetResource.ResourceData.resourceID"><a href="#GetResource.ResourceData.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetResource.ResourceData.url"><a href="#GetResource.ResourceData.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="GetResource.ResourceData.mimeType"><a href="#GetResource.ResourceData.mimeType"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">mimeType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The used mime type. This may be different from the mime type advertised in the HTTP headers. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.ResourceData.characterEncoding"><a href="#GetResource.ResourceData.characterEncoding"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">characterEncoding</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Original character encoding (if applicable). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.ResourceData.contentLength"><a href="#GetResource.ResourceData.contentLength"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">contentLength</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Content-Length, as advertised by HTTP headers. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.ResourceData.content"><a href="#GetResource.ResourceData.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetResource.ResourceData.Content.length"><a href="#GetResource.ResourceData.Content.length"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">length</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If BYTES or DATA_URI was chosen as the transport mode, this field contains the size of the data. (If, in addition, decoding was enabled, the field contains the size of the decoded data). </p>
+  <p>If STRING was chosen as the transport mode, this field contains the string length (regardless of encoding), i.e. the number of characters, not including zero terminator. </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.ResourceData.Content.characterEncoding"><a href="#GetResource.ResourceData.Content.characterEncoding"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">characterEncoding</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The (original) character encoding of the data (if applicable). </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.ResourceData.Content.byteData"><a href="#GetResource.ResourceData.Content.byteData"><span class="qualifier">optional</span> <span class="string">bytes</span> <span class="field-name">byteData</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This field contains the data if BYTES was chosen as the transport mode. If other modes were chosen, this field is not set. </p>
+  <p>@see ContentMode::Transport </p></div></li>
+<li class="field">
+<pre class="code-line" id="GetResource.ResourceData.Content.stringData"><a href="#GetResource.ResourceData.Content.stringData"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">stringData</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This field contains the data if either STRING or DATA_URI were chosen as transport mode. If some other mode was chosen, this field is not set. </p>
+  <p>@see ContentMode::Transport </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetResource.key"><a href="#GetResource.key"><span class="proto-key">= 1;</span></a></pre><h2 id="GetResourceID"><a href="#GetResourceID">GetResourceID</a></h2>
+<pre class="code-line" id="GetResourceID.GetResourceIDArg"><a href="#GetResourceID.GetResourceIDArg"><span class="keyword">command</span> <span class="command-name">GetResourceID</span>(<span class="message-name">GetResourceIDArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetResourceID.GetResourceIDArg.url"><a href="#GetResourceID.GetResourceIDArg.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The URL of the resource to get the ID for. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetResourceID.ResourceID"><a href="#GetResourceID.ResourceID"><span class="keyword">returns</span> (<span class="message-name">ResourceID</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="GetResourceID.ResourceID.resourceID"><a href="#GetResourceID.ResourceID.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="GetResourceID.key"><a href="#GetResourceID.key"><span class="proto-key">= 21;</span></a></pre><h2 id="RemoveHeaderOverrides"><a href="#RemoveHeaderOverrides">RemoveHeaderOverrides</a></h2>
+<pre class="code-line" id="RemoveHeaderOverrides.RemoveHeaderOverridesArg"><a href="#RemoveHeaderOverrides.RemoveHeaderOverridesArg"><span class="keyword">command</span> <span class="command-name">RemoveHeaderOverrides</span>(<span class="message-name">RemoveHeaderOverridesArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="RemoveHeaderOverrides.RemoveHeaderOverridesArg.nameList"><a href="#RemoveHeaderOverrides.RemoveHeaderOverridesArg.nameList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">nameList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>A list of header names to remove overrides for. If there is no override for a certain name, it will be ignored. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="RemoveHeaderOverrides.Default"><a href="#RemoveHeaderOverrides.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="RemoveHeaderOverrides.key"><a href="#RemoveHeaderOverrides.key"><span class="proto-key">= 6;</span></a></pre><h2 id="SetReloadPolicy"><a href="#SetReloadPolicy">SetReloadPolicy</a></h2>
+<pre class="code-line" id="SetReloadPolicy.SetReloadPolicyArg"><a href="#SetReloadPolicy.SetReloadPolicyArg"><span class="keyword">command</span> <span class="command-name">SetReloadPolicy</span>(<span class="message-name">SetReloadPolicyArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetReloadPolicy.SetReloadPolicyArg.policy"><a href="#SetReloadPolicy.SetReloadPolicyArg.policy"><span class="qualifier">required</span> <span class="">ReloadPolicy</span> <span class="field-name">policy</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetReloadPolicy.SetReloadPolicyArg.DEFAULT"><a href="#SetReloadPolicy.SetReloadPolicyArg.DEFAULT"><span class="enum-name">DEFAULT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Do not interfere with caching policy. This means there might be no OnRequest-events from a certain URL-load if the resource is cached. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetReloadPolicy.SetReloadPolicyArg.NO_CACHE"><a href="#SetReloadPolicy.SetReloadPolicyArg.NO_CACHE"><span class="enum-name">NO_CACHE</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Load resources in full from the server, even if the resource is unchanged and could be fetched from cache. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="SetReloadPolicy.Default"><a href="#SetReloadPolicy.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="SetReloadPolicy.key"><a href="#SetReloadPolicy.key"><span class="proto-key">= 2;</span></a></pre><h2 id="SetRequestMode"><a href="#SetRequestMode">SetRequestMode</a></h2>
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg"><a href="#SetRequestMode.SetRequestModeArg"><span class="keyword">command</span> <span class="command-name">SetRequestMode</span>(<span class="message-name">SetRequestModeArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.defaultContentMode"><a href="#SetRequestMode.SetRequestModeArg.defaultContentMode"><span class="qualifier">optional</span> <span class="">ContentMode</span> <span class="field-name">defaultContentMode</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If there is no matching mode for a certain mime type, then this mode will be used. If not present, no data is received by default. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.ContentMode.transport"><a href="#SetRequestMode.SetRequestModeArg.ContentMode.transport"><span class="qualifier">optional</span> <span class="">Transport</span> <span class="field-name">transport</span><span class="proto-key"> = 1</span> [default = 4]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Indicates how to send the payload. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.ContentMode.STRING"><a href="#SetRequestMode.SetRequestModeArg.ContentMode.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a string. </p>
+  <p>Selecting this transport mode  will automatically enable decoding, and the string will automatically converted to the correct character encoding. </p>
+  <p>If this transport mode is used an unsuitable content type, the payload will not be sent (without errors). </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.ContentMode.BYTES"><a href="#SetRequestMode.SetRequestModeArg.ContentMode.BYTES"><span class="enum-name">BYTES</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as bytes. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.ContentMode.DATA_URI"><a href="#SetRequestMode.SetRequestModeArg.ContentMode.DATA_URI"><span class="enum-name">DATA_URI</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a base64-encoded data URI in the string field. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.ContentMode.OFF"><a href="#SetRequestMode.SetRequestModeArg.ContentMode.OFF"><span class="enum-name">OFF</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Do not send the payload at all. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.ContentMode.decode"><a href="#SetRequestMode.SetRequestModeArg.ContentMode.decode"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">decode</span><span class="proto-key"> = 2</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Decode the data (for instance, decompress it, decrypt it, etc). This is unrelated to character encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.ContentMode.sizeLimit"><a href="#SetRequestMode.SetRequestModeArg.ContentMode.sizeLimit"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">sizeLimit</span><span class="proto-key"> = 3</span> [default = 1000000]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Even if other conditions are met, do not send the payload if it exceeds the specified amout (in bytes). </p>
+  <p>By default, only payloads under one megabyte are sent. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.mimeModeList"><a href="#SetRequestMode.SetRequestModeArg.mimeModeList"><span class="qualifier">repeated</span> <span class="">MimeMode</span> <span class="field-name">mimeModeList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Whenever a resource matches a mime type found in this list, the corresponding ContentMode is used for that resource. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.type"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.type"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The mime type, for instance 'text/plain'. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.contentMode"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.contentMode"><span class="qualifier">required</span> <span class="">ContentMode</span> <span class="field-name">contentMode</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>How to treat this mime type. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.transport"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.transport"><span class="qualifier">optional</span> <span class="">Transport</span> <span class="field-name">transport</span><span class="proto-key"> = 1</span> [default = 4]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Indicates how to send the payload. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.STRING"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a string. </p>
+  <p>Selecting this transport mode  will automatically enable decoding, and the string will automatically converted to the correct character encoding. </p>
+  <p>If this transport mode is used an unsuitable content type, the payload will not be sent (without errors). </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.BYTES"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.BYTES"><span class="enum-name">BYTES</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as bytes. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.DATA_URI"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.DATA_URI"><span class="enum-name">DATA_URI</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a base64-encoded data URI in the string field. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.OFF"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.OFF"><span class="enum-name">OFF</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Do not send the payload at all. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.decode"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.decode"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">decode</span><span class="proto-key"> = 2</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Decode the data (for instance, decompress it, decrypt it, etc). This is unrelated to character encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.sizeLimit"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.sizeLimit"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">sizeLimit</span><span class="proto-key"> = 3</span> [default = 1000000]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Even if other conditions are met, do not send the payload if it exceeds the specified amout (in bytes). </p>
+  <p>By default, only payloads under one megabyte are sent. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.multipartMimeModeList"><a href="#SetRequestMode.SetRequestModeArg.multipartMimeModeList"><span class="qualifier">repeated</span> <span class="">MimeMode</span> <span class="field-name">multipartMimeModeList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Whenever an individual part of a multipart/form-data matches a type found in this list, the corresponding ContentMode is used for that part. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.type"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.type"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The mime type, for instance 'text/plain'. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.contentMode"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.contentMode"><span class="qualifier">required</span> <span class="">ContentMode</span> <span class="field-name">contentMode</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>How to treat this mime type. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.transport"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.transport"><span class="qualifier">optional</span> <span class="">Transport</span> <span class="field-name">transport</span><span class="proto-key"> = 1</span> [default = 4]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Indicates how to send the payload. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.STRING"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a string. </p>
+  <p>Selecting this transport mode  will automatically enable decoding, and the string will automatically converted to the correct character encoding. </p>
+  <p>If this transport mode is used an unsuitable content type, the payload will not be sent (without errors). </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.BYTES"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.BYTES"><span class="enum-name">BYTES</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as bytes. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.DATA_URI"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.DATA_URI"><span class="enum-name">DATA_URI</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a base64-encoded data URI in the string field. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.OFF"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.OFF"><span class="enum-name">OFF</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Do not send the payload at all. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.decode"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.decode"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">decode</span><span class="proto-key"> = 2</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Decode the data (for instance, decompress it, decrypt it, etc). This is unrelated to character encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.sizeLimit"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.ContentMode.sizeLimit"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">sizeLimit</span><span class="proto-key"> = 3</span> [default = 1000000]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Even if other conditions are met, do not send the payload if it exceeds the specified amout (in bytes). </p>
+  <p>By default, only payloads under one megabyte are sent. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="SetRequestMode.Default"><a href="#SetRequestMode.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="SetRequestMode.key"><a href="#SetRequestMode.key"><span class="proto-key">= 4;</span></a></pre><h2 id="SetResponseMode"><a href="#SetResponseMode">SetResponseMode</a></h2>
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg"><a href="#SetResponseMode.SetResponseModeArg"><span class="keyword">command</span> <span class="command-name">SetResponseMode</span>(<span class="message-name">SetResponseModeArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.defaultContentMode"><a href="#SetResponseMode.SetResponseModeArg.defaultContentMode"><span class="qualifier">optional</span> <span class="">ContentMode</span> <span class="field-name">defaultContentMode</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If there is no matching mode for a certain mime type, then this mode will be used. If not present, no data is received by default. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.ContentMode.transport"><a href="#SetResponseMode.SetResponseModeArg.ContentMode.transport"><span class="qualifier">optional</span> <span class="">Transport</span> <span class="field-name">transport</span><span class="proto-key"> = 1</span> [default = 4]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Indicates how to send the payload. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.ContentMode.STRING"><a href="#SetResponseMode.SetResponseModeArg.ContentMode.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a string. </p>
+  <p>Selecting this transport mode  will automatically enable decoding, and the string will automatically converted to the correct character encoding. </p>
+  <p>If this transport mode is used an unsuitable content type, the payload will not be sent (without errors). </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.ContentMode.BYTES"><a href="#SetResponseMode.SetResponseModeArg.ContentMode.BYTES"><span class="enum-name">BYTES</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as bytes. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.ContentMode.DATA_URI"><a href="#SetResponseMode.SetResponseModeArg.ContentMode.DATA_URI"><span class="enum-name">DATA_URI</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a base64-encoded data URI in the string field. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.ContentMode.OFF"><a href="#SetResponseMode.SetResponseModeArg.ContentMode.OFF"><span class="enum-name">OFF</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Do not send the payload at all. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.ContentMode.decode"><a href="#SetResponseMode.SetResponseModeArg.ContentMode.decode"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">decode</span><span class="proto-key"> = 2</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Decode the data (for instance, decompress it, decrypt it, etc). This is unrelated to character encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.ContentMode.sizeLimit"><a href="#SetResponseMode.SetResponseModeArg.ContentMode.sizeLimit"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">sizeLimit</span><span class="proto-key"> = 3</span> [default = 1000000]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Even if other conditions are met, do not send the payload if it exceeds the specified amout (in bytes). </p>
+  <p>By default, only payloads under one megabyte are sent. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.mimeModeList"><a href="#SetResponseMode.SetResponseModeArg.mimeModeList"><span class="qualifier">repeated</span> <span class="">MimeMode</span> <span class="field-name">mimeModeList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Whenever a resource matches a mime type found in this list, the corresponding ContentMode is used for that resource. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.MimeMode.type"><a href="#SetResponseMode.SetResponseModeArg.MimeMode.type"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The mime type, for instance 'text/plain'. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.MimeMode.contentMode"><a href="#SetResponseMode.SetResponseModeArg.MimeMode.contentMode"><span class="qualifier">required</span> <span class="">ContentMode</span> <span class="field-name">contentMode</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>How to treat this mime type. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.transport"><a href="#SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.transport"><span class="qualifier">optional</span> <span class="">Transport</span> <span class="field-name">transport</span><span class="proto-key"> = 1</span> [default = 4]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Indicates how to send the payload. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.STRING"><a href="#SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a string. </p>
+  <p>Selecting this transport mode  will automatically enable decoding, and the string will automatically converted to the correct character encoding. </p>
+  <p>If this transport mode is used an unsuitable content type, the payload will not be sent (without errors). </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.BYTES"><a href="#SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.BYTES"><span class="enum-name">BYTES</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as bytes. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.DATA_URI"><a href="#SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.DATA_URI"><span class="enum-name">DATA_URI</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Send the payload as a base64-encoded data URI in the string field. When this transport mode is chosen, character conversion will not be performed. If the payload contains text data, it will be sent in its original encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.OFF"><a href="#SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.OFF"><span class="enum-name">OFF</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Do not send the payload at all. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.decode"><a href="#SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.decode"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">decode</span><span class="proto-key"> = 2</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Decode the data (for instance, decompress it, decrypt it, etc). This is unrelated to character encoding. </p></div></li>
+<li class="field">
+<pre class="code-line" id="SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.sizeLimit"><a href="#SetResponseMode.SetResponseModeArg.MimeMode.ContentMode.sizeLimit"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">sizeLimit</span><span class="proto-key"> = 3</span> [default = 1000000]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Even if other conditions are met, do not send the payload if it exceeds the specified amout (in bytes). </p>
+  <p>By default, only payloads under one megabyte are sent. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="SetResponseMode.Default"><a href="#SetResponseMode.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="SetResponseMode.key"><a href="#SetResponseMode.key"><span class="proto-key">= 3;</span></a></pre><h2 id="OnRequest"><a href="#OnRequest">OnRequest</a></h2>
+<pre class="code-line" id="OnRequest.Request"><a href="#OnRequest.Request"><span class="keyword">event</span> <span class="command-name">OnRequest</span><span class="keyword"> returns </span>(<span class="message-name">Request</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequest.Request.requestID"><a href="#OnRequest.Request.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequest.Request.resourceID"><a href="#OnRequest.Request.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequest.Request.windowID"><a href="#OnRequest.Request.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequest.Request.frameID"><a href="#OnRequest.Request.frameID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequest.Request.documentID"><a href="#OnRequest.Request.documentID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">documentID</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequest.Request.url"><a href="#OnRequest.Request.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequest.Request.time"><a href="#OnRequest.Request.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix epoch. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequest.Request.method"><a href="#OnRequest.Request.method"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">method</span><span class="proto-key"> = 8</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnRequest.key"><a href="#OnRequest.key"><span class="proto-key">= 14;</span></a></pre><h2 id="OnRequestFinished"><a href="#OnRequestFinished">OnRequestFinished</a></h2>
+<pre class="code-line" id="OnRequestFinished.RequestFinished"><a href="#OnRequestFinished.RequestFinished"><span class="keyword">event</span> <span class="command-name">OnRequestFinished</span><span class="keyword"> returns </span>(<span class="message-name">RequestFinished</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.requestID"><a href="#OnRequestFinished.RequestFinished.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.resourceID"><a href="#OnRequestFinished.RequestFinished.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.time"><a href="#OnRequestFinished.RequestFinished.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix epoch. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.data"><a href="#OnRequestFinished.RequestFinished.data"><span class="qualifier">optional</span> <span class="">RequestData</span> <span class="field-name">data</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.requestID"><a href="#OnRequestFinished.RequestFinished.RequestData.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.resourceID"><a href="#OnRequestFinished.RequestFinished.RequestData.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.mimeType"><a href="#OnRequestFinished.RequestFinished.RequestData.mimeType"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">mimeType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.characterEncoding"><a href="#OnRequestFinished.RequestFinished.RequestData.characterEncoding"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">characterEncoding</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The character encoding of the payload. Not applicable when the payload is of a non-text type. </p>
+  <p>Example: utf-8 </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.contentLength"><a href="#OnRequestFinished.RequestFinished.RequestData.contentLength"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">contentLength</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.content"><a href="#OnRequestFinished.RequestFinished.RequestData.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Content.length"><a href="#OnRequestFinished.RequestFinished.RequestData.Content.length"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">length</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If BYTES or DATA_URI was chosen as the transport mode, this field contains the size of the data. (If, in addition, decoding was enabled, the field contains the size of the decoded data). </p>
+  <p>If STRING was chosen as the transport mode, this field contains the string length (regardless of encoding), i.e. the number of characters, not including zero terminator. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Content.characterEncoding"><a href="#OnRequestFinished.RequestFinished.RequestData.Content.characterEncoding"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">characterEncoding</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The (original) character encoding of the data (if applicable). </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Content.byteData"><a href="#OnRequestFinished.RequestFinished.RequestData.Content.byteData"><span class="qualifier">optional</span> <span class="string">bytes</span> <span class="field-name">byteData</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This field contains the data if BYTES was chosen as the transport mode. If other modes were chosen, this field is not set. </p>
+  <p>@see ContentMode::Transport </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Content.stringData"><a href="#OnRequestFinished.RequestFinished.RequestData.Content.stringData"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">stringData</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This field contains the data if either STRING or DATA_URI were chosen as transport mode. If some other mode was chosen, this field is not set. </p>
+  <p>@see ContentMode::Transport </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.partList"><a href="#OnRequestFinished.RequestFinished.RequestData.partList"><span class="qualifier">repeated</span> <span class="">Part</span> <span class="field-name">partList</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If the payload is multipart, this list contains the individual parts. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Part.headerList"><a href="#OnRequestFinished.RequestFinished.RequestData.Part.headerList"><span class="qualifier">repeated</span> <span class="">Header</span> <span class="field-name">headerList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>In multi-part, each part may have its own headers. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Part.Header.name"><a href="#OnRequestFinished.RequestFinished.RequestData.Part.Header.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The name of the HTTP header, for instance "Accept-Charset". </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Part.Header.value"><a href="#OnRequestFinished.RequestFinished.RequestData.Part.Header.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The value of the HTTP header, for instance "utf-8" when using Accept-Charset, or "text/html; charset=utf8" for Content-Type. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Part.contentLength"><a href="#OnRequestFinished.RequestFinished.RequestData.Part.contentLength"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">contentLength</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The length of this part. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Part.content"><a href="#OnRequestFinished.RequestFinished.RequestData.Part.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Part.Content.length"><a href="#OnRequestFinished.RequestFinished.RequestData.Part.Content.length"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">length</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If BYTES or DATA_URI was chosen as the transport mode, this field contains the size of the data. (If, in addition, decoding was enabled, the field contains the size of the decoded data). </p>
+  <p>If STRING was chosen as the transport mode, this field contains the string length (regardless of encoding), i.e. the number of characters, not including zero terminator. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Part.Content.characterEncoding"><a href="#OnRequestFinished.RequestFinished.RequestData.Part.Content.characterEncoding"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">characterEncoding</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The (original) character encoding of the data (if applicable). </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Part.Content.byteData"><a href="#OnRequestFinished.RequestFinished.RequestData.Part.Content.byteData"><span class="qualifier">optional</span> <span class="string">bytes</span> <span class="field-name">byteData</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This field contains the data if BYTES was chosen as the transport mode. If other modes were chosen, this field is not set. </p>
+  <p>@see ContentMode::Transport </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestFinished.RequestFinished.RequestData.Part.Content.stringData"><a href="#OnRequestFinished.RequestFinished.RequestData.Part.Content.stringData"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">stringData</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This field contains the data if either STRING or DATA_URI were chosen as transport mode. If some other mode was chosen, this field is not set. </p>
+  <p>@see ContentMode::Transport </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnRequestFinished.key"><a href="#OnRequestFinished.key"><span class="proto-key">= 16;</span></a></pre><h2 id="OnRequestHeader"><a href="#OnRequestHeader">OnRequestHeader</a></h2>
+<pre class="code-line" id="OnRequestHeader.RequestHeader"><a href="#OnRequestHeader.RequestHeader"><span class="keyword">event</span> <span class="command-name">OnRequestHeader</span><span class="keyword"> returns </span>(<span class="message-name">RequestHeader</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequestHeader.RequestHeader.requestID"><a href="#OnRequestHeader.RequestHeader.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestHeader.RequestHeader.resourceID"><a href="#OnRequestHeader.RequestHeader.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestHeader.RequestHeader.time"><a href="#OnRequestHeader.RequestHeader.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix epoch. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestHeader.RequestHeader.raw"><a href="#OnRequestHeader.RequestHeader.raw"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">raw</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestHeader.RequestHeader.headerList"><a href="#OnRequestHeader.RequestHeader.headerList"><span class="qualifier">repeated</span> <span class="">Header</span> <span class="field-name">headerList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequestHeader.RequestHeader.Header.name"><a href="#OnRequestHeader.RequestHeader.Header.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The name of the HTTP header, for instance "Accept-Charset". </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnRequestHeader.RequestHeader.Header.value"><a href="#OnRequestHeader.RequestHeader.Header.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The value of the HTTP header, for instance "utf-8" when using Accept-Charset, or "text/html; charset=utf8" for Content-Type. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnRequestHeader.key"><a href="#OnRequestHeader.key"><span class="proto-key">= 15;</span></a></pre><h2 id="OnRequestRetry"><a href="#OnRequestRetry">OnRequestRetry</a></h2>
+<pre class="code-line" id="OnRequestRetry.RequestRetry"><a href="#OnRequestRetry.RequestRetry"><span class="keyword">event</span> <span class="command-name">OnRequestRetry</span><span class="keyword"> returns </span>(<span class="message-name">RequestRetry</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnRequestRetry.RequestRetry.resourceID"><a href="#OnRequestRetry.RequestRetry.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestRetry.RequestRetry.fromRequestID"><a href="#OnRequestRetry.RequestRetry.fromRequestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">fromRequestID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestRetry.RequestRetry.toRequestID"><a href="#OnRequestRetry.RequestRetry.toRequestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">toRequestID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestRetry.RequestRetry.time"><a href="#OnRequestRetry.RequestRetry.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnRequestRetry.RequestRetry.requestID"><a href="#OnRequestRetry.RequestRetry.requestID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>fromRequestID alias </p>
+  <p><span class="since-version">Added in version 1.3</span></p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnRequestRetry.key"><a href="#OnRequestRetry.key"><span class="proto-key">= 17;</span></a></pre><h2 id="OnResponse"><a href="#OnResponse">OnResponse</a></h2>
+<pre class="code-line" id="OnResponse.Response"><a href="#OnResponse.Response"><span class="keyword">event</span> <span class="command-name">OnResponse</span><span class="keyword"> returns </span>(<span class="message-name">Response</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnResponse.Response.requestID"><a href="#OnResponse.Response.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnResponse.Response.resourceID"><a href="#OnResponse.Response.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnResponse.Response.time"><a href="#OnResponse.Response.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix epoch. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponse.Response.responseCode"><a href="#OnResponse.Response.responseCode"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">responseCode</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>HTTP response code, such as 200, 404, etc. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnResponse.key"><a href="#OnResponse.key"><span class="proto-key">= 18;</span></a></pre><h2 id="OnResponseFinished"><a href="#OnResponseFinished">OnResponseFinished</a></h2>
+<pre class="code-line" id="OnResponseFinished.ResponseFinished"><a href="#OnResponseFinished.ResponseFinished"><span class="keyword">event</span> <span class="command-name">OnResponseFinished</span><span class="keyword"> returns </span>(<span class="message-name">ResponseFinished</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.requestID"><a href="#OnResponseFinished.ResponseFinished.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.resourceID"><a href="#OnResponseFinished.ResponseFinished.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.time"><a href="#OnResponseFinished.ResponseFinished.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix epoch. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.contentLength"><a href="#OnResponseFinished.ResponseFinished.contentLength"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">contentLength</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.data"><a href="#OnResponseFinished.ResponseFinished.data"><span class="qualifier">optional</span> <span class="">ResourceData</span> <span class="field-name">data</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.ResourceData.resourceID"><a href="#OnResponseFinished.ResponseFinished.ResourceData.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.ResourceData.url"><a href="#OnResponseFinished.ResponseFinished.ResourceData.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.ResourceData.mimeType"><a href="#OnResponseFinished.ResponseFinished.ResourceData.mimeType"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">mimeType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The used mime type. This may be different from the mime type advertised in the HTTP headers. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.ResourceData.characterEncoding"><a href="#OnResponseFinished.ResponseFinished.ResourceData.characterEncoding"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">characterEncoding</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Original character encoding (if applicable). </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.ResourceData.contentLength"><a href="#OnResponseFinished.ResponseFinished.ResourceData.contentLength"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">contentLength</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Content-Length, as advertised by HTTP headers. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.ResourceData.content"><a href="#OnResponseFinished.ResponseFinished.ResourceData.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.ResourceData.Content.length"><a href="#OnResponseFinished.ResponseFinished.ResourceData.Content.length"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">length</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If BYTES or DATA_URI was chosen as the transport mode, this field contains the size of the data. (If, in addition, decoding was enabled, the field contains the size of the decoded data). </p>
+  <p>If STRING was chosen as the transport mode, this field contains the string length (regardless of encoding), i.e. the number of characters, not including zero terminator. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.ResourceData.Content.characterEncoding"><a href="#OnResponseFinished.ResponseFinished.ResourceData.Content.characterEncoding"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">characterEncoding</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The (original) character encoding of the data (if applicable). </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.ResourceData.Content.byteData"><a href="#OnResponseFinished.ResponseFinished.ResourceData.Content.byteData"><span class="qualifier">optional</span> <span class="string">bytes</span> <span class="field-name">byteData</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This field contains the data if BYTES was chosen as the transport mode. If other modes were chosen, this field is not set. </p>
+  <p>@see ContentMode::Transport </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponseFinished.ResponseFinished.ResourceData.Content.stringData"><a href="#OnResponseFinished.ResponseFinished.ResourceData.Content.stringData"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">stringData</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This field contains the data if either STRING or DATA_URI were chosen as transport mode. If some other mode was chosen, this field is not set. </p>
+  <p>@see ContentMode::Transport </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnResponseFinished.key"><a href="#OnResponseFinished.key"><span class="proto-key">= 20;</span></a></pre><h2 id="OnResponseHeader"><a href="#OnResponseHeader">OnResponseHeader</a></h2>
+<pre class="code-line" id="OnResponseHeader.ResponseHeader"><a href="#OnResponseHeader.ResponseHeader"><span class="keyword">event</span> <span class="command-name">OnResponseHeader</span><span class="keyword"> returns </span>(<span class="message-name">ResponseHeader</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnResponseHeader.ResponseHeader.requestID"><a href="#OnResponseHeader.ResponseHeader.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnResponseHeader.ResponseHeader.resourceID"><a href="#OnResponseHeader.ResponseHeader.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnResponseHeader.ResponseHeader.time"><a href="#OnResponseHeader.ResponseHeader.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix epoch. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponseHeader.ResponseHeader.raw"><a href="#OnResponseHeader.ResponseHeader.raw"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">raw</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnResponseHeader.ResponseHeader.headerList"><a href="#OnResponseHeader.ResponseHeader.headerList"><span class="qualifier">repeated</span> <span class="">Header</span> <span class="field-name">headerList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnResponseHeader.ResponseHeader.Header.name"><a href="#OnResponseHeader.ResponseHeader.Header.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The name of the HTTP header, for instance "Accept-Charset". </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnResponseHeader.ResponseHeader.Header.value"><a href="#OnResponseHeader.ResponseHeader.Header.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The value of the HTTP header, for instance "utf-8" when using Accept-Charset, or "text/html; charset=utf8" for Content-Type. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnResponseHeader.key"><a href="#OnResponseHeader.key"><span class="proto-key">= 19;</span></a></pre><h2 id="OnUrlFinished"><a href="#OnUrlFinished">OnUrlFinished</a></h2>
+<pre class="code-line" id="OnUrlFinished.UrlFinished"><a href="#OnUrlFinished.UrlFinished"><span class="keyword">event</span> <span class="command-name">OnUrlFinished</span><span class="keyword"> returns </span>(<span class="message-name">UrlFinished</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnUrlFinished.UrlFinished.resourceID"><a href="#OnUrlFinished.UrlFinished.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlFinished.UrlFinished.result"><a href="#OnUrlFinished.UrlFinished.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnUrlFinished.UrlFinished.FINISHED"><a href="#OnUrlFinished.UrlFinished.FINISHED"><span class="enum-name">FINISHED</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>A URL finished loading, without problems. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlFinished.UrlFinished.FAILED"><a href="#OnUrlFinished.UrlFinished.FAILED"><span class="enum-name">FAILED</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>A URL load failed, e.g. due to connection failure. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlFinished.UrlFinished.STOPPED"><a href="#OnUrlFinished.UrlFinished.STOPPED"><span class="enum-name">STOPPED</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>A URL load was stopped, e.g. by user request. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlFinished.UrlFinished.time"><a href="#OnUrlFinished.UrlFinished.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix epoch. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlFinished.UrlFinished.mimeType"><a href="#OnUrlFinished.UrlFinished.mimeType"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">mimeType</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The MIME type of the resource. This information might not be available if the server did not specify the MIME type, and if content detection has not yet run (or was unable to detect the type). </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlFinished.UrlFinished.characterEncoding"><a href="#OnUrlFinished.UrlFinished.characterEncoding"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">characterEncoding</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The character encoding of the resource. This information might not be available if the server did not specify the character encoding, and if character encoding detection has not yet run (or was unable to detect the type). </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlFinished.UrlFinished.contentLength"><a href="#OnUrlFinished.UrlFinished.contentLength"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">contentLength</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The size of the body (if any). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnUrlFinished.key"><a href="#OnUrlFinished.key"><span class="proto-key">= 11;</span></a></pre><h2 id="OnUrlLoad"><a href="#OnUrlLoad">OnUrlLoad</a></h2>
+<pre class="code-line" id="OnUrlLoad.UrlLoad"><a href="#OnUrlLoad.UrlLoad"><span class="keyword">event</span> <span class="command-name">OnUrlLoad</span><span class="keyword"> returns </span>(<span class="message-name">UrlLoad</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.windowID"><a href="#OnUrlLoad.UrlLoad.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.frameID"><a href="#OnUrlLoad.UrlLoad.frameID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.documentID"><a href="#OnUrlLoad.UrlLoad.documentID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">documentID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.resourceID"><a href="#OnUrlLoad.UrlLoad.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.url"><a href="#OnUrlLoad.UrlLoad.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The URL which which is about to be loaded. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.urlType"><a href="#OnUrlLoad.UrlLoad.urlType"><span class="qualifier">required</span> <span class="">URLType</span> <span class="field-name">urlType</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The type of URL that was started, this can referer to a specific protocol or a special URL type. </p>
+  <p><span class="note"></span> More types may be added in the future, make sure the client supports that. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.UNKNOWN"><a href="#OnUrlLoad.UrlLoad.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Type not known, should not occur. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.HTTP"><a href="#OnUrlLoad.UrlLoad.HTTP"><span class="enum-name">HTTP</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>HTTP protocol. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.HTTPS"><a href="#OnUrlLoad.UrlLoad.HTTPS"><span class="enum-name">HTTPS</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>HTTP protocol with SSL. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.FILE"><a href="#OnUrlLoad.UrlLoad.FILE"><span class="enum-name">FILE</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Local file access. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.DATA"><a href="#OnUrlLoad.UrlLoad.DATA"><span class="enum-name">DATA</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Data URIs, e.g data:text/plain,mydata </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.FTP"><a href="#OnUrlLoad.UrlLoad.FTP"><span class="enum-name">FTP</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.GOPHER"><a href="#OnUrlLoad.UrlLoad.GOPHER"><span class="enum-name">GOPHER</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.WAIS"><a href="#OnUrlLoad.UrlLoad.WAIS"><span class="enum-name">WAIS</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.NEWS"><a href="#OnUrlLoad.UrlLoad.NEWS"><span class="enum-name">NEWS</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.SNEWS"><a href="#OnUrlLoad.UrlLoad.SNEWS"><span class="enum-name">SNEWS</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.NEWSATTACHMENT"><a href="#OnUrlLoad.UrlLoad.NEWSATTACHMENT"><span class="enum-name">NEWSATTACHMENT</span><span class="proto-key"> = </span><span class="enum-key">10</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.SNEWSATTACHMENT"><a href="#OnUrlLoad.UrlLoad.SNEWSATTACHMENT"><span class="enum-name">SNEWSATTACHMENT</span><span class="proto-key"> = </span><span class="enum-key">11</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.EMAIL"><a href="#OnUrlLoad.UrlLoad.EMAIL"><span class="enum-name">EMAIL</span><span class="proto-key"> = </span><span class="enum-key">12</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.ATTACHMENT"><a href="#OnUrlLoad.UrlLoad.ATTACHMENT"><span class="enum-name">ATTACHMENT</span><span class="proto-key"> = </span><span class="enum-key">13</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.TELNET"><a href="#OnUrlLoad.UrlLoad.TELNET"><span class="enum-name">TELNET</span><span class="proto-key"> = </span><span class="enum-key">14</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.MAILTO"><a href="#OnUrlLoad.UrlLoad.MAILTO"><span class="enum-name">MAILTO</span><span class="proto-key"> = </span><span class="enum-key">15</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.OPERA"><a href="#OnUrlLoad.UrlLoad.OPERA"><span class="enum-name">OPERA</span><span class="proto-key"> = </span><span class="enum-key">16</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.JAVASCRIPT"><a href="#OnUrlLoad.UrlLoad.JAVASCRIPT"><span class="enum-name">JAVASCRIPT</span><span class="proto-key"> = </span><span class="enum-key">17</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.CONTENT_ID"><a href="#OnUrlLoad.UrlLoad.CONTENT_ID"><span class="enum-name">CONTENT_ID</span><span class="proto-key"> = </span><span class="enum-key">18</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.TN3270"><a href="#OnUrlLoad.UrlLoad.TN3270"><span class="enum-name">TN3270</span><span class="proto-key"> = </span><span class="enum-key">19</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.SOURCE"><a href="#OnUrlLoad.UrlLoad.SOURCE"><span class="enum-name">SOURCE</span><span class="proto-key"> = </span><span class="enum-key">21</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.CLIENT"><a href="#OnUrlLoad.UrlLoad.CLIENT"><span class="enum-name">CLIENT</span><span class="proto-key"> = </span><span class="enum-key">22</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.NNTP"><a href="#OnUrlLoad.UrlLoad.NNTP"><span class="enum-name">NNTP</span><span class="proto-key"> = </span><span class="enum-key">23</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.NNTPS"><a href="#OnUrlLoad.UrlLoad.NNTPS"><span class="enum-name">NNTPS</span><span class="proto-key"> = </span><span class="enum-key">25</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.SHARE"><a href="#OnUrlLoad.UrlLoad.SHARE"><span class="enum-name">SHARE</span><span class="proto-key"> = </span><span class="enum-key">26</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.GHTTP"><a href="#OnUrlLoad.UrlLoad.GHTTP"><span class="enum-name">GHTTP</span><span class="proto-key"> = </span><span class="enum-key">27</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.TV"><a href="#OnUrlLoad.UrlLoad.TV"><span class="enum-name">TV</span><span class="proto-key"> = </span><span class="enum-key">28</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.EDITED"><a href="#OnUrlLoad.UrlLoad.EDITED"><span class="enum-name">EDITED</span><span class="proto-key"> = </span><span class="enum-key">29</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.ERROR"><a href="#OnUrlLoad.UrlLoad.ERROR"><span class="enum-name">ERROR</span><span class="proto-key"> = </span><span class="enum-key">30</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.DVB"><a href="#OnUrlLoad.UrlLoad.DVB"><span class="enum-name">DVB</span><span class="proto-key"> = </span><span class="enum-key">31</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.TEL"><a href="#OnUrlLoad.UrlLoad.TEL"><span class="enum-name">TEL</span><span class="proto-key"> = </span><span class="enum-key">32</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.MAIL"><a href="#OnUrlLoad.UrlLoad.MAIL"><span class="enum-name">MAIL</span><span class="proto-key"> = </span><span class="enum-key">33</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.IRC"><a href="#OnUrlLoad.UrlLoad.IRC"><span class="enum-name">IRC</span><span class="proto-key"> = </span><span class="enum-key">34</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.SMS"><a href="#OnUrlLoad.UrlLoad.SMS"><span class="enum-name">SMS</span><span class="proto-key"> = </span><span class="enum-key">35</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.SMSTO"><a href="#OnUrlLoad.UrlLoad.SMSTO"><span class="enum-name">SMSTO</span><span class="proto-key"> = </span><span class="enum-key">36</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.CHAT_TRANSFER"><a href="#OnUrlLoad.UrlLoad.CHAT_TRANSFER"><span class="enum-name">CHAT_TRANSFER</span><span class="proto-key"> = </span><span class="enum-key">39</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.DEVICE"><a href="#OnUrlLoad.UrlLoad.DEVICE"><span class="enum-name">DEVICE</span><span class="proto-key"> = </span><span class="enum-key">40</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.MOUNTPOINT"><a href="#OnUrlLoad.UrlLoad.MOUNTPOINT"><span class="enum-name">MOUNTPOINT</span><span class="proto-key"> = </span><span class="enum-key">41</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.WIDGET"><a href="#OnUrlLoad.UrlLoad.WIDGET"><span class="enum-name">WIDGET</span><span class="proto-key"> = </span><span class="enum-key">42</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.OBMLSERVER"><a href="#OnUrlLoad.UrlLoad.OBMLSERVER"><span class="enum-name">OBMLSERVER</span><span class="proto-key"> = </span><span class="enum-key">43</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.UNITE"><a href="#OnUrlLoad.UrlLoad.UNITE"><span class="enum-name">UNITE</span><span class="proto-key"> = </span><span class="enum-key">44</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.INTERNAL"><a href="#OnUrlLoad.UrlLoad.INTERNAL"><span class="enum-name">INTERNAL</span><span class="proto-key"> = </span><span class="enum-key">100</span><span class="proto-key">;</span></a></pre></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.time"><a href="#OnUrlLoad.UrlLoad.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix epoch. </p></div></li>
+<li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.loadOrigin"><a href="#OnUrlLoad.UrlLoad.loadOrigin"><span class="qualifier">optional</span> <span class="">LoadOrigin</span> <span class="field-name">loadOrigin</span><span class="proto-key"> = 8</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>This field may be set to provide additional information about the origin of a URL load. </p>
+  <p>If the field is not set, the origin is unknown. </p>
+  <p><span class="since-version">Added in version 1.2</span></p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnUrlLoad.UrlLoad.XHR"><a href="#OnUrlLoad.UrlLoad.XHR"><span class="enum-name">XHR</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The resource was requested by XMLHttpRequest. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnUrlLoad.key"><a href="#OnUrlLoad.key"><span class="proto-key">= 10;</span></a></pre><h2 id="OnUrlRedirect"><a href="#OnUrlRedirect">OnUrlRedirect</a></h2>
+<pre class="code-line" id="OnUrlRedirect.UrlRedirect"><a href="#OnUrlRedirect.UrlRedirect"><span class="keyword">event</span> <span class="command-name">OnUrlRedirect</span><span class="keyword"> returns </span>(<span class="message-name">UrlRedirect</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnUrlRedirect.UrlRedirect.fromResourceID"><a href="#OnUrlRedirect.UrlRedirect.fromResourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">fromResourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlRedirect.UrlRedirect.toResourceID"><a href="#OnUrlRedirect.UrlRedirect.toResourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">toResourceID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlRedirect.UrlRedirect.time"><a href="#OnUrlRedirect.UrlRedirect.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix epoch. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnUrlRedirect.key"><a href="#OnUrlRedirect.key"><span class="proto-key">= 12;</span></a></pre><h2 id="OnUrlUnload"><a href="#OnUrlUnload">OnUrlUnload</a></h2>
+<pre class="code-line" id="OnUrlUnload.UrlUnload"><a href="#OnUrlUnload.UrlUnload"><span class="keyword">event</span> <span class="command-name">OnUrlUnload</span><span class="keyword"> returns </span>(<span class="message-name">UrlUnload</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="OnUrlUnload.UrlUnload.resourceID"><a href="#OnUrlUnload.UrlUnload.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="OnUrlUnload.UrlUnload.time"><a href="#OnUrlUnload.UrlUnload.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Milliseconds since Unix epoch. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="OnUrlUnload.key"><a href="#OnUrlUnload.key"><span class="proto-key">= 13;</span></a></pre></div>

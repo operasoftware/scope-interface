@@ -1,0 +1,180 @@
+<!doctype html>
+<title>Overlay.1.0</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="./script/script.js"></script>
+<h1>Overlay<span class="service-version">1.0</spnan></h1>
+<div class="sidepanel">
+<p class="back"><a href="./index.html">back</a></p>
+<h3>Commands</h3>
+<ul class="commands">
+<li><a href="#CreateOverlay">CreateOverlay</a></li>
+
+<li><a href="#RemoveOverlay">RemoveOverlay</a></li>
+
+</ul>
+<h3>Events</h3>
+<ul class="events">
+
+</ul>
+</div>
+<div class="main-view">
+<div class="doc">
+  <p>The overlay service can overlay painted areas over a Window. </p>
+  <p>Currently, only one overlay method is supported (<span class="domain-specific">Area</span>), but additional methods may be added in the future. </p>
+  <h2>Usage </h2>
+  <p>Overlays are created with the <span class="domain-specific">CreateOverlay</span> command. This command returns a <span class="domain-specific">overlayID</span>, which must be used when removing the overlay with <span class="domain-specific">RemoveOverlay</span>. </p>
+  <h2>Paint Order </h2>
+  <p>When creating the overlay, you must specify where the overlay should be inserted into the list of overlays. It is possible to insert the overlay in the front of all others, behind all others, or above/beneath a specific overlay in the list. </p>
+  <h2>Area Overlay </h2>
+  <p>Currently, the only supported overlay method is <span class="domain-specific">AREA</span>. In this mode, you define an area of the document to be painted in a certain color. A border and grid color may also be specified. </p></div><h2 id="CreateOverlay"><a href="#CreateOverlay">CreateOverlay</a></h2>
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg"><a href="#CreateOverlay.CreateOverlayArg"><span class="keyword">command</span> <span class="command-name">CreateOverlay</span>(<span class="message-name">CreateOverlayArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.windowID"><a href="#CreateOverlay.CreateOverlayArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.overlayType"><a href="#CreateOverlay.CreateOverlayArg.overlayType"><span class="qualifier">required</span> <span class="">OverlayType</span> <span class="field-name">overlayType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The type of overlay we want to create. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AREA"><a href="#CreateOverlay.CreateOverlayArg.AREA"><span class="enum-name">AREA</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The overlay will be an <span class="domain-specific">AreaOverlay</span>. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.insertion"><a href="#CreateOverlay.CreateOverlayArg.insertion"><span class="qualifier">required</span> <span class="">Insertion</span> <span class="field-name">insertion</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Where to insert this overlay in the list of overlays. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.Insertion.method"><a href="#CreateOverlay.CreateOverlayArg.Insertion.method"><span class="qualifier">required</span> <span class="">InsertionMethod</span> <span class="field-name">method</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Specifies how an overlay should be inserted. </p></div><div class="enum">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.Insertion.FRONT"><a href="#CreateOverlay.CreateOverlayArg.Insertion.FRONT"><span class="enum-name">FRONT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Insert the overlay at the front. This means this overlay will be rendered over all other overlays. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.Insertion.BACK"><a href="#CreateOverlay.CreateOverlayArg.Insertion.BACK"><span class="enum-name">BACK</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Insert the overlay at the back. This means all other overlays will be rendered over this overlay. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.Insertion.ABOVE_TARGET"><a href="#CreateOverlay.CreateOverlayArg.Insertion.ABOVE_TARGET"><span class="enum-name">ABOVE_TARGET</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Insert an overlay in front of another overlay. This means this overlay will be rendered over the other overlay. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.Insertion.BELOW_TARGET"><a href="#CreateOverlay.CreateOverlayArg.Insertion.BELOW_TARGET"><span class="enum-name">BELOW_TARGET</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Insert an overlay behind another overlay. This means this overlay will be rendered below the other overlay. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.Insertion.overlayID"><a href="#CreateOverlay.CreateOverlayArg.Insertion.overlayID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">overlayID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If <span class="domain-specific">method</span> is <span class="domain-specific">ABOVE_TARGET</span> or <span class="domain-specific">BELOW_TARGET</span>, then this field must be set, and refer to a valid overlay. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.areaOverlay"><a href="#CreateOverlay.CreateOverlayArg.areaOverlay"><span class="qualifier">optional</span> <span class="">AreaOverlay</span> <span class="field-name">areaOverlay</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Must be provided if <span class="domain-specific">overlayType</span> is <span class="domain-specific">AREA</span>. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.area"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.area"><span class="qualifier">required</span> <span class="">Area</span> <span class="field-name">area</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The area that should be painted. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Area.x"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Area.x"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">x</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The x-coordinate of the upper-left corner of the area, in document coordinates. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Area.y"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Area.y"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">y</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The y-coordinate of the upper-left corner of the area, in document coordinates. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Area.w"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Area.w"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">w</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The width of the area. </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Area.h"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Area.h"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">h</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The height of the area. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.backgroundColor"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.backgroundColor"><span class="qualifier">required</span> <span class="">Color</span> <span class="field-name">backgroundColor</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The background color of the area. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.r"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.r"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">r</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The red component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.g"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.g"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">g</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The green component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.b"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.b"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">b</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The blue component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.a"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.a"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">a</span><span class="proto-key"> = 4</span> [default = 255]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The alpha component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.borderColor"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.borderColor"><span class="qualifier">optional</span> <span class="">Color</span> <span class="field-name">borderColor</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If set, draw a 1px border on the inside of the area. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.r"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.r"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">r</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The red component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.g"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.g"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">g</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The green component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.b"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.b"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">b</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The blue component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.a"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.a"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">a</span><span class="proto-key"> = 4</span> [default = 255]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The alpha component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.gridColor"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.gridColor"><span class="qualifier">optional</span> <span class="">Color</span> <span class="field-name">gridColor</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>If set, draw a 1px wide lines intersecting the area edges and extending over whole window. </p></div><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.r"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.r"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">r</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The red component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.g"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.g"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">g</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The green component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.b"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.b"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">b</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The blue component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+<li class="field">
+<pre class="code-line" id="CreateOverlay.CreateOverlayArg.AreaOverlay.Color.a"><a href="#CreateOverlay.CreateOverlayArg.AreaOverlay.Color.a"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">a</span><span class="proto-key"> = 4</span> [default = 255]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The alpha component of the <span class="domain-specific">Color</span>. (0 - 255). </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="CreateOverlay.OverlayID"><a href="#CreateOverlay.OverlayID"><span class="keyword">returns</span> (<span class="message-name">OverlayID</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="CreateOverlay.OverlayID.overlayID"><a href="#CreateOverlay.OverlayID.overlayID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">overlayID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+  <p>Non-zero ID for an overlay. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="CreateOverlay.key"><a href="#CreateOverlay.key"><span class="proto-key">= 1;</span></a></pre><h2 id="RemoveOverlay"><a href="#RemoveOverlay">RemoveOverlay</a></h2>
+<pre class="code-line" id="RemoveOverlay.RemoveOverlayArg"><a href="#RemoveOverlay.RemoveOverlayArg"><span class="keyword">command</span> <span class="command-name">RemoveOverlay</span>(<span class="message-name">RemoveOverlayArg</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul><li class="field">
+<pre class="code-line" id="RemoveOverlay.RemoveOverlayArg.windowID"><a href="#RemoveOverlay.RemoveOverlayArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<li class="field">
+<pre class="code-line" id="RemoveOverlay.RemoveOverlayArg.overlayID"><a href="#RemoveOverlay.RemoveOverlayArg.overlayID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">overlayID</span><span class="proto-key"> = 2</span> [default = 0]<span class="proto-key">;</span></a></pre><div class="doc">
+  <p>The ID for the overlay to remove. </p>
+  <p>If not set, remove <em>all</em> overlays for the given window. </p></div></li>
+</ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="RemoveOverlay.Default"><a href="#RemoveOverlay.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
+<pre class="code-line">{</pre>
+<ul></ul>
+<pre class="code-line">}</pre>
+</div><pre class="code-line" id="RemoveOverlay.key"><a href="#RemoveOverlay.key"><span class="proto-key">= 2;</span></a></pre></div>
