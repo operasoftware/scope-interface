@@ -41,7 +41,7 @@
   <p>Eval() will return the value of the last expression that is evaluated. </p>
   <p>Some examples:: </p>"2 + 2" "window" // returns the window object "x = 5; x*x" "my_function()" </div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalArg.variableList"><span class="expander">&#x25BC;</span><a href="#Eval.EvalArg.variableList"><span class="qualifier">repeated</span> <span class="">Variable</span> <span class="field-name">variableList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalArg.variableList"><span class="expander">&nbsp;</span><a href="#Eval.EvalArg.variableList"><span class="qualifier">repeated</span> <span class="">Variable</span> <span class="field-name">variableList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A list of objects to place in the execution environment when evaluating <b>scriptData</b>. </p>
   <p>Each object is assigned to variable specified in <b>Variable.name</b>. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -59,7 +59,7 @@
 </div><pre class="code-line" id="Eval.EvalResult"><a href="#Eval.EvalResult"><span class="keyword">returns</span> (<span class="message-name">EvalResult</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="Eval.EvalResult.status"><span class="expander">&#x25BC;</span><a href="#Eval.EvalResult.status"><span class="qualifier">required</span> <span class="">Status</span> <span class="field-name">status</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResult.status"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.status"><span class="qualifier">required</span> <span class="">Status</span> <span class="field-name">status</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Evaluation status, a successful evaluation returns SUCCESS. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -76,12 +76,12 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.value"><span class="expander">&#x25BC;</span><a href="#Eval.EvalResult.value"><span class="qualifier">required</span> <span class="">Value</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResult.value"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.value"><span class="qualifier">required</span> <span class="">Value</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The result of the evaluated script. </p>
   <p>If execution failed (status != SUCCESS) then this will contain the undefined value. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.type"><span class="expander">&#x25BC;</span><a href="#Eval.EvalResult.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResult.Value.type"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of value. </p>
   <p><span class="note"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
 <pre class="code-line">{</pre>
@@ -128,7 +128,7 @@
 <pre class="code-line" id="Eval.EvalResult.Value.str"><a href="#Eval.EvalResult.Value.str"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">str</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The string, set if type = STRING. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.object"><span class="expander">&#x25BC;</span><a href="#Eval.EvalResult.Value.object"><span class="qualifier">optional</span> <span class="">Object</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResult.Value.object"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.Value.object"><span class="qualifier">optional</span> <span class="">Object</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Object information, set if type = OBJECT. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -139,7 +139,7 @@
 <pre class="code-line" id="Eval.EvalResult.Value.Object.isCallable"><a href="#Eval.EvalResult.Value.Object.isCallable"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isCallable</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>true if the object can be called, this is typically functions but other objects are also possible. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.type"><span class="expander">&#x25BC;</span><a href="#Eval.EvalResult.Value.Object.type"><span class="qualifier">required</span> <span class="">ObjectType</span> <span class="field-name">type</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResult.Value.Object.type"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.Value.Object.type"><span class="qualifier">required</span> <span class="">ObjectType</span> <span class="field-name">type</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of object, either a plain object or a function. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -160,7 +160,7 @@
   <p>The name of the function, only set if type = FUNCTION. If the function is anonymous, then a suitable alias <em>may</em> be assigned based on context, if possible. For instance:: </p>foo.bar = function(){} 
   <p>Would get the functionName 'bar'. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.propertyList"><span class="expander">&#x25BC;</span><a href="#Eval.EvalResult.Value.Object.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResult.Value.Object.propertyList"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.Value.Object.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A list of properties available on the object. </p>
   <p>Is omitted in some cases when a full property list (can be huge) is not desirable. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -196,10 +196,10 @@
 </div><pre class="code-line" id="ExamineObjects.ObjectList"><a href="#ExamineObjects.ObjectList"><span class="keyword">returns</span> (<span class="message-name">ObjectList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.prototypeList"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectList.prototypeList"><span class="qualifier">repeated</span> <span class="">PrototypeChain</span> <span class="field-name">prototypeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ExamineObjects.ObjectList.prototypeList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.prototypeList"><span class="qualifier">repeated</span> <span class="">PrototypeChain</span> <span class="field-name">prototypeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.objectList"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.objectList"><span class="qualifier">repeated</span> <span class="">Object</span> <span class="field-name">objectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.objectList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.objectList"><span class="qualifier">repeated</span> <span class="">Object</span> <span class="field-name">objectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.objectID"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -209,7 +209,7 @@
 <pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.isCallable"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.isCallable"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isCallable</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>true if the object can be called, this is typically functions but other objects are also possible. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.type"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.type"><span class="qualifier">required</span> <span class="">ObjectType</span> <span class="field-name">type</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.type"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.type"><span class="qualifier">required</span> <span class="">ObjectType</span> <span class="field-name">type</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of object, either a plain object or a function. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -230,17 +230,17 @@
   <p>The name of the function, only set if type = FUNCTION. If the function is anonymous, then a suitable alias <em>may</em> be assigned based on context, if possible. For instance:: </p>foo.bar = function(){} 
   <p>Would get the functionName 'bar'. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.propertyList"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.propertyList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A list of properties available on the object. </p>
   <p>Is omitted in some cases when a full property list (can be huge) is not desirable. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.name"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.value"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.value"><span class="qualifier">required</span> <span class="">Value</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.value"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.value"><span class="qualifier">required</span> <span class="">Value</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.type"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.type"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of value. </p>
   <p><span class="note"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
 <pre class="code-line">{</pre>
@@ -317,7 +317,7 @@
 </div><pre class="code-line" id="ListRuntimes.RuntimeList"><a href="#ListRuntimes.RuntimeList"><span class="keyword">returns</span> (<span class="message-name">RuntimeList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ListRuntimes.RuntimeList.runtimeList"><span class="expander">&#x25BC;</span><a href="#ListRuntimes.RuntimeList.runtimeList"><span class="qualifier">repeated</span> <span class="">Runtime</span> <span class="field-name">runtimeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ListRuntimes.RuntimeList.runtimeList"><span class="expander">&nbsp;</span><a href="#ListRuntimes.RuntimeList.runtimeList"><span class="qualifier">repeated</span> <span class="">Runtime</span> <span class="field-name">runtimeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListRuntimes.RuntimeList.Runtime.runtimeID"><a href="#ListRuntimes.RuntimeList.Runtime.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -359,7 +359,7 @@
 <ul><li class="field">
 <pre class="code-line" id="OnReadyStateChanged.ReadyStateChange.runtimeID"><a href="#OnReadyStateChanged.ReadyStateChange.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="OnReadyStateChanged.ReadyStateChange.state"><span class="expander">&#x25BC;</span><a href="#OnReadyStateChanged.ReadyStateChange.state"><span class="qualifier">required</span> <span class="">State</span> <span class="field-name">state</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="OnReadyStateChanged.ReadyStateChange.state"><span class="expander">&nbsp;</span><a href="#OnReadyStateChanged.ReadyStateChange.state"><span class="qualifier">required</span> <span class="">State</span> <span class="field-name">state</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnReadyStateChanged.ReadyStateChange.DOM_ENVIRONMENT_CREATED"><a href="#OnReadyStateChanged.ReadyStateChange.DOM_ENVIRONMENT_CREATED"><span class="enum-name">DOM_ENVIRONMENT_CREATED</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">

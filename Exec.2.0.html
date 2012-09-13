@@ -40,7 +40,7 @@
 <pre class="code-line" id="Exec.ActionList"><a href="#Exec.ActionList"><span class="keyword">command</span> <span class="command-name">Exec</span>(<span class="message-name">ActionList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="Exec.ActionList.actionList"><span class="expander">&#x25BC;</span><a href="#Exec.ActionList.actionList"><span class="qualifier">repeated</span> <span class="">Action</span> <span class="field-name">actionList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="Exec.ActionList.actionList"><span class="expander">&nbsp;</span><a href="#Exec.ActionList.actionList"><span class="qualifier">repeated</span> <span class="">Action</span> <span class="field-name">actionList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="Exec.ActionList.Action.name"><a href="#Exec.ActionList.Action.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -69,7 +69,7 @@
 </div><pre class="code-line" id="GetActionInfoList.ActionInfoList"><a href="#GetActionInfoList.ActionInfoList"><span class="keyword">returns</span> (<span class="message-name">ActionInfoList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetActionInfoList.ActionInfoList.actionInfoList"><span class="expander">&#x25BC;</span><a href="#GetActionInfoList.ActionInfoList.actionInfoList"><span class="qualifier">repeated</span> <span class="">ActionInfo</span> <span class="field-name">actionInfoList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="GetActionInfoList.ActionInfoList.actionInfoList"><span class="expander">&nbsp;</span><a href="#GetActionInfoList.ActionInfoList.actionInfoList"><span class="qualifier">repeated</span> <span class="">ActionInfo</span> <span class="field-name">actionInfoList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetActionInfoList.ActionInfoList.ActionInfo.name"><a href="#GetActionInfoList.ActionInfoList.ActionInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -106,7 +106,7 @@
   <p>Number of milliseconds to wait before capturing the screen area. </p>
   <p>The default is 10 seconds. </p></div></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.area"><span class="expander">&#x25BC;</span><a href="#SetupScreenWatcher.ScreenWatcher.area"><span class="qualifier">required</span> <span class="">Area</span> <span class="field-name">area</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.area"><span class="expander">&nbsp;</span><a href="#SetupScreenWatcher.ScreenWatcher.area"><span class="qualifier">required</span> <span class="">Area</span> <span class="field-name">area</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Define an area on the page, relative to the page (not viewport). </p>
   <p>The default area is {x=0, y=0, w=200, h=100}. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -128,7 +128,7 @@
 <pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.windowID"><a href="#SetupScreenWatcher.ScreenWatcher.windowID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 4</span> [default = 0]<span class="proto-key">;</span></a></pre><div class="doc">
   <p>The ID of the window to watch, the default (or 0) is to watch the current window </p></div></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.colorSpecList"><span class="expander">&#x25BC;</span><a href="#SetupScreenWatcher.ScreenWatcher.colorSpecList"><span class="qualifier">repeated</span> <span class="">ColorSpec</span> <span class="field-name">colorSpecList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.colorSpecList"><span class="expander">&nbsp;</span><a href="#SetupScreenWatcher.ScreenWatcher.colorSpecList"><span class="qualifier">repeated</span> <span class="">ColorSpec</span> <span class="field-name">colorSpecList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.ColorSpec.id"><a href="#SetupScreenWatcher.ScreenWatcher.ColorSpec.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -163,7 +163,7 @@
 <li class="field">
 <pre class="code-line" id="SetupScreenWatcher.ScreenWatcherResult.png"><a href="#SetupScreenWatcher.ScreenWatcherResult.png"><span class="qualifier">optional</span> <span class="string">bytes</span> <span class="field-name">png</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherResult.colorMatchList"><span class="expander">&#x25BC;</span><a href="#SetupScreenWatcher.ScreenWatcherResult.colorMatchList"><span class="qualifier">repeated</span> <span class="">ColorMatch</span> <span class="field-name">colorMatchList</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherResult.colorMatchList"><span class="expander">&nbsp;</span><a href="#SetupScreenWatcher.ScreenWatcherResult.colorMatchList"><span class="qualifier">repeated</span> <span class="">ColorMatch</span> <span class="field-name">colorMatchList</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetupScreenWatcher.ScreenWatcherResult.ColorMatch.id"><a href="#SetupScreenWatcher.ScreenWatcherResult.ColorMatch.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
