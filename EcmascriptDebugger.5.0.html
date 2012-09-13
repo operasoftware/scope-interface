@@ -8,64 +8,37 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#AddBreakpoint">AddBreakpoint</a></li>
-
 <li><a href="#AddEventHandler">AddEventHandler</a></li>
-
 <li><a href="#Break">Break</a></li>
-
 <li><a href="#ContinueThread">ContinueThread</a></li>
-
 <li><a href="#CssGetAllStylesheets">CssGetAllStylesheets</a></li>
-
 <li><a href="#CssGetIndexMap">CssGetIndexMap</a></li>
-
 <li><a href="#CssGetStyleDeclarations">CssGetStyleDeclarations</a></li>
-
 <li><a href="#CssGetStylesheet">CssGetStylesheet</a></li>
-
 <li><a href="#Eval">Eval</a></li>
-
 <li><a href="#ExamineObjects">ExamineObjects</a></li>
-
 <li><a href="#GetBacktrace">GetBacktrace</a></li>
-
 <li><a href="#GetSelectedObject">GetSelectedObject</a></li>
-
 <li><a href="#InspectDom">InspectDom</a></li>
-
 <li><a href="#ListRuntimes">ListRuntimes</a></li>
-
 <li><a href="#ReleaseObjects">ReleaseObjects</a></li>
-
 <li><a href="#RemoveBreakpoint">RemoveBreakpoint</a></li>
-
 <li><a href="#RemoveEventHandler">RemoveEventHandler</a></li>
-
 <li><a href="#SetConfiguration">SetConfiguration</a></li>
-
 <li><a href="#SpotlightObject">SpotlightObject</a></li>
-
 <li><a href="#SpotlightObjects">SpotlightObjects</a></li>
 
 </ul>
 <h3>Events</h3>
 <ul class="events">
 <li><a href="#OnHandleEvent">OnHandleEvent</a></li>
-
 <li><a href="#OnNewScript">OnNewScript</a></li>
-
 <li><a href="#OnObjectSelected">OnObjectSelected</a></li>
-
 <li><a href="#OnParseError">OnParseError</a></li>
-
 <li><a href="#OnRuntimeStarted">OnRuntimeStarted</a></li>
-
 <li><a href="#OnRuntimeStopped">OnRuntimeStopped</a></li>
-
 <li><a href="#OnThreadFinished">OnThreadFinished</a></li>
-
 <li><a href="#OnThreadStarted">OnThreadStarted</a></li>
-
 <li><a href="#OnThreadStoppedAt">OnThreadStoppedAt</a></li>
 
 </ul>
@@ -106,9 +79,13 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="AddBreakpoint.key"><a href="#AddBreakpoint.key"><span class="proto-key">= 6;</span></a></pre><h2 id="AddEventHandler"><a href="#AddEventHandler">AddEventHandler</a></h2>
-<pre class="code-line" id="AddEventHandler.EventHandler"><a href="#AddEventHandler.EventHandler"><span class="keyword">command</span> <span class="command-name">AddEventHandler</span>(<span class="message-name">EventHandler</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Add an event handler. This will generate a OnHandleEvent event every time the XML event defined by the pair (<span class="domain-specific">namespace</span>, <span class="domain-specific">eventType</span>) reaches the object defined by <span class="domain-specific">objectID</span> in the capturing phase. XML events are defined in <a href="http://www.w3.org/TR/xml-events">http://www.w3.org/TR/xml-events</a> </p></div><pre class="code-line" id="AddEventHandler.EventHandler"><a href="#AddEventHandler.EventHandler"><span class="keyword">command</span> <span class="command-name">AddEventHandler</span>(<span class="message-name">EventHandler</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Add an event handler. This will generate a HANDLE-EVENT event every time the XML event defined by the pair (NAMESPACE, EVENT-TYPE) reaches the object defined by OBJECT-ID in the capturing phase. XML events are defined in <a href="http://www.w3.org/TR/xml-events">http://www.w3.org/TR/xml-events</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="AddEventHandler.EventHandler.handlerID"><a href="#AddEventHandler.EventHandler.handlerID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">handlerID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A nonzero ID chosen by the client. The host may also use this ID to refer to the event handler. </p></div></li>
 <li class="field">
@@ -234,7 +211,27 @@
 <li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.styleList"><span class="expander">&nbsp;</span><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.styleList"><span class="qualifier">repeated</span> <span class="">StyleDeclaration</span> <span class="field-name">styleList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Common to all origins: </p>
+  <ul>
+    <li>indexList </li>
+    <li>valueList </li>
+    <li>priorityList </li>
+    <li>statusList </li>
+  </ul>
+  <p>Common to AUTHOR and LOCAL </p>
+  <ul>
+    <li>selector </li>
+    <li>specificity </li>
+  </ul>
+  <p>For AUTHOR </p>
+  <ul>
+    <li>stylesheetID </li>
+    <li>ruleID </li>
+    <li>ruleType </li>
+  </ul></div></li>
+<li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.origin"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.origin"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">origin</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>1 = USER-AGENT, 2=LOCAL, 3=AUTHOR, 4=ELEMENT </p></div></li>
 <li class="field">
@@ -277,7 +274,41 @@
 <ul><li class="field">
 <pre class="code-line" id="CssGetStylesheet.CssStylesheetRules.ruleList"><span class="expander">&nbsp;</span><a href="#CssGetStylesheet.CssStylesheetRules.ruleList"><span class="qualifier">repeated</span> <span class="">StylesheetRule</span> <span class="field-name">ruleList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Common to FONT_FACE, PAGE and STYLE is: </p>
+  <ul>
+    <li>indexList </li>
+    <li>valueList </li>
+    <li>priorityList </li>
+  </ul>
+  <p>Common to STYLE and PAGE is: </p>
+  <ul>
+    <li>selectorList </li>
+    <li>specificityList </li>
+  </ul>
+  <p>Common to MEDIA and IMPORT </p>
+  <ul>
+    <li>mediaList </li>
+  </ul>
+  <p>For MEDIA </p>
+  <ul>
+    <li>ruleList </li>
+  </ul>
+  <p>For IMPORT </p>
+  <ul>
+    <li>href </li>
+    <li>importStylesheetID </li>
+  </ul>
+  <p>For PAGE </p>
+  <ul>
+    <li>pseudoClass </li>
+  </ul>
+  <p>For CHARSET </p>
+  <ul>
+    <li>charset </li>
+  </ul></div></li>
+<li class="field">
 <pre class="code-line" id="CssGetStylesheet.CssStylesheetRules.StylesheetRule.type"><a href="#CssGetStylesheet.CssStylesheetRules.StylesheetRule.type"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Type values: 0 - UNKNOWN 1 - STYLE 2 - CHARSET 3 - IMPORT 4 - MEDIA 5 - FONT_FACE 6 - PAGE 7 - NAMESPACE // Not supported </p></div></li>
 <li class="field">
@@ -418,7 +449,10 @@
 <li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.ObjectInfo.propertyList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.ObjectInfo.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>If <span class="domain-specific">type</span> is ... then ... is present:   "object", <span class="domain-specific">objectValue</span>   "number", <span class="domain-specific">value</span>   "string", <span class="domain-specific">value</span>   "boolean", <span class="domain-specific">value</span> (<span class="domain-specific">"true"</span> or <span class="domain-specific">"false"</span>) Otherwise (<span class="domain-specific">"undefined"</span> or <span class="domain-specific">"null"</span>), only <span class="domain-specific">type</span> is present. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.ObjectInfo.Property.name"><a href="#ExamineObjects.ObjectList.ObjectInfo.Property.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.ObjectInfo.Property.type"><a href="#ExamineObjects.ObjectList.ObjectInfo.Property.type"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -477,7 +511,10 @@
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetBacktrace.BacktraceFrameList"><a href="#GetBacktrace.BacktraceFrameList"><span class="keyword">returns</span> (<span class="message-name">BacktraceFrameList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Frames are in innermost-first order. </p></div></li>
+<li class="field">
 <pre class="code-line" id="GetBacktrace.BacktraceFrameList.frameList"><span class="expander">&nbsp;</span><a href="#GetBacktrace.BacktraceFrameList.frameList"><span class="qualifier">repeated</span> <span class="">BacktraceFrame</span> <span class="field-name">frameList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -630,7 +667,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ListRuntimes.key"><a href="#ListRuntimes.key"><span class="proto-key">= 1;</span></a></pre><h2 id="ReleaseObjects"><a href="#ReleaseObjects">ReleaseObjects</a></h2>
-<pre class="code-line" id="ReleaseObjects.Default"><a href="#ReleaseObjects.Default"><span class="keyword">command</span> <span class="command-name">ReleaseObjects</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Release all objects (that is, object received through this protocol as objectIDs), so they can be garbage collected by the ecmascript engine. Note that garbage collection is not necessarily run at this point, so the memory for the given objects might not be freed immediately. IMPORTANT: After this call, no object IDs received earlier are valid! All objects needs to be requested again. </p></div><pre class="code-line" id="ReleaseObjects.Default"><a href="#ReleaseObjects.Default"><span class="keyword">command</span> <span class="command-name">ReleaseObjects</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
@@ -701,10 +739,16 @@
 </div><pre class="code-line" id="SpotlightObject.key"><a href="#SpotlightObject.key"><span class="proto-key">= 5;</span></a></pre><h2 id="SpotlightObjects"><a href="#SpotlightObjects">SpotlightObjects</a></h2>
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection"><a href="#SpotlightObjects.SpotlightSelection"><span class="keyword">command</span> <span class="command-name">SpotlightObjects</span>(<span class="message-name">SpotlightSelection</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>To highlight elements in the document </p></div></li>
+<li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.spotlightObjectList"><span class="expander">&nbsp;</span><a href="#SpotlightObjects.SpotlightSelection.spotlightObjectList"><span class="qualifier">repeated</span> <span class="">SpotlightObject</span> <span class="field-name">spotlightObjectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The drawing order is box, reference-box-frame, box-frame, grid. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.objectID"><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.scrollIntoView"><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.scrollIntoView"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">scrollIntoView</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -712,7 +756,10 @@
 <li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.boxList"><span class="expander">&nbsp;</span><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.boxList"><span class="qualifier">repeated</span> <span class="">SpotlightBox</span> <span class="field-name">boxList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Colors are encoded as RGBA with 8 bits for each channel. encoded_color = ( red &lt;&lt; 24 ) + ( green &lt;&lt; 16 ) + ( blue &lt;&lt; 8 ) + ( alpha ) with red, green, blue and alpha in a range of 0 - 255 e.g.: </p>red     4278190335 green     16711935 blue         65535 yellow  4294902015 cyan      16777215 magenta 4278255615 </div></li>
+<li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.SpotlightBox.boxType"><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.SpotlightBox.boxType"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">boxType</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Valid values:   0: dimension   1: padding   2: border   3: margin </p></div></li>
 <li class="field">
@@ -736,7 +783,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="SpotlightObjects.key"><a href="#SpotlightObjects.key"><span class="proto-key">= 27;</span></a></pre><h2 id="OnHandleEvent"><a href="#OnHandleEvent">OnHandleEvent</a></h2>
-<pre class="code-line" id="OnHandleEvent.DomEvent"><a href="#OnHandleEvent.DomEvent"><span class="keyword">event</span> <span class="command-name">OnHandleEvent</span><span class="keyword"> returns </span>(<span class="message-name">DomEvent</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This event is issued for XML events on the host, if a corresponding <span class="domain-specific">AddEventHandler</span> has been issued earlier by the client. </p></div><pre class="code-line" id="OnHandleEvent.DomEvent"><a href="#OnHandleEvent.DomEvent"><span class="keyword">event</span> <span class="command-name">OnHandleEvent</span><span class="keyword"> returns </span>(<span class="message-name">DomEvent</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnHandleEvent.DomEvent.objectID"><a href="#OnHandleEvent.DomEvent.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -775,7 +823,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnNewScript.key"><a href="#OnNewScript.key"><span class="proto-key">= 16;</span></a></pre><h2 id="OnObjectSelected"><a href="#OnObjectSelected">OnObjectSelected</a></h2>
-<pre class="code-line" id="OnObjectSelected.ObjectSelection"><a href="#OnObjectSelected.ObjectSelection"><span class="keyword">event</span> <span class="command-name">OnObjectSelected</span><span class="keyword"> returns </span>(<span class="message-name">ObjectSelection</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Some hosts send this event to indicate that an object was selected for debugging, e.g., if the debugger was started by right-clicking an element and clicking "inspect" in the context menu, this event will be sent right after startup. A client may safely choose to ignore this event. </p></div><pre class="code-line" id="OnObjectSelected.ObjectSelection"><a href="#OnObjectSelected.ObjectSelection"><span class="keyword">event</span> <span class="command-name">OnObjectSelected</span><span class="keyword"> returns </span>(<span class="message-name">ObjectSelection</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnObjectSelected.ObjectSelection.objectID"><a href="#OnObjectSelected.ObjectSelection.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>

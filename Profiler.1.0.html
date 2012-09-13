@@ -8,11 +8,8 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#GetEvents">GetEvents</a></li>
-
 <li><a href="#ReleaseSession">ReleaseSession</a></li>
-
 <li><a href="#StartProfiler">StartProfiler</a></li>
-
 <li><a href="#StopProfiler">StopProfiler</a></li>
 
 </ul>
@@ -51,7 +48,9 @@
   </ul>
   <h2>Time Information </h2>
   <p>All time fields in this service are specified in milliseconds, and time is counted since profiling began (i.e. profiling began at '0' millliseconds). </p></div><h2 id="GetEvents"><a href="#GetEvents">GetEvents</a></h2>
-<pre class="code-line" id="GetEvents.GetEventsArg"><a href="#GetEvents.GetEventsArg"><span class="keyword">command</span> <span class="command-name">GetEvents</span>(<span class="message-name">GetEventsArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Get <span class="domain-specific">Events</span> from a <span class="domain-specific">Timeline</span>. </p>
+  <p>This command can extract <span class="domain-specific">Events</span> from the <span class="domain-specific">Timeline</span>, or a part of the <span class="domain-specific">Timeline</span>. It can also process the selected <span class="domain-specific">Events</span> using certain built-in operations (e.g. <span class="domain-specific">REDUCE_ALL</span>) which are </p></div><pre class="code-line" id="GetEvents.GetEventsArg"><a href="#GetEvents.GetEventsArg"><span class="keyword">command</span> <span class="command-name">GetEvents</span>(<span class="message-name">GetEventsArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetEvents.GetEventsArg.sessionID"><a href="#GetEvents.GetEventsArg.sessionID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">sessionID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -63,7 +62,10 @@
 <pre class="code-line" id="GetEvents.GetEventsArg.mode"><span class="expander">&nbsp;</span><a href="#GetEvents.GetEventsArg.mode"><span class="qualifier">optional</span> <span class="">Mode</span> <span class="field-name">mode</span><span class="proto-key"> = 3</span> [default = ALL]<span class="proto-key">;</span></a></pre><div class="doc">
   <p>How <span class="domain-specific">Events</span> should be processed before they are returned. </p></div><div class="enum">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Describes different ways <span class="domain-specific">Events</span> can be returned. </p></div></li>
+<li class="field">
 <pre class="code-line" id="GetEvents.GetEventsArg.ALL"><a href="#GetEvents.GetEventsArg.ALL"><span class="enum-name">ALL</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Return each <span class="domain-specific">Event</span> unprocessed. </p>
   <p>When using this mode, each <span class="domain-specific">Event</span> in the <span class="domain-specific">Timeline</span> may contain type specific data, which provides additional information about the <span class="domain-specific">Event</span>, such as the <span class="domain-specific">Area</span> that was painted for <span class="domain-specific">PAINT</span> <span class="domain-specific">Events</span>. </p></div></li>
@@ -427,7 +429,10 @@
 <pre class="code-line" id="GetEvents.Events.Event.PaintEvent.area"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.PaintEvent.area"><span class="qualifier">optional</span> <span class="">Area</span> <span class="field-name">area</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The <span class="domain-specific">Area</span> that was painted, in document coordinates relative the upper left corner of the view. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Defines an <span class="domain-specific">Area</span> by its top-left corner and width/height. </p></div></li>
+<li class="field">
 <pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.x"><a href="#GetEvents.Events.Event.PaintEvent.Area.x"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">x</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.y"><a href="#GetEvents.Events.Event.PaintEvent.Area.y"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">y</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -447,7 +452,9 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetEvents.key"><a href="#GetEvents.key"><span class="proto-key">= 3;</span></a></pre><h2 id="ReleaseSession"><a href="#ReleaseSession">ReleaseSession</a></h2>
-<pre class="code-line" id="ReleaseSession.ReleaseSessionArg"><a href="#ReleaseSession.ReleaseSessionArg"><span class="keyword">command</span> <span class="command-name">ReleaseSession</span>(<span class="message-name">ReleaseSessionArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Release a <span class="domain-specific">Session</span>. The <span class="domain-specific">Session</span> ID, and <span class="domain-specific">Timelines</span> contained within the <span class="domain-specific">Session</span> are no longer valid after the <span class="domain-specific">Session</span> has been released. </p>
+  <p>Only stopped <span class="domain-specific">Session</span> can be released. </p></div><pre class="code-line" id="ReleaseSession.ReleaseSessionArg"><a href="#ReleaseSession.ReleaseSessionArg"><span class="keyword">command</span> <span class="command-name">ReleaseSession</span>(<span class="message-name">ReleaseSessionArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ReleaseSession.ReleaseSessionArg.sessionID"><a href="#ReleaseSession.ReleaseSessionArg.sessionID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">sessionID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -459,7 +466,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ReleaseSession.key"><a href="#ReleaseSession.key"><span class="proto-key">= 4;</span></a></pre><h2 id="StartProfiler"><a href="#StartProfiler">StartProfiler</a></h2>
-<pre class="code-line" id="StartProfiler.StartProfilerArg"><a href="#StartProfiler.StartProfilerArg"><span class="keyword">command</span> <span class="command-name">StartProfiler</span>(<span class="message-name">StartProfilerArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Start profiling a window. Currently, only one profiling session is allowed at the same time. If a profiling session is already in progress, <span class="domain-specific">BAD_REQUEST</span> is returned. </p></div><pre class="code-line" id="StartProfiler.StartProfilerArg"><a href="#StartProfiler.StartProfilerArg"><span class="keyword">command</span> <span class="command-name">StartProfiler</span>(<span class="message-name">StartProfilerArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="StartProfiler.StartProfilerArg.startMode"><span class="expander">&nbsp;</span><a href="#StartProfiler.StartProfilerArg.startMode"><span class="qualifier">required</span> <span class="">StartMode</span> <span class="field-name">startMode</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -487,7 +495,10 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="StartProfiler.key"><a href="#StartProfiler.key"><span class="proto-key">= 1;</span></a></pre><h2 id="StopProfiler"><a href="#StopProfiler">StopProfiler</a></h2>
-<pre class="code-line" id="StopProfiler.StopProfilerArg"><a href="#StopProfiler.StopProfilerArg"><span class="keyword">command</span> <span class="command-name">StopProfiler</span>(<span class="message-name">StopProfilerArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Stop the profiler. <span class="domain-specific">BAD_REQUEST</span> is returned if we are not profiling. </p>
+  <p>When the profiler is stopped, post processing of the <span class="domain-specific">Timelines</span> takes place (e.g. aggregation of timing information in the <span class="domain-specific">Event</span> tree). For large trees, this process may be split up into multiple time slices, and may therefore be completed asynchronously. Profiling itself is stopped immediately when this command is received, however, the response will not be sent until post processing is done. </p>
+  <p>A user-interface should make this information clear to the user, by, for instance, indicating that the information is "loading" until the response arrives. </p></div><pre class="code-line" id="StopProfiler.StopProfilerArg"><a href="#StopProfiler.StopProfilerArg"><span class="keyword">command</span> <span class="command-name">StopProfiler</span>(<span class="message-name">StopProfilerArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="StopProfiler.StopProfilerArg.sessionID"><a href="#StopProfiler.StopProfilerArg.sessionID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">sessionID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">

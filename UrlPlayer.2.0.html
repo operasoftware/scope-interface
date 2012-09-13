@@ -8,14 +8,12 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#CreateWindows">CreateWindows</a></li>
-
 <li><a href="#LoadUrl">LoadUrl</a></li>
 
 </ul>
 <h3>Events</h3>
 <ul class="events">
 <li><a href="#OnConnectionFailed">OnConnectionFailed</a></li>
-
 <li><a href="#OnUrlLoaded">OnUrlLoaded</a></li>
 
 </ul>
@@ -26,7 +24,9 @@
 <div class="main-view">
 <div class="doc">
   <p>The URL player is a stress testing tool: is used to remotely command Opera to open new windows and load documents into those windows. </p></div><h2 id="CreateWindows"><a href="#CreateWindows">CreateWindows</a></h2>
-<pre class="code-line" id="CreateWindows.WindowCount"><a href="#CreateWindows.WindowCount"><span class="keyword">command</span> <span class="command-name">CreateWindows</span>(<span class="message-name">WindowCount</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>The front end opens a number of windows under control of the URL player by issuing the <span class="domain-specific">createwindows</span> command: </p>
+  <p>This command generates an immediate response to the client (see section on replies below). A success response carries the number of windows actually created (on some platforms it may be less than requested. </p></div><pre class="code-line" id="CreateWindows.WindowCount"><a href="#CreateWindows.WindowCount"><span class="keyword">command</span> <span class="command-name">CreateWindows</span>(<span class="message-name">WindowCount</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="CreateWindows.WindowCount.windowCount"><a href="#CreateWindows.WindowCount.windowCount"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowCount</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -41,7 +41,10 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="CreateWindows.key"><a href="#CreateWindows.key"><span class="proto-key">= 1;</span></a></pre><h2 id="LoadUrl"><a href="#LoadUrl">LoadUrl</a></h2>
-<pre class="code-line" id="LoadUrl.Request"><a href="#LoadUrl.Request"><span class="keyword">command</span> <span class="command-name">LoadUrl</span>(<span class="message-name">Request</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Loads a URL into a specific window. </p>
+  <p>A success message will be sent once loading is complete. A failure message will be sent as soon as the failure is known, which means immediately in case of e.g., parse errors, and later in case it could not connect to the server. </p>
+  <p>Note that even after a successful loading is signalled the page can continue loading, for example if a script adds inline elements. There is no way for the client to tell if this is happening. </p></div><pre class="code-line" id="LoadUrl.Request"><a href="#LoadUrl.Request"><span class="keyword">command</span> <span class="command-name">LoadUrl</span>(<span class="message-name">Request</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="LoadUrl.Request.windowNumber"><a href="#LoadUrl.Request.windowNumber"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowNumber</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">

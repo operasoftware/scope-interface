@@ -8,90 +8,50 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#AddBreakpoint">AddBreakpoint</a></li>
-
 <li><a href="#AddEventBreakpoint">AddEventBreakpoint</a></li>
-
 <li><a href="#AddEventHandler">AddEventHandler</a></li>
-
 <li><a href="#Break">Break</a></li>
-
 <li><a href="#ContinueThread">ContinueThread</a></li>
-
 <li><a href="#CssGetAllStylesheets">CssGetAllStylesheets</a></li>
-
 <li><a href="#CssGetIndexMap">CssGetIndexMap</a></li>
-
 <li><a href="#CssGetStyleDeclarations">CssGetStyleDeclarations</a></li>
-
 <li><a href="#CssGetStylesheet">CssGetStylesheet</a></li>
-
 <li><a href="#Eval">Eval</a></li>
-
 <li><a href="#ExamineObjects">ExamineObjects</a></li>
-
 <li><a href="#GetBacktrace">GetBacktrace</a></li>
-
 <li><a href="#GetSelectedObject">GetSelectedObject</a></li>
-
 <li><a href="#InspectDom">InspectDom</a></li>
-
 <li><a href="#ListRuntimes">ListRuntimes</a></li>
-
 <li><a href="#ReleaseObjects">ReleaseObjects</a></li>
-
 <li><a href="#RemoveBreakpoint">RemoveBreakpoint</a></li>
-
 <li><a href="#RemoveEventHandler">RemoveEventHandler</a></li>
-
 <li><a href="#SearchDom">SearchDom</a></li>
-
 <li><a href="#SetConfiguration">SetConfiguration</a></li>
-
 <li><a href="#SetFunctionFilter">SetFunctionFilter</a></li>
-
 <li><a href="#SetPropertyFilter">SetPropertyFilter</a></li>
-
 <li><a href="#SpotlightObject">SpotlightObject</a></li>
-
 <li><a href="#SpotlightObjects">SpotlightObjects</a></li>
 
 </ul>
 <h3>Events</h3>
 <ul class="events">
 <li><a href="#OnConsoleLog">OnConsoleLog</a></li>
-
 <li><a href="#OnConsoleProfile">OnConsoleProfile</a></li>
-
 <li><a href="#OnConsoleProfileEnd">OnConsoleProfileEnd</a></li>
-
 <li><a href="#OnConsoleTime">OnConsoleTime</a></li>
-
 <li><a href="#OnConsoleTimeEnd">OnConsoleTimeEnd</a></li>
-
 <li><a href="#OnConsoleTrace">OnConsoleTrace</a></li>
-
 <li><a href="#OnFunctionCallCompleted">OnFunctionCallCompleted</a></li>
-
 <li><a href="#OnFunctionCallStarting">OnFunctionCallStarting</a></li>
-
 <li><a href="#OnHandleEvent">OnHandleEvent</a></li>
-
 <li><a href="#OnNewScript">OnNewScript</a></li>
-
 <li><a href="#OnObjectSelected">OnObjectSelected</a></li>
-
 <li><a href="#OnParseError">OnParseError</a></li>
-
 <li><a href="#OnReadyStateChanged">OnReadyStateChanged</a></li>
-
 <li><a href="#OnRuntimeStarted">OnRuntimeStarted</a></li>
-
 <li><a href="#OnRuntimeStopped">OnRuntimeStopped</a></li>
-
 <li><a href="#OnThreadFinished">OnThreadFinished</a></li>
-
 <li><a href="#OnThreadStarted">OnThreadStarted</a></li>
-
 <li><a href="#OnThreadStoppedAt">OnThreadStoppedAt</a></li>
 
 </ul>
@@ -144,9 +104,13 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="AddEventBreakpoint.key"><a href="#AddEventBreakpoint.key"><span class="proto-key">= 38;</span></a></pre><h2 id="AddEventHandler"><a href="#AddEventHandler">AddEventHandler</a></h2>
-<pre class="code-line" id="AddEventHandler.EventHandler"><a href="#AddEventHandler.EventHandler"><span class="keyword">command</span> <span class="command-name">AddEventHandler</span>(<span class="message-name">EventHandler</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Add an event handler. This will generate a OnHandleEvent event every time the XML event defined by the pair (<span class="domain-specific">namespace</span>, <span class="domain-specific">eventType</span>) reaches the object defined by <span class="domain-specific">objectID</span> in the capturing phase. XML events are defined in <a href="http://www.w3.org/TR/xml-events">http://www.w3.org/TR/xml-events</a> </p></div><pre class="code-line" id="AddEventHandler.EventHandler"><a href="#AddEventHandler.EventHandler"><span class="keyword">command</span> <span class="command-name">AddEventHandler</span>(<span class="message-name">EventHandler</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Add an event handler. This will generate a HANDLE-EVENT event every time the XML event defined by the pair (NAMESPACE, EVENT-TYPE) reaches the object defined by OBJECT-ID in the capturing phase. XML events are defined in <a href="http://www.w3.org/TR/xml-events">http://www.w3.org/TR/xml-events</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="AddEventHandler.EventHandler.handlerID"><a href="#AddEventHandler.EventHandler.handlerID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">handlerID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A nonzero ID chosen by the client. The host may also use this ID to refer to the event handler. </p></div></li>
 <li class="field">
@@ -265,7 +229,10 @@
   <p>Using this field will not alter the state of the element. Selecting HOVER, for instance, when an element is currently not hovered will therefore not <em>apply</em> the HOVER style rules. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="enum">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents pseudo-classes and pseudo-elements. </p></div></li>
+<li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssElementSelection.NONE"><a href="#CssGetStyleDeclarations.CssElementSelection.NONE"><span class="enum-name">NONE</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssElementSelection.HOVER"><a href="#CssGetStyleDeclarations.CssElementSelection.HOVER"><span class="enum-name">HOVER</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
@@ -306,10 +273,38 @@
 <li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.styleList"><span class="expander">&nbsp;</span><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.styleList"><span class="qualifier">repeated</span> <span class="">StyleDeclaration</span> <span class="field-name">styleList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Common to all origins: </p>
+  <ul>
+    <li>indexList </li>
+    <li>valueList </li>
+    <li>priorityList </li>
+    <li>statusList </li>
+  </ul>
+  <p>Common to AUTHOR and LOCAL </p>
+  <ul>
+    <li>selector </li>
+    <li>specificity </li>
+  </ul>
+  <p>For AUTHOR </p>
+  <ul>
+    <li>stylesheetID </li>
+    <li>ruleID </li>
+    <li>ruleType </li>
+  </ul>
+  <p>For SVG </p>
+  <ul>
+    <li>specificity </li>
+  </ul></div></li>
+<li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.origin"><span class="expander">&nbsp;</span><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.origin"><span class="qualifier">required</span> <span class="">RuleOrigin</span> <span class="field-name">origin</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Indicates where a rule originated from. </p>
+  <p><span class="since-version">Added in version 6.5</span></p></div></li>
+<li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.USER_AGENT"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.USER_AGENT"><span class="enum-name">USER_AGENT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>This means that the user-agent provided this rule, i.e. the rule is part of the default style. </p></div></li>
 <li class="field">
@@ -337,7 +332,10 @@
 <li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.statusList"><span class="expander">&nbsp;</span><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.statusList"><span class="qualifier">repeated</span> <span class="">DeclarationStatus</span> <span class="field-name">statusList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Indicate whether a declaration is currently overwritten or not. </p></div></li>
+<li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.OVERWRITTEN"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.OVERWRITTEN"><span class="enum-name">OVERWRITTEN</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.USED"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.USED"><span class="enum-name">USED</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
@@ -381,7 +379,41 @@
 <ul><li class="field">
 <pre class="code-line" id="CssGetStylesheet.CssStylesheetRules.ruleList"><span class="expander">&nbsp;</span><a href="#CssGetStylesheet.CssStylesheetRules.ruleList"><span class="qualifier">repeated</span> <span class="">StylesheetRule</span> <span class="field-name">ruleList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Common to FONT_FACE, PAGE and STYLE is: </p>
+  <ul>
+    <li>indexList </li>
+    <li>valueList </li>
+    <li>priorityList </li>
+  </ul>
+  <p>Common to STYLE and PAGE is: </p>
+  <ul>
+    <li>selectorList </li>
+    <li>specificityList </li>
+  </ul>
+  <p>Common to MEDIA and IMPORT </p>
+  <ul>
+    <li>mediaList </li>
+  </ul>
+  <p>For MEDIA </p>
+  <ul>
+    <li>ruleList </li>
+  </ul>
+  <p>For IMPORT </p>
+  <ul>
+    <li>href </li>
+    <li>importStylesheetID </li>
+  </ul>
+  <p>For PAGE </p>
+  <ul>
+    <li>pseudoClass </li>
+  </ul>
+  <p>For CHARSET </p>
+  <ul>
+    <li>charset </li>
+  </ul></div></li>
+<li class="field">
 <pre class="code-line" id="CssGetStylesheet.CssStylesheetRules.StylesheetRule.type"><a href="#CssGetStylesheet.CssStylesheetRules.StylesheetRule.type"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Type values: 0 - UNKNOWN 1 - STYLE 2 - CHARSET 3 - IMPORT 4 - MEDIA 5 - FONT_FACE 6 - PAGE 7 - NAMESPACE // Not supported </p></div></li>
 <li class="field">
@@ -542,7 +574,10 @@
 <li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.propertyList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>If <span class="domain-specific">type</span> is ... then ... is present:   "object", <span class="domain-specific">objectValue</span>   "number", <span class="domain-specific">value</span>   "string", <span class="domain-specific">value</span>   "boolean", <span class="domain-specific">value</span> (<span class="domain-specific">"true"</span> or <span class="domain-specific">"false"</span>) Otherwise (<span class="domain-specific">"undefined"</span> or <span class="domain-specific">"null"</span>), only <span class="domain-specific">type</span> is present. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.name"><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.type"><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.type"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -607,7 +642,10 @@
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetBacktrace.BacktraceFrameList"><a href="#GetBacktrace.BacktraceFrameList"><span class="keyword">returns</span> (<span class="message-name">BacktraceFrameList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Frames are in innermost-first order. </p></div></li>
+<li class="field">
 <pre class="code-line" id="GetBacktrace.BacktraceFrameList.frameList"><span class="expander">&nbsp;</span><a href="#GetBacktrace.BacktraceFrameList.frameList"><span class="qualifier">repeated</span> <span class="">BacktraceFrame</span> <span class="field-name">frameList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -783,7 +821,10 @@
   <p>The field will not be set if the element does not contain a document. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Refers to an object and its parent runtime. </p></div></li>
+<li class="field">
 <pre class="code-line" id="InspectDom.NodeList.NodeInfo.ObjectReference.runtimeID"><a href="#InspectDom.NodeList.NodeInfo.ObjectReference.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="InspectDom.NodeList.NodeInfo.ObjectReference.objectID"><a href="#InspectDom.NodeList.NodeInfo.ObjectReference.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -796,7 +837,10 @@
   <p>The field will not be set if the document node represents a top-level document. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Refers to an object and its parent runtime. </p></div></li>
+<li class="field">
 <pre class="code-line" id="InspectDom.NodeList.NodeInfo.ObjectReference.runtimeID"><a href="#InspectDom.NodeList.NodeInfo.ObjectReference.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="InspectDom.NodeList.NodeInfo.ObjectReference.objectID"><a href="#InspectDom.NodeList.NodeInfo.ObjectReference.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -809,7 +853,10 @@
   <p>When this message is a response to DOM inspection, this field will be set to TRAVERSAL. When sent as a response to a search, it will either be set to SEARCH_HIT, or SEARCH_PARENT. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="enum">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Values in this enum explain why the node was included in the response. </p></div></li>
+<li class="field">
 <pre class="code-line" id="InspectDom.NodeList.NodeInfo.TRAVERSAL"><a href="#InspectDom.NodeList.NodeInfo.TRAVERSAL"><span class="enum-name">TRAVERSAL</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The node was included because we explicitly traversed the DOM (sub-)tree. </p></div></li>
 <li class="field">
@@ -826,7 +873,11 @@
   <p>If the node has pseudo elements applied, this list will contain those elements. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents a pseudo element, such as ::after, ::before, and so forth. </p>
+  <p><span class="since-version">Added in version 6.5</span></p></div></li>
+<li class="field">
 <pre class="code-line" id="InspectDom.NodeList.NodeInfo.PseudoElement.type"><span class="expander">&nbsp;</span><a href="#InspectDom.NodeList.NodeInfo.PseudoElement.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -894,9 +945,15 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ListRuntimes.key"><a href="#ListRuntimes.key"><span class="proto-key">= 1;</span></a></pre><h2 id="ReleaseObjects"><a href="#ReleaseObjects">ReleaseObjects</a></h2>
-<pre class="code-line" id="ReleaseObjects.ReleaseObjectsArg"><a href="#ReleaseObjects.ReleaseObjectsArg"><span class="keyword">command</span> <span class="command-name">ReleaseObjects</span>(<span class="message-name">ReleaseObjectsArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Release protected ECMAScript objects. This will just make them garbage collectible. Released objects are not necessarily freed immediately. </p>
+  <p>Calling ReleaseObjects with an empty list causes all objects to be released. Otherwise, only the specified objects will be released. Attempting to release a non-existent object has no effect, and will fail silently. </p>
+  <p>Releasing objects invalidates associated object IDs immediately. </p></div><pre class="code-line" id="ReleaseObjects.ReleaseObjectsArg"><a href="#ReleaseObjects.ReleaseObjectsArg"><span class="keyword">command</span> <span class="command-name">ReleaseObjects</span>(<span class="message-name">ReleaseObjectsArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>List of objects to release. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ReleaseObjects.ReleaseObjectsArg.objectList"><a href="#ReleaseObjects.ReleaseObjectsArg.objectList"><span class="qualifier">repeated</span> <span class="number">uint32</span> <span class="field-name">objectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
@@ -929,9 +986,22 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="RemoveEventHandler.key"><a href="#RemoveEventHandler.key"><span class="proto-key">= 9;</span></a></pre><h2 id="SearchDom"><a href="#SearchDom">SearchDom</a></h2>
-<pre class="code-line" id="SearchDom.SearchDomArg"><a href="#SearchDom.SearchDomArg"><span class="keyword">command</span> <span class="command-name">SearchDom</span>(<span class="message-name">SearchDomArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Search the DOM of a document, using either plain text, regexp, xpath or CSS selectors. </p>
+  <p>For plain text and regular expression searches, tag names, attribute names, attribute values and text content is searched through. Regular expressions searches use the same backend as the RegExp object in ECMAScript, and therefore use the same syntax and semantics. </p>
+  <p>CSS selector or XPath searches work like their DOM counterparts (document.querySelector, and document.evaluate). For more information, see: </p>
+  <ul>
+    <li><a href="http://www.w3.org/TR/selectors-api/">http://www.w3.org/TR/selectors-api/</a> </li>
+    <li><a href="http://www.w3.org/TR/DOM-Level-3-XPath/">http://www.w3.org/TR/DOM-Level-3-XPath/</a> </li>
+  </ul>
+  <p>Whenever a matching node is found, that node is included in the command response, and marked as a search hit. The parent chain is also included for each hit; however, no parent is included twice (nor is any 'hit' included twice). </p>
+  <p><span class="since-version">Added in version 6.5</span></p></div><pre class="code-line" id="SearchDom.SearchDomArg"><a href="#SearchDom.SearchDomArg"><span class="keyword">command</span> <span class="command-name">SearchDom</span>(<span class="message-name">SearchDomArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Argument to SearchDom command. </p>
+  <p><span class="since-version">Added in version 6.5</span></p></div></li>
+<li class="field">
 <pre class="code-line" id="SearchDom.SearchDomArg.runtimeID"><a href="#SearchDom.SearchDomArg.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Search the DOM of this runtime. </p></div></li>
 <li class="field">
@@ -1021,7 +1091,10 @@
   <p>The field will not be set if the element does not contain a document. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Refers to an object and its parent runtime. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SearchDom.NodeList.NodeInfo.ObjectReference.runtimeID"><a href="#SearchDom.NodeList.NodeInfo.ObjectReference.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="SearchDom.NodeList.NodeInfo.ObjectReference.objectID"><a href="#SearchDom.NodeList.NodeInfo.ObjectReference.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -1034,7 +1107,10 @@
   <p>The field will not be set if the document node represents a top-level document. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Refers to an object and its parent runtime. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SearchDom.NodeList.NodeInfo.ObjectReference.runtimeID"><a href="#SearchDom.NodeList.NodeInfo.ObjectReference.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="SearchDom.NodeList.NodeInfo.ObjectReference.objectID"><a href="#SearchDom.NodeList.NodeInfo.ObjectReference.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -1047,7 +1123,10 @@
   <p>When this message is a response to DOM inspection, this field will be set to TRAVERSAL. When sent as a response to a search, it will either be set to SEARCH_HIT, or SEARCH_PARENT. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="enum">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Values in this enum explain why the node was included in the response. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SearchDom.NodeList.NodeInfo.TRAVERSAL"><a href="#SearchDom.NodeList.NodeInfo.TRAVERSAL"><span class="enum-name">TRAVERSAL</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The node was included because we explicitly traversed the DOM (sub-)tree. </p></div></li>
 <li class="field">
@@ -1064,7 +1143,11 @@
   <p>If the node has pseudo elements applied, this list will contain those elements. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents a pseudo element, such as ::after, ::before, and so forth. </p>
+  <p><span class="since-version">Added in version 6.5</span></p></div></li>
+<li class="field">
 <pre class="code-line" id="SearchDom.NodeList.NodeInfo.PseudoElement.type"><span class="expander">&nbsp;</span><a href="#SearchDom.NodeList.NodeInfo.PseudoElement.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1111,7 +1194,10 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="SetConfiguration.key"><a href="#SetConfiguration.key"><span class="proto-key">= 10;</span></a></pre><h2 id="SetFunctionFilter"><a href="#SetFunctionFilter">SetFunctionFilter</a></h2>
-<pre class="code-line" id="SetFunctionFilter.FunctionFilter"><a href="#SetFunctionFilter.FunctionFilter"><span class="keyword">command</span> <span class="command-name">SetFunctionFilter</span>(<span class="message-name">FunctionFilter</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Specify which objects to get OnFunctionCallStarting and OnFunctionCallCompleted events for. If a function is called on an object with a matching class name, the events will be reported. </p>
+  <p>The default filter is empty, meaning no function calls will be reported. </p>
+  <p><span class="since-version">Added in version 6.4</span></p></div><pre class="code-line" id="SetFunctionFilter.FunctionFilter"><a href="#SetFunctionFilter.FunctionFilter"><span class="keyword">command</span> <span class="command-name">SetFunctionFilter</span>(<span class="message-name">FunctionFilter</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetFunctionFilter.FunctionFilter.classList"><a href="#SetFunctionFilter.FunctionFilter.classList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">classList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1123,23 +1209,36 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="SetFunctionFilter.key"><a href="#SetFunctionFilter.key"><span class="proto-key">= 39;</span></a></pre><h2 id="SetPropertyFilter"><a href="#SetPropertyFilter">SetPropertyFilter</a></h2>
-<pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg"><a href="#SetPropertyFilter.SetPropertyFilterArg"><span class="keyword">command</span> <span class="command-name">SetPropertyFilter</span>(<span class="message-name">SetPropertyFilterArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Sets a new property filter which may hide some properties when examining an object. This is useful for excluding many 'uninteresting' properties found on built-in prototypes. </p>
+  <p>Calling this will overwrite the previous filter. </p></div><pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg"><a href="#SetPropertyFilter.SetPropertyFilterArg"><span class="keyword">command</span> <span class="command-name">SetPropertyFilter</span>(<span class="message-name">SetPropertyFilterArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.propertyFilter"><span class="expander">&nbsp;</span><a href="#SetPropertyFilter.SetPropertyFilterArg.propertyFilter"><span class="qualifier">required</span> <span class="">PropertyFilter</span> <span class="field-name">propertyFilter</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Because we want different filters for different classes, a PropertyFilter consists of several ClassMasks, and one ClassMask consists of several PropertyMasks. A PropertyMask can be regarded as a 'rule' for filtering a property. If no rule is present, the property is allowed through the filter. If a matching rule is present, the property is not included. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.classMaskList"><span class="expander">&nbsp;</span><a href="#SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.classMaskList"><span class="qualifier">repeated</span> <span class="">ClassMask</span> <span class="field-name">classMaskList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The list of classes which should be filtered. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A ClassMask contains all the properties which should be considered for exclusion for a certain class. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.className"><a href="#SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.className"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">className</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the class this filter applies to. Examples are 'Object' and 'HTMLHtmlElement'. </p></div></li>
 <li class="field">
 <pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.propertyMaskList"><span class="expander">&nbsp;</span><a href="#SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.propertyMaskList"><span class="qualifier">repeated</span> <span class="">PropertyMask</span> <span class="field-name">propertyMaskList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The list of properties which could be filtered. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>You can choose to filter a property based on name and, as an additional condition, type. For booleans, numbers and strings, you can also filter by value as a third additional condition. </p>
+  <p>If only 'name' is present, then a property with that name will be excluded, regardless of its value. If 'type' is also present, then the property with that name will be excluded only if its value is the specified type. </p>
+  <p>If 'type' indicates a boolean, number or string, you can assign a value in the corresponding optional field. The property will then be excluded only if the name, type and value all match. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.PropertyMask.name"><a href="#SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.PropertyMask.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.PropertyMask.type"><a href="#SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.PropertyMask.type"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -1182,10 +1281,16 @@
 </div><pre class="code-line" id="SpotlightObject.key"><a href="#SpotlightObject.key"><span class="proto-key">= 5;</span></a></pre><h2 id="SpotlightObjects"><a href="#SpotlightObjects">SpotlightObjects</a></h2>
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection"><a href="#SpotlightObjects.SpotlightSelection"><span class="keyword">command</span> <span class="command-name">SpotlightObjects</span>(<span class="message-name">SpotlightSelection</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>To highlight elements in the document </p></div></li>
+<li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.spotlightObjectList"><span class="expander">&nbsp;</span><a href="#SpotlightObjects.SpotlightSelection.spotlightObjectList"><span class="qualifier">repeated</span> <span class="">SpotlightObject</span> <span class="field-name">spotlightObjectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The drawing order is box, reference-box-frame, box-frame, grid. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.objectID"><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.scrollIntoView"><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.scrollIntoView"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">scrollIntoView</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1193,7 +1298,10 @@
 <li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.boxList"><span class="expander">&nbsp;</span><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.boxList"><span class="qualifier">repeated</span> <span class="">SpotlightBox</span> <span class="field-name">boxList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Colors are encoded as RGBA with 8 bits for each channel. encoded_color = ( red &lt;&lt; 24 ) + ( green &lt;&lt; 16 ) + ( blue &lt;&lt; 8 ) + ( alpha ) with red, green, blue and alpha in a range of 0 - 255 e.g.: </p>red     4278190335 green     16711935 blue         65535 yellow  4294902015 cyan      16777215 magenta 4278255615 </div></li>
+<li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.SpotlightBox.boxType"><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.SpotlightBox.boxType"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">boxType</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Valid values:   0: dimension   1: padding   2: border   3: margin </p></div></li>
 <li class="field">
@@ -1217,7 +1325,10 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="SpotlightObjects.key"><a href="#SpotlightObjects.key"><span class="proto-key">= 27;</span></a></pre><h2 id="OnConsoleLog"><a href="#OnConsoleLog">OnConsoleLog</a></h2>
-<pre class="code-line" id="OnConsoleLog.ConsoleLogInfo"><a href="#OnConsoleLog.ConsoleLogInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleLog</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleLogInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This event occurs when the script calls one of these functions: </p>1. console.log 2. console.debug 3. console.info 4. console.warn 5. console.error 6. console.assert 7. console.dir 8. console.dirxml 9. console.group 10. console.groupCollapsed 11. console.groupEnded 12. console.count 13. console.table 
+  <p>All the functions behave the same way; they accept any number of arguments, and sends them to the client. </p>
+  <p>The console.assert function is a special case, which outputs nothing if the first argument evaluates to true. Otherwise, it behaves like the other functions and sends its arguments to the client (including the first argument which triggered the assertion). If the assertion fails, it also throws an exception. </p></div><pre class="code-line" id="OnConsoleLog.ConsoleLogInfo"><a href="#OnConsoleLog.ConsoleLogInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleLog</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleLogInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnConsoleLog.ConsoleLogInfo.runtimeID"><a href="#OnConsoleLog.ConsoleLogInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -1269,21 +1380,24 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnConsoleLog.key"><a href="#OnConsoleLog.key"><span class="proto-key">= 32;</span></a></pre><h2 id="OnConsoleProfile"><a href="#OnConsoleProfile">OnConsoleProfile</a></h2>
-<pre class="code-line" id="OnConsoleProfile.ConsoleProfileInfo"><a href="#OnConsoleProfile.ConsoleProfileInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleProfile</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleProfileInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Occurs when console.profile is called in a script. Note that profiling is not yet supported. This event is just included to let the client know that the function has been called. </p></div><pre class="code-line" id="OnConsoleProfile.ConsoleProfileInfo"><a href="#OnConsoleProfile.ConsoleProfileInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleProfile</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleProfileInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnConsoleProfile.ConsoleProfileInfo.runtimeID"><a href="#OnConsoleProfile.ConsoleProfileInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnConsoleProfile.key"><a href="#OnConsoleProfile.key"><span class="proto-key">= 36;</span></a></pre><h2 id="OnConsoleProfileEnd"><a href="#OnConsoleProfileEnd">OnConsoleProfileEnd</a></h2>
-<pre class="code-line" id="OnConsoleProfileEnd.ConsoleProfileEndInfo"><a href="#OnConsoleProfileEnd.ConsoleProfileEndInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleProfileEnd</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleProfileEndInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Occurs when console.profileEdd is called in a script. Note that profiling is not yet supported. This event is just included to let the client know that the function has been called. </p></div><pre class="code-line" id="OnConsoleProfileEnd.ConsoleProfileEndInfo"><a href="#OnConsoleProfileEnd.ConsoleProfileEndInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleProfileEnd</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleProfileEndInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnConsoleProfileEnd.ConsoleProfileEndInfo.runtimeID"><a href="#OnConsoleProfileEnd.ConsoleProfileEndInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnConsoleProfileEnd.key"><a href="#OnConsoleProfileEnd.key"><span class="proto-key">= 37;</span></a></pre><h2 id="OnConsoleTime"><a href="#OnConsoleTime">OnConsoleTime</a></h2>
-<pre class="code-line" id="OnConsoleTime.ConsoleTimeInfo"><a href="#OnConsoleTime.ConsoleTimeInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleTime</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleTimeInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Occurs when console.time is called in the script. When this event occurs, Opera will start a timer which can be referred to by the specified title. The timer can later be stopped with console.timeEnd, which will calculate the elapsed time between the two calls. </p></div><pre class="code-line" id="OnConsoleTime.ConsoleTimeInfo"><a href="#OnConsoleTime.ConsoleTimeInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleTime</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleTimeInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnConsoleTime.ConsoleTimeInfo.runtimeID"><a href="#OnConsoleTime.ConsoleTimeInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -1293,7 +1407,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnConsoleTime.key"><a href="#OnConsoleTime.key"><span class="proto-key">= 33;</span></a></pre><h2 id="OnConsoleTimeEnd"><a href="#OnConsoleTimeEnd">OnConsoleTimeEnd</a></h2>
-<pre class="code-line" id="OnConsoleTimeEnd.ConsoleTimeEndInfo"><a href="#OnConsoleTimeEnd.ConsoleTimeEndInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleTimeEnd</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleTimeEndInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Occurs when console.timeEnd is called in the script. The message contains the elapsed time between the corresponding call to console.time (see OnConsoleTime). </p></div><pre class="code-line" id="OnConsoleTimeEnd.ConsoleTimeEndInfo"><a href="#OnConsoleTimeEnd.ConsoleTimeEndInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleTimeEnd</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleTimeEndInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnConsoleTimeEnd.ConsoleTimeEndInfo.runtimeID"><a href="#OnConsoleTimeEnd.ConsoleTimeEndInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -1306,7 +1421,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnConsoleTimeEnd.key"><a href="#OnConsoleTimeEnd.key"><span class="proto-key">= 34;</span></a></pre><h2 id="OnConsoleTrace"><a href="#OnConsoleTrace">OnConsoleTrace</a></h2>
-<pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo"><a href="#OnConsoleTrace.ConsoleTraceInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleTrace</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleTraceInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Occurs when console.trace is called in the script. Sends the stack trace at the position where the call was made. </p></div><pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo"><a href="#OnConsoleTrace.ConsoleTraceInfo"><span class="keyword">event</span> <span class="command-name">OnConsoleTrace</span><span class="keyword"> returns </span>(<span class="message-name">ConsoleTraceInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.runtimeID"><a href="#OnConsoleTrace.ConsoleTraceInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -1404,7 +1520,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnConsoleTrace.key"><a href="#OnConsoleTrace.key"><span class="proto-key">= 35;</span></a></pre><h2 id="OnFunctionCallCompleted"><a href="#OnFunctionCallCompleted">OnFunctionCallCompleted</a></h2>
-<pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo"><span class="keyword">event</span> <span class="command-name">OnFunctionCallCompleted</span><span class="keyword"> returns </span>(<span class="message-name">FunctionCallCompletedInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Occurs when a function call has completed. </p></div><pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo"><span class="keyword">event</span> <span class="command-name">OnFunctionCallCompleted</span><span class="keyword"> returns </span>(<span class="message-name">FunctionCallCompletedInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.runtimeID"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1429,10 +1546,13 @@
 <li class="field">
 <pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.returnValue"><span class="expander">&nbsp;</span><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.returnValue"><span class="qualifier">optional</span> <span class="">Value</span> <span class="field-name">returnValue</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents an ECMAScript value, a value is either one of the primitives like string or boolean or an object. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.type"><span class="expander">&nbsp;</span><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of value. </p>
-  <p><span class="note"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
+  <p class="note"><span class="info"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.UNDEFINED"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.UNDEFINED"><span class="enum-name">UNDEFINED</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1504,7 +1624,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnFunctionCallCompleted.key"><a href="#OnFunctionCallCompleted.key"><span class="proto-key">= 41;</span></a></pre><h2 id="OnFunctionCallStarting"><a href="#OnFunctionCallStarting">OnFunctionCallStarting</a></h2>
-<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo"><span class="keyword">event</span> <span class="command-name">OnFunctionCallStarting</span><span class="keyword"> returns </span>(<span class="message-name">FunctionCallStartingInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Occurs when a function call is about to be performed. </p></div><pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo"><span class="keyword">event</span> <span class="command-name">OnFunctionCallStarting</span><span class="keyword"> returns </span>(<span class="message-name">FunctionCallStartingInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.runtimeID"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1559,10 +1680,13 @@
 <li class="field">
 <pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.argumentList"><span class="expander">&nbsp;</span><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.argumentList"><span class="qualifier">repeated</span> <span class="">Value</span> <span class="field-name">argumentList</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents an ECMAScript value, a value is either one of the primitives like string or boolean or an object. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.Value.type"><span class="expander">&nbsp;</span><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of value. </p>
-  <p><span class="note"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
+  <p class="note"><span class="info"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.Value.UNDEFINED"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.Value.UNDEFINED"><span class="enum-name">UNDEFINED</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1645,7 +1769,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnFunctionCallStarting.key"><a href="#OnFunctionCallStarting.key"><span class="proto-key">= 40;</span></a></pre><h2 id="OnHandleEvent"><a href="#OnHandleEvent">OnHandleEvent</a></h2>
-<pre class="code-line" id="OnHandleEvent.DomEvent"><a href="#OnHandleEvent.DomEvent"><span class="keyword">event</span> <span class="command-name">OnHandleEvent</span><span class="keyword"> returns </span>(<span class="message-name">DomEvent</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This event is issued for XML events on the host, if a corresponding <span class="domain-specific">AddEventHandler</span> has been issued earlier by the client. </p></div><pre class="code-line" id="OnHandleEvent.DomEvent"><a href="#OnHandleEvent.DomEvent"><span class="keyword">event</span> <span class="command-name">OnHandleEvent</span><span class="keyword"> returns </span>(<span class="message-name">DomEvent</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnHandleEvent.DomEvent.objectID"><a href="#OnHandleEvent.DomEvent.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1685,7 +1810,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnNewScript.key"><a href="#OnNewScript.key"><span class="proto-key">= 16;</span></a></pre><h2 id="OnObjectSelected"><a href="#OnObjectSelected">OnObjectSelected</a></h2>
-<pre class="code-line" id="OnObjectSelected.ObjectSelection"><a href="#OnObjectSelected.ObjectSelection"><span class="keyword">event</span> <span class="command-name">OnObjectSelected</span><span class="keyword"> returns </span>(<span class="message-name">ObjectSelection</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Some hosts send this event to indicate that an object was selected for debugging, e.g., if the debugger was started by right-clicking an element and clicking "inspect" in the context menu, this event will be sent right after startup. A client may safely choose to ignore this event. </p></div><pre class="code-line" id="OnObjectSelected.ObjectSelection"><a href="#OnObjectSelected.ObjectSelection"><span class="keyword">event</span> <span class="command-name">OnObjectSelected</span><span class="keyword"> returns </span>(<span class="message-name">ObjectSelection</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnObjectSelected.ObjectSelection.objectID"><a href="#OnObjectSelected.ObjectSelection.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -1716,7 +1842,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnParseError.key"><a href="#OnParseError.key"><span class="proto-key">= 28;</span></a></pre><h2 id="OnReadyStateChanged"><a href="#OnReadyStateChanged">OnReadyStateChanged</a></h2>
-<pre class="code-line" id="OnReadyStateChanged.ReadyStateInfo"><a href="#OnReadyStateChanged.ReadyStateInfo"><span class="keyword">event</span> <span class="command-name">OnReadyStateChanged</span><span class="keyword"> returns </span>(<span class="message-name">ReadyStateInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Sent when the ready state of a document is changed. The possible states are: </p>1. DOMContentLoaded: When the DOM (not inline elements) is loaded 2. Loaded: After all onload-handlers have finished </div><pre class="code-line" id="OnReadyStateChanged.ReadyStateInfo"><a href="#OnReadyStateChanged.ReadyStateInfo"><span class="keyword">event</span> <span class="command-name">OnReadyStateChanged</span><span class="keyword"> returns </span>(<span class="message-name">ReadyStateInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnReadyStateChanged.ReadyStateInfo.runtimeID"><a href="#OnReadyStateChanged.ReadyStateInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>

@@ -8,20 +8,15 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#GetActiveWindow">GetActiveWindow</a></li>
-
 <li><a href="#ListWindows">ListWindows</a></li>
-
 <li><a href="#ModifyFilter">ModifyFilter</a></li>
 
 </ul>
 <h3>Events</h3>
 <ul class="events">
 <li><a href="#OnWindowActivated">OnWindowActivated</a></li>
-
 <li><a href="#OnWindowClosed">OnWindowClosed</a></li>
-
 <li><a href="#OnWindowLoaded">OnWindowLoaded</a></li>
-
 <li><a href="#OnWindowUpdated">OnWindowUpdated</a></li>
 
 </ul>
@@ -35,7 +30,8 @@
   <h2>Discussion </h2>
   <p>This protocol will prevent a lot of flooding from the other services, but it will on the other hand flood a bit itself. There is no way to stop it from sending <span class="domain-specific">OnWindowActivated</span> messages for example. </p>
   <p>When Opera Dragonfly is used to debug on the desktop, it probably doesn't want to use this service at all, but just have the filters automatically set to include the active window. We might cater for this later. The way to do it with the current protocol would be to retrieve the active window and put that in the include filter manually. However the active window might have changed by the time Opera Dragonfly gets to do that. Additionally, we would like Opera Dragonfly to start with a certain DOM node selected. I see no other way than adding some C++ hooks to do this when debugging locally. </p></div><h2 id="GetActiveWindow"><a href="#GetActiveWindow">GetActiveWindow</a></h2>
-<pre class="code-line" id="GetActiveWindow.Default"><a href="#GetActiveWindow.Default"><span class="keyword">command</span> <span class="command-name">GetActiveWindow</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Request the currently active window. </p></div><pre class="code-line" id="GetActiveWindow.Default"><a href="#GetActiveWindow.Default"><span class="keyword">command</span> <span class="command-name">GetActiveWindow</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
@@ -55,7 +51,10 @@
 <ul><li class="field">
 <pre class="code-line" id="ListWindows.WindowList.windowList"><span class="expander">&nbsp;</span><a href="#ListWindows.WindowList.windowList"><span class="qualifier">repeated</span> <span class="">WindowInfo</span> <span class="field-name">windowList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>TODO: We probably want a lot more information about each window, like URL, shortcut       icon, etc. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWindows.WindowList.WindowInfo.windowID"><a href="#ListWindows.WindowList.WindowInfo.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="ListWindows.WindowList.WindowInfo.title"><a href="#ListWindows.WindowList.WindowInfo.title"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">title</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -94,7 +93,11 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ListWindows.key"><a href="#ListWindows.key"><span class="proto-key">= 2;</span></a></pre><h2 id="ModifyFilter"><a href="#ModifyFilter">ModifyFilter</a></h2>
-<pre class="code-line" id="ModifyFilter.WindowFilter"><a href="#ModifyFilter.WindowFilter"><span class="keyword">command</span> <span class="command-name">ModifyFilter</span>(<span class="message-name">WindowFilter</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>The default <span class="domain-specific">WindowFilter</span> used to be <span class="domain-specific">includePatternList</span> <span class="domain-specific">"*"</span>. After this command was introduced, the default filter is <span class="domain-specific">includeIDList</span> 0 (unknown). </p>
+  <p>The filtering mechanism works by taking the appropriate window-id of the message and checks it: </p>If the INCLUDE filter contains the window-id, or a window that has opened the window, and the window-id is not in the EXCLUDE filter, then send the message. Otherwise, discard the message 
+  <p><span class="domain-specific">includeIDList</span> and <span class="domain-specific">excludeIDList</span> appends to the existing filter. This is true whether these occur in the same <span class="domain-specific">ModifyFilter</span> command or occur in different <span class="domain-specific">ModifyFilter</span> commands. If the <span class="domain-specific">clearFilter</span> flag is present, the filter will cleared before the <span class="domain-specific">includeIDList</span> and <span class="domain-specific">excludeIDList</span> appends to the filter. </p>
+  <p>TODO: Perhaps <span class="domain-specific">WindowFilter</span> should work on window types as well? </p></div><pre class="code-line" id="ModifyFilter.WindowFilter"><a href="#ModifyFilter.WindowFilter"><span class="keyword">command</span> <span class="command-name">ModifyFilter</span>(<span class="message-name">WindowFilter</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ModifyFilter.WindowFilter.clearFilter"><a href="#ModifyFilter.WindowFilter.clearFilter"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">clearFilter</span><span class="proto-key"> = 1</span> [default = false]<span class="proto-key">;</span></a></pre></li>
@@ -114,30 +117,37 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ModifyFilter.key"><a href="#ModifyFilter.key"><span class="proto-key">= 3;</span></a></pre><h2 id="OnWindowActivated"><a href="#OnWindowActivated">OnWindowActivated</a></h2>
-<pre class="code-line" id="OnWindowActivated.WindowID"><a href="#OnWindowActivated.WindowID"><span class="keyword">event</span> <span class="command-name">OnWindowActivated</span><span class="keyword"> returns </span>(<span class="message-name">WindowID</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Sent whenever the active window is changed. </p></div><pre class="code-line" id="OnWindowActivated.WindowID"><a href="#OnWindowActivated.WindowID"><span class="keyword">event</span> <span class="command-name">OnWindowActivated</span><span class="keyword"> returns </span>(<span class="message-name">WindowID</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWindowActivated.WindowID.windowID"><a href="#OnWindowActivated.WindowID.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnWindowActivated.key"><a href="#OnWindowActivated.key"><span class="proto-key">= 6;</span></a></pre><h2 id="OnWindowClosed"><a href="#OnWindowClosed">OnWindowClosed</a></h2>
-<pre class="code-line" id="OnWindowClosed.WindowID"><a href="#OnWindowClosed.WindowID"><span class="keyword">event</span> <span class="command-name">OnWindowClosed</span><span class="keyword"> returns </span>(<span class="message-name">WindowID</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Sent when a window is closed. </p></div><pre class="code-line" id="OnWindowClosed.WindowID"><a href="#OnWindowClosed.WindowID"><span class="keyword">event</span> <span class="command-name">OnWindowClosed</span><span class="keyword"> returns </span>(<span class="message-name">WindowID</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWindowClosed.WindowID.windowID"><a href="#OnWindowClosed.WindowID.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnWindowClosed.key"><a href="#OnWindowClosed.key"><span class="proto-key">= 5;</span></a></pre><h2 id="OnWindowLoaded"><a href="#OnWindowLoaded">OnWindowLoaded</a></h2>
-<pre class="code-line" id="OnWindowLoaded.WindowID"><a href="#OnWindowLoaded.WindowID"><span class="keyword">event</span> <span class="command-name">OnWindowLoaded</span><span class="keyword"> returns </span>(<span class="message-name">WindowID</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Sent whenever a window has finished loading. This event happens after external resources are loaded. Note: if the page uses scripting to dynamically change the page or load more data, this event may occur multiple times for the same window. </p></div><pre class="code-line" id="OnWindowLoaded.WindowID"><a href="#OnWindowLoaded.WindowID"><span class="keyword">event</span> <span class="command-name">OnWindowLoaded</span><span class="keyword"> returns </span>(<span class="message-name">WindowID</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWindowLoaded.WindowID.windowID"><a href="#OnWindowLoaded.WindowID.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnWindowLoaded.key"><a href="#OnWindowLoaded.key"><span class="proto-key">= 7;</span></a></pre><h2 id="OnWindowUpdated"><a href="#OnWindowUpdated">OnWindowUpdated</a></h2>
-<pre class="code-line" id="OnWindowUpdated.WindowInfo"><a href="#OnWindowUpdated.WindowInfo"><span class="keyword">event</span> <span class="command-name">OnWindowUpdated</span><span class="keyword"> returns </span>(<span class="message-name">WindowInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Sent every time there is a new window, or some window information changed. </p></div><pre class="code-line" id="OnWindowUpdated.WindowInfo"><a href="#OnWindowUpdated.WindowInfo"><span class="keyword">event</span> <span class="command-name">OnWindowUpdated</span><span class="keyword"> returns </span>(<span class="message-name">WindowInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>TODO: We probably want a lot more information about each window, like URL, shortcut       icon, etc. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWindowUpdated.WindowInfo.windowID"><a href="#OnWindowUpdated.WindowInfo.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="OnWindowUpdated.WindowInfo.title"><a href="#OnWindowUpdated.WindowInfo.title"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">title</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>

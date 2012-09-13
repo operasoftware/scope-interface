@@ -12,7 +12,6 @@
 <h3>Events</h3>
 <ul class="events">
 <li><a href="#OnRequest">OnRequest</a></li>
-
 <li><a href="#OnResponse">OnResponse</a></li>
 
 </ul>
@@ -41,7 +40,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnRequest.key"><a href="#OnRequest.key"><span class="proto-key">= 1;</span></a></pre><h2 id="OnResponse"><a href="#OnResponse">OnResponse</a></h2>
-<pre class="code-line" id="OnResponse.Header"><a href="#OnResponse.Header"><span class="keyword">event</span> <span class="command-name">OnResponse</span><span class="keyword"> returns </span>(<span class="message-name">Header</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Note: The response does not have its own id, but refers to the previous id from <span class="domain-specific">OnRequest</span>. </p></div><pre class="code-line" id="OnResponse.Header"><a href="#OnResponse.Header"><span class="keyword">event</span> <span class="command-name">OnResponse</span><span class="keyword"> returns </span>(<span class="message-name">Header</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnResponse.Header.requestID"><a href="#OnResponse.Header.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">

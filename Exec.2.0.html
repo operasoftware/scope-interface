@@ -8,11 +8,8 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#Exec">Exec</a></li>
-
 <li><a href="#GetActionInfoList">GetActionInfoList</a></li>
-
 <li><a href="#SendMouseAction">SendMouseAction</a></li>
-
 <li><a href="#SetupScreenWatcher">SetupScreenWatcher</a></li>
 
 </ul>
@@ -37,7 +34,8 @@
   <p>.. code-block:: javascript </p>Exec([ [ ["Page Down"] ] ]) 
   <h2>Error handling </h2>
   <p>There are currently no error messages or other reports of a failed operation.  Incorrect syntax, unknown keys, or other invalid input will be silently dropped. </p></div><h2 id="Exec"><a href="#Exec">Exec</a></h2>
-<pre class="code-line" id="Exec.ActionList"><a href="#Exec.ActionList"><span class="keyword">command</span> <span class="command-name">Exec</span>(<span class="message-name">ActionList</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Executes a series of actions in the opera host, each action consists of a name identifying the action and optionally a value for the action. The value depends on the type of action. </p></div><pre class="code-line" id="Exec.ActionList"><a href="#Exec.ActionList"><span class="keyword">command</span> <span class="command-name">Exec</span>(<span class="message-name">ActionList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="Exec.ActionList.actionList"><span class="expander">&nbsp;</span><a href="#Exec.ActionList.actionList"><span class="qualifier">repeated</span> <span class="">Action</span> <span class="field-name">actionList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
@@ -62,16 +60,23 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="Exec.key"><a href="#Exec.key"><span class="proto-key">= 1;</span></a></pre><h2 id="GetActionInfoList"><a href="#GetActionInfoList">GetActionInfoList</a></h2>
-<pre class="code-line" id="GetActionInfoList.Default"><a href="#GetActionInfoList.Default"><span class="keyword">command</span> <span class="command-name">GetActionInfoList</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Request a list of valid actions. </p></div><pre class="code-line" id="GetActionInfoList.Default"><a href="#GetActionInfoList.Default"><span class="keyword">command</span> <span class="command-name">GetActionInfoList</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetActionInfoList.ActionInfoList"><a href="#GetActionInfoList.ActionInfoList"><span class="keyword">returns</span> (<span class="message-name">ActionInfoList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>List all valid <span class="domain-specific">Action</span> <span class="domain-specific">name</span>s </p></div></li>
+<li class="field">
 <pre class="code-line" id="GetActionInfoList.ActionInfoList.actionInfoList"><span class="expander">&nbsp;</span><a href="#GetActionInfoList.ActionInfoList.actionInfoList"><span class="qualifier">repeated</span> <span class="">ActionInfo</span> <span class="field-name">actionInfoList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Name of an action, to be used in the <span class="domain-specific">Action</span> message. </p></div></li>
+<li class="field">
 <pre class="code-line" id="GetActionInfoList.ActionInfoList.ActionInfo.name"><a href="#GetActionInfoList.ActionInfoList.ActionInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
@@ -79,7 +84,9 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetActionInfoList.key"><a href="#GetActionInfoList.key"><span class="proto-key">= 2;</span></a></pre><h2 id="SendMouseAction"><a href="#SendMouseAction">SendMouseAction</a></h2>
-<pre class="code-line" id="SendMouseAction.MouseAction"><a href="#SendMouseAction.MouseAction"><span class="keyword">command</span> <span class="command-name">SendMouseAction</span>(<span class="message-name">MouseAction</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Move mouse to the given position on the screen/window. Note that the mouse cursor is not moved visibly. </p>
+  <p>The coordinates are relative to the upper left corner of the tab (not including chrome). </p></div><pre class="code-line" id="SendMouseAction.MouseAction"><a href="#SendMouseAction.MouseAction"><span class="keyword">command</span> <span class="command-name">SendMouseAction</span>(<span class="message-name">MouseAction</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SendMouseAction.MouseAction.windowID"><a href="#SendMouseAction.MouseAction.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -130,7 +137,11 @@
 <li class="field">
 <pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.colorSpecList"><span class="expander">&nbsp;</span><a href="#SetupScreenWatcher.ScreenWatcher.colorSpecList"><span class="qualifier">repeated</span> <span class="">ColorSpec</span> <span class="field-name">colorSpecList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Specifies a new color specification. The <span class="domain-specific">id</span> is used when reporting back the results. You can have overlapping color specifications. Note: There can be a maximum of 16 color specifications! </p>
+  <p>Color values ranges from 0 (no color) to 255 (maximal saturation), other values are not allowed. Default (meaning field missing) is 0 for any low fields and 255 for any high fields. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.ColorSpec.id"><a href="#SetupScreenWatcher.ScreenWatcher.ColorSpec.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.ColorSpec.redLow"><a href="#SetupScreenWatcher.ScreenWatcher.ColorSpec.redLow"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">redLow</span><span class="proto-key"> = 2</span> [default = 0]<span class="proto-key">;</span></a></pre></li>

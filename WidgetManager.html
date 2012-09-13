@@ -8,42 +8,26 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#CloseWidget">CloseWidget</a></li>
-
 <li><a href="#CreateInstaller">CreateInstaller</a></li>
-
 <li><a href="#GetExtensionFlag">GetExtensionFlag</a></li>
-
 <li><a href="#GetSettings">GetSettings</a></li>
-
 <li><a href="#InstallWidget">InstallWidget</a></li>
-
 <li><a href="#InstallWidgetByURL">InstallWidgetByURL</a></li>
-
 <li><a href="#ListWidgets">ListWidgets</a></li>
-
 <li><a href="#OpenWidget">OpenWidget</a></li>
-
 <li><a href="#RemoveInstaller">RemoveInstaller</a></li>
-
 <li><a href="#SetExtensionFlag">SetExtensionFlag</a></li>
-
 <li><a href="#UninstallWidget">UninstallWidget</a></li>
-
 <li><a href="#UpdateInstaller">UpdateInstaller</a></li>
-
 <li><a href="#UpdateWidget">UpdateWidget</a></li>
 
 </ul>
 <h3>Events</h3>
 <ul class="events">
 <li><a href="#OnWidgetInstallFailed">OnWidgetInstallFailed</a></li>
-
 <li><a href="#OnWidgetInstalled">OnWidgetInstalled</a></li>
-
 <li><a href="#OnWidgetUninstalled">OnWidgetUninstalled</a></li>
-
 <li><a href="#OnWidgetUpgradeAvailable">OnWidgetUpgradeAvailable</a></li>
-
 <li><a href="#OnWidgetUpgraded">OnWidgetUpgraded</a></li>
 
 </ul>
@@ -57,7 +41,9 @@
   <p>The manager allows for installing new widgets to the host, upgrading existing ones or uninstalling widget. Widgets can be opened and closed to be shown to the user of the host. </p>
   <p>The service also reports about any widget which is installed or uninstalled from the host, even those installed by the client. It also reports back any failures in downloading or installing a widget. </p>
   <p>Existing widgets on the host can be queried by calling ListWidgets. </p></div><h2 id="CloseWidget"><a href="#CloseWidget">CloseWidget</a></h2>
-<pre class="code-line" id="CloseWidget.CloseWidgetArg"><a href="#CloseWidget.CloseWidgetArg"><span class="keyword">command</span> <span class="command-name">CloseWidget</span>(<span class="message-name">CloseWidgetArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Closes a widget on the host, the widget will no longer be usable until it is re-opened. </p>
+  <p>All persistent settings of the widget is kept while the widget is closed. </p></div><pre class="code-line" id="CloseWidget.CloseWidgetArg"><a href="#CloseWidget.CloseWidgetArg"><span class="keyword">command</span> <span class="command-name">CloseWidget</span>(<span class="message-name">CloseWidgetArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="CloseWidget.CloseWidgetArg.widgetID"><a href="#CloseWidget.CloseWidgetArg.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -68,7 +54,9 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="CloseWidget.key"><a href="#CloseWidget.key"><span class="proto-key">= 4;</span></a></pre><h2 id="CreateInstaller"><a href="#CreateInstaller">CreateInstaller</a></h2>
-<pre class="code-line" id="CreateInstaller.CreateInstallerArg"><a href="#CreateInstaller.CreateInstallerArg"><span class="keyword">command</span> <span class="command-name">CreateInstaller</span>(<span class="message-name">CreateInstallerArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Create a new installer in the host. The installer will keep a temporary file on the host which can be filled with binary data (one chunk at a time) by calling UpdateInstaller. It is also possible to specify a widget ID, if specified the installer will upgrade an existing widget to use a new widget file instead of installing a new one. </p>
+  <p>To use the installer call InstallWidget, to cancel the installer call RemoveInstaller. </p></div><pre class="code-line" id="CreateInstaller.CreateInstallerArg"><a href="#CreateInstaller.CreateInstallerArg"><span class="keyword">command</span> <span class="command-name">CreateInstaller</span>(<span class="message-name">CreateInstallerArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="CreateInstaller.CreateInstallerArg.widgetID"><a href="#CreateInstaller.CreateInstallerArg.widgetID"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -98,7 +86,9 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="CreateInstaller.key"><a href="#CreateInstaller.key"><span class="proto-key">= 5;</span></a></pre><h2 id="GetExtensionFlag"><a href="#GetExtensionFlag">GetExtensionFlag</a></h2>
-<pre class="code-line" id="GetExtensionFlag.GetExtensionFlagArg"><a href="#GetExtensionFlag.GetExtensionFlagArg"><span class="keyword">command</span> <span class="command-name">GetExtensionFlag</span>(<span class="message-name">GetExtensionFlagArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Get extension flag, only for extensions. </p>
+  <p><span class="since-version">Added in version 1.1</span></p></div><pre class="code-line" id="GetExtensionFlag.GetExtensionFlagArg"><a href="#GetExtensionFlag.GetExtensionFlagArg"><span class="keyword">command</span> <span class="command-name">GetExtensionFlag</span>(<span class="message-name">GetExtensionFlagArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetExtensionFlag.GetExtensionFlagArg.widgetID"><a href="#GetExtensionFlag.GetExtensionFlagArg.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -149,7 +139,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetExtensionFlag.key"><a href="#GetExtensionFlag.key"><span class="proto-key">= 18;</span></a></pre><h2 id="GetSettings"><a href="#GetSettings">GetSettings</a></h2>
-<pre class="code-line" id="GetSettings.Default"><a href="#GetSettings.Default"><span class="keyword">command</span> <span class="command-name">GetSettings</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Returns the current settings of the host. </p></div><pre class="code-line" id="GetSettings.Default"><a href="#GetSettings.Default"><span class="keyword">command</span> <span class="command-name">GetSettings</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
@@ -165,7 +156,10 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetSettings.key"><a href="#GetSettings.key"><span class="proto-key">= 1;</span></a></pre><h2 id="InstallWidget"><a href="#InstallWidget">InstallWidget</a></h2>
-<pre class="code-line" id="InstallWidget.InstallWidgetArg"><a href="#InstallWidget.InstallWidgetArg"><span class="keyword">command</span> <span class="command-name">InstallWidget</span>(<span class="message-name">InstallWidgetArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Installs a widget by using the specified installer created by CreateInstaller. Once the widget is installed the installer and temporary file will be removed from the host. </p>
+  <p>If the installation succeded it will return INSTALL_SUCCESSFUL, otherwise INSTALL_FAILED. </p>
+  <p class="note"><span class="info"></span> A OnWidgetInstalled will be sent before the call is finished if the       widget was installed. </p></div><pre class="code-line" id="InstallWidget.InstallWidgetArg"><a href="#InstallWidget.InstallWidgetArg"><span class="keyword">command</span> <span class="command-name">InstallWidget</span>(<span class="message-name">InstallWidgetArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="InstallWidget.InstallWidgetArg.installerID"><a href="#InstallWidget.InstallWidgetArg.installerID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">installerID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -197,11 +191,14 @@
 </div></li>
 <li class="field">
 <pre class="code-line" id="InstallWidget.WidgetInstallResult.url"><a href="#InstallWidget.WidgetInstallResult.url"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
-  <p>The URL that was used to (download and) install the widget. Should be the same URL as InstallWidgetByURLArg.url <span class="note"></span> Only set if it was installed from a URL. </p></div></li>
+  <p class="note">The URL that was used to (download and) install the widget. Should be the same URL as InstallWidgetByURLArg.url <span class="info"></span> Only set if it was installed from a URL. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="InstallWidget.key"><a href="#InstallWidget.key"><span class="proto-key">= 8;</span></a></pre><h2 id="InstallWidgetByURL"><a href="#InstallWidgetByURL">InstallWidgetByURL</a></h2>
-<pre class="code-line" id="InstallWidgetByURL.InstallWidgetByURLArg"><a href="#InstallWidgetByURL.InstallWidgetByURLArg"><span class="keyword">command</span> <span class="command-name">InstallWidgetByURL</span>(<span class="message-name">InstallWidgetByURLArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Install a widget by telling the host to download the widget file from the specified URL first. If the file was succesfully downloaded it will be installed in the host. </p>
+  <p>If the download and installation succeded it will return INSTALL_SUCCESSFUL, otherwise it returns one of the failure types. </p>
+  <p class="note"><span class="info"></span> A OnWidgetInstalled will be sent before the call is finished if the       widget was installed. A OnWidgetInstallFailed event is sent if the       the download failed or the widget could not be installed. </p></div><pre class="code-line" id="InstallWidgetByURL.InstallWidgetByURLArg"><a href="#InstallWidgetByURL.InstallWidgetByURLArg"><span class="keyword">command</span> <span class="command-name">InstallWidgetByURL</span>(<span class="message-name">InstallWidgetByURLArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="InstallWidgetByURL.InstallWidgetByURLArg.url"><a href="#InstallWidgetByURL.InstallWidgetByURLArg.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -235,11 +232,12 @@
 </div></li>
 <li class="field">
 <pre class="code-line" id="InstallWidgetByURL.WidgetInstallResult.url"><a href="#InstallWidgetByURL.WidgetInstallResult.url"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
-  <p>The URL that was used to (download and) install the widget. Should be the same URL as InstallWidgetByURLArg.url <span class="note"></span> Only set if it was installed from a URL. </p></div></li>
+  <p class="note">The URL that was used to (download and) install the widget. Should be the same URL as InstallWidgetByURLArg.url <span class="info"></span> Only set if it was installed from a URL. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="InstallWidgetByURL.key"><a href="#InstallWidgetByURL.key"><span class="proto-key">= 9;</span></a></pre><h2 id="ListWidgets"><a href="#ListWidgets">ListWidgets</a></h2>
-<pre class="code-line" id="ListWidgets.Default"><a href="#ListWidgets.Default"><span class="keyword">command</span> <span class="command-name">ListWidgets</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Lists all widgets installed in the host. </p></div><pre class="code-line" id="ListWidgets.Default"><a href="#ListWidgets.Default"><span class="keyword">command</span> <span class="command-name">ListWidgets</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
@@ -248,7 +246,11 @@
 <ul><li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.widgetList"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.widgetList"><span class="qualifier">repeated</span> <span class="">Widget</span> <span class="field-name">widgetList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Contains detailed information on a widget. The structure is modeled after the W3C spec but with additional information for opera specific widgets. </p>
+  <p>The same structure is also used for Unite apps/services and browser extensions. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.widgetID"><a href="#ListWidgets.WidgetList.Widget.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A unique identifier for the widget. </p>
   <p>e.g. "wuid-351f0e9d-24f2-080b-07e7-13b724cdaef8" </p></div></li>
@@ -287,7 +289,11 @@
   <p>Represents the full human-readable name for a widget. This field will only be set if there is a name element defined in the widget specification. </p>
   <p>Note: This is either the localized name that matches the gadget locales, or the unlocalized name. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents the full human-readable name for a widget that is used, for example, in an application menu or in other contexts. </p>
+  <p>7.7 <a href="http://www.w3.org/TR/widgets/#name">http://www.w3.org/TR/widgets/#name</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Name.text"><a href="#ListWidgets.WidgetList.Widget.Name.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The full human-readable name for the widget. </p></div></li>
 <li class="field">
@@ -303,7 +309,10 @@
 <li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.properties"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Various properties specific to Opera </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Properties.isActive"><a href="#ListWidgets.WidgetList.Widget.Properties.isActive"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isActive</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Specifies whether the widget is currently running or not. </p></div></li>
 <li class="field">
@@ -367,7 +376,11 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.author"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents people or an organization attributed with the creation of the widget. This field will only be set if there is an author element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents people or an organization attributed with the creation of the widget. </p>
+  <p>7.9 <a href="http://www.w3.org/TR/widgets/#author0">http://www.w3.org/TR/widgets/#author0</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Author.text"><a href="#ListWidgets.WidgetList.Widget.Author.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>People or organization attributed with the creation of the widget. </p></div></li>
 <li class="field">
@@ -495,7 +508,11 @@
   <p>Represents a human-readable description of the widget. This field will only be set if there is a description element defined in the widget specification. </p>
   <p>Note: This is either the localized description that matches the gadget locales, or the unlocalized description. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents a human-readable description of the widget. </p>
+  <p>7.8 <a href="http://www.w3.org/TR/widgets/#description">http://www.w3.org/TR/widgets/#description</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Description.text"><a href="#ListWidgets.WidgetList.Widget.Description.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The description text. </p></div></li>
 <li class="field">
@@ -508,7 +525,10 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.license"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license information for the widget if one is present. This field will only be set if there is a license element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The software license for this widget. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.License.text"><a href="#ListWidgets.WidgetList.Widget.License.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license text. </p></div></li>
 <li class="field">
@@ -524,7 +544,11 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.iconList"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All icons defined for the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A custom icon for the widget. </p>
+  <p>7.11 <a href="http://www.w3.org/TR/widgets/#the-icon-element-and-its-attributes">http://www.w3.org/TR/widgets/#the-icon-element-and-its-attributes</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Icon.src"><a href="#ListWidgets.WidgetList.Widget.Icon.src"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">src</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A path attribute that points to a file inside the widget package. </p></div></li>
 <li class="field">
@@ -540,7 +564,10 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.content"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Declare a custom start file the user agent is expected to use when it instantiates the widget. This field will only be set if there is a content element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Defines the start file for a widget, the file is defined by a path and optionally which MIME-Type and encoding it has. If no content has been defined the widget is started from "index.html". </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Content.src"><a href="#ListWidgets.WidgetList.Widget.Content.src"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">src</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A path which points to a file within the widget package. e.g. "mywidget.html" </p></div></li>
 <li class="field">
@@ -556,7 +583,11 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.featureList"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all features requested by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A feature is a URI identifiable runtime component. (e.g. an API). </p>
+  <p>7.13 <a href="http://www.w3.org/TR/widgets/#feature">http://www.w3.org/TR/widgets/#feature</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Feature.name"><a href="#ListWidgets.WidgetList.Widget.Feature.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An IRI attribute that identifies a feature that is needed by the widget at runtime (such as an API). </p></div></li>
 <li class="field">
@@ -566,7 +597,11 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Feature.paramList"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of parameters for the feature. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A parameter for a feature, defined as a name/value pair. The meaning of the name and value depends entirely on the feature. </p>
+  <p>7.14 <a href="http://www.w3.org/TR/widgets/#param">http://www.w3.org/TR/widgets/#param</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Feature.Param.name"><a href="#ListWidgets.WidgetList.Widget.Feature.Param.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Feature.Param.value"><a href="#ListWidgets.WidgetList.Widget.Feature.Param.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -580,7 +615,11 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.preferenceList"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all preferences defined by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The preference element allows authors to declare one or more preferences. Preferences are persistently stored in the browser. </p>
+  <p>7.15 <a href="http://www.w3.org/TR/widgets/#preference">http://www.w3.org/TR/widgets/#preference</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Preference.name"><a href="#ListWidgets.WidgetList.Widget.Preference.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the preference e.g. "skin" </p></div></li>
 <li class="field">
@@ -633,7 +672,10 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.networkAccessList"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of requests to access network resources. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Defines a request for permission to access a set of network resources. <a href="http://www.w3.org/TR/widgets-access/#the-access-element">http://www.w3.org/TR/widgets-access/#the-access-element</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Network.origin"><a href="#ListWidgets.WidgetList.Widget.Network.origin"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">origin</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Defines the URL that the widget should get access to, e.g. "<a href="https://example.net&quot;">https://example.net"</a> A special value of U+002A ASTERISK (*) means unrestricted access to any network resources. </p></div></li>
 <li class="field">
@@ -646,7 +688,11 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.securityAccessList"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Lists of security access the widget requests. Note: This only applies to Opera Widgets (namespace <a href="&quot;http://xmlns.opera.com/2006/widget&quot;">"http://xmlns.opera.com/2006/widget"</a> and ""), not W3C and other widget formats. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Declares which protocols, hosts, ports, and paths the widget may use. </p>
+  <p><a href="http://dev.opera.com/articles/view/opera-widgets-specification-1-0/#xmlsecurity">http://dev.opera.com/articles/view/opera-widgets-specification-1-0/#xmlsecurity</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.SecurityAccess.protocolList"><a href="#ListWidgets.WidgetList.Widget.SecurityAccess.protocolList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">protocolList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The protocols the widget will be using to contact external servers. All protocols, except the file protocol is permitted. e.g. "http", "https" If the list is empty it means any protocol (excluding exceptions). </p></div></li>
 <li class="field">
@@ -656,7 +702,10 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.SecurityAccess.portList"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Ports which may be used by the widget. Each entry is a range of ports, e.g. 1024-2048 If the list is empty it means port. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents a range of ports the widget may use, e.g. 1024-2048 If only a single port is defined then both low and high will contain the same value. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.SecurityAccess.Port.low"><a href="#ListWidgets.WidgetList.Widget.SecurityAccess.Port.low"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">low</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.SecurityAccess.Port.high"><a href="#ListWidgets.WidgetList.Widget.SecurityAccess.Port.high"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">high</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -692,7 +741,10 @@
 <ul><li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.UniteInfo.type"><span class="expander">&nbsp;</span><a href="#ListWidgets.WidgetList.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Unite type </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.UniteInfo.UNKNOWN"><a href="#ListWidgets.WidgetList.Widget.UniteInfo.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The Unite type is not known by the service. </p></div></li>
 <li class="field">
@@ -780,7 +832,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ListWidgets.key"><a href="#ListWidgets.key"><span class="proto-key">= 2;</span></a></pre><h2 id="OpenWidget"><a href="#OpenWidget">OpenWidget</a></h2>
-<pre class="code-line" id="OpenWidget.OpenWidgetArg"><a href="#OpenWidget.OpenWidgetArg"><span class="keyword">command</span> <span class="command-name">OpenWidget</span>(<span class="message-name">OpenWidgetArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Opens a widget on the host, the widget will then be visible for the user of the host. </p></div><pre class="code-line" id="OpenWidget.OpenWidgetArg"><a href="#OpenWidget.OpenWidgetArg"><span class="keyword">command</span> <span class="command-name">OpenWidget</span>(<span class="message-name">OpenWidgetArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OpenWidget.OpenWidgetArg.widgetID"><a href="#OpenWidget.OpenWidgetArg.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -799,7 +852,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OpenWidget.key"><a href="#OpenWidget.key"><span class="proto-key">= 3;</span></a></pre><h2 id="RemoveInstaller"><a href="#RemoveInstaller">RemoveInstaller</a></h2>
-<pre class="code-line" id="RemoveInstaller.RemoveInstallerArg"><a href="#RemoveInstaller.RemoveInstallerArg"><span class="keyword">command</span> <span class="command-name">RemoveInstaller</span>(<span class="message-name">RemoveInstallerArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Cancels an installation by removing the installer and the temporary file from the host. </p></div><pre class="code-line" id="RemoveInstaller.RemoveInstallerArg"><a href="#RemoveInstaller.RemoveInstallerArg"><span class="keyword">command</span> <span class="command-name">RemoveInstaller</span>(<span class="message-name">RemoveInstallerArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="RemoveInstaller.RemoveInstallerArg.installerID"><a href="#RemoveInstaller.RemoveInstallerArg.installerID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">installerID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -810,7 +864,9 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="RemoveInstaller.key"><a href="#RemoveInstaller.key"><span class="proto-key">= 7;</span></a></pre><h2 id="SetExtensionFlag"><a href="#SetExtensionFlag">SetExtensionFlag</a></h2>
-<pre class="code-line" id="SetExtensionFlag.SetExtensionFlagArg"><a href="#SetExtensionFlag.SetExtensionFlagArg"><span class="keyword">command</span> <span class="command-name">SetExtensionFlag</span>(<span class="message-name">SetExtensionFlagArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Set extension flag, only for extensions. </p>
+  <p><span class="since-version">Added in version 1.1</span></p></div><pre class="code-line" id="SetExtensionFlag.SetExtensionFlagArg"><a href="#SetExtensionFlag.SetExtensionFlagArg"><span class="keyword">command</span> <span class="command-name">SetExtensionFlag</span>(<span class="message-name">SetExtensionFlagArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetExtensionFlag.SetExtensionFlagArg.widgetID"><a href="#SetExtensionFlag.SetExtensionFlagArg.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -845,7 +901,9 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="SetExtensionFlag.key"><a href="#SetExtensionFlag.key"><span class="proto-key">= 17;</span></a></pre><h2 id="UninstallWidget"><a href="#UninstallWidget">UninstallWidget</a></h2>
-<pre class="code-line" id="UninstallWidget.UninstallWidgetArg"><a href="#UninstallWidget.UninstallWidgetArg"><span class="keyword">command</span> <span class="command-name">UninstallWidget</span>(<span class="message-name">UninstallWidgetArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Removes a widget from the host, the widget is closed and the widget file is removed. </p>
+  <p class="note"><span class="info"></span> A OnWidgetUninstalled will be sent if the widget could be uninstalled. </p></div><pre class="code-line" id="UninstallWidget.UninstallWidgetArg"><a href="#UninstallWidget.UninstallWidgetArg"><span class="keyword">command</span> <span class="command-name">UninstallWidget</span>(<span class="message-name">UninstallWidgetArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="UninstallWidget.UninstallWidgetArg.widgetID"><a href="#UninstallWidget.UninstallWidgetArg.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -856,14 +914,16 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="UninstallWidget.key"><a href="#UninstallWidget.key"><span class="proto-key">= 10;</span></a></pre><h2 id="UpdateInstaller"><a href="#UpdateInstaller">UpdateInstaller</a></h2>
-<pre class="code-line" id="UpdateInstaller.UpdateInstallerArg"><a href="#UpdateInstaller.UpdateInstallerArg"><span class="keyword">command</span> <span class="command-name">UpdateInstaller</span>(<span class="message-name">UpdateInstallerArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Adds additional data to an existing installer. The binary data will be appended to the temporary file. </p>
+  <p class="note"><span class="info"></span> Make sure the client does not send more data in one chunk than the       host can deal with. The max chunk size can be attained by calling       GetSettings. </p></div><pre class="code-line" id="UpdateInstaller.UpdateInstallerArg"><a href="#UpdateInstaller.UpdateInstallerArg"><span class="keyword">command</span> <span class="command-name">UpdateInstaller</span>(<span class="message-name">UpdateInstallerArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="UpdateInstaller.UpdateInstallerArg.installerID"><a href="#UpdateInstaller.UpdateInstallerArg.installerID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">installerID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="UpdateInstaller.UpdateInstallerArg.byteData"><a href="#UpdateInstaller.UpdateInstallerArg.byteData"><span class="qualifier">required</span> <span class="string">bytes</span> <span class="field-name">byteData</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Byte data which will be appended to the temporary file. </p>
-  <p><span class="note"></span> Must not exceed the max size set by the host, see GetSettings. </p></div></li>
+  <p class="note"><span class="info"></span> Must not exceed the max size set by the host, see GetSettings. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="UpdateInstaller.Default"><a href="#UpdateInstaller.Default"><span class="keyword">returns</span> (<span class="message-name">Default</span>)</a></pre><div class="message">
@@ -871,7 +931,9 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="UpdateInstaller.key"><a href="#UpdateInstaller.key"><span class="proto-key">= 6;</span></a></pre><h2 id="UpdateWidget"><a href="#UpdateWidget">UpdateWidget</a></h2>
-<pre class="code-line" id="UpdateWidget.UpdateWidgetArg"><a href="#UpdateWidget.UpdateWidgetArg"><span class="keyword">command</span> <span class="command-name">UpdateWidget</span>(<span class="message-name">UpdateWidgetArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Do an update on the specified widget. This will trigger OnWidgetUpgradeAvailable. </p>
+  <p><span class="since-version">Added in version 1.1</span></p></div><pre class="code-line" id="UpdateWidget.UpdateWidgetArg"><a href="#UpdateWidget.UpdateWidgetArg"><span class="keyword">command</span> <span class="command-name">UpdateWidget</span>(<span class="message-name">UpdateWidgetArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="UpdateWidget.UpdateWidgetArg.widgetID"><a href="#UpdateWidget.UpdateWidgetArg.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -904,11 +966,12 @@
 </div></li>
 <li class="field">
 <pre class="code-line" id="UpdateWidget.WidgetUpdateResult.url"><a href="#UpdateWidget.WidgetUpdateResult.url"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
-  <p>The URL that was used to (download and) install the widget. Should be the same URL as InstallWidgetByURLArg.url <span class="note"></span> Only set if it was installed from a URL. </p></div></li>
+  <p class="note">The URL that was used to (download and) install the widget. Should be the same URL as InstallWidgetByURLArg.url <span class="info"></span> Only set if it was installed from a URL. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="UpdateWidget.key"><a href="#UpdateWidget.key"><span class="proto-key">= 16;</span></a></pre><h2 id="OnWidgetInstallFailed"><a href="#OnWidgetInstallFailed">OnWidgetInstallFailed</a></h2>
-<pre class="code-line" id="OnWidgetInstallFailed.WidgetInstallResult"><a href="#OnWidgetInstallFailed.WidgetInstallResult"><span class="keyword">event</span> <span class="command-name">OnWidgetInstallFailed</span><span class="keyword"> returns </span>(<span class="message-name">WidgetInstallResult</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>A widget failed to install in the host. </p></div><pre class="code-line" id="OnWidgetInstallFailed.WidgetInstallResult"><a href="#OnWidgetInstallFailed.WidgetInstallResult"><span class="keyword">event</span> <span class="command-name">OnWidgetInstallFailed</span><span class="keyword"> returns </span>(<span class="message-name">WidgetInstallResult</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetInstallFailed.WidgetInstallResult.result"><span class="expander">&nbsp;</span><a href="#OnWidgetInstallFailed.WidgetInstallResult.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -934,13 +997,18 @@
 </div></li>
 <li class="field">
 <pre class="code-line" id="OnWidgetInstallFailed.WidgetInstallResult.url"><a href="#OnWidgetInstallFailed.WidgetInstallResult.url"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
-  <p>The URL that was used to (download and) install the widget. Should be the same URL as InstallWidgetByURLArg.url <span class="note"></span> Only set if it was installed from a URL. </p></div></li>
+  <p class="note">The URL that was used to (download and) install the widget. Should be the same URL as InstallWidgetByURLArg.url <span class="info"></span> Only set if it was installed from a URL. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnWidgetInstallFailed.key"><a href="#OnWidgetInstallFailed.key"><span class="proto-key">= 13;</span></a></pre><h2 id="OnWidgetInstalled"><a href="#OnWidgetInstalled">OnWidgetInstalled</a></h2>
-<pre class="code-line" id="OnWidgetInstalled.Widget"><a href="#OnWidgetInstalled.Widget"><span class="keyword">event</span> <span class="command-name">OnWidgetInstalled</span><span class="keyword"> returns </span>(<span class="message-name">Widget</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>A new widget has been installed. </p></div><pre class="code-line" id="OnWidgetInstalled.Widget"><a href="#OnWidgetInstalled.Widget"><span class="keyword">event</span> <span class="command-name">OnWidgetInstalled</span><span class="keyword"> returns </span>(<span class="message-name">Widget</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Contains detailed information on a widget. The structure is modeled after the W3C spec but with additional information for opera specific widgets. </p>
+  <p>The same structure is also used for Unite apps/services and browser extensions. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.widgetID"><a href="#OnWidgetInstalled.Widget.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A unique identifier for the widget. </p>
   <p>e.g. "wuid-351f0e9d-24f2-080b-07e7-13b724cdaef8" </p></div></li>
@@ -979,7 +1047,11 @@
   <p>Represents the full human-readable name for a widget. This field will only be set if there is a name element defined in the widget specification. </p>
   <p>Note: This is either the localized name that matches the gadget locales, or the unlocalized name. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents the full human-readable name for a widget that is used, for example, in an application menu or in other contexts. </p>
+  <p>7.7 <a href="http://www.w3.org/TR/widgets/#name">http://www.w3.org/TR/widgets/#name</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Name.text"><a href="#OnWidgetInstalled.Widget.Name.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The full human-readable name for the widget. </p></div></li>
 <li class="field">
@@ -995,7 +1067,10 @@
 <li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.properties"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Various properties specific to Opera </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Properties.isActive"><a href="#OnWidgetInstalled.Widget.Properties.isActive"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isActive</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Specifies whether the widget is currently running or not. </p></div></li>
 <li class="field">
@@ -1059,7 +1134,11 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.author"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents people or an organization attributed with the creation of the widget. This field will only be set if there is an author element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents people or an organization attributed with the creation of the widget. </p>
+  <p>7.9 <a href="http://www.w3.org/TR/widgets/#author0">http://www.w3.org/TR/widgets/#author0</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Author.text"><a href="#OnWidgetInstalled.Widget.Author.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>People or organization attributed with the creation of the widget. </p></div></li>
 <li class="field">
@@ -1187,7 +1266,11 @@
   <p>Represents a human-readable description of the widget. This field will only be set if there is a description element defined in the widget specification. </p>
   <p>Note: This is either the localized description that matches the gadget locales, or the unlocalized description. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents a human-readable description of the widget. </p>
+  <p>7.8 <a href="http://www.w3.org/TR/widgets/#description">http://www.w3.org/TR/widgets/#description</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Description.text"><a href="#OnWidgetInstalled.Widget.Description.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The description text. </p></div></li>
 <li class="field">
@@ -1200,7 +1283,10 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.license"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license information for the widget if one is present. This field will only be set if there is a license element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The software license for this widget. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.License.text"><a href="#OnWidgetInstalled.Widget.License.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license text. </p></div></li>
 <li class="field">
@@ -1216,7 +1302,11 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.iconList"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All icons defined for the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A custom icon for the widget. </p>
+  <p>7.11 <a href="http://www.w3.org/TR/widgets/#the-icon-element-and-its-attributes">http://www.w3.org/TR/widgets/#the-icon-element-and-its-attributes</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Icon.src"><a href="#OnWidgetInstalled.Widget.Icon.src"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">src</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A path attribute that points to a file inside the widget package. </p></div></li>
 <li class="field">
@@ -1232,7 +1322,10 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.content"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Declare a custom start file the user agent is expected to use when it instantiates the widget. This field will only be set if there is a content element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Defines the start file for a widget, the file is defined by a path and optionally which MIME-Type and encoding it has. If no content has been defined the widget is started from "index.html". </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Content.src"><a href="#OnWidgetInstalled.Widget.Content.src"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">src</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A path which points to a file within the widget package. e.g. "mywidget.html" </p></div></li>
 <li class="field">
@@ -1248,7 +1341,11 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.featureList"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all features requested by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A feature is a URI identifiable runtime component. (e.g. an API). </p>
+  <p>7.13 <a href="http://www.w3.org/TR/widgets/#feature">http://www.w3.org/TR/widgets/#feature</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Feature.name"><a href="#OnWidgetInstalled.Widget.Feature.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An IRI attribute that identifies a feature that is needed by the widget at runtime (such as an API). </p></div></li>
 <li class="field">
@@ -1258,7 +1355,11 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.Feature.paramList"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of parameters for the feature. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A parameter for a feature, defined as a name/value pair. The meaning of the name and value depends entirely on the feature. </p>
+  <p>7.14 <a href="http://www.w3.org/TR/widgets/#param">http://www.w3.org/TR/widgets/#param</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Feature.Param.name"><a href="#OnWidgetInstalled.Widget.Feature.Param.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Feature.Param.value"><a href="#OnWidgetInstalled.Widget.Feature.Param.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -1272,7 +1373,11 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.preferenceList"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all preferences defined by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The preference element allows authors to declare one or more preferences. Preferences are persistently stored in the browser. </p>
+  <p>7.15 <a href="http://www.w3.org/TR/widgets/#preference">http://www.w3.org/TR/widgets/#preference</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Preference.name"><a href="#OnWidgetInstalled.Widget.Preference.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the preference e.g. "skin" </p></div></li>
 <li class="field">
@@ -1325,7 +1430,10 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.networkAccessList"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of requests to access network resources. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Defines a request for permission to access a set of network resources. <a href="http://www.w3.org/TR/widgets-access/#the-access-element">http://www.w3.org/TR/widgets-access/#the-access-element</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Network.origin"><a href="#OnWidgetInstalled.Widget.Network.origin"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">origin</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Defines the URL that the widget should get access to, e.g. "<a href="https://example.net&quot;">https://example.net"</a> A special value of U+002A ASTERISK (*) means unrestricted access to any network resources. </p></div></li>
 <li class="field">
@@ -1338,7 +1446,11 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.securityAccessList"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Lists of security access the widget requests. Note: This only applies to Opera Widgets (namespace <a href="&quot;http://xmlns.opera.com/2006/widget&quot;">"http://xmlns.opera.com/2006/widget"</a> and ""), not W3C and other widget formats. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Declares which protocols, hosts, ports, and paths the widget may use. </p>
+  <p><a href="http://dev.opera.com/articles/view/opera-widgets-specification-1-0/#xmlsecurity">http://dev.opera.com/articles/view/opera-widgets-specification-1-0/#xmlsecurity</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.SecurityAccess.protocolList"><a href="#OnWidgetInstalled.Widget.SecurityAccess.protocolList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">protocolList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The protocols the widget will be using to contact external servers. All protocols, except the file protocol is permitted. e.g. "http", "https" If the list is empty it means any protocol (excluding exceptions). </p></div></li>
 <li class="field">
@@ -1348,7 +1460,10 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.SecurityAccess.portList"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Ports which may be used by the widget. Each entry is a range of ports, e.g. 1024-2048 If the list is empty it means port. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents a range of ports the widget may use, e.g. 1024-2048 If only a single port is defined then both low and high will contain the same value. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.SecurityAccess.Port.low"><a href="#OnWidgetInstalled.Widget.SecurityAccess.Port.low"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">low</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.SecurityAccess.Port.high"><a href="#OnWidgetInstalled.Widget.SecurityAccess.Port.high"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">high</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -1384,7 +1499,10 @@
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.UniteInfo.type"><span class="expander">&nbsp;</span><a href="#OnWidgetInstalled.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Unite type </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.UniteInfo.UNKNOWN"><a href="#OnWidgetInstalled.Widget.UniteInfo.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The Unite type is not known by the service. </p></div></li>
 <li class="field">
@@ -1469,16 +1587,23 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnWidgetInstalled.key"><a href="#OnWidgetInstalled.key"><span class="proto-key">= 11;</span></a></pre><h2 id="OnWidgetUninstalled"><a href="#OnWidgetUninstalled">OnWidgetUninstalled</a></h2>
-<pre class="code-line" id="OnWidgetUninstalled.WidgetUninstalled"><a href="#OnWidgetUninstalled.WidgetUninstalled"><span class="keyword">event</span> <span class="command-name">OnWidgetUninstalled</span><span class="keyword"> returns </span>(<span class="message-name">WidgetUninstalled</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>A widget was uninstalled from the host. </p></div><pre class="code-line" id="OnWidgetUninstalled.WidgetUninstalled"><a href="#OnWidgetUninstalled.WidgetUninstalled"><span class="keyword">event</span> <span class="command-name">OnWidgetUninstalled</span><span class="keyword"> returns </span>(<span class="message-name">WidgetUninstalled</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUninstalled.WidgetUninstalled.widgetID"><a href="#OnWidgetUninstalled.WidgetUninstalled.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnWidgetUninstalled.key"><a href="#OnWidgetUninstalled.key"><span class="proto-key">= 14;</span></a></pre><h2 id="OnWidgetUpgradeAvailable"><a href="#OnWidgetUpgradeAvailable">OnWidgetUpgradeAvailable</a></h2>
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget"><a href="#OnWidgetUpgradeAvailable.Widget"><span class="keyword">event</span> <span class="command-name">OnWidgetUpgradeAvailable</span><span class="keyword"> returns </span>(<span class="message-name">Widget</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>An upgrade to an existing widget is available. </p>
+  <p><span class="since-version">Added in version 1.1</span></p></div><pre class="code-line" id="OnWidgetUpgradeAvailable.Widget"><a href="#OnWidgetUpgradeAvailable.Widget"><span class="keyword">event</span> <span class="command-name">OnWidgetUpgradeAvailable</span><span class="keyword"> returns </span>(<span class="message-name">Widget</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Contains detailed information on a widget. The structure is modeled after the W3C spec but with additional information for opera specific widgets. </p>
+  <p>The same structure is also used for Unite apps/services and browser extensions. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.widgetID"><a href="#OnWidgetUpgradeAvailable.Widget.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A unique identifier for the widget. </p>
   <p>e.g. "wuid-351f0e9d-24f2-080b-07e7-13b724cdaef8" </p></div></li>
@@ -1517,7 +1642,11 @@
   <p>Represents the full human-readable name for a widget. This field will only be set if there is a name element defined in the widget specification. </p>
   <p>Note: This is either the localized name that matches the gadget locales, or the unlocalized name. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents the full human-readable name for a widget that is used, for example, in an application menu or in other contexts. </p>
+  <p>7.7 <a href="http://www.w3.org/TR/widgets/#name">http://www.w3.org/TR/widgets/#name</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Name.text"><a href="#OnWidgetUpgradeAvailable.Widget.Name.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The full human-readable name for the widget. </p></div></li>
 <li class="field">
@@ -1533,7 +1662,10 @@
 <li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.properties"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Various properties specific to Opera </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Properties.isActive"><a href="#OnWidgetUpgradeAvailable.Widget.Properties.isActive"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isActive</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Specifies whether the widget is currently running or not. </p></div></li>
 <li class="field">
@@ -1597,7 +1729,11 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.author"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents people or an organization attributed with the creation of the widget. This field will only be set if there is an author element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents people or an organization attributed with the creation of the widget. </p>
+  <p>7.9 <a href="http://www.w3.org/TR/widgets/#author0">http://www.w3.org/TR/widgets/#author0</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Author.text"><a href="#OnWidgetUpgradeAvailable.Widget.Author.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>People or organization attributed with the creation of the widget. </p></div></li>
 <li class="field">
@@ -1725,7 +1861,11 @@
   <p>Represents a human-readable description of the widget. This field will only be set if there is a description element defined in the widget specification. </p>
   <p>Note: This is either the localized description that matches the gadget locales, or the unlocalized description. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents a human-readable description of the widget. </p>
+  <p>7.8 <a href="http://www.w3.org/TR/widgets/#description">http://www.w3.org/TR/widgets/#description</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Description.text"><a href="#OnWidgetUpgradeAvailable.Widget.Description.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The description text. </p></div></li>
 <li class="field">
@@ -1738,7 +1878,10 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.license"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license information for the widget if one is present. This field will only be set if there is a license element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The software license for this widget. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.License.text"><a href="#OnWidgetUpgradeAvailable.Widget.License.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license text. </p></div></li>
 <li class="field">
@@ -1754,7 +1897,11 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.iconList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All icons defined for the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A custom icon for the widget. </p>
+  <p>7.11 <a href="http://www.w3.org/TR/widgets/#the-icon-element-and-its-attributes">http://www.w3.org/TR/widgets/#the-icon-element-and-its-attributes</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Icon.src"><a href="#OnWidgetUpgradeAvailable.Widget.Icon.src"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">src</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A path attribute that points to a file inside the widget package. </p></div></li>
 <li class="field">
@@ -1770,7 +1917,10 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.content"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Declare a custom start file the user agent is expected to use when it instantiates the widget. This field will only be set if there is a content element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Defines the start file for a widget, the file is defined by a path and optionally which MIME-Type and encoding it has. If no content has been defined the widget is started from "index.html". </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Content.src"><a href="#OnWidgetUpgradeAvailable.Widget.Content.src"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">src</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A path which points to a file within the widget package. e.g. "mywidget.html" </p></div></li>
 <li class="field">
@@ -1786,7 +1936,11 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.featureList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all features requested by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A feature is a URI identifiable runtime component. (e.g. an API). </p>
+  <p>7.13 <a href="http://www.w3.org/TR/widgets/#feature">http://www.w3.org/TR/widgets/#feature</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Feature.name"><a href="#OnWidgetUpgradeAvailable.Widget.Feature.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An IRI attribute that identifies a feature that is needed by the widget at runtime (such as an API). </p></div></li>
 <li class="field">
@@ -1796,7 +1950,11 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Feature.paramList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of parameters for the feature. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A parameter for a feature, defined as a name/value pair. The meaning of the name and value depends entirely on the feature. </p>
+  <p>7.14 <a href="http://www.w3.org/TR/widgets/#param">http://www.w3.org/TR/widgets/#param</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Feature.Param.name"><a href="#OnWidgetUpgradeAvailable.Widget.Feature.Param.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Feature.Param.value"><a href="#OnWidgetUpgradeAvailable.Widget.Feature.Param.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -1810,7 +1968,11 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.preferenceList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all preferences defined by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The preference element allows authors to declare one or more preferences. Preferences are persistently stored in the browser. </p>
+  <p>7.15 <a href="http://www.w3.org/TR/widgets/#preference">http://www.w3.org/TR/widgets/#preference</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Preference.name"><a href="#OnWidgetUpgradeAvailable.Widget.Preference.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the preference e.g. "skin" </p></div></li>
 <li class="field">
@@ -1863,7 +2025,10 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.networkAccessList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of requests to access network resources. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Defines a request for permission to access a set of network resources. <a href="http://www.w3.org/TR/widgets-access/#the-access-element">http://www.w3.org/TR/widgets-access/#the-access-element</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Network.origin"><a href="#OnWidgetUpgradeAvailable.Widget.Network.origin"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">origin</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Defines the URL that the widget should get access to, e.g. "<a href="https://example.net&quot;">https://example.net"</a> A special value of U+002A ASTERISK (*) means unrestricted access to any network resources. </p></div></li>
 <li class="field">
@@ -1876,7 +2041,11 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.securityAccessList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Lists of security access the widget requests. Note: This only applies to Opera Widgets (namespace <a href="&quot;http://xmlns.opera.com/2006/widget&quot;">"http://xmlns.opera.com/2006/widget"</a> and ""), not W3C and other widget formats. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Declares which protocols, hosts, ports, and paths the widget may use. </p>
+  <p><a href="http://dev.opera.com/articles/view/opera-widgets-specification-1-0/#xmlsecurity">http://dev.opera.com/articles/view/opera-widgets-specification-1-0/#xmlsecurity</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.SecurityAccess.protocolList"><a href="#OnWidgetUpgradeAvailable.Widget.SecurityAccess.protocolList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">protocolList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The protocols the widget will be using to contact external servers. All protocols, except the file protocol is permitted. e.g. "http", "https" If the list is empty it means any protocol (excluding exceptions). </p></div></li>
 <li class="field">
@@ -1886,7 +2055,10 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.SecurityAccess.portList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Ports which may be used by the widget. Each entry is a range of ports, e.g. 1024-2048 If the list is empty it means port. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents a range of ports the widget may use, e.g. 1024-2048 If only a single port is defined then both low and high will contain the same value. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.SecurityAccess.Port.low"><a href="#OnWidgetUpgradeAvailable.Widget.SecurityAccess.Port.low"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">low</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.SecurityAccess.Port.high"><a href="#OnWidgetUpgradeAvailable.Widget.SecurityAccess.Port.high"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">high</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -1922,7 +2094,10 @@
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.UniteInfo.type"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgradeAvailable.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Unite type </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.UniteInfo.UNKNOWN"><a href="#OnWidgetUpgradeAvailable.Widget.UniteInfo.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The Unite type is not known by the service. </p></div></li>
 <li class="field">
@@ -2007,9 +2182,14 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnWidgetUpgradeAvailable.key"><a href="#OnWidgetUpgradeAvailable.key"><span class="proto-key">= 15;</span></a></pre><h2 id="OnWidgetUpgraded"><a href="#OnWidgetUpgraded">OnWidgetUpgraded</a></h2>
-<pre class="code-line" id="OnWidgetUpgraded.Widget"><a href="#OnWidgetUpgraded.Widget"><span class="keyword">event</span> <span class="command-name">OnWidgetUpgraded</span><span class="keyword"> returns </span>(<span class="message-name">Widget</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>An existing widget has been upgraded to use a new widget file. </p></div><pre class="code-line" id="OnWidgetUpgraded.Widget"><a href="#OnWidgetUpgraded.Widget"><span class="keyword">event</span> <span class="command-name">OnWidgetUpgraded</span><span class="keyword"> returns </span>(<span class="message-name">Widget</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Contains detailed information on a widget. The structure is modeled after the W3C spec but with additional information for opera specific widgets. </p>
+  <p>The same structure is also used for Unite apps/services and browser extensions. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.widgetID"><a href="#OnWidgetUpgraded.Widget.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A unique identifier for the widget. </p>
   <p>e.g. "wuid-351f0e9d-24f2-080b-07e7-13b724cdaef8" </p></div></li>
@@ -2048,7 +2228,11 @@
   <p>Represents the full human-readable name for a widget. This field will only be set if there is a name element defined in the widget specification. </p>
   <p>Note: This is either the localized name that matches the gadget locales, or the unlocalized name. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents the full human-readable name for a widget that is used, for example, in an application menu or in other contexts. </p>
+  <p>7.7 <a href="http://www.w3.org/TR/widgets/#name">http://www.w3.org/TR/widgets/#name</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Name.text"><a href="#OnWidgetUpgraded.Widget.Name.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The full human-readable name for the widget. </p></div></li>
 <li class="field">
@@ -2064,7 +2248,10 @@
 <li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.properties"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Various properties specific to Opera </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Properties.isActive"><a href="#OnWidgetUpgraded.Widget.Properties.isActive"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isActive</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Specifies whether the widget is currently running or not. </p></div></li>
 <li class="field">
@@ -2128,7 +2315,11 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.author"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents people or an organization attributed with the creation of the widget. This field will only be set if there is an author element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents people or an organization attributed with the creation of the widget. </p>
+  <p>7.9 <a href="http://www.w3.org/TR/widgets/#author0">http://www.w3.org/TR/widgets/#author0</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Author.text"><a href="#OnWidgetUpgraded.Widget.Author.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>People or organization attributed with the creation of the widget. </p></div></li>
 <li class="field">
@@ -2256,7 +2447,11 @@
   <p>Represents a human-readable description of the widget. This field will only be set if there is a description element defined in the widget specification. </p>
   <p>Note: This is either the localized description that matches the gadget locales, or the unlocalized description. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents a human-readable description of the widget. </p>
+  <p>7.8 <a href="http://www.w3.org/TR/widgets/#description">http://www.w3.org/TR/widgets/#description</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Description.text"><a href="#OnWidgetUpgraded.Widget.Description.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The description text. </p></div></li>
 <li class="field">
@@ -2269,7 +2464,10 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.license"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license information for the widget if one is present. This field will only be set if there is a license element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The software license for this widget. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.License.text"><a href="#OnWidgetUpgraded.Widget.License.text"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">text</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license text. </p></div></li>
 <li class="field">
@@ -2285,7 +2483,11 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.iconList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All icons defined for the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A custom icon for the widget. </p>
+  <p>7.11 <a href="http://www.w3.org/TR/widgets/#the-icon-element-and-its-attributes">http://www.w3.org/TR/widgets/#the-icon-element-and-its-attributes</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Icon.src"><a href="#OnWidgetUpgraded.Widget.Icon.src"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">src</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A path attribute that points to a file inside the widget package. </p></div></li>
 <li class="field">
@@ -2301,7 +2503,10 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.content"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Declare a custom start file the user agent is expected to use when it instantiates the widget. This field will only be set if there is a content element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Defines the start file for a widget, the file is defined by a path and optionally which MIME-Type and encoding it has. If no content has been defined the widget is started from "index.html". </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Content.src"><a href="#OnWidgetUpgraded.Widget.Content.src"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">src</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A path which points to a file within the widget package. e.g. "mywidget.html" </p></div></li>
 <li class="field">
@@ -2317,7 +2522,11 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.featureList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all features requested by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A feature is a URI identifiable runtime component. (e.g. an API). </p>
+  <p>7.13 <a href="http://www.w3.org/TR/widgets/#feature">http://www.w3.org/TR/widgets/#feature</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Feature.name"><a href="#OnWidgetUpgraded.Widget.Feature.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An IRI attribute that identifies a feature that is needed by the widget at runtime (such as an API). </p></div></li>
 <li class="field">
@@ -2327,7 +2536,11 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Feature.paramList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of parameters for the feature. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A parameter for a feature, defined as a name/value pair. The meaning of the name and value depends entirely on the feature. </p>
+  <p>7.14 <a href="http://www.w3.org/TR/widgets/#param">http://www.w3.org/TR/widgets/#param</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Feature.Param.name"><a href="#OnWidgetUpgraded.Widget.Feature.Param.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Feature.Param.value"><a href="#OnWidgetUpgraded.Widget.Feature.Param.value"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -2341,7 +2554,11 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.preferenceList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all preferences defined by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The preference element allows authors to declare one or more preferences. Preferences are persistently stored in the browser. </p>
+  <p>7.15 <a href="http://www.w3.org/TR/widgets/#preference">http://www.w3.org/TR/widgets/#preference</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Preference.name"><a href="#OnWidgetUpgraded.Widget.Preference.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the preference e.g. "skin" </p></div></li>
 <li class="field">
@@ -2394,7 +2611,10 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.networkAccessList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of requests to access network resources. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Defines a request for permission to access a set of network resources. <a href="http://www.w3.org/TR/widgets-access/#the-access-element">http://www.w3.org/TR/widgets-access/#the-access-element</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Network.origin"><a href="#OnWidgetUpgraded.Widget.Network.origin"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">origin</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Defines the URL that the widget should get access to, e.g. "<a href="https://example.net&quot;">https://example.net"</a> A special value of U+002A ASTERISK (*) means unrestricted access to any network resources. </p></div></li>
 <li class="field">
@@ -2407,7 +2627,11 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.securityAccessList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Lists of security access the widget requests. Note: This only applies to Opera Widgets (namespace <a href="&quot;http://xmlns.opera.com/2006/widget&quot;">"http://xmlns.opera.com/2006/widget"</a> and ""), not W3C and other widget formats. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Declares which protocols, hosts, ports, and paths the widget may use. </p>
+  <p><a href="http://dev.opera.com/articles/view/opera-widgets-specification-1-0/#xmlsecurity">http://dev.opera.com/articles/view/opera-widgets-specification-1-0/#xmlsecurity</a> </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.SecurityAccess.protocolList"><a href="#OnWidgetUpgraded.Widget.SecurityAccess.protocolList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">protocolList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The protocols the widget will be using to contact external servers. All protocols, except the file protocol is permitted. e.g. "http", "https" If the list is empty it means any protocol (excluding exceptions). </p></div></li>
 <li class="field">
@@ -2417,7 +2641,10 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.SecurityAccess.portList"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Ports which may be used by the widget. Each entry is a range of ports, e.g. 1024-2048 If the list is empty it means port. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents a range of ports the widget may use, e.g. 1024-2048 If only a single port is defined then both low and high will contain the same value. </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.SecurityAccess.Port.low"><a href="#OnWidgetUpgraded.Widget.SecurityAccess.Port.low"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">low</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.SecurityAccess.Port.high"><a href="#OnWidgetUpgraded.Widget.SecurityAccess.Port.high"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">high</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -2453,7 +2680,10 @@
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.UniteInfo.type"><span class="expander">&nbsp;</span><a href="#OnWidgetUpgraded.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Unite type </p></div></li>
+<li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.UniteInfo.UNKNOWN"><a href="#OnWidgetUpgraded.Widget.UniteInfo.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The Unite type is not known by the service. </p></div></li>
 <li class="field">

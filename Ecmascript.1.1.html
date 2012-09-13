@@ -8,13 +8,9 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#Eval">Eval</a></li>
-
 <li><a href="#ExamineObjects">ExamineObjects</a></li>
-
 <li><a href="#ListRuntimes">ListRuntimes</a></li>
-
 <li><a href="#ReleaseObjects">ReleaseObjects</a></li>
-
 <li><a href="#SetFormElementValue">SetFormElementValue</a></li>
 
 </ul>
@@ -32,9 +28,14 @@
   <p>Provides access to functionality in the ECMAScript engine. Basic usage is to query the runtime list first, all commands require a runtime ID to work with. </p>
   <p>All IDs in this service will be invalid once the service is disabled. </p>
   <p>Note: For debugging of ECMAScript see the EcmascriptDebugger service. </p></div><h2 id="Eval"><a href="#Eval">Eval</a></h2>
-<pre class="code-line" id="Eval.EvalArg"><a href="#Eval.EvalArg"><span class="keyword">command</span> <span class="command-name">Eval</span>(<span class="message-name">EvalArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Evaluate a piece of ECMAScript in the global scope. For instance to fetch information on the window object, one can do:: </p>Eval(runtimeID=1, scriptData="window") 
+  <p>EvalResult.value.object will be set, note however that this will not include properties on the return object to conserve the amount of data that needs to be sent. To get properties use ExamineObjects(). </p></div><pre class="code-line" id="Eval.EvalArg"><a href="#Eval.EvalArg"><span class="keyword">command</span> <span class="command-name">Eval</span>(<span class="message-name">EvalArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>// command Eval(EvalArg) returns (EvalResult) = 2; </p></div></li>
+<li class="field">
 <pre class="code-line" id="Eval.EvalArg.runtimeID"><a href="#Eval.EvalArg.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>ID of runtime to execute script in. </p></div></li>
 <li class="field">
@@ -47,7 +48,10 @@
   <p>A list of objects to place in the execution environment when evaluating <b>scriptData</b>. </p>
   <p>Each object is assigned to variable specified in <b>Variable.name</b>. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A variable to assign in the execution environment before evaluating the script. </p></div></li>
+<li class="field">
 <pre class="code-line" id="Eval.EvalArg.Variable.name"><a href="#Eval.EvalArg.Variable.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Name of variable to create. </p></div></li>
 <li class="field">
@@ -60,7 +64,10 @@
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="Eval.EvalResult"><a href="#Eval.EvalResult"><span class="keyword">returns</span> (<span class="message-name">EvalResult</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Result of a script execution. </p></div></li>
+<li class="field">
 <pre class="code-line" id="Eval.EvalResult.status"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.status"><span class="qualifier">required</span> <span class="">Status</span> <span class="field-name">status</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Evaluation status, a successful evaluation returns SUCCESS. </p></div><div class="enum">
 <pre class="code-line">{</pre>
@@ -82,10 +89,13 @@
   <p>The result of the evaluated script. </p>
   <p>If execution failed (status != SUCCESS) then this will contain the undefined value. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents an ECMAScript value, a value is either one of the primitives like string or boolean or an object. </p></div></li>
+<li class="field">
 <pre class="code-line" id="Eval.EvalResult.Value.type"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of value. </p>
-  <p><span class="note"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
+  <p class="note"><span class="info"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="Eval.EvalResult.Value.UNDEFINED"><a href="#Eval.EvalResult.Value.UNDEFINED"><span class="enum-name">UNDEFINED</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -133,7 +143,10 @@
 <pre class="code-line" id="Eval.EvalResult.Value.object"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.Value.object"><span class="qualifier">optional</span> <span class="">Object</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Object information, set if type = OBJECT. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>An Object is any non-primitive value in ECMAScript. Functions and arrays, for instance, are also Objects. </p></div></li>
+<li class="field">
 <pre class="code-line" id="Eval.EvalResult.Value.Object.objectID"><a href="#Eval.EvalResult.Value.Object.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The unique ID of the object, valid until the object is garbage collected or the service is disabled. </p>
   <p>Is an integer from 1 and up. </p></div></li>
@@ -182,9 +195,15 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="Eval.key"><a href="#Eval.key"><span class="proto-key">= 2;</span></a></pre><h2 id="ExamineObjects"><a href="#ExamineObjects">ExamineObjects</a></h2>
-<pre class="code-line" id="ExamineObjects.ExamineObjectsArg"><a href="#ExamineObjects.ExamineObjectsArg"><span class="keyword">command</span> <span class="command-name">ExamineObjects</span>(<span class="message-name">ExamineObjectsArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Request additional information about an object, such as its prototype or its properties. </p>
+  <p>For instance to get more information on the window object, one can do:: </p>ExamineObjects(runtimeID=1, objectList=[2], examinePrototypes=true) 
+  <p>Here the object ID was the ID previously returned from an Eval() call. </p></div><pre class="code-line" id="ExamineObjects.ExamineObjectsArg"><a href="#ExamineObjects.ExamineObjectsArg"><span class="keyword">command</span> <span class="command-name">ExamineObjects</span>(<span class="message-name">ExamineObjectsArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>// command ExamineObjects(ExamineObjectsArg) returns (ObjectList) = 3; </p></div></li>
+<li class="field">
 <pre class="code-line" id="ExamineObjects.ExamineObjectsArg.runtimeID"><a href="#ExamineObjects.ExamineObjectsArg.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>ID of runtime to examine object in. </p></div></li>
 <li class="field">
@@ -197,13 +216,23 @@
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ExamineObjects.ObjectList"><a href="#ExamineObjects.ObjectList"><span class="keyword">returns</span> (<span class="message-name">ObjectList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Contains a list of prototype chains from the ExamineObject() command. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.prototypeList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.prototypeList"><span class="qualifier">repeated</span> <span class="">PrototypeChain</span> <span class="field-name">prototypeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A list of prototypes for the examined object, the first entry [0] is the examined object while the rest are the object info for each prototype in the chain. </p>
+  <p>If prototype were not examined the list contains only one entry. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.objectList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.objectList"><span class="qualifier">repeated</span> <span class="">Object</span> <span class="field-name">objectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>An Object is any non-primitive value in ECMAScript. Functions and arrays, for instance, are also Objects. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.objectID"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The unique ID of the object, valid until the object is garbage collected or the service is disabled. </p>
   <p>Is an integer from 1 and up. </p></div></li>
@@ -241,10 +270,13 @@
 <li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.value"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.value"><span class="qualifier">required</span> <span class="">Value</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Represents an ECMAScript value, a value is either one of the primitives like string or boolean or an object. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.type"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of value. </p>
-  <p><span class="note"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
+  <p class="note"><span class="info"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.UNDEFINED"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.UNDEFINED"><span class="enum-name">UNDEFINED</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -306,9 +338,14 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ExamineObjects.key"><a href="#ExamineObjects.key"><span class="proto-key">= 3;</span></a></pre><h2 id="ListRuntimes"><a href="#ListRuntimes">ListRuntimes</a></h2>
-<pre class="code-line" id="ListRuntimes.ListRuntimesArg"><a href="#ListRuntimes.ListRuntimesArg"><span class="keyword">command</span> <span class="command-name">ListRuntimes</span>(<span class="message-name">ListRuntimesArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>List all runtimes (in all Windows). For instance to fetch all runtimes of all windows one can do:: </p>ListRuntimes(runtimeList=[], create=true) 
+  <p>If you already have a runtime ID you can pass it in runtimeList to get get back information, e.g.:: </p>ListRuntimes(runtimeList=[1]) </div><pre class="code-line" id="ListRuntimes.ListRuntimesArg"><a href="#ListRuntimes.ListRuntimesArg"><span class="keyword">command</span> <span class="command-name">ListRuntimes</span>(<span class="message-name">ListRuntimesArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>// command ListRuntimes(ListRuntimesArg) returns (RuntimeList) = 1; </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListRuntimes.ListRuntimesArg.runtimeIDList"><a href="#ListRuntimes.ListRuntimesArg.runtimeIDList"><span class="qualifier">repeated</span> <span class="number">uint32</span> <span class="field-name">runtimeIDList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If non-empty, only information about the specified runtime(s) will be received. </p></div></li>
 <li class="field">
@@ -321,7 +358,10 @@
 <ul><li class="field">
 <pre class="code-line" id="ListRuntimes.RuntimeList.runtimeList"><span class="expander">&nbsp;</span><a href="#ListRuntimes.RuntimeList.runtimeList"><span class="qualifier">repeated</span> <span class="">Runtime</span> <span class="field-name">runtimeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>A runtime is an ECMAScript execution environment. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ListRuntimes.RuntimeList.Runtime.runtimeID"><a href="#ListRuntimes.RuntimeList.Runtime.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A unique ID for this runtime, persists through the entire session or until the runtime is destroyed. </p>
   <p>Is an integer from 1 and up. </p></div></li>
@@ -345,9 +385,15 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ListRuntimes.key"><a href="#ListRuntimes.key"><span class="proto-key">= 1;</span></a></pre><h2 id="ReleaseObjects"><a href="#ReleaseObjects">ReleaseObjects</a></h2>
-<pre class="code-line" id="ReleaseObjects.ReleaseObjectsArg"><a href="#ReleaseObjects.ReleaseObjectsArg"><span class="keyword">command</span> <span class="command-name">ReleaseObjects</span>(<span class="message-name">ReleaseObjectsArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Release protected ECMAScript objects. This will just make them garbage collectible. Released objects are not necessarily freed immediately. </p>
+  <p>Calling ReleaseObjects with an empty list causes all objects to be released. Otherwise, only the specified objects will be released. Attempting to release a non-existent object has no effect, and will fail silently. </p>
+  <p>Releasing objects invalidates associated object IDs immediately. </p></div><pre class="code-line" id="ReleaseObjects.ReleaseObjectsArg"><a href="#ReleaseObjects.ReleaseObjectsArg"><span class="keyword">command</span> <span class="command-name">ReleaseObjects</span>(<span class="message-name">ReleaseObjectsArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>List of objects to release. </p></div></li>
+<li class="field">
 <pre class="code-line" id="ReleaseObjects.ReleaseObjectsArg.objectIDList"><a href="#ReleaseObjects.ReleaseObjectsArg.objectIDList"><span class="qualifier">repeated</span> <span class="number">uint32</span> <span class="field-name">objectIDList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
@@ -356,7 +402,9 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ReleaseObjects.key"><a href="#ReleaseObjects.key"><span class="proto-key">= 4;</span></a></pre><h2 id="SetFormElementValue"><a href="#SetFormElementValue">SetFormElementValue</a></h2>
-<pre class="code-line" id="SetFormElementValue.SetFormElementValueArg"><a href="#SetFormElementValue.SetFormElementValueArg"><span class="keyword">command</span> <span class="command-name">SetFormElementValue</span>(<span class="message-name">SetFormElementValueArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Set value of a form element. </p>
+  <p><span class="since-version">Added in version 1.1</span></p></div><pre class="code-line" id="SetFormElementValue.SetFormElementValueArg"><a href="#SetFormElementValue.SetFormElementValueArg"><span class="keyword">command</span> <span class="command-name">SetFormElementValue</span>(<span class="message-name">SetFormElementValueArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetFormElementValue.SetFormElementValueArg.objectID"><a href="#SetFormElementValue.SetFormElementValueArg.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -371,7 +419,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="SetFormElementValue.key"><a href="#SetFormElementValue.key"><span class="proto-key">= 6;</span></a></pre><h2 id="OnReadyStateChanged"><a href="#OnReadyStateChanged">OnReadyStateChanged</a></h2>
-<pre class="code-line" id="OnReadyStateChanged.ReadyStateChange"><a href="#OnReadyStateChanged.ReadyStateChange"><span class="keyword">event</span> <span class="command-name">OnReadyStateChanged</span><span class="keyword"> returns </span>(<span class="message-name">ReadyStateChange</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Occurs when certain 'milestones' of page-loading have been reached. See message 'ReadyStateChange' for details. </p></div><pre class="code-line" id="OnReadyStateChanged.ReadyStateChange"><a href="#OnReadyStateChanged.ReadyStateChange"><span class="keyword">event</span> <span class="command-name">OnReadyStateChanged</span><span class="keyword"> returns </span>(<span class="message-name">ReadyStateChange</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnReadyStateChanged.ReadyStateChange.runtimeID"><a href="#OnReadyStateChanged.ReadyStateChange.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>

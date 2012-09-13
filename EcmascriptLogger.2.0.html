@@ -30,7 +30,8 @@
   <p>(req.reformatting) Make Opera reformat the source code before logging </p>
   <p>[Status: strawman requirement; author: lth] </p>
   <p>The tool should allow the user to control whether Opera reformats the source code before sending it, provided the script logger is the only tool trying to control that behavior. </p></div><h2 id="Configure"><a href="#Configure">Configure</a></h2>
-<pre class="code-line" id="Configure.Config"><a href="#Configure.Config"><span class="keyword">command</span> <span class="command-name">Configure</span>(<span class="message-name">Config</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>The tool can configure the logger by sending this command. If <span class="domain-specific">reformat</span> is `true, source code will be reformatted before compilation (currently through an expensive process of compilation, decompilation, and recompilation of the decompiled data), and the reformatted code will be sent to the script logger tool. </p></div><pre class="code-line" id="Configure.Config"><a href="#Configure.Config"><span class="keyword">command</span> <span class="command-name">Configure</span>(<span class="message-name">Config</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="Configure.Config.reformat"><a href="#Configure.Config.reformat"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">reformat</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>

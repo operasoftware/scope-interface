@@ -8,7 +8,6 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#CreateOverlay">CreateOverlay</a></li>
-
 <li><a href="#RemoveOverlay">RemoveOverlay</a></li>
 
 </ul>
@@ -30,7 +29,8 @@
   <p>When creating the overlay, you must specify where the overlay should be inserted into the list of overlays. It is possible to insert the overlay in the front of all others, behind all others, or above/beneath a specific overlay in the list. </p>
   <h2>Area Overlay </h2>
   <p>Currently, the only supported overlay method is <span class="domain-specific">AREA</span>. In this mode, you define an area of the document to be painted in a certain color. A border and grid color may also be specified. </p></div><h2 id="CreateOverlay"><a href="#CreateOverlay">CreateOverlay</a></h2>
-<pre class="code-line" id="CreateOverlay.CreateOverlayArg"><a href="#CreateOverlay.CreateOverlayArg"><span class="keyword">command</span> <span class="command-name">CreateOverlay</span>(<span class="message-name">CreateOverlayArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Create a new overlay. </p></div><pre class="code-line" id="CreateOverlay.CreateOverlayArg"><a href="#CreateOverlay.CreateOverlayArg"><span class="keyword">command</span> <span class="command-name">CreateOverlay</span>(<span class="message-name">CreateOverlayArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="CreateOverlay.CreateOverlayArg.windowID"><a href="#CreateOverlay.CreateOverlayArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -166,7 +166,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="CreateOverlay.key"><a href="#CreateOverlay.key"><span class="proto-key">= 1;</span></a></pre><h2 id="RemoveOverlay"><a href="#RemoveOverlay">RemoveOverlay</a></h2>
-<pre class="code-line" id="RemoveOverlay.RemoveOverlayArg"><a href="#RemoveOverlay.RemoveOverlayArg"><span class="keyword">command</span> <span class="command-name">RemoveOverlay</span>(<span class="message-name">RemoveOverlayArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Remove a specific overlay, or, if no overlay ID is specified, remove <em>all</em> overlays for the given window. </p></div><pre class="code-line" id="RemoveOverlay.RemoveOverlayArg"><a href="#RemoveOverlay.RemoveOverlayArg"><span class="keyword">command</span> <span class="command-name">RemoveOverlay</span>(<span class="message-name">RemoveOverlayArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="RemoveOverlay.RemoveOverlayArg.windowID"><a href="#RemoveOverlay.RemoveOverlayArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>

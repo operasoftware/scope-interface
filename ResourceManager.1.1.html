@@ -8,48 +8,29 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#AddHeaderOverrides">AddHeaderOverrides</a></li>
-
 <li><a href="#ClearCache">ClearCache</a></li>
-
 <li><a href="#ClearHeaderOverrides">ClearHeaderOverrides</a></li>
-
 <li><a href="#CreateRequest">CreateRequest</a></li>
-
 <li><a href="#GetResource">GetResource</a></li>
-
 <li><a href="#GetResourceID">GetResourceID</a></li>
-
 <li><a href="#RemoveHeaderOverrides">RemoveHeaderOverrides</a></li>
-
 <li><a href="#SetReloadPolicy">SetReloadPolicy</a></li>
-
 <li><a href="#SetRequestMode">SetRequestMode</a></li>
-
 <li><a href="#SetResponseMode">SetResponseMode</a></li>
 
 </ul>
 <h3>Events</h3>
 <ul class="events">
 <li><a href="#OnRequest">OnRequest</a></li>
-
 <li><a href="#OnRequestFinished">OnRequestFinished</a></li>
-
 <li><a href="#OnRequestHeader">OnRequestHeader</a></li>
-
 <li><a href="#OnRequestRetry">OnRequestRetry</a></li>
-
 <li><a href="#OnResponse">OnResponse</a></li>
-
 <li><a href="#OnResponseFinished">OnResponseFinished</a></li>
-
 <li><a href="#OnResponseHeader">OnResponseHeader</a></li>
-
 <li><a href="#OnUrlFinished">OnUrlFinished</a></li>
-
 <li><a href="#OnUrlLoad">OnUrlLoad</a></li>
-
 <li><a href="#OnUrlRedirect">OnUrlRedirect</a></li>
-
 <li><a href="#OnUrlUnload">OnUrlUnload</a></li>
 
 </ul>
@@ -71,7 +52,8 @@
     <li>Frame IDs are described in <em>DocumentManager</em>. </li>
     <li>Document IDs are also described in <em>DocumentManager</em>. </li>
   </ul></div><h2 id="AddHeaderOverrides"><a href="#AddHeaderOverrides">AddHeaderOverrides</a></h2>
-<pre class="code-line" id="AddHeaderOverrides.AddHeaderOverridesArg"><a href="#AddHeaderOverrides.AddHeaderOverridesArg"><span class="keyword">command</span> <span class="command-name">AddHeaderOverrides</span>(<span class="message-name">AddHeaderOverridesArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Add one or more overrides for HTTP headers. An override can be either adding a new header, overwriting an existing one, or removing it completely (if present). </p></div><pre class="code-line" id="AddHeaderOverrides.AddHeaderOverridesArg"><a href="#AddHeaderOverrides.AddHeaderOverridesArg"><span class="keyword">command</span> <span class="command-name">AddHeaderOverrides</span>(<span class="message-name">AddHeaderOverridesArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="AddHeaderOverrides.AddHeaderOverridesArg.headerList"><span class="expander">&nbsp;</span><a href="#AddHeaderOverrides.AddHeaderOverridesArg.headerList"><span class="qualifier">repeated</span> <span class="">Header</span> <span class="field-name">headerList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -93,7 +75,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="AddHeaderOverrides.key"><a href="#AddHeaderOverrides.key"><span class="proto-key">= 5;</span></a></pre><h2 id="ClearCache"><a href="#ClearCache">ClearCache</a></h2>
-<pre class="code-line" id="ClearCache.Default"><a href="#ClearCache.Default"><span class="keyword">command</span> <span class="command-name">ClearCache</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Clear cached resources, or as many of the resources as possible. (Resources currently in use will not be cleared). </p></div><pre class="code-line" id="ClearCache.Default"><a href="#ClearCache.Default"><span class="keyword">command</span> <span class="command-name">ClearCache</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
@@ -102,7 +85,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ClearCache.key"><a href="#ClearCache.key"><span class="proto-key">= 9;</span></a></pre><h2 id="ClearHeaderOverrides"><a href="#ClearHeaderOverrides">ClearHeaderOverrides</a></h2>
-<pre class="code-line" id="ClearHeaderOverrides.Default"><a href="#ClearHeaderOverrides.Default"><span class="keyword">command</span> <span class="command-name">ClearHeaderOverrides</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Remove all overrides previously added with AddHeaderOverride. </p></div><pre class="code-line" id="ClearHeaderOverrides.Default"><a href="#ClearHeaderOverrides.Default"><span class="keyword">command</span> <span class="command-name">ClearHeaderOverrides</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
@@ -111,7 +95,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ClearHeaderOverrides.key"><a href="#ClearHeaderOverrides.key"><span class="proto-key">= 7;</span></a></pre><h2 id="CreateRequest"><a href="#CreateRequest">CreateRequest</a></h2>
-<pre class="code-line" id="CreateRequest.CreateRequestArg"><a href="#CreateRequest.CreateRequestArg"><span class="keyword">command</span> <span class="command-name">CreateRequest</span>(<span class="message-name">CreateRequestArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Create a HTTP request from scratch. It is possible to let Opera choose some common headers, or control everything by hand. </p></div><pre class="code-line" id="CreateRequest.CreateRequestArg"><a href="#CreateRequest.CreateRequestArg"><span class="keyword">command</span> <span class="command-name">CreateRequest</span>(<span class="message-name">CreateRequestArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="CreateRequest.CreateRequestArg.windowID"><a href="#CreateRequest.CreateRequestArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -278,7 +263,10 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="CreateRequest.key"><a href="#CreateRequest.key"><span class="proto-key">= 8;</span></a></pre><h2 id="GetResource"><a href="#GetResource">GetResource</a></h2>
-<pre class="code-line" id="GetResource.GetResourceArg"><a href="#GetResource.GetResourceArg"><span class="keyword">command</span> <span class="command-name">GetResource</span>(<span class="message-name">GetResourceArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Get ResourceData for a certain resource. </p>
+  <p>This command provides a way to get data from a resource after the request has completed, or in cases where there is no request. </p>
+  <p>It is possible to get the resource with a different content mode than what has been set by SetResponseMode. </p></div><pre class="code-line" id="GetResource.GetResourceArg"><a href="#GetResource.GetResourceArg"><span class="keyword">command</span> <span class="command-name">GetResource</span>(<span class="message-name">GetResourceArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetResource.GetResourceArg.resourceID"><a href="#GetResource.GetResourceArg.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -358,7 +346,12 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetResource.key"><a href="#GetResource.key"><span class="proto-key">= 1;</span></a></pre><h2 id="GetResourceID"><a href="#GetResourceID">GetResourceID</a></h2>
-<pre class="code-line" id="GetResourceID.GetResourceIDArg"><a href="#GetResourceID.GetResourceIDArg"><span class="keyword">command</span> <span class="command-name">GetResourceID</span>(<span class="message-name">GetResourceIDArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Get the resource ID of a URL that is either in cache, or otherwise in use (for instance currently being loaded). </p>
+  <p>In some cases the same resource may have multiple IDs, for instance POST form results. Trying to get an ID for resources with multiple IDs will result in an error. </p>
+  <p>An error will also be returned if the specified URL is not in use. Use <code>CreateRequest</code> to generate a resource ID in this case. </p>
+  <p>Note that setting the reload policy to NO_CACHE does not exclude the use of this command. Setting the reload policy to NO_CACHE does not prevent resources from entering cache, it merely prevents reloading from it. </p>
+  <p><span class="since-version">Added in version 1.1</span></p></div><pre class="code-line" id="GetResourceID.GetResourceIDArg"><a href="#GetResourceID.GetResourceIDArg"><span class="keyword">command</span> <span class="command-name">GetResourceID</span>(<span class="message-name">GetResourceIDArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetResourceID.GetResourceIDArg.url"><a href="#GetResourceID.GetResourceIDArg.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -372,7 +365,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetResourceID.key"><a href="#GetResourceID.key"><span class="proto-key">= 21;</span></a></pre><h2 id="RemoveHeaderOverrides"><a href="#RemoveHeaderOverrides">RemoveHeaderOverrides</a></h2>
-<pre class="code-line" id="RemoveHeaderOverrides.RemoveHeaderOverridesArg"><a href="#RemoveHeaderOverrides.RemoveHeaderOverridesArg"><span class="keyword">command</span> <span class="command-name">RemoveHeaderOverrides</span>(<span class="message-name">RemoveHeaderOverridesArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Remove overrides previously added with AddHeaderOverrides. </p></div><pre class="code-line" id="RemoveHeaderOverrides.RemoveHeaderOverridesArg"><a href="#RemoveHeaderOverrides.RemoveHeaderOverridesArg"><span class="keyword">command</span> <span class="command-name">RemoveHeaderOverrides</span>(<span class="message-name">RemoveHeaderOverridesArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="RemoveHeaderOverrides.RemoveHeaderOverridesArg.nameList"><a href="#RemoveHeaderOverrides.RemoveHeaderOverridesArg.nameList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">nameList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -384,7 +378,9 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="RemoveHeaderOverrides.key"><a href="#RemoveHeaderOverrides.key"><span class="proto-key">= 6;</span></a></pre><h2 id="SetReloadPolicy"><a href="#SetReloadPolicy">SetReloadPolicy</a></h2>
-<pre class="code-line" id="SetReloadPolicy.SetReloadPolicyArg"><a href="#SetReloadPolicy.SetReloadPolicyArg"><span class="keyword">command</span> <span class="command-name">SetReloadPolicy</span>(<span class="message-name">SetReloadPolicyArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Choose whether resources should be allowed to load from cache, or whether they should be fully downloaded over the network on each reload. </p>
+  <p>The default mode is to always load resources fully. </p></div><pre class="code-line" id="SetReloadPolicy.SetReloadPolicyArg"><a href="#SetReloadPolicy.SetReloadPolicyArg"><span class="keyword">command</span> <span class="command-name">SetReloadPolicy</span>(<span class="message-name">SetReloadPolicyArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetReloadPolicy.SetReloadPolicyArg.policy"><span class="expander">&nbsp;</span><a href="#SetReloadPolicy.SetReloadPolicyArg.policy"><span class="qualifier">required</span> <span class="">ReloadPolicy</span> <span class="field-name">policy</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
@@ -405,7 +401,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="SetReloadPolicy.key"><a href="#SetReloadPolicy.key"><span class="proto-key">= 2;</span></a></pre><h2 id="SetRequestMode"><a href="#SetRequestMode">SetRequestMode</a></h2>
-<pre class="code-line" id="SetRequestMode.SetRequestModeArg"><a href="#SetRequestMode.SetRequestModeArg"><span class="keyword">command</span> <span class="command-name">SetRequestMode</span>(<span class="message-name">SetRequestModeArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Choose how (and if) request data should be reported. It's possible to set a filter with different settings based on MIME type. </p></div><pre class="code-line" id="SetRequestMode.SetRequestModeArg"><a href="#SetRequestMode.SetRequestModeArg"><span class="keyword">command</span> <span class="command-name">SetRequestMode</span>(<span class="message-name">SetRequestModeArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetRequestMode.SetRequestModeArg.defaultContentMode"><span class="expander">&nbsp;</span><a href="#SetRequestMode.SetRequestModeArg.defaultContentMode"><span class="qualifier">optional</span> <span class="">ContentMode</span> <span class="field-name">defaultContentMode</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -446,7 +443,10 @@
 <pre class="code-line" id="SetRequestMode.SetRequestModeArg.mimeModeList"><span class="expander">&nbsp;</span><a href="#SetRequestMode.SetRequestModeArg.mimeModeList"><span class="qualifier">repeated</span> <span class="">MimeMode</span> <span class="field-name">mimeModeList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Whenever a resource matches a mime type found in this list, the corresponding ContentMode is used for that resource. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Used to override the default ContentMode for resources with a certain mime type. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.type"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.type"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The mime type, for instance 'text/plain'. </p></div></li>
 <li class="field">
@@ -491,7 +491,10 @@
 <pre class="code-line" id="SetRequestMode.SetRequestModeArg.multipartMimeModeList"><span class="expander">&nbsp;</span><a href="#SetRequestMode.SetRequestModeArg.multipartMimeModeList"><span class="qualifier">repeated</span> <span class="">MimeMode</span> <span class="field-name">multipartMimeModeList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Whenever an individual part of a multipart/form-data matches a type found in this list, the corresponding ContentMode is used for that part. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Used to override the default ContentMode for resources with a certain mime type. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SetRequestMode.SetRequestModeArg.MimeMode.type"><a href="#SetRequestMode.SetRequestModeArg.MimeMode.type"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The mime type, for instance 'text/plain'. </p></div></li>
 <li class="field">
@@ -539,7 +542,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="SetRequestMode.key"><a href="#SetRequestMode.key"><span class="proto-key">= 4;</span></a></pre><h2 id="SetResponseMode"><a href="#SetResponseMode">SetResponseMode</a></h2>
-<pre class="code-line" id="SetResponseMode.SetResponseModeArg"><a href="#SetResponseMode.SetResponseModeArg"><span class="keyword">command</span> <span class="command-name">SetResponseMode</span>(<span class="message-name">SetResponseModeArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Choose how (and if) response data should be reported. It's possible to set a filter with different settings based on MIME type. </p></div><pre class="code-line" id="SetResponseMode.SetResponseModeArg"><a href="#SetResponseMode.SetResponseModeArg"><span class="keyword">command</span> <span class="command-name">SetResponseMode</span>(<span class="message-name">SetResponseModeArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetResponseMode.SetResponseModeArg.defaultContentMode"><span class="expander">&nbsp;</span><a href="#SetResponseMode.SetResponseModeArg.defaultContentMode"><span class="qualifier">optional</span> <span class="">ContentMode</span> <span class="field-name">defaultContentMode</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -580,7 +584,10 @@
 <pre class="code-line" id="SetResponseMode.SetResponseModeArg.mimeModeList"><span class="expander">&nbsp;</span><a href="#SetResponseMode.SetResponseModeArg.mimeModeList"><span class="qualifier">repeated</span> <span class="">MimeMode</span> <span class="field-name">mimeModeList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Whenever a resource matches a mime type found in this list, the corresponding ContentMode is used for that resource. </p></div><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Used to override the default ContentMode for resources with a certain mime type. </p></div></li>
+<li class="field">
 <pre class="code-line" id="SetResponseMode.SetResponseModeArg.MimeMode.type"><a href="#SetResponseMode.SetResponseModeArg.MimeMode.type"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The mime type, for instance 'text/plain'. </p></div></li>
 <li class="field">
@@ -628,7 +635,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="SetResponseMode.key"><a href="#SetResponseMode.key"><span class="proto-key">= 3;</span></a></pre><h2 id="OnRequest"><a href="#OnRequest">OnRequest</a></h2>
-<pre class="code-line" id="OnRequest.Request"><a href="#OnRequest.Request"><span class="keyword">event</span> <span class="command-name">OnRequest</span><span class="keyword"> returns </span>(<span class="message-name">Request</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Fired when a request is created. </p></div><pre class="code-line" id="OnRequest.Request"><a href="#OnRequest.Request"><span class="keyword">event</span> <span class="command-name">OnRequest</span><span class="keyword"> returns </span>(<span class="message-name">Request</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnRequest.Request.requestID"><a href="#OnRequest.Request.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -650,7 +658,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnRequest.key"><a href="#OnRequest.key"><span class="proto-key">= 14;</span></a></pre><h2 id="OnRequestFinished"><a href="#OnRequestFinished">OnRequestFinished</a></h2>
-<pre class="code-line" id="OnRequestFinished.RequestFinished"><a href="#OnRequestFinished.RequestFinished"><span class="keyword">event</span> <span class="command-name">OnRequestFinished</span><span class="keyword"> returns </span>(<span class="message-name">RequestFinished</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Fired after the entire request (including payload, if any) has been sent. </p></div><pre class="code-line" id="OnRequestFinished.RequestFinished"><a href="#OnRequestFinished.RequestFinished"><span class="keyword">event</span> <span class="command-name">OnRequestFinished</span><span class="keyword"> returns </span>(<span class="message-name">RequestFinished</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnRequestFinished.RequestFinished.requestID"><a href="#OnRequestFinished.RequestFinished.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -745,7 +754,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnRequestFinished.key"><a href="#OnRequestFinished.key"><span class="proto-key">= 16;</span></a></pre><h2 id="OnRequestHeader"><a href="#OnRequestHeader">OnRequestHeader</a></h2>
-<pre class="code-line" id="OnRequestHeader.RequestHeader"><a href="#OnRequestHeader.RequestHeader"><span class="keyword">event</span> <span class="command-name">OnRequestHeader</span><span class="keyword"> returns </span>(<span class="message-name">RequestHeader</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Fired after the request headers are composed. </p></div><pre class="code-line" id="OnRequestHeader.RequestHeader"><a href="#OnRequestHeader.RequestHeader"><span class="keyword">event</span> <span class="command-name">OnRequestHeader</span><span class="keyword"> returns </span>(<span class="message-name">RequestHeader</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnRequestHeader.RequestHeader.requestID"><a href="#OnRequestHeader.RequestHeader.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -771,7 +781,9 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnRequestHeader.key"><a href="#OnRequestHeader.key"><span class="proto-key">= 15;</span></a></pre><h2 id="OnRequestRetry"><a href="#OnRequestRetry">OnRequestRetry</a></h2>
-<pre class="code-line" id="OnRequestRetry.RequestRetry"><a href="#OnRequestRetry.RequestRetry"><span class="keyword">event</span> <span class="command-name">OnRequestRetry</span><span class="keyword"> returns </span>(<span class="message-name">RequestRetry</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>If pipelining is enabled, a request can sometimes be moved to another connection if the previous connection failed, for some reason. </p>
+  <p>In these cases, this event will fire to indicate that we are retrying the same request under a new requestID. </p></div><pre class="code-line" id="OnRequestRetry.RequestRetry"><a href="#OnRequestRetry.RequestRetry"><span class="keyword">event</span> <span class="command-name">OnRequestRetry</span><span class="keyword"> returns </span>(<span class="message-name">RequestRetry</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnRequestRetry.RequestRetry.resourceID"><a href="#OnRequestRetry.RequestRetry.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -784,7 +796,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnRequestRetry.key"><a href="#OnRequestRetry.key"><span class="proto-key">= 17;</span></a></pre><h2 id="OnResponse"><a href="#OnResponse">OnResponse</a></h2>
-<pre class="code-line" id="OnResponse.Response"><a href="#OnResponse.Response"><span class="keyword">event</span> <span class="command-name">OnResponse</span><span class="keyword"> returns </span>(<span class="message-name">Response</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Fired when data is first received from the server, before any headers are parsed. </p></div><pre class="code-line" id="OnResponse.Response"><a href="#OnResponse.Response"><span class="keyword">event</span> <span class="command-name">OnResponse</span><span class="keyword"> returns </span>(<span class="message-name">Response</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnResponse.Response.requestID"><a href="#OnResponse.Response.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -799,7 +812,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnResponse.key"><a href="#OnResponse.key"><span class="proto-key">= 18;</span></a></pre><h2 id="OnResponseFinished"><a href="#OnResponseFinished">OnResponseFinished</a></h2>
-<pre class="code-line" id="OnResponseFinished.ResponseFinished"><a href="#OnResponseFinished.ResponseFinished"><span class="keyword">event</span> <span class="command-name">OnResponseFinished</span><span class="keyword"> returns </span>(<span class="message-name">ResponseFinished</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Fired when the entire response (including payload) has been downloaded. </p></div><pre class="code-line" id="OnResponseFinished.ResponseFinished"><a href="#OnResponseFinished.ResponseFinished"><span class="keyword">event</span> <span class="command-name">OnResponseFinished</span><span class="keyword"> returns </span>(<span class="message-name">ResponseFinished</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnResponseFinished.ResponseFinished.requestID"><a href="#OnResponseFinished.ResponseFinished.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -853,7 +867,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnResponseFinished.key"><a href="#OnResponseFinished.key"><span class="proto-key">= 20;</span></a></pre><h2 id="OnResponseHeader"><a href="#OnResponseHeader">OnResponseHeader</a></h2>
-<pre class="code-line" id="OnResponseHeader.ResponseHeader"><a href="#OnResponseHeader.ResponseHeader"><span class="keyword">event</span> <span class="command-name">OnResponseHeader</span><span class="keyword"> returns </span>(<span class="message-name">ResponseHeader</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Fired when headers are received and parsed. </p></div><pre class="code-line" id="OnResponseHeader.ResponseHeader"><a href="#OnResponseHeader.ResponseHeader"><span class="keyword">event</span> <span class="command-name">OnResponseHeader</span><span class="keyword"> returns </span>(<span class="message-name">ResponseHeader</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnResponseHeader.ResponseHeader.requestID"><a href="#OnResponseHeader.ResponseHeader.requestID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">requestID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -879,7 +894,9 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnResponseHeader.key"><a href="#OnResponseHeader.key"><span class="proto-key">= 19;</span></a></pre><h2 id="OnUrlFinished"><a href="#OnUrlFinished">OnUrlFinished</a></h2>
-<pre class="code-line" id="OnUrlFinished.UrlFinished"><a href="#OnUrlFinished.UrlFinished"><span class="keyword">event</span> <span class="command-name">OnUrlFinished</span><span class="keyword"> returns </span>(<span class="message-name">UrlFinished</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Resource was completely loaded or failed. </p>
+  <p>No request events should happen after this point. </p></div><pre class="code-line" id="OnUrlFinished.UrlFinished"><a href="#OnUrlFinished.UrlFinished"><span class="keyword">event</span> <span class="command-name">OnUrlFinished</span><span class="keyword"> returns </span>(<span class="message-name">UrlFinished</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnUrlFinished.UrlFinished.resourceID"><a href="#OnUrlFinished.UrlFinished.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -913,7 +930,9 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnUrlFinished.key"><a href="#OnUrlFinished.key"><span class="proto-key">= 11;</span></a></pre><h2 id="OnUrlLoad"><a href="#OnUrlLoad">OnUrlLoad</a></h2>
-<pre class="code-line" id="OnUrlLoad.UrlLoad"><a href="#OnUrlLoad.UrlLoad"><span class="keyword">event</span> <span class="command-name">OnUrlLoad</span><span class="keyword"> returns </span>(<span class="message-name">UrlLoad</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>A resource was requested by the browser. </p>
+  <p>Depending on the protocol used it may result in OnRequest/OnResponse events. When resource is loaded OnUrlFinished is sent. </p></div><pre class="code-line" id="OnUrlLoad.UrlLoad"><a href="#OnUrlLoad.UrlLoad"><span class="keyword">event</span> <span class="command-name">OnUrlLoad</span><span class="keyword"> returns </span>(<span class="message-name">UrlLoad</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnUrlLoad.UrlLoad.windowID"><a href="#OnUrlLoad.UrlLoad.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -929,7 +948,7 @@
 <li class="field">
 <pre class="code-line" id="OnUrlLoad.UrlLoad.urlType"><span class="expander">&nbsp;</span><a href="#OnUrlLoad.UrlLoad.urlType"><span class="qualifier">required</span> <span class="">URLType</span> <span class="field-name">urlType</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of URL that was started, this can referer to a specific protocol or a special URL type. </p>
-  <p><span class="note"></span> More types may be added in the future, make sure the client supports that. </p></div><div class="enum">
+  <p class="note"><span class="info"></span> More types may be added in the future, make sure the client supports that. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnUrlLoad.UrlLoad.UNKNOWN"><a href="#OnUrlLoad.UrlLoad.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1029,7 +1048,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnUrlLoad.key"><a href="#OnUrlLoad.key"><span class="proto-key">= 10;</span></a></pre><h2 id="OnUrlRedirect"><a href="#OnUrlRedirect">OnUrlRedirect</a></h2>
-<pre class="code-line" id="OnUrlRedirect.UrlRedirect"><a href="#OnUrlRedirect.UrlRedirect"><span class="keyword">event</span> <span class="command-name">OnUrlRedirect</span><span class="keyword"> returns </span>(<span class="message-name">UrlRedirect</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Sent when a URL is redirect to another URL. Contains both the original resource ID and the new resource ID. </p></div><pre class="code-line" id="OnUrlRedirect.UrlRedirect"><a href="#OnUrlRedirect.UrlRedirect"><span class="keyword">event</span> <span class="command-name">OnUrlRedirect</span><span class="keyword"> returns </span>(<span class="message-name">UrlRedirect</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnUrlRedirect.UrlRedirect.fromResourceID"><a href="#OnUrlRedirect.UrlRedirect.fromResourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">fromResourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -1041,7 +1061,9 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnUrlRedirect.key"><a href="#OnUrlRedirect.key"><span class="proto-key">= 12;</span></a></pre><h2 id="OnUrlUnload"><a href="#OnUrlUnload">OnUrlUnload</a></h2>
-<pre class="code-line" id="OnUrlUnload.UrlUnload"><a href="#OnUrlUnload.UrlUnload"><span class="keyword">event</span> <span class="command-name">OnUrlUnload</span><span class="keyword"> returns </span>(<span class="message-name">UrlUnload</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>The specified URL and resource ID is no longer in use in the browser. Any references to them should be removed. </p>
+  <p class="note"><span class="info"></span> Trying to use the resource ID after this event will not work. </p></div><pre class="code-line" id="OnUrlUnload.UrlUnload"><a href="#OnUrlUnload.UrlUnload"><span class="keyword">event</span> <span class="command-name">OnUrlUnload</span><span class="keyword"> returns </span>(<span class="message-name">UrlUnload</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnUrlUnload.UrlUnload.resourceID"><a href="#OnUrlUnload.UrlUnload.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>

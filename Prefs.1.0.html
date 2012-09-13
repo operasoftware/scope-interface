@@ -8,9 +8,7 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#GetPref">GetPref</a></li>
-
 <li><a href="#ListPrefs">ListPrefs</a></li>
-
 <li><a href="#SetPref">SetPref</a></li>
 
 </ul>
@@ -25,7 +23,9 @@
 <div class="main-view">
 <div class="doc">
   <p>This service allows you to read, enumerate and write Opera's user prefs. Please note that when you set a pref, it is stored on disk, and its value will persist to the subsequent launches of the same profile. </p></div><h2 id="GetPref"><a href="#GetPref">GetPref</a></h2>
-<pre class="code-line" id="GetPref.GetPrefArg"><a href="#GetPref.GetPrefArg"><span class="keyword">command</span> <span class="command-name">GetPref</span>(<span class="message-name">GetPrefArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Get the value of a preference. If the preference could not be found, or it for some other reason is not readable, an error will occur. </p>
+  <p>It is possible to get the current (actual) value of the pref, or the default value of the pref. </p></div><pre class="code-line" id="GetPref.GetPrefArg"><a href="#GetPref.GetPrefArg"><span class="keyword">command</span> <span class="command-name">GetPref</span>(<span class="message-name">GetPrefArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetPref.GetPrefArg.section"><a href="#GetPref.GetPrefArg.section"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">section</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -52,7 +52,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetPref.key"><a href="#GetPref.key"><span class="proto-key">= 1;</span></a></pre><h2 id="ListPrefs"><a href="#ListPrefs">ListPrefs</a></h2>
-<pre class="code-line" id="ListPrefs.ListPrefsArg"><a href="#ListPrefs.ListPrefsArg"><span class="keyword">command</span> <span class="command-name">ListPrefs</span>(<span class="message-name">ListPrefsArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Enumerate all prefs. </p></div><pre class="code-line" id="ListPrefs.ListPrefsArg"><a href="#ListPrefs.ListPrefsArg"><span class="keyword">command</span> <span class="command-name">ListPrefs</span>(<span class="message-name">ListPrefsArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListPrefs.ListPrefsArg.sort"><a href="#ListPrefs.ListPrefsArg.sort"><span class="qualifier">optional</span> <span class="boolean">bool</span> <span class="field-name">sort</span><span class="proto-key"> = 1</span> [default = false]<span class="proto-key">;</span></a></pre><div class="doc">
@@ -107,7 +108,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ListPrefs.key"><a href="#ListPrefs.key"><span class="proto-key">= 2;</span></a></pre><h2 id="SetPref"><a href="#SetPref">SetPref</a></h2>
-<pre class="code-line" id="SetPref.SetPrefArg"><a href="#SetPref.SetPrefArg"><span class="keyword">command</span> <span class="command-name">SetPref</span>(<span class="message-name">SetPrefArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Set the value of a single pref. If the preference could not be found, or it for some other reason is not readable, an error will occur. </p></div><pre class="code-line" id="SetPref.SetPrefArg"><a href="#SetPref.SetPrefArg"><span class="keyword">command</span> <span class="command-name">SetPref</span>(<span class="message-name">SetPrefArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetPref.SetPrefArg.section"><a href="#SetPref.SetPrefArg.section"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">section</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>

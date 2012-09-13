@@ -8,11 +8,8 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#GetCookie">GetCookie</a></li>
-
 <li><a href="#GetCookieSettings">GetCookieSettings</a></li>
-
 <li><a href="#RemoveAllCookies">RemoveAllCookies</a></li>
-
 <li><a href="#RemoveCookie">RemoveCookie</a></li>
 
 </ul>
@@ -29,7 +26,9 @@
   <p>This service can enumerate and remove cookies for a certain domain. </p>
   <p>It can currently not add cookies, but this can be achieved through ECMAScript (document.cookie). </p>
   <p>Changelog: 1.0 - First release 1.0.1 - Fixed a bug in RemoveCookie where it would remove all cookies,         not just in the specified domain. </p></div><h2 id="GetCookie"><a href="#GetCookie">GetCookie</a></h2>
-<pre class="code-line" id="GetCookie.GetCookieArg"><a href="#GetCookie.GetCookieArg"><span class="keyword">command</span> <span class="command-name">GetCookie</span>(<span class="message-name">GetCookieArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Retrieve a list of cookies for a given domain. </p>
+  <p>@param domain Name of domain to look for, e.g. "opera.com" @param path   Limit cookie list to specified path or subpath. </p></div><pre class="code-line" id="GetCookie.GetCookieArg"><a href="#GetCookie.GetCookieArg"><span class="keyword">command</span> <span class="command-name">GetCookie</span>(<span class="message-name">GetCookieArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetCookie.GetCookieArg.domain"><a href="#GetCookie.GetCookieArg.domain"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">domain</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -65,13 +64,17 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetCookie.key"><a href="#GetCookie.key"><span class="proto-key">= 1;</span></a></pre><h2 id="GetCookieSettings"><a href="#GetCookieSettings">GetCookieSettings</a></h2>
-<pre class="code-line" id="GetCookieSettings.Default"><a href="#GetCookieSettings.Default"><span class="keyword">command</span> <span class="command-name">GetCookieSettings</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Get global settings regarding the allowed number of cookies, and the max allowed length a cookie. </p></div><pre class="code-line" id="GetCookieSettings.Default"><a href="#GetCookieSettings.Default"><span class="keyword">command</span> <span class="command-name">GetCookieSettings</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetCookieSettings.CookieSettings"><a href="#GetCookieSettings.CookieSettings"><span class="keyword">returns</span> (<span class="message-name">CookieSettings</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>The current settings for the cookie manager in the opera host, these settings are read-only and may vary depending on the platform or device used. </p></div></li>
+<li class="field">
 <pre class="code-line" id="GetCookieSettings.CookieSettings.maxCookies"><a href="#GetCookieSettings.CookieSettings.maxCookies"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">maxCookies</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The maximum number of cookies the host can store in total. If there is no room for new cookies the host will remove the least recently used cookies to get enough space. </p></div></li>
 <li class="field">
@@ -83,7 +86,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetCookieSettings.key"><a href="#GetCookieSettings.key"><span class="proto-key">= 4;</span></a></pre><h2 id="RemoveAllCookies"><a href="#RemoveAllCookies">RemoveAllCookies</a></h2>
-<pre class="code-line" id="RemoveAllCookies.Default"><a href="#RemoveAllCookies.Default"><span class="keyword">command</span> <span class="command-name">RemoveAllCookies</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Removes all cookies. </p></div><pre class="code-line" id="RemoveAllCookies.Default"><a href="#RemoveAllCookies.Default"><span class="keyword">command</span> <span class="command-name">RemoveAllCookies</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
@@ -92,7 +96,9 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="RemoveAllCookies.key"><a href="#RemoveAllCookies.key"><span class="proto-key">= 3;</span></a></pre><h2 id="RemoveCookie"><a href="#RemoveCookie">RemoveCookie</a></h2>
-<pre class="code-line" id="RemoveCookie.RemoveCookieArg"><a href="#RemoveCookie.RemoveCookieArg"><span class="keyword">command</span> <span class="command-name">RemoveCookie</span>(<span class="message-name">RemoveCookieArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Removes selected cookies or all cookies in a domain. </p>
+  <p>@param domain Name of domain to remove cookies from, e.g. "opera.com" @param path   If specified only removes cookies from specified path or subpath. @param name   Name of cookie to remove, if unspecified removes all cookies matching domain/path. </p></div><pre class="code-line" id="RemoveCookie.RemoveCookieArg"><a href="#RemoveCookie.RemoveCookieArg"><span class="keyword">command</span> <span class="command-name">RemoveCookie</span>(<span class="message-name">RemoveCookieArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="RemoveCookie.RemoveCookieArg.domain"><a href="#RemoveCookie.RemoveCookieArg.domain"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">domain</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>

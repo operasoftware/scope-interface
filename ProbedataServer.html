@@ -23,7 +23,8 @@
   <p>The probedata server provides interactive online access to the data structures in the probetools infrastructure, if that is enabled. This allows online and offline profiling tools to be written. </p>
   <p>Ideas for these tools include task-manager like profiling, where the tool shows where the application has spent the last <span class="domain-specific">n</span> seconds, cumulative profiling, and an interactive interface to control probetools (e.g., to clear its profiling data before an experiment). </p>
   <p>There will be other commands soon, as this is just preliminary work. These may be commands like <span class="domain-specific">profiling-data</span> (to obtain just time profile), <span class="domain-specific">profiling-snapshot</span> (to obtain time profile differences since last snapshot), and <span class="domain-specific">memory-snapshot</span> (to obtain a representation of the heap). </p></div><h2 id="AllData"><a href="#AllData">AllData</a></h2>
-<pre class="code-line" id="AllData.Default"><a href="#AllData.Default"><span class="keyword">command</span> <span class="command-name">AllData</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>The <span class="domain-specific">all-data</span> command retrieves the current profiling data in full exactly as it would be written to the file <span class="domain-specific">opprof0.out</span>.&lt;/p> </p></div><pre class="code-line" id="AllData.Default"><a href="#AllData.Default"><span class="keyword">command</span> <span class="command-name">AllData</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>

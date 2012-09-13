@@ -8,22 +8,16 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#GetHighlights">GetHighlights</a></li>
-
 <li><a href="#GetPageText">GetPageText</a></li>
-
 <li><a href="#ListDocuments">ListDocuments</a></li>
-
 <li><a href="#LoadDocument">LoadDocument</a></li>
-
 <li><a href="#ReloadDocument">ReloadDocument</a></li>
-
 <li><a href="#SearchText">SearchText</a></li>
 
 </ul>
 <h3>Events</h3>
 <ul class="events">
 <li><a href="#OnAboutToLoadDocument">OnAboutToLoadDocument</a></li>
-
 <li><a href="#OnDocumentLoaded">OnDocumentLoaded</a></li>
 
 </ul>
@@ -46,7 +40,10 @@
     <li>Window IDs are the same in all services, and can be used interchangeably everywhere. See <em>WindowManager</em> for window-centric commands and events. </li>
     <li>Resource IDs in this service are compatible with resource ID fields found in <em>ResourceManager</em>. </li>
   </ul></div><h2 id="GetHighlights"><a href="#GetHighlights">GetHighlights</a></h2>
-<pre class="code-line" id="GetHighlights.GetHighlightsArg"><a href="#GetHighlights.GetHighlightsArg"><span class="keyword">command</span> <span class="command-name">GetHighlights</span>(<span class="message-name">GetHighlightsArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Get information about the currently highlighted text, resulting from a previous inline text search. </p>
+  <p>This command will fail if used on a build which does not support 'find-all' functionality, typically (non-smart) phone and TV builds. </p>
+  <p><span class="since-version">Added in version 1.1</span></p></div><pre class="code-line" id="GetHighlights.GetHighlightsArg"><a href="#GetHighlights.GetHighlightsArg"><span class="keyword">command</span> <span class="command-name">GetHighlights</span>(<span class="message-name">GetHighlightsArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetHighlights.GetHighlightsArg.windowID"><a href="#GetHighlights.GetHighlightsArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -84,7 +81,9 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetHighlights.key"><a href="#GetHighlights.key"><span class="proto-key">= 7;</span></a></pre><h2 id="GetPageText"><a href="#GetPageText">GetPageText</a></h2>
-<pre class="code-line" id="GetPageText.GetPageTextArg"><a href="#GetPageText.GetPageTextArg"><span class="keyword">command</span> <span class="command-name">GetPageText</span>(<span class="message-name">GetPageTextArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Get the displayed (plain) text of a window, or document subtree. This command can fail if the connected build does not support the necessary text serialization feature. </p>
+  <p><span class="since-version">Added in version 1.1</span></p></div><pre class="code-line" id="GetPageText.GetPageTextArg"><a href="#GetPageText.GetPageTextArg"><span class="keyword">command</span> <span class="command-name">GetPageText</span>(<span class="message-name">GetPageTextArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetPageText.GetPageTextArg.windowID"><a href="#GetPageText.GetPageTextArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -114,7 +113,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="GetPageText.key"><a href="#GetPageText.key"><span class="proto-key">= 8;</span></a></pre><h2 id="ListDocuments"><a href="#ListDocuments">ListDocuments</a></h2>
-<pre class="code-line" id="ListDocuments.ListDocumentsArg"><a href="#ListDocuments.ListDocumentsArg"><span class="keyword">command</span> <span class="command-name">ListDocuments</span>(<span class="message-name">ListDocumentsArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Get the document tree for a Window, or for all Windows. </p></div><pre class="code-line" id="ListDocuments.ListDocumentsArg"><a href="#ListDocuments.ListDocumentsArg"><span class="keyword">command</span> <span class="command-name">ListDocuments</span>(<span class="message-name">ListDocumentsArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListDocuments.ListDocumentsArg.windowID"><a href="#ListDocuments.ListDocumentsArg.windowID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -155,7 +155,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ListDocuments.key"><a href="#ListDocuments.key"><span class="proto-key">= 1;</span></a></pre><h2 id="LoadDocument"><a href="#LoadDocument">LoadDocument</a></h2>
-<pre class="code-line" id="LoadDocument.LoadDocumentArg"><a href="#LoadDocument.LoadDocumentArg"><span class="keyword">command</span> <span class="command-name">LoadDocument</span>(<span class="message-name">LoadDocumentArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Load a URL in a specified frame. </p></div><pre class="code-line" id="LoadDocument.LoadDocumentArg"><a href="#LoadDocument.LoadDocumentArg"><span class="keyword">command</span> <span class="command-name">LoadDocument</span>(<span class="message-name">LoadDocumentArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="LoadDocument.LoadDocumentArg.windowID"><a href="#LoadDocument.LoadDocumentArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -171,7 +172,8 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="LoadDocument.key"><a href="#LoadDocument.key"><span class="proto-key">= 2;</span></a></pre><h2 id="ReloadDocument"><a href="#ReloadDocument">ReloadDocument</a></h2>
-<pre class="code-line" id="ReloadDocument.ReloadDocumentArg"><a href="#ReloadDocument.ReloadDocumentArg"><span class="keyword">command</span> <span class="command-name">ReloadDocument</span>(<span class="message-name">ReloadDocumentArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Reload the current URL for a specified frame. </p></div><pre class="code-line" id="ReloadDocument.ReloadDocumentArg"><a href="#ReloadDocument.ReloadDocumentArg"><span class="keyword">command</span> <span class="command-name">ReloadDocument</span>(<span class="message-name">ReloadDocumentArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ReloadDocument.ReloadDocumentArg.windowID"><a href="#ReloadDocument.ReloadDocumentArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -185,7 +187,10 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="ReloadDocument.key"><a href="#ReloadDocument.key"><span class="proto-key">= 3;</span></a></pre><h2 id="SearchText"><a href="#SearchText">SearchText</a></h2>
-<pre class="code-line" id="SearchText.SearchTextArg"><a href="#SearchText.SearchTextArg"><span class="keyword">command</span> <span class="command-name">SearchText</span>(<span class="message-name">SearchTextArg</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Search for a text string in a certain window, or frame. </p>
+  <p>This command will fail if used on a build which does not support 'find-all' functionality, typically (non-smart) phone and TV builds. </p>
+  <p><span class="since-version">Added in version 1.1</span></p></div><pre class="code-line" id="SearchText.SearchTextArg"><a href="#SearchText.SearchTextArg"><span class="keyword">command</span> <span class="command-name">SearchText</span>(<span class="message-name">SearchTextArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SearchText.SearchTextArg.windowID"><a href="#SearchText.SearchTextArg.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -226,7 +231,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="SearchText.key"><a href="#SearchText.key"><span class="proto-key">= 6;</span></a></pre><h2 id="OnAboutToLoadDocument"><a href="#OnAboutToLoadDocument">OnAboutToLoadDocument</a></h2>
-<pre class="code-line" id="OnAboutToLoadDocument.AboutToLoadDocument"><a href="#OnAboutToLoadDocument.AboutToLoadDocument"><span class="keyword">event</span> <span class="command-name">OnAboutToLoadDocument</span><span class="keyword"> returns </span>(<span class="message-name">AboutToLoadDocument</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Fired when a document is about to be loaded (regardless of whether the load actually succeeds). </p></div><pre class="code-line" id="OnAboutToLoadDocument.AboutToLoadDocument"><a href="#OnAboutToLoadDocument.AboutToLoadDocument"><span class="keyword">event</span> <span class="command-name">OnAboutToLoadDocument</span><span class="keyword"> returns </span>(<span class="message-name">AboutToLoadDocument</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnAboutToLoadDocument.AboutToLoadDocument.windowID"><a href="#OnAboutToLoadDocument.AboutToLoadDocument.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -247,7 +253,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnAboutToLoadDocument.key"><a href="#OnAboutToLoadDocument.key"><span class="proto-key">= 4;</span></a></pre><h2 id="OnDocumentLoaded"><a href="#OnDocumentLoaded">OnDocumentLoaded</a></h2>
-<pre class="code-line" id="OnDocumentLoaded.DocumentLoaded"><a href="#OnDocumentLoaded.DocumentLoaded"><span class="keyword">event</span> <span class="command-name">OnDocumentLoaded</span><span class="keyword"> returns </span>(<span class="message-name">DocumentLoaded</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>Fired when a document is fully loaded (after DOM event 'load' has finished). </p></div><pre class="code-line" id="OnDocumentLoaded.DocumentLoaded"><a href="#OnDocumentLoaded.DocumentLoaded"><span class="keyword">event</span> <span class="command-name">OnDocumentLoaded</span><span class="keyword"> returns </span>(<span class="message-name">DocumentLoaded</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnDocumentLoaded.DocumentLoaded.windowID"><a href="#OnDocumentLoaded.DocumentLoaded.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>

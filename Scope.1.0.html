@@ -8,30 +8,20 @@
 <h3>Commands</h3>
 <ul class="commands">
 <li><a href="#Connect">Connect</a></li>
-
 <li><a href="#Disable">Disable</a></li>
-
 <li><a href="#Disconnect">Disconnect</a></li>
-
 <li><a href="#Enable">Enable</a></li>
-
 <li><a href="#HostInfo">HostInfo</a></li>
-
 <li><a href="#Info">Info</a></li>
-
 <li><a href="#MessageInfo">MessageInfo</a></li>
-
 <li><a href="#Quit">Quit</a></li>
 
 </ul>
 <h3>Events</h3>
 <ul class="events">
 <li><a href="#OnConnectionLost">OnConnectionLost</a></li>
-
 <li><a href="#OnError">OnError</a></li>
-
 <li><a href="#OnQuit">OnQuit</a></li>
-
 <li><a href="#OnServices">OnServices</a></li>
 
 </ul>
@@ -43,7 +33,10 @@
 <div class="doc">
   <p>This is a special service which is always present and always enabled. </p>
   <p>This service replaces the special commands used in STP/0 (started with an asterix). The only command that is fully compatible with STP/0 is "*services" (OnServices) which is actually sent as STP/0 only, any other special command sent to scope will be ignored. The system takes care of mapping it to the correct format when sending and receiving them. However the payload of these messages is no longer the same: they must now be sent using UMS. This means using either JSON or XML when sending over STP/0. </p></div><h2 id="Connect"><a href="#Connect">Connect</a></h2>
-<pre class="code-line" id="Connect.ClientInfo"><a href="#Connect.ClientInfo"><span class="keyword">command</span> <span class="command-name">Connect</span>(<span class="message-name">ClientInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This commands is used by the client to initiate connection with the host. The command specifies the global settings for the client. Currently this means setting the format of all events for this client. </p>
+  <p>Repeated use of this command will result in the host resetting any settings and services that the client used earlier. </p>
+  <p>If the requested format is not allowed or does not exist, it will respond with the status `"Bad Request"` (3). </p></div><pre class="code-line" id="Connect.ClientInfo"><a href="#Connect.ClientInfo"><span class="keyword">command</span> <span class="command-name">Connect</span>(<span class="message-name">ClientInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="Connect.ClientInfo.format"><a href="#Connect.ClientInfo.format"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">format</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -54,7 +47,14 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="Connect.key"><a href="#Connect.key"><span class="proto-key">= 3;</span></a></pre><h2 id="Disable"><a href="#Disable">Disable</a></h2>
-<pre class="code-line" id="Disable.ServiceSelection"><a href="#Disable.ServiceSelection"><span class="keyword">command</span> <span class="command-name">Disable</span>(<span class="message-name">ServiceSelection</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This is used to disable a client's access to one service. Once the client has been removed the from the service it will no longer receive events from it, and it will not be able to send commands to it. The internal <span class="domain-specific">"scope"</span> service cannot be disabled since it is always enabled. </p>
+  <p>Errors: </p>
+  <ul>
+    <li>If the service is not found it will return with a status of `"Service Not Found"` (6). </li>
+    <li>If the service is not yet enabled it will return with a status of `"Service Not Enabled"` (8). </li>
+    <li>If the client tries to disable the "scope" service it will return with a status of `"Bad Request"` (3). </li>
+  </ul></div><pre class="code-line" id="Disable.ServiceSelection"><a href="#Disable.ServiceSelection"><span class="keyword">command</span> <span class="command-name">Disable</span>(<span class="message-name">ServiceSelection</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="Disable.ServiceSelection.name"><a href="#Disable.ServiceSelection.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -67,7 +67,8 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="Disable.key"><a href="#Disable.key"><span class="proto-key">= 6;</span></a></pre><h2 id="Disconnect"><a href="#Disconnect">Disconnect</a></h2>
-<pre class="code-line" id="Disconnect.Default"><a href="#Disconnect.Default"><span class="keyword">command</span> <span class="command-name">Disconnect</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This disconnects the client by resetting any settings and disabling any services the client used. This command is primarily meant for proxies which must be sent if a socket connection with an active client closes. If the client is able to do this, then it should send the command itself. </p></div><pre class="code-line" id="Disconnect.Default"><a href="#Disconnect.Default"><span class="keyword">command</span> <span class="command-name">Disconnect</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
@@ -76,7 +77,14 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="Disconnect.key"><a href="#Disconnect.key"><span class="proto-key">= 4;</span></a></pre><h2 id="Enable"><a href="#Enable">Enable</a></h2>
-<pre class="code-line" id="Enable.ServiceSelection"><a href="#Enable.ServiceSelection"><span class="keyword">command</span> <span class="command-name">Enable</span>(<span class="message-name">ServiceSelection</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This is used to enable a single service in the host. </p>
+  <p>Errors: </p>
+  <ul>
+    <li>If the service is not found it will return with status `"Service Not Found"` (6). </li>
+    <li>If the service could not be enabled it will return with status `"Service Not Enabled"` (8). </li>
+    <li>If the client tries to enable the <span class="domain-specific">"scope"</span> service it will return with status `"Bad Request"` (3). </li>
+  </ul></div><pre class="code-line" id="Enable.ServiceSelection"><a href="#Enable.ServiceSelection"><span class="keyword">command</span> <span class="command-name">Enable</span>(<span class="message-name">ServiceSelection</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="Enable.ServiceSelection.name"><a href="#Enable.ServiceSelection.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -89,7 +97,9 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="Enable.key"><a href="#Enable.key"><span class="proto-key">= 5;</span></a></pre><h2 id="HostInfo"><a href="#HostInfo">HostInfo</a></h2>
-<pre class="code-line" id="HostInfo.Default"><a href="#HostInfo.Default"><span class="keyword">command</span> <span class="command-name">HostInfo</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This commands is used to get information about the host. </p>
+  <p>The command responds with information on available services, version, and other relevant information. </p></div><pre class="code-line" id="HostInfo.Default"><a href="#HostInfo.Default"><span class="keyword">command</span> <span class="command-name">HostInfo</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
@@ -121,7 +131,13 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="HostInfo.key"><a href="#HostInfo.key"><span class="proto-key">= 10;</span></a></pre><h2 id="Info"><a href="#Info">Info</a></h2>
-<pre class="code-line" id="Info.ServiceSelection"><a href="#Info.ServiceSelection"><span class="keyword">command</span> <span class="command-name">Info</span>(<span class="message-name">ServiceSelection</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This is used to get information about one specific service. </p>
+  <p>The command list contains all the commands in the service. Each command is listed with its name and the corresponding command ID (used by STP/1). The event list is similar to the command list, but is listed for the available events. </p>
+  <p>Errors: </p>
+  <ul>
+    <li>If the service is not found it will return the message with status set to `"Service Not Found"` (6). </li>
+  </ul></div><pre class="code-line" id="Info.ServiceSelection"><a href="#Info.ServiceSelection"><span class="keyword">command</span> <span class="command-name">Info</span>(<span class="message-name">ServiceSelection</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="Info.ServiceSelection.name"><a href="#Info.ServiceSelection.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -160,7 +176,10 @@
 </div><pre class="code-line" id="Info.key"><a href="#Info.key"><span class="proto-key">= 7;</span></a></pre><h2 id="MessageInfo"><a href="#MessageInfo">MessageInfo</a></h2>
 <pre class="code-line" id="MessageInfo.MessageSelection"><a href="#MessageInfo.MessageSelection"><span class="keyword">command</span> <span class="command-name">MessageInfo</span>(<span class="message-name">MessageSelection</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Selects which messages to introspect. </p></div></li>
+<li class="field">
 <pre class="code-line" id="MessageInfo.MessageSelection.serviceName"><a href="#MessageInfo.MessageSelection.serviceName"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">serviceName</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Name of service to fetch messages from. Message ids are unique per service. </p></div></li>
 <li class="field">
@@ -179,7 +198,10 @@
 <ul><li class="field">
 <pre class="code-line" id="MessageInfo.MessageInfoList.messageList"><span class="expander">&nbsp;</span><a href="#MessageInfo.MessageInfoList.messageList"><span class="qualifier">repeated</span> <span class="">MessageInfo</span> <span class="field-name">messageList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
-<ul><li class="field">
+<ul><li class="message-doc">
+<div class="doc">
+  <p>Introspection result for a given message. </p></div></li>
+<li class="field">
 <pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.id"><a href="#MessageInfo.MessageInfoList.MessageInfo.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.name"><a href="#MessageInfo.MessageInfoList.MessageInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
@@ -213,7 +235,9 @@
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="MessageInfo.key"><a href="#MessageInfo.key"><span class="proto-key">= 11;</span></a></pre><h2 id="Quit"><a href="#Quit">Quit</a></h2>
-<pre class="code-line" id="Quit.Default"><a href="#Quit.Default"><span class="keyword">command</span> <span class="command-name">Quit</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>The quit message is sent to Opera when the proxy or client operation is terminated. No communication with the proxy will be possible once it has sent the quit message. When Opera receives this message it should disable all debugging services that are currently enabled. </p>
+  <p>Note: This command does not do anything, might be removed in the future. </p></div><pre class="code-line" id="Quit.Default"><a href="#Quit.Default"><span class="keyword">command</span> <span class="command-name">Quit</span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
@@ -222,24 +246,28 @@
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="Quit.key"><a href="#Quit.key"><span class="proto-key">= 8;</span></a></pre><h2 id="OnConnectionLost"><a href="#OnConnectionLost">OnConnectionLost</a></h2>
-<pre class="code-line" id="OnConnectionLost.Default"><a href="#OnConnectionLost.Default"><span class="keyword">event</span> <span class="command-name">OnConnectionLost</span><span class="keyword"> returns </span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This is a special event which is used by the proxy (and not by the host) when the connection to the Opera host is unexpectedly lost, for instance if the Opera host crashes. </p></div><pre class="code-line" id="OnConnectionLost.Default"><a href="#OnConnectionLost.Default"><span class="keyword">event</span> <span class="command-name">OnConnectionLost</span><span class="keyword"> returns </span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnConnectionLost.key"><a href="#OnConnectionLost.key"><span class="proto-key">= 2;</span></a></pre><h2 id="OnError"><a href="#OnError">OnError</a></h2>
-<pre class="code-line" id="OnError.ErrorInfo"><a href="#OnError.ErrorInfo"><span class="keyword">event</span> <span class="command-name">OnError</span><span class="keyword"> returns </span>(<span class="message-name">ErrorInfo</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This is a generic event for sending out error messages which are not tied to a specific command. </p></div><pre class="code-line" id="OnError.ErrorInfo"><a href="#OnError.ErrorInfo"><span class="keyword">event</span> <span class="command-name">OnError</span><span class="keyword"> returns </span>(<span class="message-name">ErrorInfo</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnError.ErrorInfo.description"><a href="#OnError.ErrorInfo.description"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">description</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnError.key"><a href="#OnError.key"><span class="proto-key">= 9;</span></a></pre><h2 id="OnQuit"><a href="#OnQuit">OnQuit</a></h2>
-<pre class="code-line" id="OnQuit.Default"><a href="#OnQuit.Default"><span class="keyword">event</span> <span class="command-name">OnQuit</span><span class="keyword"> returns </span>(<span class="message-name">Default</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This event is sent by Opera to the proxy or client when Opera terminates its operation. No communication with Opera is possible once Opera has sent the event. When the proxy receives this message it broadcasts it to all of its clients. </p></div><pre class="code-line" id="OnQuit.Default"><a href="#OnQuit.Default"><span class="keyword">event</span> <span class="command-name">OnQuit</span><span class="keyword"> returns </span>(<span class="message-name">Default</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul></ul>
 <pre class="code-line">}</pre>
 </div><pre class="code-line" id="OnQuit.key"><a href="#OnQuit.key"><span class="proto-key">= 1;</span></a></pre><h2 id="OnServices"><a href="#OnServices">OnServices</a></h2>
-<pre class="code-line" id="OnServices.ServiceList"><a href="#OnServices.ServiceList"><span class="keyword">event</span> <span class="command-name">OnServices</span><span class="keyword"> returns </span>(<span class="message-name">ServiceList</span>)</a></pre><div class="message">
+<div class="doc">
+  <p>This event is the first that is sent from the host (and proxy) and contains all the available services. It is always sent encoded as an STP/0 message. </p></div><pre class="code-line" id="OnServices.ServiceList"><a href="#OnServices.ServiceList"><span class="keyword">event</span> <span class="command-name">OnServices</span><span class="keyword"> returns </span>(<span class="message-name">ServiceList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnServices.ServiceList.serviceList"><a href="#OnServices.ServiceList.serviceList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">serviceList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
