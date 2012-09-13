@@ -29,6 +29,9 @@
 <li><a href="#OnDocumentLoaded">OnDocumentLoaded</a></li>
 
 </ul>
+<div title="Hint: hold shift to unfold all sub messages" class="setting">
+ <label><input type="checkbox" class="default-collapse"> collapse all by default</label>
+ </div>
 </div>
 <div class="main-view">
 <div class="doc">
@@ -58,14 +61,14 @@
 </div><pre class="code-line" id="GetHighlights.HighlightList"><a href="#GetHighlights.HighlightList"><span class="keyword">returns</span> (<span class="message-name">HighlightList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetHighlights.HighlightList.highlightList"><a href="#GetHighlights.HighlightList.highlightList"><span class="qualifier">repeated</span> <span class="">Highlight</span> <span class="field-name">highlightList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetHighlights.HighlightList.highlightList"><span class="expander">&#x25BC;</span><a href="#GetHighlights.HighlightList.highlightList"><span class="qualifier">repeated</span> <span class="">Highlight</span> <span class="field-name">highlightList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>When searching for text in a page, we often get multiple hits. This is a list of all the current hits. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetHighlights.HighlightList.Highlight.frameID"><a href="#GetHighlights.HighlightList.Highlight.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Which frame this highlight is in. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetHighlights.HighlightList.Highlight.node"><a href="#GetHighlights.HighlightList.Highlight.node"><span class="qualifier">optional</span> <span class="">Node</span> <span class="field-name">node</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetHighlights.HighlightList.Highlight.node"><span class="expander">&#x25BC;</span><a href="#GetHighlights.HighlightList.Highlight.node"><span class="qualifier">optional</span> <span class="">Node</span> <span class="field-name">node</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The first common ancestor that contains the entire highlight. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -96,7 +99,7 @@
 </div><pre class="code-line" id="GetPageText.PageText"><a href="#GetPageText.PageText"><span class="keyword">returns</span> (<span class="message-name">PageText</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetPageText.PageText.documentTextList"><a href="#GetPageText.PageText.documentTextList"><span class="qualifier">repeated</span> <span class="">DocumentText</span> <span class="field-name">documentTextList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="GetPageText.PageText.documentTextList"><span class="expander">&#x25BC;</span><a href="#GetPageText.PageText.documentTextList"><span class="qualifier">repeated</span> <span class="">DocumentText</span> <span class="field-name">documentTextList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetPageText.PageText.DocumentText.frameID"><a href="#GetPageText.PageText.DocumentText.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -122,7 +125,7 @@
 </div><pre class="code-line" id="ListDocuments.DocumentList"><a href="#ListDocuments.DocumentList"><span class="keyword">returns</span> (<span class="message-name">DocumentList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ListDocuments.DocumentList.documentList"><a href="#ListDocuments.DocumentList.documentList"><span class="qualifier">repeated</span> <span class="">Document</span> <span class="field-name">documentList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ListDocuments.DocumentList.documentList"><span class="expander">&#x25BC;</span><a href="#ListDocuments.DocumentList.documentList"><span class="qualifier">repeated</span> <span class="">Document</span> <span class="field-name">documentList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListDocuments.DocumentList.Document.windowID"><a href="#ListDocuments.DocumentList.Document.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -200,14 +203,14 @@
 </div><pre class="code-line" id="SearchText.HighlightList"><a href="#SearchText.HighlightList"><span class="keyword">returns</span> (<span class="message-name">HighlightList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="SearchText.HighlightList.highlightList"><a href="#SearchText.HighlightList.highlightList"><span class="qualifier">repeated</span> <span class="">Highlight</span> <span class="field-name">highlightList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SearchText.HighlightList.highlightList"><span class="expander">&#x25BC;</span><a href="#SearchText.HighlightList.highlightList"><span class="qualifier">repeated</span> <span class="">Highlight</span> <span class="field-name">highlightList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>When searching for text in a page, we often get multiple hits. This is a list of all the current hits. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SearchText.HighlightList.Highlight.frameID"><a href="#SearchText.HighlightList.Highlight.frameID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Which frame this highlight is in. </p></div></li>
 <li class="field">
-<pre class="code-line" id="SearchText.HighlightList.Highlight.node"><a href="#SearchText.HighlightList.Highlight.node"><span class="qualifier">optional</span> <span class="">Node</span> <span class="field-name">node</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SearchText.HighlightList.Highlight.node"><span class="expander">&#x25BC;</span><a href="#SearchText.HighlightList.Highlight.node"><span class="qualifier">optional</span> <span class="">Node</span> <span class="field-name">node</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The first common ancestor that contains the entire highlight. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -258,7 +261,7 @@
 <pre class="code-line" id="OnDocumentEvent.DocumentEvent.resourceID"><a href="#OnDocumentEvent.DocumentEvent.resourceID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">resourceID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The resource that was used to generate this document. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnDocumentEvent.DocumentEvent.eventType"><a href="#OnDocumentEvent.DocumentEvent.eventType"><span class="qualifier">required</span> <span class="">DocumentEventType</span> <span class="field-name">eventType</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnDocumentEvent.DocumentEvent.eventType"><span class="expander">&#x25BC;</span><a href="#OnDocumentEvent.DocumentEvent.eventType"><span class="qualifier">required</span> <span class="">DocumentEventType</span> <span class="field-name">eventType</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of event that is being reported. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">

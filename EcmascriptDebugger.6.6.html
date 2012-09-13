@@ -95,6 +95,9 @@
 <li><a href="#OnThreadStoppedAt">OnThreadStoppedAt</a></li>
 
 </ul>
+<div title="Hint: hold shift to unfold all sub messages" class="setting">
+ <label><input type="checkbox" class="default-collapse"> collapse all by default</label>
+ </div>
 </div>
 <div class="main-view">
 <div class="doc">
@@ -210,7 +213,7 @@
 </div><pre class="code-line" id="CssGetAllStylesheets.CssStylesheetList"><a href="#CssGetAllStylesheets.CssStylesheetList"><span class="keyword">returns</span> (<span class="message-name">CssStylesheetList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="CssGetAllStylesheets.CssStylesheetList.stylesheetList"><a href="#CssGetAllStylesheets.CssStylesheetList.stylesheetList"><span class="qualifier">repeated</span> <span class="">Stylesheet</span> <span class="field-name">stylesheetList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="CssGetAllStylesheets.CssStylesheetList.stylesheetList"><span class="expander">&#x25BC;</span><a href="#CssGetAllStylesheets.CssStylesheetList.stylesheetList"><span class="qualifier">repeated</span> <span class="">Stylesheet</span> <span class="field-name">stylesheetList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="CssGetAllStylesheets.CssStylesheetList.Stylesheet.objectID"><a href="#CssGetAllStylesheets.CssStylesheetList.Stylesheet.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -254,7 +257,7 @@
 <li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssElementSelection.objectID"><a href="#CssGetStyleDeclarations.CssElementSelection.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="CssGetStyleDeclarations.CssElementSelection.pseudoSelectorList"><a href="#CssGetStyleDeclarations.CssElementSelection.pseudoSelectorList"><span class="qualifier">repeated</span> <span class="">PseudoSelector</span> <span class="field-name">pseudoSelectorList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="CssGetStyleDeclarations.CssElementSelection.pseudoSelectorList"><span class="expander">&#x25BC;</span><a href="#CssGetStyleDeclarations.CssElementSelection.pseudoSelectorList"><span class="qualifier">repeated</span> <span class="">PseudoSelector</span> <span class="field-name">pseudoSelectorList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Set this field to match rules with the specified pseudo selectors, even if that rule is not currently applied. </p>
   <p>The rule will match if either of the specified pseudo classes or pseudo elements are used in the selector. Order does not matter. </p>
   <p>This is handy for inspecting and modifying style rules for non-current element states. </p>
@@ -294,17 +297,17 @@
 <ul><li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.computedStyleList"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.computedStyleList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">computedStyleList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.nodeStyleList"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.nodeStyleList"><span class="qualifier">repeated</span> <span class="">NodeStyle</span> <span class="field-name">nodeStyleList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.nodeStyleList"><span class="expander">&#x25BC;</span><a href="#CssGetStyleDeclarations.CssStyleDeclarations.nodeStyleList"><span class="qualifier">repeated</span> <span class="">NodeStyle</span> <span class="field-name">nodeStyleList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.objectID"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.elementName"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.elementName"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">elementName</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.styleList"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.styleList"><span class="qualifier">repeated</span> <span class="">StyleDeclaration</span> <span class="field-name">styleList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.styleList"><span class="expander">&#x25BC;</span><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.styleList"><span class="qualifier">repeated</span> <span class="">StyleDeclaration</span> <span class="field-name">styleList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.origin"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.origin"><span class="qualifier">required</span> <span class="">RuleOrigin</span> <span class="field-name">origin</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.origin"><span class="expander">&#x25BC;</span><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.origin"><span class="qualifier">required</span> <span class="">RuleOrigin</span> <span class="field-name">origin</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.USER_AGENT"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.USER_AGENT"><span class="enum-name">USER_AGENT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -332,7 +335,7 @@
 <li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.priorityList"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.priorityList"><span class="qualifier">repeated</span> <span class="boolean">bool</span> <span class="field-name">priorityList</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.statusList"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.statusList"><span class="qualifier">repeated</span> <span class="">DeclarationStatus</span> <span class="field-name">statusList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.statusList"><span class="expander">&#x25BC;</span><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.statusList"><span class="qualifier">repeated</span> <span class="">DeclarationStatus</span> <span class="field-name">statusList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.OVERWRITTEN"><a href="#CssGetStyleDeclarations.CssStyleDeclarations.NodeStyle.StyleDeclaration.OVERWRITTEN"><span class="enum-name">OVERWRITTEN</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre></li>
@@ -376,7 +379,7 @@
 </div><pre class="code-line" id="CssGetStylesheet.CssStylesheetRules"><a href="#CssGetStylesheet.CssStylesheetRules"><span class="keyword">returns</span> (<span class="message-name">CssStylesheetRules</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="CssGetStylesheet.CssStylesheetRules.ruleList"><a href="#CssGetStylesheet.CssStylesheetRules.ruleList"><span class="qualifier">repeated</span> <span class="">StylesheetRule</span> <span class="field-name">ruleList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="CssGetStylesheet.CssStylesheetRules.ruleList"><span class="expander">&#x25BC;</span><a href="#CssGetStylesheet.CssStylesheetRules.ruleList"><span class="qualifier">repeated</span> <span class="">StylesheetRule</span> <span class="field-name">ruleList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="CssGetStylesheet.CssStylesheetRules.StylesheetRule.type"><a href="#CssGetStylesheet.CssStylesheetRules.StylesheetRule.type"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -433,7 +436,7 @@
 <pre class="code-line" id="Eval.EvalData.scriptData"><a href="#Eval.EvalData.scriptData"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">scriptData</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents a script to be executed. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalData.variableList"><a href="#Eval.EvalData.variableList"><span class="qualifier">repeated</span> <span class="">Variable</span> <span class="field-name">variableList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalData.variableList"><span class="expander">&#x25BC;</span><a href="#Eval.EvalData.variableList"><span class="qualifier">repeated</span> <span class="">Variable</span> <span class="field-name">variableList</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represent variables to set. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -469,7 +472,7 @@
 <pre class="code-line" id="Eval.EvalResult.value"><a href="#Eval.EvalResult.value"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Only present when <span class="domain-specific">type</span> is <span class="domain-specific">"number"</span>, <span class="domain-specific">"string"</span> or <span class="domain-specific">"boolean"</span> </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.objectValue"><a href="#Eval.EvalResult.objectValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">objectValue</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResult.objectValue"><span class="expander">&#x25BC;</span><a href="#Eval.EvalResult.objectValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">objectValue</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Only present when <span class="domain-specific">type</span> is <span class="domain-specific">"object"</span> </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -510,13 +513,13 @@
 </div><pre class="code-line" id="ExamineObjects.ObjectChainList"><a href="#ExamineObjects.ObjectChainList"><span class="keyword">returns</span> (<span class="message-name">ObjectChainList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectChainList.objectChainList"><a href="#ExamineObjects.ObjectChainList.objectChainList"><span class="qualifier">repeated</span> <span class="">ObjectList</span> <span class="field-name">objectChainList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ExamineObjects.ObjectChainList.objectChainList"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectChainList.objectChainList"><span class="qualifier">repeated</span> <span class="">ObjectList</span> <span class="field-name">objectChainList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.objectList"><a href="#ExamineObjects.ObjectChainList.ObjectList.objectList"><span class="qualifier">repeated</span> <span class="">ObjectInfo</span> <span class="field-name">objectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.objectList"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectChainList.ObjectList.objectList"><span class="qualifier">repeated</span> <span class="">ObjectInfo</span> <span class="field-name">objectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.value"><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.value"><span class="qualifier">required</span> <span class="">ObjectValue</span> <span class="field-name">value</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.value"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.value"><span class="qualifier">required</span> <span class="">ObjectValue</span> <span class="field-name">value</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.ObjectValue.objectID"><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.ObjectValue.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -537,7 +540,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.propertyList"><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.propertyList"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.name"><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -556,7 +559,7 @@
 <pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.value"><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.value"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Only present for <span class="domain-specific">"number"</span>, <span class="domain-specific">"string"</span> or <span class="domain-specific">"boolean"</span> </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.objectValue"><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.objectValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">objectValue</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.objectValue"><span class="expander">&#x25BC;</span><a href="#ExamineObjects.ObjectChainList.ObjectList.ObjectInfo.Property.objectValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">objectValue</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Only present for <span class="domain-specific">"object"</span> </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -603,7 +606,7 @@
 </div><pre class="code-line" id="GetBacktrace.BacktraceFrameList"><a href="#GetBacktrace.BacktraceFrameList"><span class="keyword">returns</span> (<span class="message-name">BacktraceFrameList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetBacktrace.BacktraceFrameList.frameList"><a href="#GetBacktrace.BacktraceFrameList.frameList"><span class="qualifier">repeated</span> <span class="">BacktraceFrame</span> <span class="field-name">frameList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="GetBacktrace.BacktraceFrameList.frameList"><span class="expander">&#x25BC;</span><a href="#GetBacktrace.BacktraceFrameList.frameList"><span class="qualifier">repeated</span> <span class="">BacktraceFrame</span> <span class="field-name">frameList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="GetBacktrace.BacktraceFrameList.BacktraceFrame.functionID"><a href="#GetBacktrace.BacktraceFrameList.BacktraceFrame.functionID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">functionID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -614,7 +617,7 @@
 <li class="field">
 <pre class="code-line" id="GetBacktrace.BacktraceFrameList.BacktraceFrame.thisObject"><a href="#GetBacktrace.BacktraceFrameList.BacktraceFrame.thisObject"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">thisObject</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="GetBacktrace.BacktraceFrameList.BacktraceFrame.objectValue"><a href="#GetBacktrace.BacktraceFrameList.BacktraceFrame.objectValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">objectValue</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetBacktrace.BacktraceFrameList.BacktraceFrame.objectValue"><span class="expander">&#x25BC;</span><a href="#GetBacktrace.BacktraceFrameList.BacktraceFrame.objectValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">objectValue</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>TODO: Spec says repeated, while the code only assumes one (optional) </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -644,7 +647,7 @@
   <p>The variable objects in the scope chain of the function. The first element in the list is the innermost scope (the scope of the function itself). The list includes the global scope. </p>
   <p><span class="since-version">Added in version 6.1</span></p></div></li>
 <li class="field">
-<pre class="code-line" id="GetBacktrace.BacktraceFrameList.BacktraceFrame.argumentValue"><a href="#GetBacktrace.BacktraceFrameList.BacktraceFrame.argumentValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">argumentValue</span><span class="proto-key"> = 9</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetBacktrace.BacktraceFrameList.BacktraceFrame.argumentValue"><span class="expander">&#x25BC;</span><a href="#GetBacktrace.BacktraceFrameList.BacktraceFrame.argumentValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">argumentValue</span><span class="proto-key"> = 9</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The full value of the 'arguments' object. </p>
   <p><span class="since-version">Added in version 6.2</span></p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -667,7 +670,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="GetBacktrace.BacktraceFrameList.BacktraceFrame.thisValue"><a href="#GetBacktrace.BacktraceFrameList.BacktraceFrame.thisValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">thisValue</span><span class="proto-key"> = 10</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetBacktrace.BacktraceFrameList.BacktraceFrame.thisValue"><span class="expander">&#x25BC;</span><a href="#GetBacktrace.BacktraceFrameList.BacktraceFrame.thisValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">thisValue</span><span class="proto-key"> = 10</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The full value of the 'this' object. </p>
   <p><span class="since-version">Added in version 6.2</span></p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -728,7 +731,7 @@
 </div><pre class="code-line" id="InspectDom.NodeList"><a href="#InspectDom.NodeList"><span class="keyword">returns</span> (<span class="message-name">NodeList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="InspectDom.NodeList.nodeList"><a href="#InspectDom.NodeList.nodeList"><span class="qualifier">repeated</span> <span class="">NodeInfo</span> <span class="field-name">nodeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="InspectDom.NodeList.nodeList"><span class="expander">&#x25BC;</span><a href="#InspectDom.NodeList.nodeList"><span class="qualifier">repeated</span> <span class="">NodeInfo</span> <span class="field-name">nodeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="InspectDom.NodeList.NodeInfo.objectID"><a href="#InspectDom.NodeList.NodeInfo.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -744,7 +747,7 @@
 <pre class="code-line" id="InspectDom.NodeList.NodeInfo.namespacePrefix"><a href="#InspectDom.NodeList.NodeInfo.namespacePrefix"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">namespacePrefix</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Used if type is 1. </p></div></li>
 <li class="field">
-<pre class="code-line" id="InspectDom.NodeList.NodeInfo.attributeList"><a href="#InspectDom.NodeList.NodeInfo.attributeList"><span class="qualifier">repeated</span> <span class="">Attribute</span> <span class="field-name">attributeList</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="InspectDom.NodeList.NodeInfo.attributeList"><span class="expander">&#x25BC;</span><a href="#InspectDom.NodeList.NodeInfo.attributeList"><span class="qualifier">repeated</span> <span class="">Attribute</span> <span class="field-name">attributeList</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Used if type is 1. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -773,7 +776,7 @@
   <p>The runtime ID of this node. This field will always be set. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div></li>
 <li class="field">
-<pre class="code-line" id="InspectDom.NodeList.NodeInfo.contentDocument"><a href="#InspectDom.NodeList.NodeInfo.contentDocument"><span class="qualifier">optional</span> <span class="">ObjectReference</span> <span class="field-name">contentDocument</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="InspectDom.NodeList.NodeInfo.contentDocument"><span class="expander">&#x25BC;</span><a href="#InspectDom.NodeList.NodeInfo.contentDocument"><span class="qualifier">optional</span> <span class="">ObjectReference</span> <span class="field-name">contentDocument</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If the node type is an ELEMENT (1) which contains another document, (frame, iframe, or object), this field will be set with a reference to the document node contained within that element. </p>
   <p>The field will not be set if the element does not contain a document. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
@@ -786,7 +789,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="InspectDom.NodeList.NodeInfo.frameElement"><a href="#InspectDom.NodeList.NodeInfo.frameElement"><span class="qualifier">optional</span> <span class="">ObjectReference</span> <span class="field-name">frameElement</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="InspectDom.NodeList.NodeInfo.frameElement"><span class="expander">&#x25BC;</span><a href="#InspectDom.NodeList.NodeInfo.frameElement"><span class="qualifier">optional</span> <span class="">ObjectReference</span> <span class="field-name">frameElement</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Like 'contentDocument', but the other direction; if this node is a DOCUMENT (9) node, then this field will be set with a reference to the element that contains the document in the parent runtime. </p>
   <p>The field will not be set if the document node represents a top-level document. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
@@ -799,7 +802,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="InspectDom.NodeList.NodeInfo.matchReason"><a href="#InspectDom.NodeList.NodeInfo.matchReason"><span class="qualifier">optional</span> <span class="">MatchReason</span> <span class="field-name">matchReason</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="InspectDom.NodeList.NodeInfo.matchReason"><span class="expander">&#x25BC;</span><a href="#InspectDom.NodeList.NodeInfo.matchReason"><span class="qualifier">optional</span> <span class="">MatchReason</span> <span class="field-name">matchReason</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Explains why the node was included in the response. This field will always be set. </p>
   <p>When this message is a response to DOM inspection, this field will be set to TRAVERSAL. When sent as a response to a search, it will either be set to SEARCH_HIT, or SEARCH_PARENT. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="enum">
@@ -817,12 +820,12 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="InspectDom.NodeList.NodeInfo.pseudoElementList"><a href="#InspectDom.NodeList.NodeInfo.pseudoElementList"><span class="qualifier">repeated</span> <span class="">PseudoElement</span> <span class="field-name">pseudoElementList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="InspectDom.NodeList.NodeInfo.pseudoElementList"><span class="expander">&#x25BC;</span><a href="#InspectDom.NodeList.NodeInfo.pseudoElementList"><span class="qualifier">repeated</span> <span class="">PseudoElement</span> <span class="field-name">pseudoElementList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If the node has pseudo elements applied, this list will contain those elements. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="InspectDom.NodeList.NodeInfo.PseudoElement.type"><a href="#InspectDom.NodeList.NodeInfo.PseudoElement.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="InspectDom.NodeList.NodeInfo.PseudoElement.type"><span class="expander">&#x25BC;</span><a href="#InspectDom.NodeList.NodeInfo.PseudoElement.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="InspectDom.NodeList.NodeInfo.PseudoElement.BEFORE"><a href="#InspectDom.NodeList.NodeInfo.PseudoElement.BEFORE"><span class="enum-name">BEFORE</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
@@ -860,7 +863,7 @@
 </div><pre class="code-line" id="ListRuntimes.RuntimeList"><a href="#ListRuntimes.RuntimeList"><span class="keyword">returns</span> (<span class="message-name">RuntimeList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ListRuntimes.RuntimeList.runtimeList"><a href="#ListRuntimes.RuntimeList.runtimeList"><span class="qualifier">repeated</span> <span class="">RuntimeInfo</span> <span class="field-name">runtimeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ListRuntimes.RuntimeList.runtimeList"><span class="expander">&#x25BC;</span><a href="#ListRuntimes.RuntimeList.runtimeList"><span class="qualifier">repeated</span> <span class="">RuntimeInfo</span> <span class="field-name">runtimeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListRuntimes.RuntimeList.RuntimeInfo.runtimeID"><a href="#ListRuntimes.RuntimeList.RuntimeInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -933,7 +936,7 @@
 <pre class="code-line" id="SearchDom.SearchDomArg.query"><a href="#SearchDom.SearchDomArg.query"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">query</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The string to search for. </p></div></li>
 <li class="field">
-<pre class="code-line" id="SearchDom.SearchDomArg.type"><a href="#SearchDom.SearchDomArg.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 3</span> [default = PLAIN_TEXT]<span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="SearchDom.SearchDomArg.type"><span class="expander">&#x25BC;</span><a href="#SearchDom.SearchDomArg.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 3</span> [default = PLAIN_TEXT]<span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SearchDom.SearchDomArg.PLAIN_TEXT"><a href="#SearchDom.SearchDomArg.PLAIN_TEXT"><span class="enum-name">PLAIN_TEXT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -966,7 +969,7 @@
 </div><pre class="code-line" id="SearchDom.NodeList"><a href="#SearchDom.NodeList"><span class="keyword">returns</span> (<span class="message-name">NodeList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="SearchDom.NodeList.nodeList"><a href="#SearchDom.NodeList.nodeList"><span class="qualifier">repeated</span> <span class="">NodeInfo</span> <span class="field-name">nodeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="SearchDom.NodeList.nodeList"><span class="expander">&#x25BC;</span><a href="#SearchDom.NodeList.nodeList"><span class="qualifier">repeated</span> <span class="">NodeInfo</span> <span class="field-name">nodeList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SearchDom.NodeList.NodeInfo.objectID"><a href="#SearchDom.NodeList.NodeInfo.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -982,7 +985,7 @@
 <pre class="code-line" id="SearchDom.NodeList.NodeInfo.namespacePrefix"><a href="#SearchDom.NodeList.NodeInfo.namespacePrefix"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">namespacePrefix</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Used if type is 1. </p></div></li>
 <li class="field">
-<pre class="code-line" id="SearchDom.NodeList.NodeInfo.attributeList"><a href="#SearchDom.NodeList.NodeInfo.attributeList"><span class="qualifier">repeated</span> <span class="">Attribute</span> <span class="field-name">attributeList</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SearchDom.NodeList.NodeInfo.attributeList"><span class="expander">&#x25BC;</span><a href="#SearchDom.NodeList.NodeInfo.attributeList"><span class="qualifier">repeated</span> <span class="">Attribute</span> <span class="field-name">attributeList</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Used if type is 1. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1011,7 +1014,7 @@
   <p>The runtime ID of this node. This field will always be set. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div></li>
 <li class="field">
-<pre class="code-line" id="SearchDom.NodeList.NodeInfo.contentDocument"><a href="#SearchDom.NodeList.NodeInfo.contentDocument"><span class="qualifier">optional</span> <span class="">ObjectReference</span> <span class="field-name">contentDocument</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SearchDom.NodeList.NodeInfo.contentDocument"><span class="expander">&#x25BC;</span><a href="#SearchDom.NodeList.NodeInfo.contentDocument"><span class="qualifier">optional</span> <span class="">ObjectReference</span> <span class="field-name">contentDocument</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If the node type is an ELEMENT (1) which contains another document, (frame, iframe, or object), this field will be set with a reference to the document node contained within that element. </p>
   <p>The field will not be set if the element does not contain a document. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
@@ -1024,7 +1027,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="SearchDom.NodeList.NodeInfo.frameElement"><a href="#SearchDom.NodeList.NodeInfo.frameElement"><span class="qualifier">optional</span> <span class="">ObjectReference</span> <span class="field-name">frameElement</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SearchDom.NodeList.NodeInfo.frameElement"><span class="expander">&#x25BC;</span><a href="#SearchDom.NodeList.NodeInfo.frameElement"><span class="qualifier">optional</span> <span class="">ObjectReference</span> <span class="field-name">frameElement</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Like 'contentDocument', but the other direction; if this node is a DOCUMENT (9) node, then this field will be set with a reference to the element that contains the document in the parent runtime. </p>
   <p>The field will not be set if the document node represents a top-level document. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
@@ -1037,7 +1040,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="SearchDom.NodeList.NodeInfo.matchReason"><a href="#SearchDom.NodeList.NodeInfo.matchReason"><span class="qualifier">optional</span> <span class="">MatchReason</span> <span class="field-name">matchReason</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SearchDom.NodeList.NodeInfo.matchReason"><span class="expander">&#x25BC;</span><a href="#SearchDom.NodeList.NodeInfo.matchReason"><span class="qualifier">optional</span> <span class="">MatchReason</span> <span class="field-name">matchReason</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Explains why the node was included in the response. This field will always be set. </p>
   <p>When this message is a response to DOM inspection, this field will be set to TRAVERSAL. When sent as a response to a search, it will either be set to SEARCH_HIT, or SEARCH_PARENT. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="enum">
@@ -1055,12 +1058,12 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="SearchDom.NodeList.NodeInfo.pseudoElementList"><a href="#SearchDom.NodeList.NodeInfo.pseudoElementList"><span class="qualifier">repeated</span> <span class="">PseudoElement</span> <span class="field-name">pseudoElementList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SearchDom.NodeList.NodeInfo.pseudoElementList"><span class="expander">&#x25BC;</span><a href="#SearchDom.NodeList.NodeInfo.pseudoElementList"><span class="qualifier">repeated</span> <span class="">PseudoElement</span> <span class="field-name">pseudoElementList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If the node has pseudo elements applied, this list will contain those elements. </p>
   <p><span class="since-version">Added in version 6.5</span></p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="SearchDom.NodeList.NodeInfo.PseudoElement.type"><a href="#SearchDom.NodeList.NodeInfo.PseudoElement.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="SearchDom.NodeList.NodeInfo.PseudoElement.type"><span class="expander">&#x25BC;</span><a href="#SearchDom.NodeList.NodeInfo.PseudoElement.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SearchDom.NodeList.NodeInfo.PseudoElement.BEFORE"><a href="#SearchDom.NodeList.NodeInfo.PseudoElement.BEFORE"><span class="enum-name">BEFORE</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
@@ -1121,17 +1124,17 @@
 <pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg"><a href="#SetPropertyFilter.SetPropertyFilterArg"><span class="keyword">command</span> <span class="command-name">SetPropertyFilter</span>(<span class="message-name">SetPropertyFilterArg</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.propertyFilter"><a href="#SetPropertyFilter.SetPropertyFilterArg.propertyFilter"><span class="qualifier">required</span> <span class="">PropertyFilter</span> <span class="field-name">propertyFilter</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.propertyFilter"><span class="expander">&#x25BC;</span><a href="#SetPropertyFilter.SetPropertyFilterArg.propertyFilter"><span class="qualifier">required</span> <span class="">PropertyFilter</span> <span class="field-name">propertyFilter</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.classMaskList"><a href="#SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.classMaskList"><span class="qualifier">repeated</span> <span class="">ClassMask</span> <span class="field-name">classMaskList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.classMaskList"><span class="expander">&#x25BC;</span><a href="#SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.classMaskList"><span class="qualifier">repeated</span> <span class="">ClassMask</span> <span class="field-name">classMaskList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The list of classes which should be filtered. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.className"><a href="#SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.className"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">className</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the class this filter applies to. Examples are 'Object' and 'HTMLHtmlElement'. </p></div></li>
 <li class="field">
-<pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.propertyMaskList"><a href="#SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.propertyMaskList"><span class="qualifier">repeated</span> <span class="">PropertyMask</span> <span class="field-name">propertyMaskList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.propertyMaskList"><span class="expander">&#x25BC;</span><a href="#SetPropertyFilter.SetPropertyFilterArg.PropertyFilter.ClassMask.propertyMaskList"><span class="qualifier">repeated</span> <span class="">PropertyMask</span> <span class="field-name">propertyMaskList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The list of properties which could be filtered. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1178,7 +1181,7 @@
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection"><a href="#SpotlightObjects.SpotlightSelection"><span class="keyword">command</span> <span class="command-name">SpotlightObjects</span>(<span class="message-name">SpotlightSelection</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="SpotlightObjects.SpotlightSelection.spotlightObjectList"><a href="#SpotlightObjects.SpotlightSelection.spotlightObjectList"><span class="qualifier">repeated</span> <span class="">SpotlightObject</span> <span class="field-name">spotlightObjectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="SpotlightObjects.SpotlightSelection.spotlightObjectList"><span class="expander">&#x25BC;</span><a href="#SpotlightObjects.SpotlightSelection.spotlightObjectList"><span class="qualifier">repeated</span> <span class="">SpotlightObject</span> <span class="field-name">spotlightObjectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.objectID"><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -1186,7 +1189,7 @@
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.scrollIntoView"><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.scrollIntoView"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">scrollIntoView</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Chooses whether the given object should be scrolled into view or not. </p></div></li>
 <li class="field">
-<pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.boxList"><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.boxList"><span class="qualifier">repeated</span> <span class="">SpotlightBox</span> <span class="field-name">boxList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.boxList"><span class="expander">&#x25BC;</span><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.boxList"><span class="qualifier">repeated</span> <span class="">SpotlightBox</span> <span class="field-name">boxList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="SpotlightObjects.SpotlightSelection.SpotlightObject.SpotlightBox.boxType"><a href="#SpotlightObjects.SpotlightSelection.SpotlightObject.SpotlightBox.boxType"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">boxType</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1221,13 +1224,13 @@
   <p>This value indicates which function was called: </p>
   <p>1 - console.log 2 - console.debug 3 - console.info 4 - console.warn 5 - console.error 6 - console.assert 7 - console.dir 8 - console.dirxml 9 - console.group 10 - console.groupCollapsed 11 - console.groupEnded 12 - console.count 13 - console.table </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnConsoleLog.ConsoleLogInfo.valueList"><a href="#OnConsoleLog.ConsoleLogInfo.valueList"><span class="qualifier">repeated</span> <span class="">Value</span> <span class="field-name">valueList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnConsoleLog.ConsoleLogInfo.valueList"><span class="expander">&#x25BC;</span><a href="#OnConsoleLog.ConsoleLogInfo.valueList"><span class="qualifier">repeated</span> <span class="">Value</span> <span class="field-name">valueList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The list of values passed to the function as arguments. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnConsoleLog.ConsoleLogInfo.Value.value"><a href="#OnConsoleLog.ConsoleLogInfo.Value.value"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="OnConsoleLog.ConsoleLogInfo.Value.objectValue"><a href="#OnConsoleLog.ConsoleLogInfo.Value.objectValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">objectValue</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="OnConsoleLog.ConsoleLogInfo.Value.objectValue"><span class="expander">&#x25BC;</span><a href="#OnConsoleLog.ConsoleLogInfo.Value.objectValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">objectValue</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnConsoleLog.ConsoleLogInfo.Value.ObjectValue.objectID"><a href="#OnConsoleLog.ConsoleLogInfo.Value.ObjectValue.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -1251,7 +1254,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnConsoleLog.ConsoleLogInfo.position"><a href="#OnConsoleLog.ConsoleLogInfo.position"><span class="qualifier">optional</span> <span class="">Position</span> <span class="field-name">position</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnConsoleLog.ConsoleLogInfo.position"><span class="expander">&#x25BC;</span><a href="#OnConsoleLog.ConsoleLogInfo.position"><span class="qualifier">optional</span> <span class="">Position</span> <span class="field-name">position</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The position the function was called. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1306,7 +1309,7 @@
 <ul><li class="field">
 <pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.runtimeID"><a href="#OnConsoleTrace.ConsoleTraceInfo.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.frameList"><a href="#OnConsoleTrace.ConsoleTraceInfo.frameList"><span class="qualifier">repeated</span> <span class="">BacktraceFrame</span> <span class="field-name">frameList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.frameList"><span class="expander">&#x25BC;</span><a href="#OnConsoleTrace.ConsoleTraceInfo.frameList"><span class="qualifier">repeated</span> <span class="">BacktraceFrame</span> <span class="field-name">frameList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The list of stack frames at the level console.trace was called. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1318,7 +1321,7 @@
 <li class="field">
 <pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.thisObject"><a href="#OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.thisObject"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">thisObject</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.objectValue"><a href="#OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.objectValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">objectValue</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.objectValue"><span class="expander">&#x25BC;</span><a href="#OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.objectValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">objectValue</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>TODO: Spec says repeated, while the code only assumes one (optional) </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1348,7 +1351,7 @@
   <p>The variable objects in the scope chain of the function. The first element in the list is the innermost scope (the scope of the function itself). The list includes the global scope. </p>
   <p><span class="since-version">Added in version 6.1</span></p></div></li>
 <li class="field">
-<pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.argumentValue"><a href="#OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.argumentValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">argumentValue</span><span class="proto-key"> = 9</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.argumentValue"><span class="expander">&#x25BC;</span><a href="#OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.argumentValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">argumentValue</span><span class="proto-key"> = 9</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The full value of the 'arguments' object. </p>
   <p><span class="since-version">Added in version 6.2</span></p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -1371,7 +1374,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.thisValue"><a href="#OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.thisValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">thisValue</span><span class="proto-key"> = 10</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.thisValue"><span class="expander">&#x25BC;</span><a href="#OnConsoleTrace.ConsoleTraceInfo.BacktraceFrame.thisValue"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">thisValue</span><span class="proto-key"> = 10</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The full value of the 'this' object. </p>
   <p><span class="since-version">Added in version 6.2</span></p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -1410,7 +1413,7 @@
 <pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.time"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Milliseconds since epoch, at the time the call completed. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.result"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.result"><span class="expander">&#x25BC;</span><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.SUCCESS"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.SUCCESS"><span class="enum-name">SUCCESS</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1422,10 +1425,10 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.returnValue"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.returnValue"><span class="qualifier">optional</span> <span class="">Value</span> <span class="field-name">returnValue</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.returnValue"><span class="expander">&#x25BC;</span><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.returnValue"><span class="qualifier">optional</span> <span class="">Value</span> <span class="field-name">returnValue</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.type"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.type"><span class="expander">&#x25BC;</span><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of value. </p>
   <p><span class="note"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
 <pre class="code-line">{</pre>
@@ -1472,7 +1475,7 @@
 <pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.str"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.str"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">str</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The string, set if type = STRING. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.object"><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.object"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.object"><span class="expander">&#x25BC;</span><a href="#OnFunctionCallCompleted.FunctionCallCompletedInfo.Value.object"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Object information, set if type = OBJECT. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1510,7 +1513,7 @@
 <pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.time"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Milliseconds since epoch, at the time the call started. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.thisObject"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.thisObject"><span class="qualifier">required</span> <span class="">ObjectValue</span> <span class="field-name">thisObject</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.thisObject"><span class="expander">&#x25BC;</span><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.thisObject"><span class="qualifier">required</span> <span class="">ObjectValue</span> <span class="field-name">thisObject</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.ObjectValue.objectID"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.ObjectValue.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -1531,7 +1534,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.functionObject"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.functionObject"><span class="qualifier">required</span> <span class="">ObjectValue</span> <span class="field-name">functionObject</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.functionObject"><span class="expander">&#x25BC;</span><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.functionObject"><span class="qualifier">required</span> <span class="">ObjectValue</span> <span class="field-name">functionObject</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.ObjectValue.objectID"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.ObjectValue.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
@@ -1552,10 +1555,10 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.argumentList"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.argumentList"><span class="qualifier">repeated</span> <span class="">Value</span> <span class="field-name">argumentList</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.argumentList"><span class="expander">&#x25BC;</span><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.argumentList"><span class="qualifier">repeated</span> <span class="">Value</span> <span class="field-name">argumentList</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.Value.type"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.Value.type"><span class="expander">&#x25BC;</span><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of value. </p>
   <p><span class="note"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
 <pre class="code-line">{</pre>
@@ -1602,7 +1605,7 @@
 <pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.Value.str"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.Value.str"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">str</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The string, set if type = STRING. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.Value.object"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.Value.object"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.Value.object"><span class="expander">&#x25BC;</span><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.Value.object"><span class="qualifier">optional</span> <span class="">ObjectValue</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Object information, set if type = OBJECT. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1627,7 +1630,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.position"><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.position"><span class="qualifier">optional</span> <span class="">Position</span> <span class="field-name">position</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnFunctionCallStarting.FunctionCallStartingInfo.position"><span class="expander">&#x25BC;</span><a href="#OnFunctionCallStarting.FunctionCallStartingInfo.position"><span class="qualifier">optional</span> <span class="">Position</span> <span class="field-name">position</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The position where the call was made, or missing if the call did not come from a script. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">

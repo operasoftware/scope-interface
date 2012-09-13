@@ -47,6 +47,9 @@
 <li><a href="#OnWidgetUpgraded">OnWidgetUpgraded</a></li>
 
 </ul>
+<div title="Hint: hold shift to unfold all sub messages" class="setting">
+ <label><input type="checkbox" class="default-collapse"> collapse all by default</label>
+ </div>
 </div>
 <div class="main-view">
 <div class="doc">
@@ -71,7 +74,7 @@
 <pre class="code-line" id="CreateInstaller.CreateInstallerArg.widgetID"><a href="#CreateInstaller.CreateInstallerArg.widgetID"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If specified makes the installer perform an upgrade instead of a new installation. An upgrade causes the widget on the host to use the new widget file once installed. </p></div></li>
 <li class="field">
-<pre class="code-line" id="CreateInstaller.CreateInstallerArg.widgetType"><a href="#CreateInstaller.CreateInstallerArg.widgetType"><span class="qualifier">optional</span> <span class="">Widget.Type</span> <span class="field-name">widgetType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="CreateInstaller.CreateInstallerArg.widgetType"><span class="expander">&#x25BC;</span><a href="#CreateInstaller.CreateInstallerArg.widgetType"><span class="qualifier">optional</span> <span class="">Widget.Type</span> <span class="field-name">widgetType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Which type the installer should be created for. The default is to create it for a widget installation. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -101,11 +104,11 @@
 <pre class="code-line" id="GetExtensionFlag.GetExtensionFlagArg.widgetID"><a href="#GetExtensionFlag.GetExtensionFlagArg.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The uid of the widget. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetExtensionFlag.GetExtensionFlagArg.flag"><a href="#GetExtensionFlag.GetExtensionFlagArg.flag"><span class="qualifier">required</span> <span class="">ExtensionFlag</span> <span class="field-name">flag</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetExtensionFlag.GetExtensionFlagArg.flag"><span class="expander">&#x25BC;</span><a href="#GetExtensionFlag.GetExtensionFlagArg.flag"><span class="qualifier">required</span> <span class="">ExtensionFlag</span> <span class="field-name">flag</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Flagtype and value. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetExtensionFlag.GetExtensionFlagArg.ExtensionFlag.flag"><a href="#GetExtensionFlag.GetExtensionFlagArg.ExtensionFlag.flag"><span class="qualifier">required</span> <span class="">FlagType</span> <span class="field-name">flag</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetExtensionFlag.GetExtensionFlagArg.ExtensionFlag.flag"><span class="expander">&#x25BC;</span><a href="#GetExtensionFlag.GetExtensionFlagArg.ExtensionFlag.flag"><span class="qualifier">required</span> <span class="">FlagType</span> <span class="field-name">flag</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Flag type. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -128,7 +131,7 @@
 </div><pre class="code-line" id="GetExtensionFlag.ExtensionFlag"><a href="#GetExtensionFlag.ExtensionFlag"><span class="keyword">returns</span> (<span class="message-name">ExtensionFlag</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetExtensionFlag.ExtensionFlag.flag"><a href="#GetExtensionFlag.ExtensionFlag.flag"><span class="qualifier">required</span> <span class="">FlagType</span> <span class="field-name">flag</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetExtensionFlag.ExtensionFlag.flag"><span class="expander">&#x25BC;</span><a href="#GetExtensionFlag.ExtensionFlag.flag"><span class="qualifier">required</span> <span class="">FlagType</span> <span class="field-name">flag</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Flag type. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -171,7 +174,7 @@
 </div><pre class="code-line" id="InstallWidget.WidgetInstallResult"><a href="#InstallWidget.WidgetInstallResult"><span class="keyword">returns</span> (<span class="message-name">WidgetInstallResult</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="InstallWidget.WidgetInstallResult.result"><a href="#InstallWidget.WidgetInstallResult.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="InstallWidget.WidgetInstallResult.result"><span class="expander">&#x25BC;</span><a href="#InstallWidget.WidgetInstallResult.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Result of an installation attempt. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -209,7 +212,7 @@
 </div><pre class="code-line" id="InstallWidgetByURL.WidgetInstallResult"><a href="#InstallWidgetByURL.WidgetInstallResult"><span class="keyword">returns</span> (<span class="message-name">WidgetInstallResult</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="InstallWidgetByURL.WidgetInstallResult.result"><a href="#InstallWidgetByURL.WidgetInstallResult.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="InstallWidgetByURL.WidgetInstallResult.result"><span class="expander">&#x25BC;</span><a href="#InstallWidgetByURL.WidgetInstallResult.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Result of an installation attempt. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -243,14 +246,14 @@
 </div><pre class="code-line" id="ListWidgets.WidgetList"><a href="#ListWidgets.WidgetList"><span class="keyword">returns</span> (<span class="message-name">WidgetList</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.widgetList"><a href="#ListWidgets.WidgetList.widgetList"><span class="qualifier">repeated</span> <span class="">Widget</span> <span class="field-name">widgetList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ListWidgets.WidgetList.widgetList"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.widgetList"><span class="qualifier">repeated</span> <span class="">Widget</span> <span class="field-name">widgetList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.widgetID"><a href="#ListWidgets.WidgetList.Widget.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A unique identifier for the widget. </p>
   <p>e.g. "wuid-351f0e9d-24f2-080b-07e7-13b724cdaef8" </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.type"><a href="#ListWidgets.WidgetList.Widget.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.type"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The major type for the widget, most fields are common among the types but certain fields are type specific. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -266,7 +269,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.widgetType"><a href="#ListWidgets.WidgetList.Widget.widgetType"><span class="qualifier">required</span> <span class="">WidgetType</span> <span class="field-name">widgetType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.widgetType"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.widgetType"><span class="qualifier">required</span> <span class="">WidgetType</span> <span class="field-name">widgetType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.UNKNOWN"><a href="#ListWidgets.WidgetList.Widget.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
@@ -280,7 +283,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.name"><a href="#ListWidgets.WidgetList.Widget.name"><span class="qualifier">optional</span> <span class="">Name</span> <span class="field-name">name</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.name"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.name"><span class="qualifier">optional</span> <span class="">Name</span> <span class="field-name">name</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents the full human-readable name for a widget. This field will only be set if there is a name element defined in the widget specification. </p>
   <p>Note: This is either the localized name that matches the gadget locales, or the unlocalized name. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -298,7 +301,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.properties"><a href="#ListWidgets.WidgetList.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.properties"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Properties.isActive"><a href="#ListWidgets.WidgetList.Widget.Properties.isActive"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isActive</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -361,7 +364,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.author"><a href="#ListWidgets.WidgetList.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.author"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents people or an organization attributed with the creation of the widget. This field will only be set if there is an author element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -398,7 +401,7 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.currentHeight"><a href="#ListWidgets.WidgetList.Widget.currentHeight"><span class="qualifier">optional</span> <span class="number">int32</span> <span class="field-name">currentHeight</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The current height of the widget in pixels. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.currentViewMode"><a href="#ListWidgets.WidgetList.Widget.currentViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">currentViewMode</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.currentViewMode"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.currentViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">currentViewMode</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The current viewmode used by the widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -428,7 +431,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.defaultViewMode"><a href="#ListWidgets.WidgetList.Widget.defaultViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">defaultViewMode</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.defaultViewMode"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.defaultViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">defaultViewMode</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The default viewmode for the widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -458,7 +461,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.viewModeList"><a href="#ListWidgets.WidgetList.Widget.viewModeList"><span class="qualifier">repeated</span> <span class="">ViewMode</span> <span class="field-name">viewModeList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.viewModeList"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.viewModeList"><span class="qualifier">repeated</span> <span class="">ViewMode</span> <span class="field-name">viewModeList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All viewmodes defined for this widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -488,7 +491,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.description"><a href="#ListWidgets.WidgetList.Widget.description"><span class="qualifier">optional</span> <span class="">Description</span> <span class="field-name">description</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.description"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.description"><span class="qualifier">optional</span> <span class="">Description</span> <span class="field-name">description</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents a human-readable description of the widget. This field will only be set if there is a description element defined in the widget specification. </p>
   <p>Note: This is either the localized description that matches the gadget locales, or the unlocalized description. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -502,7 +505,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.license"><a href="#ListWidgets.WidgetList.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.license"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license information for the widget if one is present. This field will only be set if there is a license element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -518,7 +521,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.iconList"><a href="#ListWidgets.WidgetList.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.iconList"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All icons defined for the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -534,7 +537,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.content"><a href="#ListWidgets.WidgetList.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.content"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Declare a custom start file the user agent is expected to use when it instantiates the widget. This field will only be set if there is a content element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -550,7 +553,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.featureList"><a href="#ListWidgets.WidgetList.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.featureList"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all features requested by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -560,7 +563,7 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Feature.isRequired"><a href="#ListWidgets.WidgetList.Widget.Feature.isRequired"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isRequired</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A boolean attribute that indicates whether or not this feature has to be available to the widget at runtime. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.Feature.paramList"><a href="#ListWidgets.WidgetList.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.Feature.paramList"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of parameters for the feature. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -574,7 +577,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.preferenceList"><a href="#ListWidgets.WidgetList.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.preferenceList"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all preferences defined by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -590,14 +593,14 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.signature"><a href="#ListWidgets.WidgetList.Widget.signature"><span class="qualifier">optional</span> <span class="">Signature</span> <span class="field-name">signature</span><span class="proto-key"> = 22</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.signature"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.signature"><span class="qualifier">optional</span> <span class="">Signature</span> <span class="field-name">signature</span><span class="proto-key"> = 22</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If the widget was signed with a digital signature this is set with information on the signature. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.Signature.id"><a href="#ListWidgets.WidgetList.Widget.Signature.id"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Short name of the signature used. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.Signature.state"><a href="#ListWidgets.WidgetList.Widget.Signature.state"><span class="qualifier">required</span> <span class="">State</span> <span class="field-name">state</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.Signature.state"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.Signature.state"><span class="qualifier">required</span> <span class="">State</span> <span class="field-name">state</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The state of the signature, for instance whether verification failed or it was properly signed. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -627,7 +630,7 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.updateURL"><a href="#ListWidgets.WidgetList.Widget.updateURL"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">updateURL</span><span class="proto-key"> = 23</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The URL used for updating the widget. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.networkAccessList"><a href="#ListWidgets.WidgetList.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.networkAccessList"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of requests to access network resources. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -640,7 +643,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.securityAccessList"><a href="#ListWidgets.WidgetList.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.securityAccessList"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Lists of security access the widget requests. Note: This only applies to Opera Widgets (namespace <a href="&quot;http://xmlns.opera.com/2006/widget&quot;">"http://xmlns.opera.com/2006/widget"</a> and ""), not W3C and other widget formats. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -650,7 +653,7 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.SecurityAccess.hostList"><a href="#ListWidgets.WidgetList.Widget.SecurityAccess.hostList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">hostList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The hostnames/ip-addresses which the widget may use, e.g. "www.example.com" or "192.168.1.1" The hostnames is an exact match, so a widget specifying www.example.com will not be able to contact example.com. If the list is empty it means any host. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.SecurityAccess.portList"><a href="#ListWidgets.WidgetList.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.SecurityAccess.portList"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Ports which may be used by the widget. Each entry is a range of ports, e.g. 1024-2048 If the list is empty it means port. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -670,7 +673,7 @@
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.iriIdentifier"><a href="#ListWidgets.WidgetList.Widget.iriIdentifier"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">iriIdentifier</span><span class="proto-key"> = 26</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An IRI identifier chosen by widget itself. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.extensionInfo"><a href="#ListWidgets.WidgetList.Widget.extensionInfo"><span class="qualifier">optional</span> <span class="">ExtensionInfo</span> <span class="field-name">extensionInfo</span><span class="proto-key"> = 27</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.extensionInfo"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.extensionInfo"><span class="qualifier">optional</span> <span class="">ExtensionInfo</span> <span class="field-name">extensionInfo</span><span class="proto-key"> = 27</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information which is specific to extensions. Only set when it contains an extension. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -683,11 +686,11 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.uniteInfo"><a href="#ListWidgets.WidgetList.Widget.uniteInfo"><span class="qualifier">optional</span> <span class="">UniteInfo</span> <span class="field-name">uniteInfo</span><span class="proto-key"> = 28</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.uniteInfo"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.uniteInfo"><span class="qualifier">optional</span> <span class="">UniteInfo</span> <span class="field-name">uniteInfo</span><span class="proto-key"> = 28</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information which is specific to Unite apps and services. Only set when it contains a Unite app or service. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.UniteInfo.type"><a href="#ListWidgets.WidgetList.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.UniteInfo.type"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.UniteInfo.UNKNOWN"><a href="#ListWidgets.WidgetList.Widget.UniteInfo.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -706,14 +709,14 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.updateInfo"><a href="#ListWidgets.WidgetList.Widget.updateInfo"><span class="qualifier">optional</span> <span class="">UpdateInfo</span> <span class="field-name">updateInfo</span><span class="proto-key"> = 29</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.updateInfo"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.updateInfo"><span class="qualifier">optional</span> <span class="">UpdateInfo</span> <span class="field-name">updateInfo</span><span class="proto-key"> = 29</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Information about an available update for the widget. Set when available, which will be during an update. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.UpdateInfo.customWidgetID"><a href="#ListWidgets.WidgetList.Widget.UpdateInfo.customWidgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">customWidgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Widget id (not the same as widget uid, which is called id...), specified in config.xml </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.UpdateInfo.updateType"><a href="#ListWidgets.WidgetList.Widget.UpdateInfo.updateType"><span class="qualifier">required</span> <span class="">UpdateType</span> <span class="field-name">updateType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.UpdateInfo.updateType"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.UpdateInfo.updateType"><span class="qualifier">required</span> <span class="">UpdateType</span> <span class="field-name">updateType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>What type of update this is (update, disable, activate, delete) </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -763,7 +766,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ListWidgets.WidgetList.Widget.userJSList"><a href="#ListWidgets.WidgetList.Widget.userJSList"><span class="qualifier">repeated</span> <span class="">UserJS</span> <span class="field-name">userJSList</span><span class="proto-key"> = 30</span><span class="proto-key">;</span></a></pre><div class="doc">Added UserJS files, this applies to extensions. </div><div class="message">
+<pre class="code-line" id="ListWidgets.WidgetList.Widget.userJSList"><span class="expander">&#x25BC;</span><a href="#ListWidgets.WidgetList.Widget.userJSList"><span class="qualifier">repeated</span> <span class="">UserJS</span> <span class="field-name">userJSList</span><span class="proto-key"> = 30</span><span class="proto-key">;</span></a></pre><div class="doc">Added UserJS files, this applies to extensions. </div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="ListWidgets.WidgetList.Widget.UserJS.filename"><a href="#ListWidgets.WidgetList.Widget.UserJS.filename"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">filename</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -813,11 +816,11 @@
 <pre class="code-line" id="SetExtensionFlag.SetExtensionFlagArg.widgetID"><a href="#SetExtensionFlag.SetExtensionFlagArg.widgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">widgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The uid of the widget. </p></div></li>
 <li class="field">
-<pre class="code-line" id="SetExtensionFlag.SetExtensionFlagArg.flag"><a href="#SetExtensionFlag.SetExtensionFlagArg.flag"><span class="qualifier">required</span> <span class="">ExtensionFlag</span> <span class="field-name">flag</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SetExtensionFlag.SetExtensionFlagArg.flag"><span class="expander">&#x25BC;</span><a href="#SetExtensionFlag.SetExtensionFlagArg.flag"><span class="qualifier">required</span> <span class="">ExtensionFlag</span> <span class="field-name">flag</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Flagtype and value. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="SetExtensionFlag.SetExtensionFlagArg.ExtensionFlag.flag"><a href="#SetExtensionFlag.SetExtensionFlagArg.ExtensionFlag.flag"><span class="qualifier">required</span> <span class="">FlagType</span> <span class="field-name">flag</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SetExtensionFlag.SetExtensionFlagArg.ExtensionFlag.flag"><span class="expander">&#x25BC;</span><a href="#SetExtensionFlag.SetExtensionFlagArg.ExtensionFlag.flag"><span class="qualifier">required</span> <span class="">FlagType</span> <span class="field-name">flag</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Flag type. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -878,7 +881,7 @@
 </div><pre class="code-line" id="UpdateWidget.WidgetUpdateResult"><a href="#UpdateWidget.WidgetUpdateResult"><span class="keyword">returns</span> (<span class="message-name">WidgetUpdateResult</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="UpdateWidget.WidgetUpdateResult.result"><a href="#UpdateWidget.WidgetUpdateResult.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="UpdateWidget.WidgetUpdateResult.result"><span class="expander">&#x25BC;</span><a href="#UpdateWidget.WidgetUpdateResult.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Result of an installation attempt. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -908,7 +911,7 @@
 <pre class="code-line" id="OnWidgetInstallFailed.WidgetInstallResult"><a href="#OnWidgetInstallFailed.WidgetInstallResult"><span class="keyword">event</span> <span class="command-name">OnWidgetInstallFailed</span><span class="keyword"> returns </span>(<span class="message-name">WidgetInstallResult</span>)</a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="OnWidgetInstallFailed.WidgetInstallResult.result"><a href="#OnWidgetInstallFailed.WidgetInstallResult.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstallFailed.WidgetInstallResult.result"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstallFailed.WidgetInstallResult.result"><span class="qualifier">required</span> <span class="">Result</span> <span class="field-name">result</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Result of an installation attempt. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -942,7 +945,7 @@
   <p>A unique identifier for the widget. </p>
   <p>e.g. "wuid-351f0e9d-24f2-080b-07e7-13b724cdaef8" </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.type"><a href="#OnWidgetInstalled.Widget.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.type"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The major type for the widget, most fields are common among the types but certain fields are type specific. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -958,7 +961,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.widgetType"><a href="#OnWidgetInstalled.Widget.widgetType"><span class="qualifier">required</span> <span class="">WidgetType</span> <span class="field-name">widgetType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="OnWidgetInstalled.Widget.widgetType"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.widgetType"><span class="qualifier">required</span> <span class="">WidgetType</span> <span class="field-name">widgetType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.UNKNOWN"><a href="#OnWidgetInstalled.Widget.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
@@ -972,7 +975,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.name"><a href="#OnWidgetInstalled.Widget.name"><span class="qualifier">optional</span> <span class="">Name</span> <span class="field-name">name</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.name"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.name"><span class="qualifier">optional</span> <span class="">Name</span> <span class="field-name">name</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents the full human-readable name for a widget. This field will only be set if there is a name element defined in the widget specification. </p>
   <p>Note: This is either the localized name that matches the gadget locales, or the unlocalized name. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -990,7 +993,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.properties"><a href="#OnWidgetInstalled.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="OnWidgetInstalled.Widget.properties"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Properties.isActive"><a href="#OnWidgetInstalled.Widget.Properties.isActive"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isActive</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1053,7 +1056,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.author"><a href="#OnWidgetInstalled.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.author"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents people or an organization attributed with the creation of the widget. This field will only be set if there is an author element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1090,7 +1093,7 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.currentHeight"><a href="#OnWidgetInstalled.Widget.currentHeight"><span class="qualifier">optional</span> <span class="number">int32</span> <span class="field-name">currentHeight</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The current height of the widget in pixels. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.currentViewMode"><a href="#OnWidgetInstalled.Widget.currentViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">currentViewMode</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.currentViewMode"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.currentViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">currentViewMode</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The current viewmode used by the widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1120,7 +1123,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.defaultViewMode"><a href="#OnWidgetInstalled.Widget.defaultViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">defaultViewMode</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.defaultViewMode"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.defaultViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">defaultViewMode</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The default viewmode for the widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1150,7 +1153,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.viewModeList"><a href="#OnWidgetInstalled.Widget.viewModeList"><span class="qualifier">repeated</span> <span class="">ViewMode</span> <span class="field-name">viewModeList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.viewModeList"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.viewModeList"><span class="qualifier">repeated</span> <span class="">ViewMode</span> <span class="field-name">viewModeList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All viewmodes defined for this widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1180,7 +1183,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.description"><a href="#OnWidgetInstalled.Widget.description"><span class="qualifier">optional</span> <span class="">Description</span> <span class="field-name">description</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.description"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.description"><span class="qualifier">optional</span> <span class="">Description</span> <span class="field-name">description</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents a human-readable description of the widget. This field will only be set if there is a description element defined in the widget specification. </p>
   <p>Note: This is either the localized description that matches the gadget locales, or the unlocalized description. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -1194,7 +1197,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.license"><a href="#OnWidgetInstalled.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.license"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license information for the widget if one is present. This field will only be set if there is a license element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1210,7 +1213,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.iconList"><a href="#OnWidgetInstalled.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.iconList"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All icons defined for the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1226,7 +1229,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.content"><a href="#OnWidgetInstalled.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.content"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Declare a custom start file the user agent is expected to use when it instantiates the widget. This field will only be set if there is a content element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1242,7 +1245,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.featureList"><a href="#OnWidgetInstalled.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.featureList"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all features requested by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1252,7 +1255,7 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.Feature.isRequired"><a href="#OnWidgetInstalled.Widget.Feature.isRequired"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isRequired</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A boolean attribute that indicates whether or not this feature has to be available to the widget at runtime. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.Feature.paramList"><a href="#OnWidgetInstalled.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.Feature.paramList"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of parameters for the feature. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1266,7 +1269,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.preferenceList"><a href="#OnWidgetInstalled.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.preferenceList"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all preferences defined by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1282,14 +1285,14 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.signature"><a href="#OnWidgetInstalled.Widget.signature"><span class="qualifier">optional</span> <span class="">Signature</span> <span class="field-name">signature</span><span class="proto-key"> = 22</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.signature"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.signature"><span class="qualifier">optional</span> <span class="">Signature</span> <span class="field-name">signature</span><span class="proto-key"> = 22</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If the widget was signed with a digital signature this is set with information on the signature. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.Signature.id"><a href="#OnWidgetInstalled.Widget.Signature.id"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Short name of the signature used. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.Signature.state"><a href="#OnWidgetInstalled.Widget.Signature.state"><span class="qualifier">required</span> <span class="">State</span> <span class="field-name">state</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.Signature.state"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.Signature.state"><span class="qualifier">required</span> <span class="">State</span> <span class="field-name">state</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The state of the signature, for instance whether verification failed or it was properly signed. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1319,7 +1322,7 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.updateURL"><a href="#OnWidgetInstalled.Widget.updateURL"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">updateURL</span><span class="proto-key"> = 23</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The URL used for updating the widget. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.networkAccessList"><a href="#OnWidgetInstalled.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.networkAccessList"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of requests to access network resources. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1332,7 +1335,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.securityAccessList"><a href="#OnWidgetInstalled.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.securityAccessList"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Lists of security access the widget requests. Note: This only applies to Opera Widgets (namespace <a href="&quot;http://xmlns.opera.com/2006/widget&quot;">"http://xmlns.opera.com/2006/widget"</a> and ""), not W3C and other widget formats. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1342,7 +1345,7 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.SecurityAccess.hostList"><a href="#OnWidgetInstalled.Widget.SecurityAccess.hostList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">hostList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The hostnames/ip-addresses which the widget may use, e.g. "www.example.com" or "192.168.1.1" The hostnames is an exact match, so a widget specifying www.example.com will not be able to contact example.com. If the list is empty it means any host. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.SecurityAccess.portList"><a href="#OnWidgetInstalled.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.SecurityAccess.portList"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Ports which may be used by the widget. Each entry is a range of ports, e.g. 1024-2048 If the list is empty it means port. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1362,7 +1365,7 @@
 <pre class="code-line" id="OnWidgetInstalled.Widget.iriIdentifier"><a href="#OnWidgetInstalled.Widget.iriIdentifier"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">iriIdentifier</span><span class="proto-key"> = 26</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An IRI identifier chosen by widget itself. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.extensionInfo"><a href="#OnWidgetInstalled.Widget.extensionInfo"><span class="qualifier">optional</span> <span class="">ExtensionInfo</span> <span class="field-name">extensionInfo</span><span class="proto-key"> = 27</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.extensionInfo"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.extensionInfo"><span class="qualifier">optional</span> <span class="">ExtensionInfo</span> <span class="field-name">extensionInfo</span><span class="proto-key"> = 27</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information which is specific to extensions. Only set when it contains an extension. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1375,11 +1378,11 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.uniteInfo"><a href="#OnWidgetInstalled.Widget.uniteInfo"><span class="qualifier">optional</span> <span class="">UniteInfo</span> <span class="field-name">uniteInfo</span><span class="proto-key"> = 28</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.uniteInfo"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.uniteInfo"><span class="qualifier">optional</span> <span class="">UniteInfo</span> <span class="field-name">uniteInfo</span><span class="proto-key"> = 28</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information which is specific to Unite apps and services. Only set when it contains a Unite app or service. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.UniteInfo.type"><a href="#OnWidgetInstalled.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="OnWidgetInstalled.Widget.UniteInfo.type"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.UniteInfo.UNKNOWN"><a href="#OnWidgetInstalled.Widget.UniteInfo.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1398,14 +1401,14 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.updateInfo"><a href="#OnWidgetInstalled.Widget.updateInfo"><span class="qualifier">optional</span> <span class="">UpdateInfo</span> <span class="field-name">updateInfo</span><span class="proto-key"> = 29</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.updateInfo"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.updateInfo"><span class="qualifier">optional</span> <span class="">UpdateInfo</span> <span class="field-name">updateInfo</span><span class="proto-key"> = 29</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Information about an available update for the widget. Set when available, which will be during an update. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.UpdateInfo.customWidgetID"><a href="#OnWidgetInstalled.Widget.UpdateInfo.customWidgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">customWidgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Widget id (not the same as widget uid, which is called id...), specified in config.xml </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.UpdateInfo.updateType"><a href="#OnWidgetInstalled.Widget.UpdateInfo.updateType"><span class="qualifier">required</span> <span class="">UpdateType</span> <span class="field-name">updateType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetInstalled.Widget.UpdateInfo.updateType"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.UpdateInfo.updateType"><span class="qualifier">required</span> <span class="">UpdateType</span> <span class="field-name">updateType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>What type of update this is (update, disable, activate, delete) </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1455,7 +1458,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetInstalled.Widget.userJSList"><a href="#OnWidgetInstalled.Widget.userJSList"><span class="qualifier">repeated</span> <span class="">UserJS</span> <span class="field-name">userJSList</span><span class="proto-key"> = 30</span><span class="proto-key">;</span></a></pre><div class="doc">Added UserJS files, this applies to extensions. </div><div class="message">
+<pre class="code-line" id="OnWidgetInstalled.Widget.userJSList"><span class="expander">&#x25BC;</span><a href="#OnWidgetInstalled.Widget.userJSList"><span class="qualifier">repeated</span> <span class="">UserJS</span> <span class="field-name">userJSList</span><span class="proto-key"> = 30</span><span class="proto-key">;</span></a></pre><div class="doc">Added UserJS files, this applies to extensions. </div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetInstalled.Widget.UserJS.filename"><a href="#OnWidgetInstalled.Widget.UserJS.filename"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">filename</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1480,7 +1483,7 @@
   <p>A unique identifier for the widget. </p>
   <p>e.g. "wuid-351f0e9d-24f2-080b-07e7-13b724cdaef8" </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.type"><a href="#OnWidgetUpgradeAvailable.Widget.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.type"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The major type for the widget, most fields are common among the types but certain fields are type specific. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1496,7 +1499,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.widgetType"><a href="#OnWidgetUpgradeAvailable.Widget.widgetType"><span class="qualifier">required</span> <span class="">WidgetType</span> <span class="field-name">widgetType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.widgetType"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.widgetType"><span class="qualifier">required</span> <span class="">WidgetType</span> <span class="field-name">widgetType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.UNKNOWN"><a href="#OnWidgetUpgradeAvailable.Widget.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
@@ -1510,7 +1513,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.name"><a href="#OnWidgetUpgradeAvailable.Widget.name"><span class="qualifier">optional</span> <span class="">Name</span> <span class="field-name">name</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.name"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.name"><span class="qualifier">optional</span> <span class="">Name</span> <span class="field-name">name</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents the full human-readable name for a widget. This field will only be set if there is a name element defined in the widget specification. </p>
   <p>Note: This is either the localized name that matches the gadget locales, or the unlocalized name. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -1528,7 +1531,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.properties"><a href="#OnWidgetUpgradeAvailable.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.properties"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Properties.isActive"><a href="#OnWidgetUpgradeAvailable.Widget.Properties.isActive"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isActive</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1591,7 +1594,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.author"><a href="#OnWidgetUpgradeAvailable.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.author"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents people or an organization attributed with the creation of the widget. This field will only be set if there is an author element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1628,7 +1631,7 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.currentHeight"><a href="#OnWidgetUpgradeAvailable.Widget.currentHeight"><span class="qualifier">optional</span> <span class="number">int32</span> <span class="field-name">currentHeight</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The current height of the widget in pixels. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.currentViewMode"><a href="#OnWidgetUpgradeAvailable.Widget.currentViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">currentViewMode</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.currentViewMode"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.currentViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">currentViewMode</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The current viewmode used by the widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1658,7 +1661,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.defaultViewMode"><a href="#OnWidgetUpgradeAvailable.Widget.defaultViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">defaultViewMode</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.defaultViewMode"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.defaultViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">defaultViewMode</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The default viewmode for the widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1688,7 +1691,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.viewModeList"><a href="#OnWidgetUpgradeAvailable.Widget.viewModeList"><span class="qualifier">repeated</span> <span class="">ViewMode</span> <span class="field-name">viewModeList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.viewModeList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.viewModeList"><span class="qualifier">repeated</span> <span class="">ViewMode</span> <span class="field-name">viewModeList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All viewmodes defined for this widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1718,7 +1721,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.description"><a href="#OnWidgetUpgradeAvailable.Widget.description"><span class="qualifier">optional</span> <span class="">Description</span> <span class="field-name">description</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.description"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.description"><span class="qualifier">optional</span> <span class="">Description</span> <span class="field-name">description</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents a human-readable description of the widget. This field will only be set if there is a description element defined in the widget specification. </p>
   <p>Note: This is either the localized description that matches the gadget locales, or the unlocalized description. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -1732,7 +1735,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.license"><a href="#OnWidgetUpgradeAvailable.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.license"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license information for the widget if one is present. This field will only be set if there is a license element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1748,7 +1751,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.iconList"><a href="#OnWidgetUpgradeAvailable.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.iconList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All icons defined for the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1764,7 +1767,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.content"><a href="#OnWidgetUpgradeAvailable.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.content"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Declare a custom start file the user agent is expected to use when it instantiates the widget. This field will only be set if there is a content element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1780,7 +1783,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.featureList"><a href="#OnWidgetUpgradeAvailable.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.featureList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all features requested by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1790,7 +1793,7 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Feature.isRequired"><a href="#OnWidgetUpgradeAvailable.Widget.Feature.isRequired"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isRequired</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A boolean attribute that indicates whether or not this feature has to be available to the widget at runtime. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Feature.paramList"><a href="#OnWidgetUpgradeAvailable.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Feature.paramList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of parameters for the feature. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1804,7 +1807,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.preferenceList"><a href="#OnWidgetUpgradeAvailable.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.preferenceList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all preferences defined by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1820,14 +1823,14 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.signature"><a href="#OnWidgetUpgradeAvailable.Widget.signature"><span class="qualifier">optional</span> <span class="">Signature</span> <span class="field-name">signature</span><span class="proto-key"> = 22</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.signature"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.signature"><span class="qualifier">optional</span> <span class="">Signature</span> <span class="field-name">signature</span><span class="proto-key"> = 22</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If the widget was signed with a digital signature this is set with information on the signature. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Signature.id"><a href="#OnWidgetUpgradeAvailable.Widget.Signature.id"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Short name of the signature used. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Signature.state"><a href="#OnWidgetUpgradeAvailable.Widget.Signature.state"><span class="qualifier">required</span> <span class="">State</span> <span class="field-name">state</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.Signature.state"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.Signature.state"><span class="qualifier">required</span> <span class="">State</span> <span class="field-name">state</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The state of the signature, for instance whether verification failed or it was properly signed. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1857,7 +1860,7 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.updateURL"><a href="#OnWidgetUpgradeAvailable.Widget.updateURL"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">updateURL</span><span class="proto-key"> = 23</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The URL used for updating the widget. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.networkAccessList"><a href="#OnWidgetUpgradeAvailable.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.networkAccessList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of requests to access network resources. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1870,7 +1873,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.securityAccessList"><a href="#OnWidgetUpgradeAvailable.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.securityAccessList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Lists of security access the widget requests. Note: This only applies to Opera Widgets (namespace <a href="&quot;http://xmlns.opera.com/2006/widget&quot;">"http://xmlns.opera.com/2006/widget"</a> and ""), not W3C and other widget formats. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1880,7 +1883,7 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.SecurityAccess.hostList"><a href="#OnWidgetUpgradeAvailable.Widget.SecurityAccess.hostList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">hostList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The hostnames/ip-addresses which the widget may use, e.g. "www.example.com" or "192.168.1.1" The hostnames is an exact match, so a widget specifying www.example.com will not be able to contact example.com. If the list is empty it means any host. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.SecurityAccess.portList"><a href="#OnWidgetUpgradeAvailable.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.SecurityAccess.portList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Ports which may be used by the widget. Each entry is a range of ports, e.g. 1024-2048 If the list is empty it means port. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1900,7 +1903,7 @@
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.iriIdentifier"><a href="#OnWidgetUpgradeAvailable.Widget.iriIdentifier"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">iriIdentifier</span><span class="proto-key"> = 26</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An IRI identifier chosen by widget itself. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.extensionInfo"><a href="#OnWidgetUpgradeAvailable.Widget.extensionInfo"><span class="qualifier">optional</span> <span class="">ExtensionInfo</span> <span class="field-name">extensionInfo</span><span class="proto-key"> = 27</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.extensionInfo"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.extensionInfo"><span class="qualifier">optional</span> <span class="">ExtensionInfo</span> <span class="field-name">extensionInfo</span><span class="proto-key"> = 27</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information which is specific to extensions. Only set when it contains an extension. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1913,11 +1916,11 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.uniteInfo"><a href="#OnWidgetUpgradeAvailable.Widget.uniteInfo"><span class="qualifier">optional</span> <span class="">UniteInfo</span> <span class="field-name">uniteInfo</span><span class="proto-key"> = 28</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.uniteInfo"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.uniteInfo"><span class="qualifier">optional</span> <span class="">UniteInfo</span> <span class="field-name">uniteInfo</span><span class="proto-key"> = 28</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information which is specific to Unite apps and services. Only set when it contains a Unite app or service. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.UniteInfo.type"><a href="#OnWidgetUpgradeAvailable.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.UniteInfo.type"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.UniteInfo.UNKNOWN"><a href="#OnWidgetUpgradeAvailable.Widget.UniteInfo.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -1936,14 +1939,14 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.updateInfo"><a href="#OnWidgetUpgradeAvailable.Widget.updateInfo"><span class="qualifier">optional</span> <span class="">UpdateInfo</span> <span class="field-name">updateInfo</span><span class="proto-key"> = 29</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.updateInfo"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.updateInfo"><span class="qualifier">optional</span> <span class="">UpdateInfo</span> <span class="field-name">updateInfo</span><span class="proto-key"> = 29</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Information about an available update for the widget. Set when available, which will be during an update. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.UpdateInfo.customWidgetID"><a href="#OnWidgetUpgradeAvailable.Widget.UpdateInfo.customWidgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">customWidgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Widget id (not the same as widget uid, which is called id...), specified in config.xml </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.UpdateInfo.updateType"><a href="#OnWidgetUpgradeAvailable.Widget.UpdateInfo.updateType"><span class="qualifier">required</span> <span class="">UpdateType</span> <span class="field-name">updateType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.UpdateInfo.updateType"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.UpdateInfo.updateType"><span class="qualifier">required</span> <span class="">UpdateType</span> <span class="field-name">updateType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>What type of update this is (update, disable, activate, delete) </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -1993,7 +1996,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.userJSList"><a href="#OnWidgetUpgradeAvailable.Widget.userJSList"><span class="qualifier">repeated</span> <span class="">UserJS</span> <span class="field-name">userJSList</span><span class="proto-key"> = 30</span><span class="proto-key">;</span></a></pre><div class="doc">Added UserJS files, this applies to extensions. </div><div class="message">
+<pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.userJSList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgradeAvailable.Widget.userJSList"><span class="qualifier">repeated</span> <span class="">UserJS</span> <span class="field-name">userJSList</span><span class="proto-key"> = 30</span><span class="proto-key">;</span></a></pre><div class="doc">Added UserJS files, this applies to extensions. </div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgradeAvailable.Widget.UserJS.filename"><a href="#OnWidgetUpgradeAvailable.Widget.UserJS.filename"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">filename</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -2011,7 +2014,7 @@
   <p>A unique identifier for the widget. </p>
   <p>e.g. "wuid-351f0e9d-24f2-080b-07e7-13b724cdaef8" </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.type"><a href="#OnWidgetUpgraded.Widget.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.type"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The major type for the widget, most fields are common among the types but certain fields are type specific. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2027,7 +2030,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.widgetType"><a href="#OnWidgetUpgraded.Widget.widgetType"><span class="qualifier">required</span> <span class="">WidgetType</span> <span class="field-name">widgetType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.widgetType"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.widgetType"><span class="qualifier">required</span> <span class="">WidgetType</span> <span class="field-name">widgetType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.UNKNOWN"><a href="#OnWidgetUpgraded.Widget.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
@@ -2041,7 +2044,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.name"><a href="#OnWidgetUpgraded.Widget.name"><span class="qualifier">optional</span> <span class="">Name</span> <span class="field-name">name</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.name"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.name"><span class="qualifier">optional</span> <span class="">Name</span> <span class="field-name">name</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents the full human-readable name for a widget. This field will only be set if there is a name element defined in the widget specification. </p>
   <p>Note: This is either the localized name that matches the gadget locales, or the unlocalized name. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -2059,7 +2062,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.properties"><a href="#OnWidgetUpgraded.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.properties"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.properties"><span class="qualifier">required</span> <span class="">Properties</span> <span class="field-name">properties</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Properties.isActive"><a href="#OnWidgetUpgraded.Widget.Properties.isActive"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isActive</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -2122,7 +2125,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.author"><a href="#OnWidgetUpgraded.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.author"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.author"><span class="qualifier">optional</span> <span class="">Author</span> <span class="field-name">author</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents people or an organization attributed with the creation of the widget. This field will only be set if there is an author element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2159,7 +2162,7 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.currentHeight"><a href="#OnWidgetUpgraded.Widget.currentHeight"><span class="qualifier">optional</span> <span class="number">int32</span> <span class="field-name">currentHeight</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The current height of the widget in pixels. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.currentViewMode"><a href="#OnWidgetUpgraded.Widget.currentViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">currentViewMode</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.currentViewMode"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.currentViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">currentViewMode</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The current viewmode used by the widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2189,7 +2192,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.defaultViewMode"><a href="#OnWidgetUpgraded.Widget.defaultViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">defaultViewMode</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.defaultViewMode"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.defaultViewMode"><span class="qualifier">required</span> <span class="">ViewMode</span> <span class="field-name">defaultViewMode</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The default viewmode for the widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2219,7 +2222,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.viewModeList"><a href="#OnWidgetUpgraded.Widget.viewModeList"><span class="qualifier">repeated</span> <span class="">ViewMode</span> <span class="field-name">viewModeList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.viewModeList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.viewModeList"><span class="qualifier">repeated</span> <span class="">ViewMode</span> <span class="field-name">viewModeList</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All viewmodes defined for this widget. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2249,7 +2252,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.description"><a href="#OnWidgetUpgraded.Widget.description"><span class="qualifier">optional</span> <span class="">Description</span> <span class="field-name">description</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.description"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.description"><span class="qualifier">optional</span> <span class="">Description</span> <span class="field-name">description</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Represents a human-readable description of the widget. This field will only be set if there is a description element defined in the widget specification. </p>
   <p>Note: This is either the localized description that matches the gadget locales, or the unlocalized description. </p></div><div class="message">
 <pre class="code-line">{</pre>
@@ -2263,7 +2266,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.license"><a href="#OnWidgetUpgraded.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.license"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.license"><span class="qualifier">optional</span> <span class="">License</span> <span class="field-name">license</span><span class="proto-key"> = 17</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The license information for the widget if one is present. This field will only be set if there is a license element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2279,7 +2282,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.iconList"><a href="#OnWidgetUpgraded.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.iconList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.iconList"><span class="qualifier">repeated</span> <span class="">Icon</span> <span class="field-name">iconList</span><span class="proto-key"> = 18</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>All icons defined for the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2295,7 +2298,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.content"><a href="#OnWidgetUpgraded.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.content"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.content"><span class="qualifier">optional</span> <span class="">Content</span> <span class="field-name">content</span><span class="proto-key"> = 19</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Declare a custom start file the user agent is expected to use when it instantiates the widget. This field will only be set if there is a content element defined in the widget specification. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2311,7 +2314,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.featureList"><a href="#OnWidgetUpgraded.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.featureList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.featureList"><span class="qualifier">repeated</span> <span class="">Feature</span> <span class="field-name">featureList</span><span class="proto-key"> = 20</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all features requested by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2321,7 +2324,7 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Feature.isRequired"><a href="#OnWidgetUpgraded.Widget.Feature.isRequired"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isRequired</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A boolean attribute that indicates whether or not this feature has to be available to the widget at runtime. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.Feature.paramList"><a href="#OnWidgetUpgraded.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.Feature.paramList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.Feature.paramList"><span class="qualifier">repeated</span> <span class="">Param</span> <span class="field-name">paramList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of parameters for the feature. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2335,7 +2338,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.preferenceList"><a href="#OnWidgetUpgraded.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.preferenceList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.preferenceList"><span class="qualifier">repeated</span> <span class="">Preference</span> <span class="field-name">preferenceList</span><span class="proto-key"> = 21</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of all preferences defined by the widget. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2351,14 +2354,14 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.signature"><a href="#OnWidgetUpgraded.Widget.signature"><span class="qualifier">optional</span> <span class="">Signature</span> <span class="field-name">signature</span><span class="proto-key"> = 22</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.signature"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.signature"><span class="qualifier">optional</span> <span class="">Signature</span> <span class="field-name">signature</span><span class="proto-key"> = 22</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If the widget was signed with a digital signature this is set with information on the signature. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.Signature.id"><a href="#OnWidgetUpgraded.Widget.Signature.id"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Short name of the signature used. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.Signature.state"><a href="#OnWidgetUpgraded.Widget.Signature.state"><span class="qualifier">required</span> <span class="">State</span> <span class="field-name">state</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.Signature.state"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.Signature.state"><span class="qualifier">required</span> <span class="">State</span> <span class="field-name">state</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The state of the signature, for instance whether verification failed or it was properly signed. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2388,7 +2391,7 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.updateURL"><a href="#OnWidgetUpgraded.Widget.updateURL"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">updateURL</span><span class="proto-key"> = 23</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The URL used for updating the widget. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.networkAccessList"><a href="#OnWidgetUpgraded.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.networkAccessList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.networkAccessList"><span class="qualifier">repeated</span> <span class="">Network</span> <span class="field-name">networkAccessList</span><span class="proto-key"> = 24</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>List of requests to access network resources. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2401,7 +2404,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.securityAccessList"><a href="#OnWidgetUpgraded.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.securityAccessList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.securityAccessList"><span class="qualifier">repeated</span> <span class="">SecurityAccess</span> <span class="field-name">securityAccessList</span><span class="proto-key"> = 25</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Lists of security access the widget requests. Note: This only applies to Opera Widgets (namespace <a href="&quot;http://xmlns.opera.com/2006/widget&quot;">"http://xmlns.opera.com/2006/widget"</a> and ""), not W3C and other widget formats. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2411,7 +2414,7 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.SecurityAccess.hostList"><a href="#OnWidgetUpgraded.Widget.SecurityAccess.hostList"><span class="qualifier">repeated</span> <span class="string">string</span> <span class="field-name">hostList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The hostnames/ip-addresses which the widget may use, e.g. "www.example.com" or "192.168.1.1" The hostnames is an exact match, so a widget specifying www.example.com will not be able to contact example.com. If the list is empty it means any host. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.SecurityAccess.portList"><a href="#OnWidgetUpgraded.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.SecurityAccess.portList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.SecurityAccess.portList"><span class="qualifier">repeated</span> <span class="">Port</span> <span class="field-name">portList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Ports which may be used by the widget. Each entry is a range of ports, e.g. 1024-2048 If the list is empty it means port. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2431,7 +2434,7 @@
 <pre class="code-line" id="OnWidgetUpgraded.Widget.iriIdentifier"><a href="#OnWidgetUpgraded.Widget.iriIdentifier"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">iriIdentifier</span><span class="proto-key"> = 26</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An IRI identifier chosen by widget itself. </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.extensionInfo"><a href="#OnWidgetUpgraded.Widget.extensionInfo"><span class="qualifier">optional</span> <span class="">ExtensionInfo</span> <span class="field-name">extensionInfo</span><span class="proto-key"> = 27</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.extensionInfo"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.extensionInfo"><span class="qualifier">optional</span> <span class="">ExtensionInfo</span> <span class="field-name">extensionInfo</span><span class="proto-key"> = 27</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information which is specific to extensions. Only set when it contains an extension. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2444,11 +2447,11 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.uniteInfo"><a href="#OnWidgetUpgraded.Widget.uniteInfo"><span class="qualifier">optional</span> <span class="">UniteInfo</span> <span class="field-name">uniteInfo</span><span class="proto-key"> = 28</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.uniteInfo"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.uniteInfo"><span class="qualifier">optional</span> <span class="">UniteInfo</span> <span class="field-name">uniteInfo</span><span class="proto-key"> = 28</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information which is specific to Unite apps and services. Only set when it contains a Unite app or service. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.UniteInfo.type"><a href="#OnWidgetUpgraded.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.UniteInfo.type"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.UniteInfo.type"><span class="qualifier">required</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.UniteInfo.UNKNOWN"><a href="#OnWidgetUpgraded.Widget.UniteInfo.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
@@ -2467,14 +2470,14 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.updateInfo"><a href="#OnWidgetUpgraded.Widget.updateInfo"><span class="qualifier">optional</span> <span class="">UpdateInfo</span> <span class="field-name">updateInfo</span><span class="proto-key"> = 29</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.updateInfo"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.updateInfo"><span class="qualifier">optional</span> <span class="">UpdateInfo</span> <span class="field-name">updateInfo</span><span class="proto-key"> = 29</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Information about an available update for the widget. Set when available, which will be during an update. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.UpdateInfo.customWidgetID"><a href="#OnWidgetUpgraded.Widget.UpdateInfo.customWidgetID"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">customWidgetID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Widget id (not the same as widget uid, which is called id...), specified in config.xml </p></div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.UpdateInfo.updateType"><a href="#OnWidgetUpgraded.Widget.UpdateInfo.updateType"><span class="qualifier">required</span> <span class="">UpdateType</span> <span class="field-name">updateType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.UpdateInfo.updateType"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.UpdateInfo.updateType"><span class="qualifier">required</span> <span class="">UpdateType</span> <span class="field-name">updateType</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>What type of update this is (update, disable, activate, delete) </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
@@ -2524,7 +2527,7 @@
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="OnWidgetUpgraded.Widget.userJSList"><a href="#OnWidgetUpgraded.Widget.userJSList"><span class="qualifier">repeated</span> <span class="">UserJS</span> <span class="field-name">userJSList</span><span class="proto-key"> = 30</span><span class="proto-key">;</span></a></pre><div class="doc">Added UserJS files, this applies to extensions. </div><div class="message">
+<pre class="code-line" id="OnWidgetUpgraded.Widget.userJSList"><span class="expander">&#x25BC;</span><a href="#OnWidgetUpgraded.Widget.userJSList"><span class="qualifier">repeated</span> <span class="">UserJS</span> <span class="field-name">userJSList</span><span class="proto-key"> = 30</span><span class="proto-key">;</span></a></pre><div class="doc">Added UserJS files, this applies to extensions. </div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
 <pre class="code-line" id="OnWidgetUpgraded.Widget.UserJS.filename"><a href="#OnWidgetUpgraded.Widget.UserJS.filename"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">filename</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
