@@ -65,22 +65,22 @@
 <pre class="code-line" id="ListMessages.ConsoleMessageList.consoleMessageList"><span class="expander">&nbsp;</span><a href="#ListMessages.ConsoleMessageList.consoleMessageList"><span class="qualifier">repeated</span> <span class="">ConsoleMessage</span> <span class="field-name">consoleMessageList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ListMessages.ConsoleMessageList.ConsoleMessage.windowID"><a href="#ListMessages.ConsoleMessageList.ConsoleMessage.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListMessages.ConsoleMessageListConsoleMessage.windowID"><a href="#ListMessages.ConsoleMessageListConsoleMessage.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The window ID is shared across scope. Notably, it's the same as in the ecmascript debugger. INTERNAL: The value is from Window::id </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListMessages.ConsoleMessageList.ConsoleMessage.time"><a href="#ListMessages.ConsoleMessageList.ConsoleMessage.time"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">time</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListMessages.ConsoleMessageListConsoleMessage.time"><a href="#ListMessages.ConsoleMessageListConsoleMessage.time"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">time</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The number of seconds since 1970-01-01T00:00:00Z. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListMessages.ConsoleMessageList.ConsoleMessage.description"><a href="#ListMessages.ConsoleMessageList.ConsoleMessage.description"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">description</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListMessages.ConsoleMessageListConsoleMessage.description"><a href="#ListMessages.ConsoleMessageListConsoleMessage.description"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">description</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Description of the error. Sometimes this message only makes sense when displayed in a monospace font. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListMessages.ConsoleMessageList.ConsoleMessage.uri"><a href="#ListMessages.ConsoleMessageList.ConsoleMessage.uri"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">uri</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListMessages.ConsoleMessageListConsoleMessage.uri"><a href="#ListMessages.ConsoleMessageListConsoleMessage.uri"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">uri</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The URL of the entity (document, script, style file, etc) that caused the message to be generated. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListMessages.ConsoleMessageList.ConsoleMessage.context"><a href="#ListMessages.ConsoleMessageList.ConsoleMessage.context"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">context</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListMessages.ConsoleMessageListConsoleMessage.context"><a href="#ListMessages.ConsoleMessageListConsoleMessage.context"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">context</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The context in which the message was generated; it is intended for human consumption and provides additional information about the context for the message. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListMessages.ConsoleMessageList.ConsoleMessage.source"><a href="#ListMessages.ConsoleMessageList.ConsoleMessage.source"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">source</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListMessages.ConsoleMessageListConsoleMessage.source"><a href="#ListMessages.ConsoleMessageListConsoleMessage.source"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">source</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The component in Opera that generated the message One of: </p>
   <ul>
     <li>"ecmascript" </li>
@@ -98,7 +98,7 @@
     <li>"selftest" </li>
   </ul></div></li>
 <li class="field">
-<pre class="code-line" id="ListMessages.ConsoleMessageList.ConsoleMessage.severity"><a href="#ListMessages.ConsoleMessageList.ConsoleMessage.severity"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">severity</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListMessages.ConsoleMessageListConsoleMessage.severity"><a href="#ListMessages.ConsoleMessageListConsoleMessage.severity"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">severity</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>One of: </p>
   <ul>
     <li>"debug" </li>

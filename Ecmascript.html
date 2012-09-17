@@ -52,10 +52,10 @@
 <div class="doc">
   <p>A variable to assign in the execution environment before evaluating the script. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalArg.Variable.name"><a href="#Eval.EvalArg.Variable.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalArgVariable.name"><a href="#Eval.EvalArgVariable.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Name of variable to create. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalArg.Variable.objectID"><a href="#Eval.EvalArg.Variable.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalArgVariable.objectID"><a href="#Eval.EvalArgVariable.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>ID of object to retrieve, the object is assigned to the specified name. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
@@ -93,96 +93,96 @@
 <div class="doc">
   <p>Represents an ECMAScript value, a value is either one of the primitives like string or boolean or an object. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.type"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.type"><span class="expander">&nbsp;</span><a href="#Eval.EvalResultValue.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of value. </p>
   <p class="note"><span class="info"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.UNDEFINED"><a href="#Eval.EvalResult.Value.UNDEFINED"><span class="enum-name">UNDEFINED</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.UNDEFINED"><a href="#Eval.EvalResultValue.UNDEFINED"><span class="enum-name">UNDEFINED</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The undefined type, returned when no value was found or "undefined" was referenced. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.NULL"><a href="#Eval.EvalResult.Value.NULL"><span class="enum-name">NULL</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.NULL"><a href="#Eval.EvalResultValue.NULL"><span class="enum-name">NULL</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A null value. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.TRUE"><a href="#Eval.EvalResult.Value.TRUE"><span class="enum-name">TRUE</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.TRUE"><a href="#Eval.EvalResultValue.TRUE"><span class="enum-name">TRUE</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Boolean value true. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.FALSE"><a href="#Eval.EvalResult.Value.FALSE"><span class="enum-name">FALSE</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.FALSE"><a href="#Eval.EvalResultValue.FALSE"><span class="enum-name">FALSE</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Boolean value false. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.NAN"><a href="#Eval.EvalResult.Value.NAN"><span class="enum-name">NAN</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.NAN"><a href="#Eval.EvalResultValue.NAN"><span class="enum-name">NAN</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>NaN value which cannot be exported to JSON directly. Should be treated like a number. </p>
   <p>ECMAScript users should use this code to get the value natively:: </p>parseFloat("NaN") </div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.PLUS_INFINITY"><a href="#Eval.EvalResult.Value.PLUS_INFINITY"><span class="enum-name">PLUS_INFINITY</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.PLUS_INFINITY"><a href="#Eval.EvalResultValue.PLUS_INFINITY"><span class="enum-name">PLUS_INFINITY</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Plus infinity value which cannot be export to JSON directly. Should be treated like a number. </p>
   <p>ECMAScript users should use this code to get the value natively:: </p>parseFloat("Infinity") </div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.MINUS_INFINITY"><a href="#Eval.EvalResult.Value.MINUS_INFINITY"><span class="enum-name">MINUS_INFINITY</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.MINUS_INFINITY"><a href="#Eval.EvalResultValue.MINUS_INFINITY"><span class="enum-name">MINUS_INFINITY</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Minus infinity value which cannot be export to JSON directly. Should be treated like a number. </p>
   <p>ECMAScript users should use this code to get the value natively:: </p>parseFloat("-Infinity") </div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.NUMBER"><a href="#Eval.EvalResult.Value.NUMBER"><span class="enum-name">NUMBER</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.NUMBER"><a href="#Eval.EvalResultValue.NUMBER"><span class="enum-name">NUMBER</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A number, use the field 'number' for the actual value. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.STRING"><a href="#Eval.EvalResult.Value.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.STRING"><a href="#Eval.EvalResultValue.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A string, use the field 'str' for the actual string data. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.OBJECT"><a href="#Eval.EvalResult.Value.OBJECT"><span class="enum-name">OBJECT</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.OBJECT"><a href="#Eval.EvalResultValue.OBJECT"><span class="enum-name">OBJECT</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An object, the field 'object' contains object details. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.number"><a href="#Eval.EvalResult.Value.number"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.number"><a href="#Eval.EvalResultValue.number"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The numeric value, set if type = NUMBER. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.str"><a href="#Eval.EvalResult.Value.str"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">str</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.str"><a href="#Eval.EvalResultValue.str"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">str</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The string, set if type = STRING. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.object"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.Value.object"><span class="qualifier">optional</span> <span class="">Object</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValue.object"><span class="expander">&nbsp;</span><a href="#Eval.EvalResultValue.object"><span class="qualifier">optional</span> <span class="">Object</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Object information, set if type = OBJECT. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="message-doc">
 <div class="doc">
   <p>An Object is any non-primitive value in ECMAScript. Functions and arrays, for instance, are also Objects. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.objectID"><a href="#Eval.EvalResult.Value.Object.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValueObject.objectID"><a href="#Eval.EvalResultValueObject.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The unique ID of the object, valid until the object is garbage collected or the service is disabled. </p>
   <p>Is an integer from 1 and up. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.isCallable"><a href="#Eval.EvalResult.Value.Object.isCallable"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isCallable</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValueObject.isCallable"><a href="#Eval.EvalResultValueObject.isCallable"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isCallable</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>true if the object can be called, this is typically functions but other objects are also possible. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.type"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.Value.Object.type"><span class="qualifier">required</span> <span class="">ObjectType</span> <span class="field-name">type</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValueObject.type"><span class="expander">&nbsp;</span><a href="#Eval.EvalResultValueObject.type"><span class="qualifier">required</span> <span class="">ObjectType</span> <span class="field-name">type</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of object, either a plain object or a function. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.OBJECT"><a href="#Eval.EvalResult.Value.Object.OBJECT"><span class="enum-name">OBJECT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Eval.EvalResultValueObject.OBJECT"><a href="#Eval.EvalResultValueObject.OBJECT"><span class="enum-name">OBJECT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.FUNCTION"><a href="#Eval.EvalResult.Value.Object.FUNCTION"><span class="enum-name">FUNCTION</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Eval.EvalResultValueObject.FUNCTION"><a href="#Eval.EvalResultValueObject.FUNCTION"><span class="enum-name">FUNCTION</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.prototypeID"><a href="#Eval.EvalResult.Value.Object.prototypeID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">prototypeID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValueObject.prototypeID"><a href="#Eval.EvalResultValueObject.prototypeID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">prototypeID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The ID of the prototype for this object if it has a prototype. A prototype is just another object and can be examined with ExamineObjects(). </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.className"><a href="#Eval.EvalResult.Value.Object.className"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">className</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValueObject.className"><a href="#Eval.EvalResultValueObject.className"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">className</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the class used to create this object. Examples:: </p>"Object" "Array" "Function" "HTMLHtmlElement" </div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.functionName"><a href="#Eval.EvalResult.Value.Object.functionName"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">functionName</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValueObject.functionName"><a href="#Eval.EvalResultValueObject.functionName"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">functionName</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the function, only set if type = FUNCTION. If the function is anonymous, then a suitable alias <em>may</em> be assigned based on context, if possible. For instance:: </p>foo.bar = function(){} 
   <p>Would get the functionName 'bar'. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.propertyList"><span class="expander">&nbsp;</span><a href="#Eval.EvalResult.Value.Object.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Eval.EvalResultValueObject.propertyList"><span class="expander">&nbsp;</span><a href="#Eval.EvalResultValueObject.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A list of properties available on the object. </p>
   <p>Is omitted in some cases when a full property list (can be huge) is not desirable. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.Property.name"><a href="#Eval.EvalResult.Value.Object.Property.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Eval.EvalResultValueObjectProperty.name"><a href="#Eval.EvalResultValueObjectProperty.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="Eval.EvalResult.Value.Object.Property.value"><a href="#Eval.EvalResult.Value.Object.Property.value"><span class="qualifier">required</span> <span class="">Value</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Eval.EvalResultValueObjectProperty.value"><a href="#Eval.EvalResultValueObjectProperty.value"><span class="qualifier">required</span> <span class="">Value</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
@@ -227,101 +227,101 @@
   <p>A list of prototypes for the examined object, the first entry [0] is the examined object while the rest are the object info for each prototype in the chain. </p>
   <p>If prototype were not examined the list contains only one entry. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.objectList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.objectList"><span class="qualifier">repeated</span> <span class="">Object</span> <span class="field-name">objectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChain.objectList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectListPrototypeChain.objectList"><span class="qualifier">repeated</span> <span class="">Object</span> <span class="field-name">objectList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="message-doc">
 <div class="doc">
   <p>An Object is any non-primitive value in ECMAScript. Functions and arrays, for instance, are also Objects. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.objectID"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObject.objectID"><a href="#ExamineObjects.ObjectListPrototypeChainObject.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The unique ID of the object, valid until the object is garbage collected or the service is disabled. </p>
   <p>Is an integer from 1 and up. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.isCallable"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.isCallable"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isCallable</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObject.isCallable"><a href="#ExamineObjects.ObjectListPrototypeChainObject.isCallable"><span class="qualifier">required</span> <span class="boolean">bool</span> <span class="field-name">isCallable</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>true if the object can be called, this is typically functions but other objects are also possible. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.type"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.type"><span class="qualifier">required</span> <span class="">ObjectType</span> <span class="field-name">type</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObject.type"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectListPrototypeChainObject.type"><span class="qualifier">required</span> <span class="">ObjectType</span> <span class="field-name">type</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of object, either a plain object or a function. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.OBJECT"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.OBJECT"><span class="enum-name">OBJECT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObject.OBJECT"><a href="#ExamineObjects.ObjectListPrototypeChainObject.OBJECT"><span class="enum-name">OBJECT</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.FUNCTION"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.FUNCTION"><span class="enum-name">FUNCTION</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObject.FUNCTION"><a href="#ExamineObjects.ObjectListPrototypeChainObject.FUNCTION"><span class="enum-name">FUNCTION</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.prototypeID"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.prototypeID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">prototypeID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObject.prototypeID"><a href="#ExamineObjects.ObjectListPrototypeChainObject.prototypeID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">prototypeID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The ID of the prototype for this object if it has a prototype. A prototype is just another object and can be examined with ExamineObjects(). </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.className"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.className"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">className</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObject.className"><a href="#ExamineObjects.ObjectListPrototypeChainObject.className"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">className</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the class used to create this object. Examples:: </p>"Object" "Array" "Function" "HTMLHtmlElement" </div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.functionName"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.functionName"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">functionName</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObject.functionName"><a href="#ExamineObjects.ObjectListPrototypeChainObject.functionName"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">functionName</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the function, only set if type = FUNCTION. If the function is anonymous, then a suitable alias <em>may</em> be assigned based on context, if possible. For instance:: </p>foo.bar = function(){} 
   <p>Would get the functionName 'bar'. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.propertyList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObject.propertyList"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectListPrototypeChainObject.propertyList"><span class="qualifier">repeated</span> <span class="">Property</span> <span class="field-name">propertyList</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A list of properties available on the object. </p>
   <p>Is omitted in some cases when a full property list (can be huge) is not desirable. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.name"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectProperty.name"><a href="#ExamineObjects.ObjectListPrototypeChainObjectProperty.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.value"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.value"><span class="qualifier">required</span> <span class="">Value</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectProperty.value"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectListPrototypeChainObjectProperty.value"><span class="qualifier">required</span> <span class="">Value</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="message-doc">
 <div class="doc">
   <p>Represents an ECMAScript value, a value is either one of the primitives like string or boolean or an object. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.type"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.type"><span class="expander">&nbsp;</span><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.type"><span class="qualifier">optional</span> <span class="">Type</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of value. </p>
   <p class="note"><span class="info"></span> Booleans are encoded as either TRUE or FALSE to shorten the number fields in use. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.UNDEFINED"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.UNDEFINED"><span class="enum-name">UNDEFINED</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.UNDEFINED"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.UNDEFINED"><span class="enum-name">UNDEFINED</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The undefined type, returned when no value was found or "undefined" was referenced. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.NULL"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.NULL"><span class="enum-name">NULL</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.NULL"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.NULL"><span class="enum-name">NULL</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A null value. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.TRUE"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.TRUE"><span class="enum-name">TRUE</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.TRUE"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.TRUE"><span class="enum-name">TRUE</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Boolean value true. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.FALSE"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.FALSE"><span class="enum-name">FALSE</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.FALSE"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.FALSE"><span class="enum-name">FALSE</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Boolean value false. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.NAN"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.NAN"><span class="enum-name">NAN</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.NAN"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.NAN"><span class="enum-name">NAN</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>NaN value which cannot be exported to JSON directly. Should be treated like a number. </p>
   <p>ECMAScript users should use this code to get the value natively:: </p>parseFloat("NaN") </div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.PLUS_INFINITY"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.PLUS_INFINITY"><span class="enum-name">PLUS_INFINITY</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.PLUS_INFINITY"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.PLUS_INFINITY"><span class="enum-name">PLUS_INFINITY</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Plus infinity value which cannot be export to JSON directly. Should be treated like a number. </p>
   <p>ECMAScript users should use this code to get the value natively:: </p>parseFloat("Infinity") </div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.MINUS_INFINITY"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.MINUS_INFINITY"><span class="enum-name">MINUS_INFINITY</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.MINUS_INFINITY"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.MINUS_INFINITY"><span class="enum-name">MINUS_INFINITY</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Minus infinity value which cannot be export to JSON directly. Should be treated like a number. </p>
   <p>ECMAScript users should use this code to get the value natively:: </p>parseFloat("-Infinity") </div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.NUMBER"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.NUMBER"><span class="enum-name">NUMBER</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.NUMBER"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.NUMBER"><span class="enum-name">NUMBER</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A number, use the field 'number' for the actual value. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.STRING"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.STRING"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.STRING"><span class="enum-name">STRING</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A string, use the field 'str' for the actual string data. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.OBJECT"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.OBJECT"><span class="enum-name">OBJECT</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.OBJECT"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.OBJECT"><span class="enum-name">OBJECT</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An object, the field 'object' contains object details. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.number"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.number"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.number"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.number"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The numeric value, set if type = NUMBER. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.str"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.str"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">str</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.str"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.str"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">str</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The string, set if type = STRING. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.object"><a href="#ExamineObjects.ObjectList.PrototypeChain.Object.Property.Value.object"><span class="qualifier">optional</span> <span class="">Object</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.object"><a href="#ExamineObjects.ObjectListPrototypeChainObjectPropertyValue.object"><span class="qualifier">optional</span> <span class="">Object</span> <span class="field-name">object</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Object information, set if type = OBJECT. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
@@ -362,22 +362,22 @@
 <div class="doc">
   <p>A runtime is an ECMAScript execution environment. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListRuntimes.RuntimeList.Runtime.runtimeID"><a href="#ListRuntimes.RuntimeList.Runtime.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListRuntimes.RuntimeListRuntime.runtimeID"><a href="#ListRuntimes.RuntimeListRuntime.runtimeID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">runtimeID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A unique ID for this runtime, persists through the entire session or until the runtime is destroyed. </p>
   <p>Is an integer from 1 and up. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListRuntimes.RuntimeList.Runtime.htmlFramePath"><a href="#ListRuntimes.RuntimeList.Runtime.htmlFramePath"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">htmlFramePath</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListRuntimes.RuntimeListRuntime.htmlFramePath"><a href="#ListRuntimes.RuntimeListRuntime.htmlFramePath"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">htmlFramePath</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The frame path in the window, for instance "_top" means the top-most frame of a window. </p>
   <p>Other examples are:: </p>"_top/[1]" "_top/[1]/[1]" </div></li>
 <li class="field">
-<pre class="code-line" id="ListRuntimes.RuntimeList.Runtime.windowID"><a href="#ListRuntimes.RuntimeList.Runtime.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListRuntimes.RuntimeListRuntime.windowID"><a href="#ListRuntimes.RuntimeListRuntime.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The ID this window belongs to. </p>
   <p>Multiple frames in a window will be reported as multiple runtimes and they will all share the same windowID. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListRuntimes.RuntimeList.Runtime.objectID"><a href="#ListRuntimes.RuntimeList.Runtime.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListRuntimes.RuntimeListRuntime.objectID"><a href="#ListRuntimes.RuntimeListRuntime.objectID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">objectID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The global object associated with this runtime. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListRuntimes.RuntimeList.Runtime.uri"><a href="#ListRuntimes.RuntimeList.Runtime.uri"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">uri</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListRuntimes.RuntimeListRuntime.uri"><a href="#ListRuntimes.RuntimeListRuntime.uri"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">uri</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The URI of the resource loaded in the runtime. This can be a normal URI (HTTP etc.) or a special interal URI like <em>"opera:blank"</em> or "opera:debug". </p></div></li>
 </ul>
 <pre class="code-line">}</pre>

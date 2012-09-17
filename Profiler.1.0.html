@@ -161,10 +161,10 @@
   <p>This option can be combined with any <span class="domain-specific">Mode</span>, to produce a summary of parts of the <span class="domain-specific">Timeline</span>. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.GetEventsArg.Interval.start"><a href="#GetEvents.GetEventsArg.Interval.start"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">start</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.GetEventsArgInterval.start"><a href="#GetEvents.GetEventsArgInterval.start"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">start</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The start of the <span class="domain-specific">Interval</span>. If not present, this is an left-open <span class="domain-specific">Interval</span> ([-inf, N]). </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.GetEventsArg.Interval.end"><a href="#GetEvents.GetEventsArg.Interval.end"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">end</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.GetEventsArgInterval.end"><a href="#GetEvents.GetEventsArgInterval.end"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">end</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The end of the <span class="domain-specific">Interval</span>. If not present, this is an right-open <span class="domain-specific">Interval</span> ([N, +inf]). </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
@@ -179,10 +179,10 @@
   <p>Is not set if <span class="domain-specific">eventList</span> is empty. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Interval.start"><a href="#GetEvents.Events.Interval.start"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">start</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsInterval.start"><a href="#GetEvents.EventsInterval.start"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">start</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The start of the <span class="domain-specific">Interval</span>. If not present, this is an left-open <span class="domain-specific">Interval</span> ([-inf, N]). </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Interval.end"><a href="#GetEvents.Events.Interval.end"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">end</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsInterval.end"><a href="#GetEvents.EventsInterval.end"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">end</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The end of the <span class="domain-specific">Interval</span>. If not present, this is an right-open <span class="domain-specific">Interval</span> ([N, +inf]). </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
@@ -192,29 +192,29 @@
   <p>List of <span class="domain-specific">Events</span>. The <span class="domain-specific">Events</span> are ordered according to the start time of their <span class="domain-specific">Intervals</span> (increasing order). </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.type"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.type"><span class="qualifier">required</span> <span class="">EventType</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.type"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEvent.type"><span class="qualifier">required</span> <span class="">EventType</span> <span class="field-name">type</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The type of <span class="domain-specific">Event</span>. Some <span class="domain-specific">Events</span> carry additional information relevant to their type. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.GENERIC"><a href="#GetEvents.Events.Event.GENERIC"><span class="enum-name">GENERIC</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.GENERIC"><a href="#GetEvents.EventsEvent.GENERIC"><span class="enum-name">GENERIC</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Unknown type. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.PROCESS"><a href="#GetEvents.Events.Event.PROCESS"><span class="enum-name">PROCESS</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.PROCESS"><a href="#GetEvents.EventsEvent.PROCESS"><span class="enum-name">PROCESS</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Special <span class="domain-specific">Event</span> type, which represents the total time spent in the process. This <span class="domain-specific">Event</span> <em>may</em> appear in a response to <span class="domain-specific">GetEvents</span> command in <span class="domain-specific">REDUCE_ALL</span> mode. Not all builds support this <span class="domain-specific">Event</span>, and it will only be present if supported. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.DOCUMENT_PARSING"><a href="#GetEvents.Events.Event.DOCUMENT_PARSING"><span class="enum-name">DOCUMENT_PARSING</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.DOCUMENT_PARSING"><a href="#GetEvents.EventsEvent.DOCUMENT_PARSING"><span class="enum-name">DOCUMENT_PARSING</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Occurs when the main document (such as HTML, XHTML, etc) is parsed. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.CSS_PARSING"><a href="#GetEvents.Events.Event.CSS_PARSING"><span class="enum-name">CSS_PARSING</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.CSS_PARSING"><a href="#GetEvents.EventsEvent.CSS_PARSING"><span class="enum-name">CSS_PARSING</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Occurs when stylesheets are parsed. This <span class="domain-specific">Event</span> carries information about the URL of the stylesheet. If the stylesheet was inline, the parent document is used for the URL. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.SCRIPT_COMPILATION"><a href="#GetEvents.Events.Event.SCRIPT_COMPILATION"><span class="enum-name">SCRIPT_COMPILATION</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.SCRIPT_COMPILATION"><a href="#GetEvents.EventsEvent.SCRIPT_COMPILATION"><span class="enum-name">SCRIPT_COMPILATION</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Occurs when a script is compiled. This <span class="domain-specific">Event</span> carries the URL of the script. If the script is inline, the parent document is used for the URL. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.SCRIPT_THREAD_EVALUATION"><a href="#GetEvents.Events.Event.SCRIPT_THREAD_EVALUATION"><span class="enum-name">SCRIPT_THREAD_EVALUATION</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.SCRIPT_THREAD_EVALUATION"><a href="#GetEvents.EventsEvent.SCRIPT_THREAD_EVALUATION"><span class="enum-name">SCRIPT_THREAD_EVALUATION</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Occurs when a script thread is being evaluated (run). <span class="domain-specific">Events</span> of this type carry information about the type of the thread (inline, eval, and so forth). If the thread is an event handler, the name of the event is also provided. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.REFLOW"><a href="#GetEvents.Events.Event.REFLOW"><span class="enum-name">REFLOW</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.REFLOW"><a href="#GetEvents.EventsEvent.REFLOW"><span class="enum-name">REFLOW</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Occurs when a reflow is triggered. A reflow is triggered when something is changed on the document, which <em>may</em> require a recalculation of style and layout. </p>
   <p>A <span class="domain-specific">REFLOW</span> <span class="domain-specific">Event</span> does not mean that the whole page will be recalculated; it is more like a <em>request</em> to check whether something needs to updated. The <span class="domain-specific">REFLOW</span> is typically a parent of a <span class="domain-specific">STYLE_RECALCULATION</span>, and then <span class="domain-specific">LAYOUT</span>, like this: </p>
   <ul>
@@ -235,211 +235,211 @@
   <p>Most the time will be spent in <span class="domain-specific">STYLE_RECALCULATION</span> and <span class="domain-specific">LAYOUT</span>. The <span class="domain-specific">REFLOW</span> itself is not expensive. </p>
   <p>A <span class="domain-specific">REFLOW</span> may also have no children at all, if no changes were to layout were necessary. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.STYLE_RECALCULATION"><a href="#GetEvents.Events.Event.STYLE_RECALCULATION"><span class="enum-name">STYLE_RECALCULATION</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.STYLE_RECALCULATION"><a href="#GetEvents.EventsEvent.STYLE_RECALCULATION"><span class="enum-name">STYLE_RECALCULATION</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Occurs when a CSS needs to be recalculated for a set of elements in the document. This <span class="domain-specific">Event</span> usually contains many <span class="domain-specific">CSS_SELECTOR_MATCHING</span> <span class="domain-specific">Events</span>. </p>
   <p>See <span class="domain-specific">REFLOW</span> for more information about how this <span class="domain-specific">Event</span> relates to <span class="domain-specific">REFLOW</span>, <span class="domain-specific">CSS_SELECTOR_MATCHING</span> and <span class="domain-specific">LAYOUT</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.CSS_SELECTOR_MATCHING"><a href="#GetEvents.Events.Event.CSS_SELECTOR_MATCHING"><span class="enum-name">CSS_SELECTOR_MATCHING</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.CSS_SELECTOR_MATCHING"><a href="#GetEvents.EventsEvent.CSS_SELECTOR_MATCHING"><span class="enum-name">CSS_SELECTOR_MATCHING</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Occurs when we try to match a specific selector. <span class="domain-specific">Events</span> of this type carry information about which selector we tried to match. </p>
   <p>See <span class="domain-specific">REFLOW</span> for more information about how this <span class="domain-specific">Event</span> relates to <span class="domain-specific">REFLOW</span>, <span class="domain-specific">STYLE_RECALCULATION</span> and <span class="domain-specific">LAYOUT</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.LAYOUT"><a href="#GetEvents.Events.Event.LAYOUT"><span class="enum-name">LAYOUT</span><span class="proto-key"> = </span><span class="enum-key">10</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.LAYOUT"><a href="#GetEvents.EventsEvent.LAYOUT"><span class="enum-name">LAYOUT</span><span class="proto-key"> = </span><span class="enum-key">10</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Occurs when the layout tree is created or changed. Changes to the layout tree are done based on the caclulated style of elements, so <span class="domain-specific">LAYOUT</span> will usually occur after a <span class="domain-specific">STYLE_RECALCULATION</span>. </p>
   <p>See <span class="domain-specific">REFLOW</span> for more information about how these <span class="domain-specific">Events</span> usually relate to each other. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.PAINT"><a href="#GetEvents.Events.Event.PAINT"><span class="enum-name">PAINT</span><span class="proto-key"> = </span><span class="enum-key">11</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.PAINT"><a href="#GetEvents.EventsEvent.PAINT"><span class="enum-name">PAINT</span><span class="proto-key"> = </span><span class="enum-key">11</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Occurs when we draw the document (or parts of the document). </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.time"><a href="#GetEvents.Events.Event.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.time"><a href="#GetEvents.EventsEvent.time"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">time</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The time spent on this task. (Self-time). This time takes place at some (unknown) point in the <span class="domain-specific">Interval</span>. </p>
   <p>Does not include <span class="domain-specific">overhead</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.overhead"><a href="#GetEvents.Events.Event.overhead"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">overhead</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.overhead"><a href="#GetEvents.EventsEvent.overhead"><span class="qualifier">required</span> <span class="number">double</span> <span class="field-name">overhead</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Profiling overhead. This is the time spent doing things which would normally not happen if we had not been profiling, e.g. storing the selector text for CSS selector <span class="domain-specific">Events</span>. </p>
   <p>The overhead takes place at some (unknown) point in the <span class="domain-specific">Interval</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.hits"><a href="#GetEvents.Events.Event.hits"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">hits</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.hits"><a href="#GetEvents.EventsEvent.hits"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">hits</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Number of hits on this <span class="domain-specific">Event</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.interval"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.interval"><span class="qualifier">optional</span> <span class="">Interval</span> <span class="field-name">interval</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.interval"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEvent.interval"><span class="qualifier">optional</span> <span class="">Interval</span> <span class="field-name">interval</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The <span class="domain-specific">Interval</span> in which the <span class="domain-specific">Event</span> took place. An <span class="domain-specific">Event</span> may consume time across multiple time slices (e.g. thread evaluation) without requiring <em>all</em> the time in that <span class="domain-specific">Interval</span>. </p>
   <p>The <span class="domain-specific">time</span> field contains the time actually spent working on the <span class="domain-specific">Event</span>. There is no exact start and end time for <span class="domain-specific">Events</span> which are spread across time slices, because the self-time spent is fragmented across the <span class="domain-specific">Interval</span>. </p>
   <p>We can therefore only know that the <span class="domain-specific">time</span> spent on this <span class="domain-specific">Event</span> happened some time in this <span class="domain-specific">Interval</span>, but not exactly where. (It would be possible to expose each fragment of execution, of course, but the amount of data required to represent this would be to large to handle). </p>
   <p>The start of the <span class="domain-specific">Interval</span> represents the first time we started working on this <span class="domain-specific">Event</span>. The end of the <span class="domain-specific">Interval</span> represents the last time we were done working on this <span class="domain-specific">Event</span>. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.Interval.start"><a href="#GetEvents.Events.Event.Interval.start"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">start</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventInterval.start"><a href="#GetEvents.EventsEventInterval.start"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">start</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The start of the <span class="domain-specific">Interval</span>. If not present, this is an left-open <span class="domain-specific">Interval</span> ([-inf, N]). </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.Interval.end"><a href="#GetEvents.Events.Event.Interval.end"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">end</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventInterval.end"><a href="#GetEvents.EventsEventInterval.end"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">end</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The end of the <span class="domain-specific">Interval</span>. If not present, this is an right-open <span class="domain-specific">Interval</span> ([N, +inf]). </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.eventID"><a href="#GetEvents.Events.Event.eventID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">eventID</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.eventID"><a href="#GetEvents.EventsEvent.eventID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">eventID</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The non-zero ID of this <span class="domain-specific">Event</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.parentEventID"><a href="#GetEvents.Events.Event.parentEventID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">parentEventID</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.parentEventID"><a href="#GetEvents.EventsEvent.parentEventID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">parentEventID</span><span class="proto-key"> = 7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The parent <span class="domain-specific">Event</span> ID, or not set if this is a top-level <span class="domain-specific">Event</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.childCount"><a href="#GetEvents.Events.Event.childCount"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">childCount</span><span class="proto-key"> = 8</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.childCount"><a href="#GetEvents.EventsEvent.childCount"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">childCount</span><span class="proto-key"> = 8</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The number of immediate children (not grandchildren) for this <span class="domain-specific">Event</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.aggregatedTime"><a href="#GetEvents.Events.Event.aggregatedTime"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">aggregatedTime</span><span class="proto-key"> = 9</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.aggregatedTime"><a href="#GetEvents.EventsEvent.aggregatedTime"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">aggregatedTime</span><span class="proto-key"> = 9</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Aggregated <span class="domain-specific">time</span> for all children, including <span class="domain-specific">time</span> for this <span class="domain-specific">Event</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.aggregatedOverhead"><a href="#GetEvents.Events.Event.aggregatedOverhead"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">aggregatedOverhead</span><span class="proto-key"> = 10</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.aggregatedOverhead"><a href="#GetEvents.EventsEvent.aggregatedOverhead"><span class="qualifier">optional</span> <span class="number">double</span> <span class="field-name">aggregatedOverhead</span><span class="proto-key"> = 10</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Aggregated <span class="domain-specific">overhead</span> for all children, including <span class="domain-specific">overhead</span> for this <span class="domain-specific">Event</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.cssSelectorMatching"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.cssSelectorMatching"><span class="qualifier">optional</span> <span class="">CssSelectorMatchingEvent</span> <span class="field-name">cssSelectorMatching</span><span class="proto-key"> = 11</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.cssSelectorMatching"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEvent.cssSelectorMatching"><span class="qualifier">optional</span> <span class="">CssSelectorMatchingEvent</span> <span class="field-name">cssSelectorMatching</span><span class="proto-key"> = 11</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information for <span class="domain-specific">CSS_SELECTOR_MATCHING</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.CssSelectorMatchingEvent.selector"><a href="#GetEvents.Events.Event.CssSelectorMatchingEvent.selector"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">selector</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventCssSelectorMatchingEvent.selector"><a href="#GetEvents.EventsEventCssSelectorMatchingEvent.selector"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">selector</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The selector text, e.g. "#foo .bar". </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.scriptThreadEvaluation"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.scriptThreadEvaluation"><span class="qualifier">optional</span> <span class="">ScriptThreadEvaluationEvent</span> <span class="field-name">scriptThreadEvaluation</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.scriptThreadEvaluation"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEvent.scriptThreadEvaluation"><span class="qualifier">optional</span> <span class="">ScriptThreadEvaluationEvent</span> <span class="field-name">scriptThreadEvaluation</span><span class="proto-key"> = 12</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information for <span class="domain-specific">SCRIPT_THREAD_EVALUATION</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.scriptThreadType"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.scriptThreadType"><span class="qualifier">required</span> <span class="">ScriptThreadType</span> <span class="field-name">scriptThreadType</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.scriptThreadType"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.scriptThreadType"><span class="qualifier">required</span> <span class="">ScriptThreadType</span> <span class="field-name">scriptThreadType</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>What kind of thread the <span class="domain-specific">Event</span> represents. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.UNKNOWN"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.UNKNOWN"><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.COMMON"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.COMMON"><span class="enum-name">COMMON</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.COMMON"><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.COMMON"><span class="enum-name">COMMON</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A common thread, such as the main thread. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.TIMEOUT"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.TIMEOUT"><span class="enum-name">TIMEOUT</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.TIMEOUT"><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.TIMEOUT"><span class="enum-name">TIMEOUT</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A timeout or interval thread, i.e. 'window.setTimeout'/'setInterval'. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.EVENT"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.EVENT"><span class="enum-name">EVENT</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.EVENT"><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.EVENT"><span class="enum-name">EVENT</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An event handler thread. <span class="domain-specific">ScriptThreadEvaluationEvents</span> of this type also contain the name of the event that fired. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.INLINE_SCRIPT"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.INLINE_SCRIPT"><span class="enum-name">INLINE_SCRIPT</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.INLINE_SCRIPT"><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.INLINE_SCRIPT"><span class="enum-name">INLINE_SCRIPT</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A thread which executes inline scripts during loading. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.JAVASCRIPT_URL"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.JAVASCRIPT_URL"><span class="enum-name">JAVASCRIPT_URL</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.JAVASCRIPT_URL"><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.JAVASCRIPT_URL"><span class="enum-name">JAVASCRIPT_URL</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A thread which executes a script using the javascript:-URI scheme. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.HISTORY_NAVIGATION"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.HISTORY_NAVIGATION"><span class="enum-name">HISTORY_NAVIGATION</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.HISTORY_NAVIGATION"><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.HISTORY_NAVIGATION"><span class="enum-name">HISTORY_NAVIGATION</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>A thread executed when navigating in history (e.g. hash change). </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.JAVA_EVAL"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.JAVA_EVAL"><span class="enum-name">JAVA_EVAL</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.JAVA_EVAL"><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.JAVA_EVAL"><span class="enum-name">JAVA_EVAL</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An eval triggered from Java (LiveConnect). </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.DEBUGGER_EVAL"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.DEBUGGER_EVAL"><span class="enum-name">DEBUGGER_EVAL</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.DEBUGGER_EVAL"><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.DEBUGGER_EVAL"><span class="enum-name">DEBUGGER_EVAL</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>An eval triggered by the debugger. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptThreadEvaluationEvent.eventName"><a href="#GetEvents.Events.Event.ScriptThreadEvaluationEvent.eventName"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">eventName</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptThreadEvaluationEvent.eventName"><a href="#GetEvents.EventsEventScriptThreadEvaluationEvent.eventName"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">eventName</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If <span class="domain-specific">scriptThreadType</span> is <span class="domain-specific">EVENT</span>, this field will contain the event name, e.g. 'load'. </p>
   <p>In all other cases, this field is not set. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.documentParsing"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.documentParsing"><span class="qualifier">optional</span> <span class="">DocumentParsingEvent</span> <span class="field-name">documentParsing</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.documentParsing"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEvent.documentParsing"><span class="qualifier">optional</span> <span class="">DocumentParsingEvent</span> <span class="field-name">documentParsing</span><span class="proto-key"> = 13</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information for <span class="domain-specific">DOCUMENT_PARSING</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.DocumentParsingEvent.url"><a href="#GetEvents.Events.Event.DocumentParsingEvent.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventDocumentParsingEvent.url"><a href="#GetEvents.EventsEventDocumentParsingEvent.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The URL of the document that was parsed. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.cssParsing"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.cssParsing"><span class="qualifier">optional</span> <span class="">CssParsingEvent</span> <span class="field-name">cssParsing</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.cssParsing"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEvent.cssParsing"><span class="qualifier">optional</span> <span class="">CssParsingEvent</span> <span class="field-name">cssParsing</span><span class="proto-key"> = 14</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information for <span class="domain-specific">CSS_PARSING</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.CssParsingEvent.url"><a href="#GetEvents.Events.Event.CssParsingEvent.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventCssParsingEvent.url"><a href="#GetEvents.EventsEventCssParsingEvent.url"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The URL of the stylesheet that was parsed. If the stylesheet is inlined in another document, that document is used as the URL. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.scriptCompilation"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.scriptCompilation"><span class="qualifier">optional</span> <span class="">ScriptCompilationEvent</span> <span class="field-name">scriptCompilation</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.scriptCompilation"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEvent.scriptCompilation"><span class="qualifier">optional</span> <span class="">ScriptCompilationEvent</span> <span class="field-name">scriptCompilation</span><span class="proto-key"> = 15</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information for <span class="domain-specific">SCRIPT_COMPILATION</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.scriptType"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.ScriptCompilationEvent.scriptType"><span class="qualifier">required</span> <span class="">ScriptType</span> <span class="field-name">scriptType</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.scriptType"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEventScriptCompilationEvent.scriptType"><span class="qualifier">required</span> <span class="">ScriptType</span> <span class="field-name">scriptType</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Describes the origin of the script. </p></div><div class="enum">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.UNKNOWN"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.UNKNOWN"><a href="#GetEvents.EventsEventScriptCompilationEvent.UNKNOWN"><span class="enum-name">UNKNOWN</span><span class="proto-key"> = </span><span class="enum-key">0</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script is of unknown type. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.LINKED"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.LINKED"><span class="enum-name">LINKED</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.LINKED"><a href="#GetEvents.EventsEventScriptCompilationEvent.LINKED"><span class="enum-name">LINKED</span><span class="proto-key"> = </span><span class="enum-key">1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script is in an external file, and the document links to it. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.INLINE"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.INLINE"><span class="enum-name">INLINE</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.INLINE"><a href="#GetEvents.EventsEventScriptCompilationEvent.INLINE"><span class="enum-name">INLINE</span><span class="proto-key"> = </span><span class="enum-key">2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script is inlined in the document, not via document.write(). </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.GENERATED"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.GENERATED"><span class="enum-name">GENERATED</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.GENERATED"><a href="#GetEvents.EventsEventScriptCompilationEvent.GENERATED"><span class="enum-name">GENERATED</span><span class="proto-key"> = </span><span class="enum-key">3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script is inlined in the documented via document.write(). </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.EVAL"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.EVAL"><span class="enum-name">EVAL</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.EVAL"><a href="#GetEvents.EventsEventScriptCompilationEvent.EVAL"><span class="enum-name">EVAL</span><span class="proto-key"> = </span><span class="enum-key">4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script comes from a call to <span class="domain-specific">eval</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.TIMEOUT"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.TIMEOUT"><span class="enum-name">TIMEOUT</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.TIMEOUT"><a href="#GetEvents.EventsEventScriptCompilationEvent.TIMEOUT"><span class="enum-name">TIMEOUT</span><span class="proto-key"> = </span><span class="enum-key">5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script comes from a call to <span class="domain-specific">setTimeout</span> or <span class="domain-specific">setInterval</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.URI"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.URI"><span class="enum-name">URI</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.URI"><a href="#GetEvents.EventsEventScriptCompilationEvent.URI"><span class="enum-name">URI</span><span class="proto-key"> = </span><span class="enum-key">6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script comes from usage of the <span class="domain-specific">javascript:</span> URI handler. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.EVENT_HANDLER"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.EVENT_HANDLER"><span class="enum-name">EVENT_HANDLER</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.EVENT_HANDLER"><a href="#GetEvents.EventsEventScriptCompilationEvent.EVENT_HANDLER"><span class="enum-name">EVENT_HANDLER</span><span class="proto-key"> = </span><span class="enum-key">7</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script is attached as an event handler attribute in the markup. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.USERJS"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.USERJS"><span class="enum-name">USERJS</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.USERJS"><a href="#GetEvents.EventsEventScriptCompilationEvent.USERJS"><span class="enum-name">USERJS</span><span class="proto-key"> = </span><span class="enum-key">8</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script is injected into the page by the User Javascript feature. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.BROWSERJS"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.BROWSERJS"><span class="enum-name">BROWSERJS</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.BROWSERJS"><a href="#GetEvents.EventsEventScriptCompilationEvent.BROWSERJS"><span class="enum-name">BROWSERJS</span><span class="proto-key"> = </span><span class="enum-key">9</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script is injected into the page by the Browser Javascript feature. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.EXTENSIONJS"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.EXTENSIONJS"><span class="enum-name">EXTENSIONJS</span><span class="proto-key"> = </span><span class="enum-key">10</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.EXTENSIONJS"><a href="#GetEvents.EventsEventScriptCompilationEvent.EXTENSIONJS"><span class="enum-name">EXTENSIONJS</span><span class="proto-key"> = </span><span class="enum-key">10</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The script is injected into the page by an extension. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.DEBUGGER"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.DEBUGGER"><span class="enum-name">DEBUGGER</span><span class="proto-key"> = </span><span class="enum-key">11</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.DEBUGGER"><a href="#GetEvents.EventsEventScriptCompilationEvent.DEBUGGER"><span class="enum-name">DEBUGGER</span><span class="proto-key"> = </span><span class="enum-key">11</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Scripts compiled by <span class="domain-specific">EcmascriptDebugger</span>. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.ScriptCompilationEvent.url"><a href="#GetEvents.Events.Event.ScriptCompilationEvent.url"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventScriptCompilationEvent.url"><a href="#GetEvents.EventsEventScriptCompilationEvent.url"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">url</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The URL of the stylesheet that was parsed. If the stylesheet is inlined in another document, that document is used as the URL. </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.paint"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.paint"><span class="qualifier">optional</span> <span class="">PaintEvent</span> <span class="field-name">paint</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEvent.paint"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEvent.paint"><span class="qualifier">optional</span> <span class="">PaintEvent</span> <span class="field-name">paint</span><span class="proto-key"> = 16</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Additional information for <span class="domain-specific">PAINT</span> <span class="domain-specific">Events</span>. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.area"><span class="expander">&nbsp;</span><a href="#GetEvents.Events.Event.PaintEvent.area"><span class="qualifier">optional</span> <span class="">Area</span> <span class="field-name">area</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="GetEvents.EventsEventPaintEvent.area"><span class="expander">&nbsp;</span><a href="#GetEvents.EventsEventPaintEvent.area"><span class="qualifier">optional</span> <span class="">Area</span> <span class="field-name">area</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The <span class="domain-specific">Area</span> that was painted, in document coordinates relative the upper left corner of the view. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="message-doc">
 <div class="doc">
   <p>Defines an <span class="domain-specific">Area</span> by its top-left corner and width/height. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.x"><a href="#GetEvents.Events.Event.PaintEvent.Area.x"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">x</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="GetEvents.EventsEventPaintEventArea.x"><a href="#GetEvents.EventsEventPaintEventArea.x"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">x</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.y"><a href="#GetEvents.Events.Event.PaintEvent.Area.y"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">y</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="GetEvents.EventsEventPaintEventArea.y"><a href="#GetEvents.EventsEventPaintEventArea.y"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">y</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.w"><a href="#GetEvents.Events.Event.PaintEvent.Area.w"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">w</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="GetEvents.EventsEventPaintEventArea.w"><a href="#GetEvents.EventsEventPaintEventArea.w"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">w</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="GetEvents.Events.Event.PaintEvent.Area.h"><a href="#GetEvents.Events.Event.PaintEvent.Area.h"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">h</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="GetEvents.EventsEventPaintEventArea.h"><a href="#GetEvents.EventsEventPaintEventArea.h"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">h</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
@@ -519,10 +519,10 @@
   <p><span class="domain-specific">Timelines</span> contained within the <span class="domain-specific">Session</span>. This will typically contain one <span class="domain-specific">Timeline</span> for each frame that existed in the window at some point during profiling. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="StopProfiler.Session.Timeline.timelineID"><a href="#StopProfiler.Session.Timeline.timelineID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">timelineID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="StopProfiler.SessionTimeline.timelineID"><a href="#StopProfiler.SessionTimeline.timelineID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">timelineID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Non-zero ID for the <span class="domain-specific">Timeline</span>. This must be used when accessing <span class="domain-specific">Events</span> from the <span class="domain-specific">Timeline</span>. </p></div></li>
 <li class="field">
-<pre class="code-line" id="StopProfiler.Session.Timeline.frameID"><a href="#StopProfiler.Session.Timeline.frameID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="StopProfiler.SessionTimeline.frameID"><a href="#StopProfiler.SessionTimeline.frameID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">frameID</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>If the <span class="domain-specific">Timeline</span> is associated with a frame, the ID of the frame will be stored here. If the frame was removed during profiling, it will not be possible to access additional information about the frame from 'DocumentManager'. </p>
   <p>Also, this field may not be present if the <span class="domain-specific">Timeline</span> is not associated with a frame. (Currently not applicable, but field is made optional for future compatibility). </p></div></li>
 </ul>

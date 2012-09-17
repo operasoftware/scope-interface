@@ -112,11 +112,11 @@
 <div class="doc">
   <p>TODO: We probably want a lot more information about each window, like URL, shortcut       icon, etc. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListWindows.WindowList.WindowInfo.windowID"><a href="#ListWindows.WindowList.WindowInfo.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="ListWindows.WindowListWindowInfo.windowID"><a href="#ListWindows.WindowListWindowInfo.windowID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="ListWindows.WindowList.WindowInfo.title"><a href="#ListWindows.WindowList.WindowInfo.title"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">title</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="ListWindows.WindowListWindowInfo.title"><a href="#ListWindows.WindowListWindowInfo.title"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">title</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="ListWindows.WindowList.WindowInfo.windowType"><a href="#ListWindows.WindowList.WindowInfo.windowType"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">windowType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWindows.WindowListWindowInfo.windowType"><a href="#ListWindows.WindowListWindowInfo.windowType"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">windowType</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>TODO: Some of these are obsolete, like "ad". Figure out which ones should really be present. </p>
   <p>Type is one of: </p>
   <ul>
@@ -144,10 +144,10 @@
     <li>"devtools" </li>
   </ul></div></li>
 <li class="field">
-<pre class="code-line" id="ListWindows.WindowList.WindowInfo.openerID"><a href="#ListWindows.WindowList.WindowInfo.openerID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">openerID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWindows.WindowListWindowInfo.openerID"><a href="#ListWindows.WindowListWindowInfo.openerID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">openerID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The <span class="domain-specific">window-id</span> of the window who opened the window in question, or 0 if it was not opened by another window. </p></div></li>
 <li class="field">
-<pre class="code-line" id="ListWindows.WindowList.WindowInfo.extensionName"><a href="#ListWindows.WindowList.WindowInfo.extensionName"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">extensionName</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="ListWindows.WindowListWindowInfo.extensionName"><a href="#ListWindows.WindowListWindowInfo.extensionName"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">extensionName</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the extension if window type is 'gadget'. </p>
   <p><span class="since-version">Added in version 2.2</span></p></div></li>
 </ul>
