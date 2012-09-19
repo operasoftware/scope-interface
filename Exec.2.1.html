@@ -42,23 +42,23 @@
 <pre class="code-line" id="Exec.ActionList.actionList"><span class="expander">&nbsp;</span><a href="#Exec.ActionList.actionList"><span class="qualifier">repeated</span> <span class="">Action</span> <span class="field-name">actionList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="Exec.ActionListAction.name"><a href="#Exec.ActionListAction.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Exec.ActionList.Action.name"><a href="#Exec.ActionList.Action.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The name of the action to execute. This is either a regular Opera action (e.g. "Page Down"), or a special exec-action. Both kinds can be found by calling <span class="domain-specific">GetActionInfoList</span>. The special cases are prefixed with underscore ("_"), and these require <span class="domain-specific">value</span> parameter to work, but always ignores <span class="domain-specific">windowID</span>. </p>
   <p>The special cases may include:     _keydown | _keyup:         The <span class="domain-specific">value</span> is either a key-name ("ctrl", "down", etc.)         or a single character ("a", "b", etc.)     _type:         Types the text present in <span class="domain-specific">value</span>         (a different approach is the "Insert" action) </p>
   <p>It is currently not possible to figure out which actions take parameters (<span class="domain-specific">value</span>), and which don't. Optimistically, we have made the <span class="domain-specific">Action</span> type extendable to include such information later. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Exec.ActionListAction.value"><a href="#Exec.ActionListAction.value"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Exec.ActionList.Action.value"><a href="#Exec.ActionList.Action.value"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">value</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>String parameter for extra string data to be sent with the action E.g. "opera.com" to the command "go" </p></div></li>
 <li class="field">
-<pre class="code-line" id="Exec.ActionListAction.windowID"><a href="#Exec.ActionListAction.windowID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Exec.ActionList.Action.windowID"><a href="#Exec.ActionList.Action.windowID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">windowID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Window to send the action to, 0 for the currently active window </p>
   <p>WARNING: Please be sure you want this is you use it as you          might not actually know the correct window and then          the action will fail. 0 is best if you are unsure </p></div></li>
 <li class="field">
-<pre class="code-line" id="Exec.ActionListAction.data"><a href="#Exec.ActionListAction.data"><span class="qualifier">optional</span> <span class="number">int32</span> <span class="field-name">data</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Exec.ActionList.Action.data"><a href="#Exec.ActionList.Action.data"><span class="qualifier">optional</span> <span class="number">int32</span> <span class="field-name">data</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Data parameter for extra integer data to be sent with the action </p>
   <p>In some actions the data parameter is interpreted as a pointer rather than an integer. In these cases the action will fail. </p></div></li>
 <li class="field">
-<pre class="code-line" id="Exec.ActionListAction.stringParam"><a href="#Exec.ActionListAction.stringParam"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">stringParam</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="Exec.ActionList.Action.stringParam"><a href="#Exec.ActionList.Action.stringParam"><span class="qualifier">optional</span> <span class="string">string</span> <span class="field-name">stringParam</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Extra string parameter for action, sent in addition to the 'value' parameter for actions that need two strings </p></div></li>
 </ul>
 <pre class="code-line">}</pre>
@@ -87,7 +87,7 @@
 <div class="doc">
   <p>Name of an action, to be used in the <span class="domain-specific">Action</span> message. </p></div></li>
 <li class="field">
-<pre class="code-line" id="GetActionInfoList.ActionInfoListActionInfo.name"><a href="#GetActionInfoList.ActionInfoListActionInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="GetActionInfoList.ActionInfoList.ActionInfo.name"><a href="#GetActionInfoList.ActionInfoList.ActionInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
@@ -128,13 +128,13 @@
   <p>The default area is {x=0, y=0, w=200, h=100}. </p></div><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherArea.x"><a href="#SetupScreenWatcher.ScreenWatcherArea.x"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">x</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.Area.x"><a href="#SetupScreenWatcher.ScreenWatcher.Area.x"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">x</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherArea.y"><a href="#SetupScreenWatcher.ScreenWatcherArea.y"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">y</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.Area.y"><a href="#SetupScreenWatcher.ScreenWatcher.Area.y"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">y</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherArea.w"><a href="#SetupScreenWatcher.ScreenWatcherArea.w"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">w</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.Area.w"><a href="#SetupScreenWatcher.ScreenWatcher.Area.w"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">w</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherArea.h"><a href="#SetupScreenWatcher.ScreenWatcherArea.h"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">h</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.Area.h"><a href="#SetupScreenWatcher.ScreenWatcher.Area.h"><span class="qualifier">required</span> <span class="number">int32</span> <span class="field-name">h</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
@@ -152,19 +152,19 @@
   <p>Specifies a new color specification. The <span class="domain-specific">id</span> is used when reporting back the results. You can have overlapping color specifications. Note: There can be a maximum of 16 color specifications! </p>
   <p>Color values ranges from 0 (no color) to 255 (maximal saturation), other values are not allowed. Default (meaning field missing) is 0 for any low fields and 255 for any high fields. </p></div></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherColorSpec.id"><a href="#SetupScreenWatcher.ScreenWatcherColorSpec.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.ColorSpec.id"><a href="#SetupScreenWatcher.ScreenWatcher.ColorSpec.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherColorSpec.redLow"><a href="#SetupScreenWatcher.ScreenWatcherColorSpec.redLow"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">redLow</span><span class="proto-key"> = 2</span> [default = 0]<span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.ColorSpec.redLow"><a href="#SetupScreenWatcher.ScreenWatcher.ColorSpec.redLow"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">redLow</span><span class="proto-key"> = 2</span> [default = 0]<span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherColorSpec.redHigh"><a href="#SetupScreenWatcher.ScreenWatcherColorSpec.redHigh"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">redHigh</span><span class="proto-key"> = 3</span> [default = 255]<span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.ColorSpec.redHigh"><a href="#SetupScreenWatcher.ScreenWatcher.ColorSpec.redHigh"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">redHigh</span><span class="proto-key"> = 3</span> [default = 255]<span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherColorSpec.greenLow"><a href="#SetupScreenWatcher.ScreenWatcherColorSpec.greenLow"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">greenLow</span><span class="proto-key"> = 4</span> [default = 0]<span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.ColorSpec.greenLow"><a href="#SetupScreenWatcher.ScreenWatcher.ColorSpec.greenLow"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">greenLow</span><span class="proto-key"> = 4</span> [default = 0]<span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherColorSpec.greenHigh"><a href="#SetupScreenWatcher.ScreenWatcherColorSpec.greenHigh"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">greenHigh</span><span class="proto-key"> = 5</span> [default = 255]<span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.ColorSpec.greenHigh"><a href="#SetupScreenWatcher.ScreenWatcher.ColorSpec.greenHigh"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">greenHigh</span><span class="proto-key"> = 5</span> [default = 255]<span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherColorSpec.blueLow"><a href="#SetupScreenWatcher.ScreenWatcherColorSpec.blueLow"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">blueLow</span><span class="proto-key"> = 6</span> [default = 0]<span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.ColorSpec.blueLow"><a href="#SetupScreenWatcher.ScreenWatcher.ColorSpec.blueLow"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">blueLow</span><span class="proto-key"> = 6</span> [default = 0]<span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherColorSpec.blueHigh"><a href="#SetupScreenWatcher.ScreenWatcherColorSpec.blueHigh"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">blueHigh</span><span class="proto-key"> = 7</span> [default = 255]<span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcher.ColorSpec.blueHigh"><a href="#SetupScreenWatcher.ScreenWatcher.ColorSpec.blueHigh"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">blueHigh</span><span class="proto-key"> = 7</span> [default = 255]<span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
@@ -187,10 +187,10 @@
 <pre class="code-line" id="SetupScreenWatcher.ScreenWatcherResult.colorMatchList"><span class="expander">&nbsp;</span><a href="#SetupScreenWatcher.ScreenWatcherResult.colorMatchList"><span class="qualifier">repeated</span> <span class="">ColorMatch</span> <span class="field-name">colorMatchList</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherResultColorMatch.id"><a href="#SetupScreenWatcher.ScreenWatcherResultColorMatch.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherResult.ColorMatch.id"><a href="#SetupScreenWatcher.ScreenWatcherResult.ColorMatch.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The <span class="domain-specific">ColorSpec.id</span> which matched a color </p></div></li>
 <li class="field">
-<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherResultColorMatch.count"><a href="#SetupScreenWatcher.ScreenWatcherResultColorMatch.count"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">count</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="SetupScreenWatcher.ScreenWatcherResult.ColorMatch.count"><a href="#SetupScreenWatcher.ScreenWatcherResult.ColorMatch.count"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">count</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Number of pixels for the matching <span class="domain-specific">id</span> </p></div></li>
 </ul>
 <pre class="code-line">}</pre>

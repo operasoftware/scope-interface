@@ -133,20 +133,20 @@
   <p>An enum is defined as::   enum Type   {      TYPE1 = 1;      TYPE2 = 2;   } </p>
   <p><span class="since-version">Added in version 1.1</span></p></div></li>
 <li class="field">
-<pre class="code-line" id="EnumInfo.EnumListEnum.id"><a href="#EnumInfo.EnumListEnum.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="EnumInfo.EnumList.Enum.id"><a href="#EnumInfo.EnumList.Enum.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>Unique ID for this enum. </p></div></li>
 <li class="field">
-<pre class="code-line" id="EnumInfo.EnumListEnum.name"><a href="#EnumInfo.EnumListEnum.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="EnumInfo.EnumList.Enum.name"><a href="#EnumInfo.EnumList.Enum.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="EnumInfo.EnumListEnum.valueList"><span class="expander">&nbsp;</span><a href="#EnumInfo.EnumListEnum.valueList"><span class="qualifier">repeated</span> <span class="">Value</span> <span class="field-name">valueList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="EnumInfo.EnumList.Enum.valueList"><span class="expander">&nbsp;</span><a href="#EnumInfo.EnumList.Enum.valueList"><span class="qualifier">repeated</span> <span class="">Value</span> <span class="field-name">valueList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="message-doc">
 <div class="doc">
   <p>Represents a value in an enum. e.g. TYPE1 = 1; TYPE1 would then be the name and 1 the number. </p></div></li>
 <li class="field">
-<pre class="code-line" id="EnumInfo.EnumListEnumValue.name"><a href="#EnumInfo.EnumListEnumValue.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="EnumInfo.EnumList.Enum.Value.name"><a href="#EnumInfo.EnumList.Enum.Value.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="EnumInfo.EnumListEnumValue.number"><a href="#EnumInfo.EnumListEnumValue.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="EnumInfo.EnumList.Enum.Value.number"><a href="#EnumInfo.EnumList.Enum.Value.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
@@ -178,9 +178,9 @@
 <pre class="code-line" id="HostInfo.HostInfo.serviceList"><span class="expander">&nbsp;</span><a href="#HostInfo.HostInfo.serviceList"><span class="qualifier">repeated</span> <span class="">Service</span> <span class="field-name">serviceList</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="HostInfo.HostInfoService.name"><a href="#HostInfo.HostInfoService.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="HostInfo.HostInfo.Service.name"><a href="#HostInfo.HostInfo.Service.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="HostInfo.HostInfoService.version"><a href="#HostInfo.HostInfoService.version"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">version</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="HostInfo.HostInfo.Service.version"><a href="#HostInfo.HostInfo.Service.version"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">version</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>This field contains the major and minor version number of the service. The first number is the major version, the second is the minor, and any additional numbers/strings are not of relevance but can be shown to the end-user if wanted. </p>
   <p>The major version determines major changes (ie. compatibility breaks), while the minor version determines incremental changes (ie. backwards compatible). The client must check these two numbers to ensure it is able to communicate properly with the service. If the major version is different from the versions the client is compatible with, or the minor version is less than the required version, it must disconnect. </p>
   <p>Let us say a client supports version 1.6 and up and also version 2.0 and up. It would do:: </p>if major == 1 and minor >= 6 or major == 2: print "We support service version %d.%d" % (major, minor) else: print "We do not support service version %d.%d" % (major, minor) </div></li>
@@ -208,13 +208,13 @@
 <pre class="code-line" id="Info.ServiceInfo.commandList"><span class="expander">&nbsp;</span><a href="#Info.ServiceInfo.commandList"><span class="qualifier">repeated</span> <span class="">CommandInfo</span> <span class="field-name">commandList</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="Info.ServiceInfoCommandInfo.name"><a href="#Info.ServiceInfoCommandInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Info.ServiceInfo.CommandInfo.name"><a href="#Info.ServiceInfo.CommandInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="Info.ServiceInfoCommandInfo.number"><a href="#Info.ServiceInfoCommandInfo.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Info.ServiceInfo.CommandInfo.number"><a href="#Info.ServiceInfo.CommandInfo.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="Info.ServiceInfoCommandInfo.messageID"><a href="#Info.ServiceInfoCommandInfo.messageID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">messageID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Info.ServiceInfo.CommandInfo.messageID"><a href="#Info.ServiceInfo.CommandInfo.messageID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">messageID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="Info.ServiceInfoCommandInfo.responseID"><a href="#Info.ServiceInfoCommandInfo.responseID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">responseID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Info.ServiceInfo.CommandInfo.responseID"><a href="#Info.ServiceInfo.CommandInfo.responseID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">responseID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
@@ -222,11 +222,11 @@
 <pre class="code-line" id="Info.ServiceInfo.eventList"><span class="expander">&nbsp;</span><a href="#Info.ServiceInfo.eventList"><span class="qualifier">repeated</span> <span class="">EventInfo</span> <span class="field-name">eventList</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="Info.ServiceInfoEventInfo.name"><a href="#Info.ServiceInfoEventInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Info.ServiceInfo.EventInfo.name"><a href="#Info.ServiceInfo.EventInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="Info.ServiceInfoEventInfo.number"><a href="#Info.ServiceInfoEventInfo.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Info.ServiceInfo.EventInfo.number"><a href="#Info.ServiceInfo.EventInfo.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="Info.ServiceInfoEventInfo.messageID"><a href="#Info.ServiceInfoEventInfo.messageID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">messageID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="Info.ServiceInfo.EventInfo.messageID"><a href="#Info.ServiceInfo.EventInfo.messageID"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">messageID</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
@@ -261,37 +261,37 @@
 <div class="doc">
   <p>Introspection result for a given message. </p></div></li>
 <li class="field">
-<pre class="code-line" id="MessageInfo.MessageInfoListMessageInfo.id"><a href="#MessageInfo.MessageInfoListMessageInfo.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.id"><a href="#MessageInfo.MessageInfoList.MessageInfo.id"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">id</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="MessageInfo.MessageInfoListMessageInfo.name"><a href="#MessageInfo.MessageInfoListMessageInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.name"><a href="#MessageInfo.MessageInfoList.MessageInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="MessageInfo.MessageInfoListMessageInfo.fieldList"><span class="expander">&nbsp;</span><a href="#MessageInfo.MessageInfoListMessageInfo.fieldList"><span class="qualifier">repeated</span> <span class="">FieldInfo</span> <span class="field-name">fieldList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.fieldList"><span class="expander">&nbsp;</span><a href="#MessageInfo.MessageInfoList.MessageInfo.fieldList"><span class="qualifier">repeated</span> <span class="">FieldInfo</span> <span class="field-name">fieldList</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="message">
 <pre class="code-line">{</pre>
 <ul><li class="field">
-<pre class="code-line" id="MessageInfo.MessageInfoListMessageInfoFieldInfo.name"><a href="#MessageInfo.MessageInfoListMessageInfoFieldInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.name"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.name"><span class="qualifier">required</span> <span class="string">string</span> <span class="field-name">name</span><span class="proto-key"> = 1</span><span class="proto-key">;</span></a></pre></li>
 <li class="field">
-<pre class="code-line" id="MessageInfo.MessageInfoListMessageInfoFieldInfo.type"><a href="#MessageInfo.MessageInfoListMessageInfoFieldInfo.type"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.type"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.type"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">type</span><span class="proto-key"> = 2</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The protocol buffer type for this field. The types are: </p>
   <p>== ============================ 1  Double 2  Float 3  Int32 4  Uint32 5  Sint32 6  Fixed32 7  Sfixed32 8  Bool 9  String 10 Bytes 11 Message 12 Int64 (not supported yet) 13 Uint64 (not supported yet) 14 Sint64 (not supported yet) 15 Fixed64 (not supported yet) 16 Sfixed64 (not supported yet) == ============================ </p></div></li>
 <li class="field">
-<pre class="code-line" id="MessageInfo.MessageInfoListMessageInfoFieldInfo.number"><a href="#MessageInfo.MessageInfoListMessageInfoFieldInfo.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.number"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.number"><span class="qualifier">required</span> <span class="number">uint32</span> <span class="field-name">number</span><span class="proto-key"> = 3</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>The unique protocol buffer number for this field. </p></div></li>
 <li class="field">
-<pre class="code-line" id="MessageInfo.MessageInfoListMessageInfoFieldInfo.quantifier"><a href="#MessageInfo.MessageInfoListMessageInfoFieldInfo.quantifier"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">quantifier</span><span class="proto-key"> = 4</span> [default = 0]<span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.quantifier"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.quantifier"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">quantifier</span><span class="proto-key"> = 4</span> [default = 0]<span class="proto-key">;</span></a></pre><div class="doc">
   <p>Specifies whether the fields is required, optional or repeated: </p>
   <p>= ======== 0 Required 1 Optional 2 Repeated = ======== </p></div></li>
 <li class="field">
-<pre class="code-line" id="MessageInfo.MessageInfoListMessageInfoFieldInfo.messageID"><a href="#MessageInfo.MessageInfoListMessageInfoFieldInfo.messageID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">messageID</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.messageID"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.messageID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">messageID</span><span class="proto-key"> = 5</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p>ID of message this field references, only set for Message fields </p></div></li>
 <li class="field">
-<pre class="code-line" id="MessageInfo.MessageInfoListMessageInfoFieldInfo.enumID"><a href="#MessageInfo.MessageInfoListMessageInfoFieldInfo.enumID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">enumID</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.FieldInfo.enumID"><a href="#MessageInfo.MessageInfoList.MessageInfo.FieldInfo.enumID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">enumID</span><span class="proto-key"> = 6</span><span class="proto-key">;</span></a></pre><div class="doc">
   <p class="note">ID of the enum this field references, only set for Int32 fields <span class="info"></span> Only set if MessageSelection.showEnums is set to true. </p>
   <p><span class="since-version">Added in version 1.1</span></p></div></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
 <li class="field">
-<pre class="code-line" id="MessageInfo.MessageInfoListMessageInfo.parentID"><a href="#MessageInfo.MessageInfoListMessageInfo.parentID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">parentID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
+<pre class="code-line" id="MessageInfo.MessageInfoList.MessageInfo.parentID"><a href="#MessageInfo.MessageInfoList.MessageInfo.parentID"><span class="qualifier">optional</span> <span class="number">uint32</span> <span class="field-name">parentID</span><span class="proto-key"> = 4</span><span class="proto-key">;</span></a></pre></li>
 </ul>
 <pre class="code-line">}</pre>
 </div></li>
